@@ -1,0 +1,289 @@
+<apex:page docType="html-5.0" controller="JBCXM.WorkFlowBroker" sidebar="false" title="Cockpit" tabStyle="Cockpit__tab" extensions="JBCXM.NSRemoting,JBCXM.GSCommonBroker" showHeader="true">
+	
+    <apex:includeScript value="{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS, 'CustomJS/date.format.js'))}" />    
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-1.10.2.min.js'))}"></script>
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/date/moment.2.13.0.min.js'))}"></script>
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/date/moment-timezone-with-data.0.5.3.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/underscore-1.8.3/underscore.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/backbone-min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/jquery.htmlClean.min.js'))}" type="text/javascript"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-UI-1.10/js/jquery.ui.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/multiple-select/jquery.multiple.select.js'))}" type="text/javascript"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-migrate-1.2.1.min.js'))}"></script>
+	<script src="/soap/ajax/31.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/31.0/apex.js" type="text/javascript"></script>
+
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/growl/jquery.growl.js'))}"></script>
+
+    <script>
+       var GSGA = {
+           orgId: "{!$Organization.Id}",
+           orgName: "{!$Organization.Name}",
+           userName: "{!$User.FirstName}"+" "+"{!$User.LastName}"
+       };
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    </script>
+    <script src="{!JSENCODE(URLFOR($Resource.CustomJS,'CustomJS/analyticsWrapper.js'))}"></script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__jqGrid, 'css/ui.jqgrid.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles,'css/module/cockpit/playbooks/playbooks.css'))}"/>
+    <apex:includeScript value="{!JSENCODE(URLFOR($Resource.JBCXM__NS, 'NS/newStack/js/restclient/restClient.js'))}" />
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.CustomJS, 'Optimized/emailbuilder/emailbuilder.min.js'))}"></script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS,'css/emailbuilder/emailbuilder.min.css'))}"/>
+
+    <style>
+    body.sfdcBody {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100vh;
+    }
+    body.sfdcBody .bodyDiv {
+         border: none;
+         border-radius: 0;
+         overflow-y: auto;
+         overflow-x: hidden;
+    }
+    #contentWrapper {position: relative; z-index: 0; height: 100%;}
+    .slick-header-column {
+        -webkit-box-sizing: content-box !important;
+        -moz-box-sizing: content-box !important;
+        box-sizing: content-box !important;
+    }
+    </style>
+
+    <script type="text/javascript">
+        var j$ = $.noConflict();
+        window.jLatest = j$;
+    </script>
+
+   <script>
+   			var GS = GS || {};
+   			var pbView = null;
+   			var analyticsView = null;
+            GS.remoting                 	= "{!$RemoteAction.NSRemoting.apinsinvoke}";
+            GS.remotingEndPoint     		= '{!$RemoteAction.WorkFlowBroker.workFlowRequestBroker}';
+            GS.remotingBulkEndPoint     	= '{!$RemoteAction.WorkFlowBroker.workFlowBulkRequestBroker}';
+            GS.commonRemotingEndPoint     	= '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+            GS.commonRemotingBulkEndPoint    = '{!$RemoteAction.GSCommonBroker.gsCommonBulkRequestBroker}';
+
+            GS.packageNS            = "{!(pkgNS)}";
+    		GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+
+            GS.NSSessionId   = "{!(nssessionId)}";
+            GS.allUsersPhoto = "{!JSENCODE(URLFOR($Resource.GSAppCSS, 'images/workflow/all-owners.png'))}";
+            GS.userBlankPhoto = "{!JSENCODE(URLFOR($Resource.GSAppCSS, 'images/workflow/No-User.jpg'))}";
+
+            GS.nsParams                 = eval({!(nsParams)});
+            GS.isNSEnabled              = GS.nsParams.nsenabled == "true" ? true : false;
+            GS.nsURL                    = GS.nsParams.url;
+            var nsParams = GS.nsParams;
+            GS.sTab = getSubTabNameFromQryStr(window.location.href); //This  is used to me from success plan templates map playbook interface.
+
+            GS.statePreservation={};
+
+    		function getCTAIdFromQryStr(url){
+                var ctaIndex = url.indexOf('ctaId=');
+                if(ctaIndex > 0){
+                    var Id =url.substring(ctaIndex+6,url.length);
+                    return Id;
+                }
+                return null;
+            }
+
+            function getSubTabNameFromQryStr(url){
+                var sTabIndex = url.indexOf('stab=');
+                if(sTabIndex > 0){
+                    var sTab = url.substring(sTabIndex+5,url.length);
+                    return sTab;
+                }
+                return null;
+            }
+            function getModuleFromQryStr(url){
+                var index = url.indexOf('module=');
+                if(index > 0){
+                    var Id =url.substring(index+7,url.length);
+                    return Id;
+                }
+                return null;
+            }
+
+			require.config({
+                baseUrl : "",
+                    paths : {
+                   'framework': "{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}",
+                 	//'framework': "https://localhost/GS-SP/GSApp/js/Gainsight",
+                    'vendor' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}",
+                    'text' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}",
+                    'async':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/async'))}",
+                    'src':"{!JSENCODE(URLFOR($Resource.src,''))}",
+                    'jQGrid': "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/jqgrid-4.6.0/js/jquery.jqGrid.src'))}",
+                    'jQgrid-locale':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/jqgrid-4.6.0/js/i18n/grid.locale-en'))}",
+                    'jQgrid-util':"{!JSENCODE(URLFOR($Resource.jqGrid,'js/jqgrid.Custom.Utility'))}",
+                    'bootstrapmultiselect':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/bootstrap/bootstrap-multiselect'))}",
+                    'tether':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/tether/tether'))}",
+                    'tether-drop':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/tether-drop/drop'))}",
+                    'rangy-core':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/rangy/1_3_0/rangy-core'))}",
+                    'spectrum':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/colorpicker/spectrum'))}",
+                    'sly':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/sly/sly.min'))}",
+                    'encoder':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/encoder'))}",
+                    'jsTree' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jstree/jstree.min'))}",
+                    'qTip' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/tooltip/qtip2/2.2.1/jquery.qtip.min'))}",
+                    'highstock' : "{!JSENCODE(URLFOR($Resource.HighchartsJS,'Highstock/highstock'))}",
+                    'highstockExport' : "{!JSENCODE(URLFOR($Resource.HighchartsJS,'Highstock/modules/exporting'))}",
+                    'highstockMore' : "{!JSENCODE(URLFOR($Resource.HighchartsJS,'Highstock/highcharts-more'))}",
+                    'heatmap' : "{!JSENCODE(URLFOR($Resource.HighchartsJS,'Highstock/modules/heatmap'))}",
+                    'd3.v3' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/data_charting/d3.v3.min'))}",
+                    'EmbedReport' :"{!JSENCODE(URLFOR($Resource.CustomJS,'Optimized/embedreport/embedreport.min'))}",
+                    'emailbuilderstyles' : "{!JSENCODE(URLFOR($Resource.Styles,'css/module/copilot/emailbuilderstyles.css'))}",
+                    'emailContentInlineStyles' : "{!JSENCODE(URLFOR($Resource.Styles,'css/module/copilot/emailContentInlineStyles.css'))}"
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                },
+                shim: {
+					"jQGrid": {
+					    "deps": [
+					        "jquery"
+					    ]
+					},
+					"jQgrid-locale": {
+					    "deps": [
+					        "jquery",
+					        "jQGrid"
+					    ]
+					},
+					"jQgrid-util": {
+					    "deps": [
+					        "jquery",
+					        "jQGrid",
+					        "jQgrid-locale"
+					    ]
+					},
+                     'tether-drop' : {
+                         'deps' : ['tether']
+                     },
+                     'bootstrapmultiselect' : {
+                         'deps' :['jquery']
+                     },
+                     'sly':{
+                         'deps':['jquery']
+                     },
+                     'jsTree' : {
+                         'deps':['jquery']
+                     },
+                    'qTip':{
+                        deps:['jquery'],
+                        exports:'qTip'
+                    },
+                    'highstockMore':{
+                        deps:['highstock']
+                    },
+                    'highstockExport': {
+                        deps: ['highstock', 'highstockMore']
+                    },
+                    'd3.v3': {
+                        deps: ['jquery']
+                    },
+                    'heatmap':{
+                        deps:['highstock', 'highstockMore']
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+
+            });
+            function loadModule(module){
+
+            	j$(".gs-workflow-child-ctn").show();
+            	j$(".gs-workflow-child-module").hide();
+            	j$(".gs-workflow-child-module."+module).show();
+            	if(module == "playbooks"){
+
+	                if(pbView == null){
+		                require([
+		                			"framework/views/workflow/playbooks/PlaybookManagerView",
+		                			"framework/utils/jQueryProxy",
+		                			"vendor/velocity/velocity.min",
+		                			'jQGrid',
+                                    'jQgrid-locale',
+                                    "jQgrid-util",
+                                    "bootstrapmultiselect",
+                                    "tether",
+                                    "tether-drop",
+                                    "rangy-core",
+                                    "spectrum",
+                                    "sly",
+                                    "encoder",
+                                    "jsTree",
+                                    "qTip",
+                                    'highstock',
+                                    'highstockMore',
+                                    'highstockExport',
+                                    'heatmap',
+                                    'd3.v3',
+                                    "EmbedReport"
+		                		],
+		                		function(PlaybookManagerView, j$){
+
+
+		                     		pbView =  new PlaybookManagerView();
+									j$(".gs-workflow-child-module."+module).append(pbView.$el);
+
+
+
+		                });
+		              }
+
+               }
+            }
+            var workflowManager = null;
+
+            define("jQuery", [], function(){
+                    return window.jLatest;
+                });
+
+            define("jquery", [], function(){
+                    return window.jLatest;
+                });
+
+			define('async', function () {
+              return async;
+            });
+
+            j$(document).ready(function() {
+
+               j$(".gs-workflow-child-module").hide();
+               j$(".bPageHeader").hide();
+               j$(".bPageFooter").hide();
+               var module =  getModuleFromQryStr(window.location.href);
+               GS = parent.GS;
+               window["currencyConfigObject"] = GS.currencyConfig || {};
+               window["UserContext"] = window["UserContext"] ?  window["UserContext"] : {};
+               var UserContext = window["UserContext"];
+        		//If there is no date formar in UserContext then update from userconfig
+        		//Fix for the Lighting issue
+		        if(!UserContext["dateFormat"]){
+		            UserContext["dateFormat"] = GS.userConfig.userLocale.DateFormat;
+		            UserContext["dateTimeFormat"] = GS.userConfig.userLocale.DateTimeFormat;
+		            UserContext["today"] = GS.userConfig.userLocale.today;
+		            UserContext["locale"] = GS.userConfig.userLocale;
+		        }
+		        loadModule(module);
+            });
+    </script>
+     <div class="gs-workflow-child-ctn" style="display:none">
+     	<div class="gs-workflow-child-module playbooks"></div>
+     </div>
+     <apex:form >
+      </apex:form>
+    
+</apex:page>

@@ -1,0 +1,31 @@
+<apex:page showHeader="true">
+
+  <iframe id="iv_homepage" src="javascript:'';" name="iv_homepage" frameborder="0" height="400" width="100%"></iframe>
+  <script language="JavaScript" type="text/javascript">  
+    
+  var d = document,w=window ;
+  var ivCon = {
+    
+    getC : function ( cn ) {
+        var r = d.cookie.match ( '(^|;) ?' + cn + '=([^;]*)(;|$)' );
+        if ( r ) return ( unescape ( r[2] ) ); else return null;
+    },
+    cVal : null,
+    load : function(){
+        var homepage_mashup = "https://my.insideview.com/iv/crm/showSfHomePage.do?methodName=loadConsole&from=login&sort=date&sfHomePage=sfHomePage&crm_version=v110&crmUID="+ivCon.getC('sid_Client'); 
+        window.frames["iv_homepage"].location.replace(homepage_mashup);
+    },
+    defaultActions : function(){
+          this.cVal=ivCon.getC('sid_Client');
+          if (w.addEventListener){ 
+            w.addEventListener("load", this.load , false);
+            }else if (w.attachEvent){
+            var evt = w.attachEvent("onload", this.load );
+            }else {w.onload = this.load ;}
+     }
+   };
+   
+   
+  (function(){ivCon.defaultActions();})();  
+  </script>
+</apex:page>

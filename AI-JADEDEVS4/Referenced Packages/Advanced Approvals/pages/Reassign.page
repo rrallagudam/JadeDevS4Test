@@ -1,0 +1,93 @@
+<apex:page standardController="sbaa__Approval__c" extensions="sbaa.ApprovalExtController">
+	<apex:pageMessages />
+	
+	<apex:form >
+	<apex:pageBlock rendered="{!isApprovalRequested}">
+		<apex:pageBlockButtons >
+			<apex:commandButton action="{!onReassign}" value="{!$Label.lbl_reassign}"/>
+            <apex:commandButton action="{!onReturn}" rendered="true" value="{!$Label.lbl_cancel}"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection columns="1">
+			<apex:pageBlockSectionItem >
+				<apex:outputLabel value="{!$Label.lbl_reassign_to}"/>
+				<apex:inputField value="{!sbaa__Approval__c.sbaa__AssignedTo__c}"/>
+			</apex:pageBlockSectionItem>
+			<apex:pageBlockSectionItem >
+				<apex:outputLabel value="{!$Label.lbl_comments}"/>
+				<apex:inputTextarea value="{!comments}" rows="5" cols="100"/>
+			</apex:pageBlockSectionItem>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	</apex:form>
+	<style type="text/css">
+		@media only screen and (min-device-width : 320px) and (max-device-width : 640px) {
+			a{
+				background-image: url(/img/func_icons/util/lookup20.gif);
+				padding-left: 18px;);
+				padding-left: 18px;
+			}
+			table{
+				margin-left: auto;
+				margin-right: auto;
+				width: auto;
+			}
+			tr,td{
+				display: block;
+			}
+			div{
+				font-family:sans-serif;
+			}
+			input,
+			select,
+			textarea,
+			button{
+				/*font: -webkit-small-control;*/
+				font-size: 15px;
+				font-family: sans-serif;
+				box-sizing: border-box;
+				color: #3c3d3e;
+				padding: 7px 14px;
+				line-height: 25px;
+				border-radius: 5px;
+				border: 1px solid #cfd0d2;
+			}
+			input {
+				border: 1px solid #cfd0d2;
+				border-radius: 3px;
+				background-color: #fff;
+				box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07);
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+			select {
+				min-width: 50px;
+				padding: 7px 14px;
+				margin-left: 3px;
+				background-color: #fff;
+				background-position: 95% 50%;
+				background-repeat: no-repeat;
+				background-size: 14px 14px;
+				border: 1px solid #cfd0d2;
+				border-radius: 3px;
+			}
+			label {
+				font-size: 13px;
+				font-family: sans-serif;
+				color: #696e71;
+				margin: 0;
+				padding-bottom: 5px;
+				/*display: none;*/
+			}
+			textarea {
+				-webkit-rtl-ordering: logical;
+				-webkit-user-select: text;
+				flex-direction: column;
+				cursor: auto;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+				background-color: #fff;
+				box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07);
+				width: 100%;
+			}
+		}
+	</style>
+</apex:page>

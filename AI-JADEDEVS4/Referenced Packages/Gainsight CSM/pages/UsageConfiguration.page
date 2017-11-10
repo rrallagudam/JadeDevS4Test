@@ -1,0 +1,123 @@
+<apex:page tabStyle="Administration__tab" docType="html-5.0" sidebar="false" controller="JBCXM.AdminBroker" title="Usage Configuration" extensions="JBCXM.GSCommonBroker,JBCXM.NSRemoting">
+
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/jquery/jquery-UI-1.10/css/redmond/jquery-ui-1.10.3.custom.min.css'))}"/>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-1.10.2.min.js'))}"></script>	
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-UI-1.10/js/jquery.ui.min.js'))}"></script>
+	
+	<apex:includeScript value="{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS, 'CustomJS/date.format.js'))}" />
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/lib/jquery.event.drag-2.2.js'))}"></script>
+	
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/slick.grid.css'))}"/>
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.columnpicker.css'))}"/>
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.pager.css'))}"/>
+	
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.core.js'))}"></script>	
+	
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.rowselectionmodel.js'))}"></script><script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.cellrangeselector.js'))}"></script><script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.cellrangedecorator.js'))}"></script><script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.cellselectionmodel.js'))}"></script><script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.rowmovemanager.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.autotooltips.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.grid.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.dataview.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.editors.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/controls/slick.columnpicker.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/controls/slick.pager.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.checkboxselectcolumn.js'))}"></script>
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/simplecolorpicker/jquery.simplecolorpicker.css'))}"/>	
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/simplecolorpicker/jquery.simplecolorpicker.js'))}"></script>
+	
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/underscore-min.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/backbone-min.js'))}"></script>
+	<script src="{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js/restclient/restClient.js'))}"> </script>
+        
+	<script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/multiple-select/jquery.multiple.select.js'))}" type="text/javascript"></script>
+	
+ <!--    <link rel="stylesheet" type="text/css" href="https://localhost:8080/UI/GSAppCSS/css/CS360/gsApps-new.css"/>
+    <link rel="stylesheet" type="text/css" href="https://localhost:8080/UI/GSAppCSS/css/adoption/adoption-style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://localhost:8080/UI/Styles/css/core/gsAppContainer.css"/>   -->
+    
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles,'css/core/gsAppContainer.css'))}" />
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/CS360/gsApps-new.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/adoption/adoption-style.css'))}"/>
+	
+	<script>
+	    var j$ = $.noConflict();
+	    window.jLatest = j$;
+	</script>
+	<script>
+	    var GS = GS || {};
+	
+		GS.remotingEndPoint = '{!$RemoteAction.AdminBroker.adminRequestBroker}';
+		GS.commonRemotingEndPoint   = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';	
+		GS.packageNS            = "{!(pkgNS)}";
+    	GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+		GS.endPointURL = "{!(endPointUrl)}";
+		GS.orgId	   = "{!$Organization.Id}";
+		GS.userId	   =  "{!$User.Id}";
+		GS.sessionId   =  "{!(sessionId)}";
+		GS.remoting 	= "{!$RemoteAction.NSRemoting.apinsinvoke}";
+		GS.hasCreatePermissions =  "{!(hasFieldCreationPermission)}" == "true" ? true : false;
+		GS.customLabels			= eval({!(customLabelsMap)});
+		GS.userConfig = {
+		        userLocale  : {!(dateTimeFormatByLocale)},
+		        userName    : "{!$User.FirstName}"+" "+"{!$User.LastName}", 
+		        userId      : "{!$User.Id}",
+		    	emailId		: "{!$User.Email}",
+		    	gainsightTabs: {!(gainsightTabs)},
+		    	isLightningEnabled: {!(isLightningEnabled)}
+		    };
+		require.config({
+		    baseUrl: "",
+		    paths: {
+		        'framework': "{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}",
+		     	//'framework': "https://localhost:8080/UI/GSApp/js/Gainsight",
+		        'vendor': "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}",
+		        'text': "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}",
+		        'src':"{!JSENCODE(URLFOR($Resource.src,''))}"
+		    },
+		    config: {
+		        text: {
+		            useXhr: function (url, protocol, hostname, port) {
+		                return true;
+		            }
+		        }
+		    },
+		    urlArgs: "bust=" + (new Date()).getTime()
+		});
+
+    j$(document).ready(function () {	
+	    require([
+	    	"src/js/com/gainsight/app/core/components/containers/sfdc/app/AppContainer",
+	     	"framework/utils/jQueryProxy",
+	   		"framework/views/admin/adoption/UsageConfiguration"
+	
+	    ], function (AppContainer, j$, UsageConfigurationView) {
+	    		/*var usageConfigurationView = new UsageConfigurationView({
+						data: {
+							hasPermissions : GS.hasCreatePermissions,
+					  		sessionId:GS.sessionId
+					  	}
+					});
+					j$(".usage-container").append(usageConfigurationView.$el);*/
+					
+	    		var appContainer = new AppContainer();
+	    		var deferred = appContainer.init();
+	    		deferred.done(function(){
+					var usageConfigurationView = new UsageConfigurationView({
+						data: {
+							hasPermissions : GS.hasCreatePermissions,
+					  		sessionId:GS.sessionId
+					  	}
+					});
+					j$(".usage-container").append(usageConfigurationView.$el);
+					appContainer.registerModule(usageConfigurationView, "Administration", "Usage Configuration", {"id":"administration-operations-usage-metrics"});
+	    		});
+	    	});
+	});
+	    
+	</script>
+	<div id="gs-app-container"><div class="gs-module-container">
+		<div class="usage-container"></div>
+		</div>
+	</div>
+	<apex:form ></apex:form>
+</apex:page>

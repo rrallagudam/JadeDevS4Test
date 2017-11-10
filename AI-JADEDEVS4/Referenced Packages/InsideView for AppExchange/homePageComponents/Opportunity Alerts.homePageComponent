@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;div class=&quot;bRelatedList&quot;&gt; &lt;div class=&quot;bNext&quot;&gt; &lt;div class=&quot;withFilter&quot;&gt; &lt;div class=&quot;clearingBox&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class=&quot;bMyTask&quot;&gt; &lt;div class=&quot;bPageBlock secondaryPalette&quot;&gt; &lt;div class=&quot;pbBody&quot;&gt;&lt;/div&gt; &lt;div class=&quot;pbFooter secondaryPalette&quot;&gt; &lt;div class=&quot;bg&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class=&quot;listElementBottomNav&quot;&gt;&lt;/div&gt;&lt;/div&gt;</body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>wide</width>
+</HomePageComponent>

@@ -1,0 +1,118 @@
+<apex:page docType="html-5.0" controller="JBCXM.AdminBroker" sidebar="false" title="DataSpace Manager" tabStyle="Administration__tab" extensions="JBCXM.NSRemoting,JBCXM.GSCommonBroker">
+
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}"/>
+
+    <script>
+        var nsParams                = eval({!(nsParams)});
+        var GS                      = GS || {};
+        GS.remoting                 = "{!$RemoteAction.NSRemoting.apinsinvoke}";
+        GS.sessionId                = "{!NSSessionId}";
+        GS.isScorecardEnabled       = {!(isScorecardEnabled)};
+        GS.nsURL                    = nsParams.url;
+        GS.isNSEnabled = nsParams.nsenabled == "true" ? true : false;
+
+        GS.remotingEndPoint         = '{!$RemoteAction.AdminBroker.adminRequestBroker}';
+        GS.remotingBulkEndPoint     = '{!$RemoteAction.AdminBroker.adminBulkRequestBroker}';
+        GS.commonRemotingEndPoint =  '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+
+        GS.usageConfigInfo          = eval({!(UsageConfigInfo)});
+        GS.packageNS            = "{!(pkgNS)}";
+        GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+        GS.customLookUpConfig       = JSON.parse("{!(JSENCODE(customLookUpConfigMap))}");
+        GS.colorConfig = {!(colorConfig)};
+        GS.userConfig = {
+          userLocale        : {!(dateTimeFormatByLocale)},
+          userName          : "{!$User.FirstName}"+" "+"{!$User.LastName}",
+          userId            : "{!$User.Id}",
+          emailId           : "{!$User.Email}",
+          profilePhoto      : "{!(profilePhoto)}",
+          userDisplayName   : "{!(userDisplayName)}",
+          gainsightTabs: {!(gainsightTabs)},
+          isLightningEnabled: {!(isLightningEnabled)}
+        };
+
+        GS.customLabels         = {!(customLabelsMap)};
+        GS.operatorsListMap     = {!(operatorsListMap)};
+        GS.fiscalYrEnabled      = {!(IsCustomFiscalYearSettingsEnabled)};
+        GS.churnLabelMap        = {!(churnLabelMap)};
+        GS.currencyConfig       = {!(currencyConfigJSON)};
+
+        var mode            = '{!($CurrentPage.parameters.mode)}';
+        GS.frameworkPath    = "{!JSENCODE(URLFOR($Resource.JBCXM__GSApp,'js/Gainsight'))}";
+        GS.vendorPath       = "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor'))}";
+        GS.textVendorPath   = "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/text'))}";
+
+        GS.customJSPath     = "{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS, ''))}";
+        GS.nsPath           = "{!JSENCODE(URLFOR($Resource.JBCXM__NS, ''))}";
+        GS.highcharts       = "{!JSENCODE(URLFOR($Resource.JBCXM__HighchartsJS, ''))}";
+        GS.jqGrid           = "{!JSENCODE(URLFOR($Resource.JBCXM__jqGrid,''))}";
+        GS.jQuery           = "{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,''))}"
+    </script>
+
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/reporting-space/reporting-space.css'))}"/>
+
+    <div id="gs-app-container">
+        <div class="gs-module-container">
+            <div class="gs-report-space-cnt">
+            </div>
+        </div>
+    </div>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null , true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_Analytics, 'dataspace/dataspace.min.js'))}"></script>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized_Analytics, IF(isPkgInstance,'dataspace/dataspace.packaged.js', 'dataspace/dataspace.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "build" , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/dataspace/dataspace-libs.min.js"></script>
+        <script>
+         require.config({
+                baseUrl : "",
+                paths : {
+                'framework': ("{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}").split('?')[0],
+                'newStack' : ("{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js'))}").split('?')[0],
+                'vendor' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}").split('?')[0],
+                'text' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}").split('?')[0],
+                'src':"{!JSENCODE(URLFOR($Resource.src,''))}"
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+            });
+        </script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/dataspace/dataspace.min.js"></script>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">
+        <script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/dataspace/dataspace.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        <apex:stylesheet value="{!$CurrentPage.parameters.apppath}/Styles/css/module/reporting-space/reporting-space.css"/>
+    </apex:outputpanel>
+
+    <apex:form ></apex:form>
+
+    <script>
+        var GSGA = {
+            orgId   : "{!$Organization.Id}",
+            orgName : "{!$Organization.Name}",
+            userName: "{!$User.FirstName}"+" "+"{!$User.LastName}"
+        };
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </script>
+    <script src="{!JSENCODE(URLFOR($Resource.CustomJS,'CustomJS/analyticsWrapper.js'))}"></script>
+    <script>
+        gainsightTrackEvents.pushPageViews('DataSpace Manager');
+    </script>
+
+</apex:page>

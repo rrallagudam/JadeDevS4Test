@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>ApprovalConditionHelp</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Condition that must be fulfilled in order for an Approval to occur.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>ApprovalRule__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Rule to which this Condition applies.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rule to which this Condition applies.</inlineHelpText>
+        <label>Approval Rule</label>
+        <referenceTo>ApprovalRule__c</referenceTo>
+        <relationshipLabel>Approval Conditions</relationshipLabel>
+        <relationshipName>Conditions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>EnableSmartApproval__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enables Smart Approvals for this approval Condition. If approval snapshot does not change, condition will not be fired.</description>
+        <externalId>false</externalId>
+        <label>Enable Smart Approval</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FilterField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field to evaluate the the Tested Field/Variable against</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field to evaluate the the Tested Field against</inlineHelpText>
+        <label>Filter Field</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Name</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FilterType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of filter used during Tested Field/Variable evaluation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of filter used during Tested Field/Variable evaluation</inlineHelpText>
+        <label>Filter Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Field</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Value</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Variable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FilterValue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Static value to evaluate the Tested Field/Variable against</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Static value to evaluate the Tested Field against</inlineHelpText>
+        <label>Filter Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FilterVariable__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Approval Variable to evaluate the Tested Field/Variable against</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approval Variable to evaluate the Tested Field against</inlineHelpText>
+        <label>Filter Variable</label>
+        <referenceTo>ApprovalVariable__c</referenceTo>
+        <relationshipLabel>Approval Condition (Filter Variable)</relationshipLabel>
+        <relationshipName>EntryCriteria</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Index__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Assign an unique number to this Condition to reference it in the Approval Rule&apos;s Advanced Condition.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Assign an unique number to this Condition to reference it in the Approval Rule&apos;s Advanced Condition.</inlineHelpText>
+        <label>Index</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Operator__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Operator used for the evaluation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Operator used for the evaluation</inlineHelpText>
+        <label>Operator</label>
+        <picklist>
+            <picklistValues>
+                <fullName>equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>not equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>less than</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>less or equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>greater than</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>greater or equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>starts with</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ends with</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>contains</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TestedField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field tested when evaluating the Condition</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field tested when evaluating the Condition</inlineHelpText>
+        <label>Tested Field</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Name</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Discount_Role__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product Family</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Discount(%)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subscription_Avg_Discount__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service_Avg_Discount__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SBQQ__PaymentTerms__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Special_Terms__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Renewal_Cap__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Skip_Approval__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Role_Region__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manager_Name__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CS_Approval__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TestedVariable__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Approval Variable tested when evaluating the Condition</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approval Variable tested when evaluating the Condition</inlineHelpText>
+        <label>Tested Variable</label>
+        <referenceTo>ApprovalVariable__c</referenceTo>
+        <relationshipLabel>Approval Condition (Tested Variable)</relationshipLabel>
+        <relationshipName>EntryCriteriaTested</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Approval Condition</label>
+    <nameField>
+        <displayFormat>AC-{000000}</displayFormat>
+        <label>Condition Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Approval Condition</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Filter_Type_Validation</fullName>
+        <active>true</active>
+        <description>Ensures correct configuration of Filter Type, Filter Value, Filter Variable and Filter Field.</description>
+        <errorConditionFormula>(ISPICKVAL(FilterType__c, &apos;Value&apos;) &amp;&amp; (NOT(ISPICKVAL(FilterField__c, &apos;&apos;)) || NOT(ISBLANK(FilterVariable__c))))
+
+||
+
+(ISPICKVAL(FilterType__c, &apos;Variable&apos;) &amp;&amp; (ISBLANK(FilterVariable__c) || NOT(ISPICKVAL(FilterField__c, &apos;&apos;)) || NOT(ISBLANK(FilterValue__c))))
+
+||
+
+(ISPICKVAL(FilterType__c, &apos;Field&apos;) &amp;&amp; (ISPICKVAL(FilterField__c, &apos;&apos;) || NOT(ISBLANK(FilterValue__c)) || NOT(ISBLANK(FilterVariable__c))))</errorConditionFormula>
+        <errorMessage>You may specify only one type of filter and it must match Filter Type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Tested_Target_Validation</fullName>
+        <active>true</active>
+        <description>A value must be provided for either Tested Field or Tested Variable.</description>
+        <errorConditionFormula>(ISBLANK(TestedVariable__c) &amp;&amp; ISPICKVAL(TestedField__c, &apos;&apos;)) ||
+(NOT(ISBLANK(TestedVariable__c)) &amp;&amp; NOT(ISPICKVAL(TestedField__c, &apos;&apos;)))</errorConditionFormula>
+        <errorMessage>You must provide a value for either Tested Field or Tested Variable.</errorMessage>
+    </validationRules>
+</CustomObject>

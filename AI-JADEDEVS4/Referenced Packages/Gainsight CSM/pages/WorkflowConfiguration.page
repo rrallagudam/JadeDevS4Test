@@ -1,0 +1,161 @@
+<apex:page tabStyle="Administration__tab" docType="html-5.0" controller="JBCXM.AdminBroker" sidebar="false" title="Cockpit Configuration" extensions="JBCXM.GSCommonBroker">
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/jquery/jquery-UI-1.10/css/redmond/jquery-ui-1.10.3.custom.min.css'))}"/>
+    
+    <script src="/soap/ajax/31.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/31.0/apex.js" type="text/javascript"></script>
+
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__jqGrid, 'css/ui.jqgrid.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/simplecolorpicker/jquery.simplecolorpicker.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/cockpit/admin/workflow-configuration.css'))}" /> 
+
+    <script>
+     function getActionFromQryStr(){
+            var url = window.location.href;
+            var actionIndex = url.indexOf('action=');
+            if(actionIndex > 0){
+                var action = url.substring(actionIndex+7,url.length);
+                action = action.split('&');
+                return action[0];
+            }
+            return "CALLS_TO_ACTION";
+        }
+        
+      var GSGA = { 
+			      	orgId: "{!$Organization.Id}",
+			        orgName: "{!$Organization.Name}",
+			        userName: "{!$User.FirstName}"+" "+"{!$User.LastName}" 
+				};
+				
+     var GS = GS || {};
+            
+            GS.remotingEndPoint     = '{!$RemoteAction.AdminBroker.adminRequestBroker}';    
+            GS.remotingBulkEndPoint     = '{!$RemoteAction.AdminBroker.adminBulkRequestBroker}';
+            GS.remotingConfigEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+
+            
+            GS.commonRemotingEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+            GS.commonRemotingBulkEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonBulkRequestBroker}';
+           
+            GS.packageNS            = "{!(pkgNS)}";
+            GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";      
+            GS.sessionId      = "{!(sessionId)}"
+            GS.customLabels         = eval({!(customLabelsMap)});
+            GS.nsParams  = eval({!(nsParams)});
+            GS.activityServiceUrl = GS.nsParams.url + "/ant";
+            GS.antConfig = eval({!(ANTConfig)});
+            GS.userConfig = {
+                userLocale  : {!(dateTimeFormatByLocale)},
+                userName    : "{!$User.FirstName}"+" "+"{!$User.LastName}", 
+                userId      : "{!$User.Id}",
+                emailId     : "{!$User.Email}",
+                photo       : "{!(profilePhoto)}",
+                gainsightTabs: {!(gainsightTabs)},
+                isLightningEnabled: {!(isLightningEnabled)}
+            };
+             
+            GS.emailId =  GS.userConfig.emailId || "";
+            GS.isDAMigrationInProcess = {!(IsDAMigrationInProcess)};
+            
+         
+    </script>
+       
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null && $CurrentPage.parameters.action == 'CALLS_TO_ACTION', true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_Cockpit, 'Minified/cta/cta-config.min.js'))}"></script>
+    </apex:outputpanel> 
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null && $CurrentPage.parameters.action != 'CALLS_TO_ACTION', true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_Cockpit, 'Minified/tasks/task-config.min.js'))}"></script>
+    </apex:outputpanel> 
+      
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">       
+        <apex:outputpanel rendered="{!If($CurrentPage.parameters.action != 'CALLS_TO_ACTION' , true, false)}">       
+            <script type="text/javascript">var suffix = "";</script>
+        	<script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost/UI")}/Optimized_Cockpit/Minified/tasks/task-config.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+           </apex:outputpanel>
+        <apex:outputpanel rendered="{!If($CurrentPage.parameters.action == 'CALLS_TO_ACTION' , true, false)}">
+            <script type="text/javascript">var suffix = "";</script>
+        	<script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost/UI")}/Optimized_Cockpit/Minified/cta/cta-config.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        </apex:outputpanel>    
+    </apex:outputpanel>
+  
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <apex:outputpanel rendered="{!If($CurrentPage.parameters.action != 'CALLS_TO_ACTION' , true, false)}">       
+            <script type="text/javascript">var suffix = "";</script>
+        	<script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized_Cockpit, IF(isPkgInstance,'Minified/tasks/task-config.packaged.js', 'Minified/tasks/task-config.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+           </apex:outputpanel>
+        <apex:outputpanel rendered="{!If($CurrentPage.parameters.action == 'CALLS_TO_ACTION' , true, false)}">
+            <script type="text/javascript">var suffix = "";</script>
+        	<script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized_Cockpit, IF(isPkgInstance,'Minified/cta/cta-config.packaged.js', 'Minified/cta/cta-config.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        </apex:outputpanel>  
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == 'build' &&  $CurrentPage.parameters.action != 'CALLS_TO_ACTION' , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Cockpit/Minified/tasks/task-config-libs.min.js"></script>
+         <script>
+         var apppath = '{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}';
+
+         require.config({
+                baseUrl : "",
+                paths : {
+                'framework': apppath+'/GSApp/js/Gainsight',
+                'newStack' : apppath+'/NS/NS/newStack/js', 
+                'vendor' : apppath+'/GSVendor/js/vendor',
+                'text' : apppath+'/GSVendor/js/vendor/text',
+                'src': apppath+"/src",
+                "CustomJSPath":apppath+'/CustomJS'
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+            });
+        </script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Cockpit/Minified/tasks/task-config.min.js"></script>
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == 'build' &&  $CurrentPage.parameters.action == 'CALLS_TO_ACTION' , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Cockpit/Minified/cta/cta-config-libs.min.js"></script>
+         <script>
+         var apppath = '{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}';
+
+         require.config({
+                baseUrl : "",
+                paths : {
+                'framework': apppath+'/GSApp/js/Gainsight',
+                'newStack' : apppath+'/NS/NS/newStack/js', 
+                'vendor' : apppath+'/GSVendor/js/vendor',
+                'text' : apppath+'/GSVendor/js/vendor/text',
+                'src': apppath+"/src",
+                "CustomJSPath":apppath+'/CustomJS'
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+            });
+        </script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Cockpit/Minified/cta/cta-config.min.js"></script>
+    </apex:outputpanel>
+    <style>
+.slick-header{z-index: 1;}
+.noSidebarCell{padding:0px;}
+</style>
+    <div id="gs-app-container">
+        <div class="gs-module-container">
+            <div class="workflow-config"></div>
+        
+        </div>
+    </div>
+<apex:form ></apex:form>
+ 
+</apex:page>

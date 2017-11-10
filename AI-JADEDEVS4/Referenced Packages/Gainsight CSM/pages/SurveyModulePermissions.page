@@ -1,0 +1,154 @@
+<apex:page tabStyle="Administration__tab" docType="html-5.0" sidebar="false" controller="JBCXM.ConfigBroker" extensions="JBCXM.GSCommonBroker" title="{!IF(($CurrentPage.parameters.surveyId != ''),'Survey Level Permissions','Survey Module Permissions')}">
+
+
+
+<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/jquery/jquery-UI-1.10/css/redmond/jquery-ui-1.10.3.custom.min.css'))}"/>
+
+
+<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-1.10.2.min.js'))}"></script>
+
+<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-UI-1.10/js/jquery.ui.min.js'))}"></script>
+<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/underscore-min.js'))}"></script>
+<script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/backbone-min.js'))}"></script>
+<script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/jquery.htmlClean.min.js'))}" type="text/javascript"></script>
+
+<!-- Appcontainer css -->
+  		<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles,'css/core/gsAppContainer.css'))}" />
+<!-- End of AppContainer css -->
+ 
+<script>
+    var j$ = $.noConflict(true);
+    window.jLatest = j$;
+    var jQuery = j$;
+</script>
+<style>
+	.Custom44Tab .pageTitleIcon, .individualPalette .Custom44Block .pageTitleIcon {
+    	background-image: none;
+    }
+</style>
+
+<script>
+    
+    var GS = GS || {};
+    
+    GS.remotingEndPoint     = '{!$RemoteAction.ConfigBroker.configRequestBroker}';
+    
+    GS.commonRemotingEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+   	GS.commonRemotingBulkEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonBulkRequestBroker}';
+        
+    
+    GS.packageNS            = "{!(pkgNS)}";
+    GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+    
+   
+    GS.customerId = "";
+    
+    GS.surveyId = unescape("{!URLENCODE($CurrentPage.parameters.surveyId)}");
+    GS.userConfig = {
+                 gainsightTabs: {!(gainsightTabs)},
+        		isLightningEnabled: {!(isLightningEnabled)}
+            };
+   
+    require.config({
+        baseUrl : "",
+        paths : {
+                    'framework': "{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}",
+                  //  'framework': "https://localhost/Gainsight/GSApp/js/Gainsight",
+                    'vendor'   : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}",
+                    'text'     : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}",
+                    'async':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/async'))}",
+                    'src':"{!JSENCODE(URLFOR($Resource.src,''))}"  
+                },
+        config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                },
+            
+        shim: {
+            d3: {
+                exports: 'd3'
+            }
+        }
+         //,urlArgs: "bust=" + (new Date()).getTime()
+    });
+
+    j$(document).ready(function() {    			
+            
+                  require([
+                            "src/js/com/gainsight/app/core/components/containers/sfdc/app/AppContainer",
+                            "framework/views/permissions/SurveyManagerView", 
+                            "framework/utils/jQueryProxy",
+                            
+                          ], function(AppContainer, SurveyManagerView, jQ){
+                    
+                            
+                                var data = {
+                                            actions:[
+                                                    {actionName:"Create",sysName:"create"}, {actionName:"Edit",sysName:"edit"}, {actionName:"Design",sysName:"design"},
+                                                    {actionName:"Publish",sysName:"publish"}, {actionName:"Distribute",sysName:"distribute"}, {actionName:"Close / Open",sysName:"close"},
+                                                    {actionName:"Preview",sysName:"preview"}, {actionName:"Analyze",sysName:"analyze"}, {actionName:"Delete",sysName:"delete"},
+                                                    {actionName:"Change Permissions",sysName:"permissions"}
+                                                    ]
+                                                    
+                                            };
+                                    GS.surveyId  = jQ.htmlClean( GS.surveyId, { allowedTags: [""]});                           
+                                    data.mode = GS.surveyId == '' ? "ADMIN_MODE" : "USER_MODE";
+                                    if(data.mode == "USER_MODE"){
+                                    	data.actions.splice(0,1);
+                                    }
+				                                    
+                                    data.surveyId = GS.surveyId;
+                                      
+		                            var appContainer = new AppContainer();
+		                            var deferred = appContainer.init();
+		                            deferred.done(function(){
+		                              var securityPermissionsView =   new SurveyManagerView({
+                                                                  el:jQ(".survey-permissions"),
+                                                                  data:data
+                                                                                       });
+		                               appContainer.registerModule(securityPermissionsView,"Administration", "Survey Permissions", {"id":"administration-communication-surveys"});
+		                               
+		                            });
+                        			
+                                   
+                             }
+                        );
+                
+                function displaySurveyName(evt){
+                
+                    j$(".bPageTitle > .ptBody > .content > .pageDescription").html(evt.name);
+                }
+                
+                function displaySurveyName1(evt){
+                
+                    j$(".bPageTitle").html(evt.name);
+                }
+        
+			         
+    });
+    
+</script>
+
+<div id="gs-app-container">
+		<div class="gs-module-container">
+			<div class="survey-permissions"></div>
+		</div>
+</div>
+
+ <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/CS360/gsApps-new.css'))}"/>
+ <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/layout/layout_stylesheet.css'))}"/>
+ <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/permissions/permissions-style.css'))}"/>
+ 
+
+
+<!--
+<link rel="stylesheet" type="text/css" href="https://localhost/Gainsight/GSAppCSS/css/permissions/permissions-style.css"/>
+<link rel="stylesheet" type="text/css" href="https://localhost/Gainsight/GSAppCSS/css/CS360/gsApps.css"/>
+<link rel="stylesheet" type="text/css" href="https://localhost/Gainsight/GSAppCSS/css/layout/layout_stylesheet.css"/>
+ -->
+ 
+</apex:page>

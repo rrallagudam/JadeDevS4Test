@@ -1,0 +1,110 @@
+<!-- Removing the code
+---- Copyright (c) 2012 JBara Software, Inc. 
+---- Purpose                    : ServiceWorker File for caching CS360 Libraries .
+---- Other comments (optional)  : . 
+-->
+<apex:page showHeader="false" standardStyleSheets="false" cache="false" contentType="text/javascript">
+// Set a name for the current cache
+var cacheName = '{!$Resource.JBCXM__Optimized_CS360}'; 
+
+// Default files to always cache
+var cacheFiles = [
+  "{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/slick.grid.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor, 'js/vendor/chosen/chosen.min.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__JqueryTablesorter,'themes/blue/style.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__NS,'NS/newStack/stylesheets/pivotgrid/pivotgrid.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/cs360/cs360.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__jqGrid, 'css/ui.jqgrid.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/emailbuilder/emailbuilder.min.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/reports/JQgrid-slider.css'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/data_charting/raphael-min.js'))}",
+  "/soap/ajax/31.0/connection.js",
+  "/soap/ajax/31.0/apex.js",
+  "/support/console/30.0/integration.js",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_CS360,'31-xx-lib.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_CS360,'21-30-lib.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_CS360,'11-20-lib.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_CS360,'6-10-lib.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_CS360,'Minified/cs360/cs360-libs.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_CS360,'Minified/cs360/cs360.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS,'Optimized/richtexteditor/richtexteditor.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__Optimized_Analytics, 'reportContainer/reportContainer.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS,'CustomJS/analyticsWrapper.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/date/moment.2.13.0.min.js'))}",
+  "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/date/moment-timezone-with-data.0.5.3.min.js'))}"
+];
+
+
+self.addEventListener('install', function(e) {
+    console.log('[ServiceWorker] Installed');
+    
+    self.skipWaiting();
+    // e.waitUntil Delays the event until the Promise is resolved
+    e.waitUntil(
+
+      // Open the cache
+      caches.open(cacheName).then(function(cache) {
+
+        // Add all the default files to the cache
+      console.log('[ServiceWorker] Caching cacheFiles');
+      return cache.addAll(cacheFiles);
+      })
+  ); // end e.waitUntil
+});
+
+
+self.addEventListener('activate', function(e) {
+    console.log('[ServiceWorker] Activated');
+
+    e.waitUntil(
+
+      // Get all the cache keys (cacheName)
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(cacheNames.map(function(thisCacheName) {
+
+        // If a cached item is saved under a previous cacheName
+        if (thisCacheName !== cacheName) {
+
+          // Delete that cached file
+          console.log('[ServiceWorker] Removing Cached Files from Cache - ', thisCacheName);
+          return caches.delete(thisCacheName);
+        }
+      }));
+    }).then(function() {
+      
+      return self.clients.claim();
+      
+    })
+  ); // end e.waitUntil
+
+});
+
+
+
+self.addEventListener('fetch', function(e) {
+  // e.respondWidth Responds to the fetch event
+  e.respondWith(
+
+    // Check in cache for the request being made
+    caches.match(e.request)
+
+
+      .then(function(response) {
+
+        // If the request is in the cache
+        if ( response ) {
+          console.log("[ServiceWorker] Found in Cache", e.request.url, response);
+          // Return the cached version
+          return response;
+        }
+
+        // If the request is NOT in the cache, fetch and return 
+
+        return fetch(e.request);
+      
+      }) // end caches.match(e.request)
+  ); // end e.respondWith
+});
+
+</apex:page>

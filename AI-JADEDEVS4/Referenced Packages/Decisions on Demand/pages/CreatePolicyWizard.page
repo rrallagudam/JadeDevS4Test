@@ -1,0 +1,470 @@
+<!-- 
+ Copyright 2012-2015, Decisions on Demand, Inc.
+ All Rights Reserved.
+ -->
+<apex:page id="thePage" controller="DecsOnD.CreatePolicyWizardController" sidebar="false" action="{!refreshPolicies}">
+    
+    <head>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css" media="screen"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>  
+         
+        <!-- include javascript files for NumberFormat library -->
+        <script src="{!URLFOR($Resource.JS_Globalize, 'globalize.js')}"></script>
+        <script src="{!URLFOR($Resource.JS_Globalize, 'cultures/globalize.cultures.js')}"></script> 
+        
+         <!-- @Sothea 141030 Include JQuery plugin for showing loading spinner -->
+        <script src="{!URLFOR($Resource.JS_LoadingSpinner, 'loading-overlay.min.js')}" type="text/javascript"></script>
+        <link type="text/css" href="{!URLFOR($Resource.JS_LoadingSpinner, 'css/loadingoverlay_decsond.css')}" rel="stylesheet"></link>
+        
+        <link href="{!URLFOR($Resource.JS_Dynatree, 'skin/ui.dynatree.css')}" rel="stylesheet" type="text/css" id="skinSheet"></link>
+        <script src="{!URLFOR($Resource.JS_Dynatree, 'jquery.dynatree.js')}" type="text/javascript"></script>
+        <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.js')}" type="text/javascript"></script>
+        <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.ui.position.js')}" type="text/javascript"></script>
+        <link href="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.css')}" rel="stylesheet" type="text/css" />
+
+		<script src="{!URLFOR($Resource.JS_DecsOnD, 'core.js')}"></script>
+        <script src="{!URLFOR($Resource.JS_DecsOnD, 'PolicyManagement.js')}" ></script>
+        <link rel="stylesheet" href="{!URLFOR($Resource.JS_DecsOnD, 'css/decsond.css')}" type="text/css" media="screen"/>
+		
+        <!-- include JS libraries for customizing decision table configuration -->
+        <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DataTypeMapper.js')}" ></script>
+        <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'MatchOperatorManager.js')}" ></script>
+        <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget.js')}" ></script>
+        <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_editor.js')}" ></script>
+        <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_renderer.js')}" ></script>
+        <link rel="stylesheet" href="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'css/dt-config-widget.css')}" media="screen"/>
+        <link rel="stylesheet" href="{!URLFOR($Resource.JS_PolicyEditorWidget, 'css/decsond-sfdc.css')}" type="text/css" media="screen"/>
+        
+        <!--  Override default styles to achieve proper fit -->
+        <!-- title = testStyle -->
+        <style type="text/css" >
+            /*td.edit-col-label {
+                height : 12px;
+            }
+           input.edit-col-input {
+                height : 14px;
+            }*/
+            
+            div.ui-dialog-content {
+                border : 0px solid black;
+            }
+            
+            div.config-OrganizeColumns {
+                /*padding-bottom : 128px;*/
+                /*padding-top : 20px; 
+                top : 38px;*/
+                height : 82%;
+                
+            }
+            
+            /*div.config-ColumnDetails {
+                padding-top : 15px; 
+                /*bottom : 10px;*/
+           /* }*/
+            
+            /*div.config-section-body {
+                margin-top : 3px;
+                height: 88%;
+            }*/
+            
+            /*div.config-select-main {
+                position : relative;
+            }*/
+            
+            /*div.config-select {
+                width : 90%;
+            } */
+            
+            /*div.config-select-buttons {
+                position : absolute;
+                top : 0px;
+                right : -5px;
+                padding-bottom : 4px; 
+            }*/
+            #decsond-dtConfig-tabs .innertab {
+                overflow : hidden;
+                display : block;   
+                min-width: 560px;   
+                height:500px;
+                width: 97.8%;       
+            }
+       </style>
+       
+       <!-- title = currentStyle -->
+       <style type="text/css" >
+            .buttonLocation {
+                text-align: right;
+                padding-bottom: 10px;
+                padding-top: 10px;
+            }
+            .secHeader{
+                margin-top:-30px; 
+                padding-right:5px;
+                text-align:right;
+                color:black;
+                font-weight:bold;
+                font-size:13px; 
+            }
+            .pngCol1{
+                width:20%;
+                text-align:left;
+                padding-right:10px;
+            }
+            .pngCol2{
+                width:80%;
+            }
+            
+            .pngSelObjCol1{
+                padding-left: 10px;
+                text-align: left;
+                width: 10%;
+            }
+            .pngSelObjCol2{
+                width:90%;
+                padding-left: 10px;
+            }
+           
+            a.button-link {
+                border: 1px solid #6297AD;
+                border-radius: 5px 5px 5px 5px;
+                color: #FFFFFF;
+                cursor: pointer;
+                font-size: 12px;
+                padding: 3px 10px;
+                text-decoration: none;
+                text-shadow: 0px 0px #47819B;
+                vertical-align: middle;
+                background: url({!URLFOR($Resource.Doc_images, 'button.png')}) 0 0;
+            }
+            a.button-link:hover {
+                border: 1px solid #6297AD;
+                text-decoration: none;
+                background: url({!URLFOR($Resource.Doc_images, 'button.png')}) 0 -40px;
+            }
+        </style>
+        
+        <script>
+             DesTableConfigWidget.imageBasePath = "{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'images')}";
+             var dtConfigWidgets, dtConfigs, dpConfig, availableColumnsMap;
+             
+            /**
+             * Function for set selected template
+             * @Created 17 Dec 2013
+             */
+            function doSelectTemplate(ele_radio){ 
+                var hiddenFQN = document.getElementById('thePage:theFormPolicyCreator:theHiddenSelFQN');
+                if (hiddenFQN.value != ele_radio.value) {
+                    //@Sothea 140702 : Clear all configurations and widget so that they will be recomputed on next access
+                    clearConfigurations();
+                    //set selectedFQN
+                    hiddenFQN.value = ele_radio.value;
+                    setSelectedFQN(ele_radio.value);
+                }
+            }
+            
+            /**
+             * Clear all configurations and widget 
+             * @Author  @Sothea 140702
+             */
+            function clearConfigurations(){
+                var divDtConfigWidget = getElementDivDtConfigWidget();
+                divDtConfigWidget.innerHTML = "";
+                dtConfigWidgets = null;
+                dtConfigs = null;
+                dpConfig = null;
+                availableColumnsMap = null;
+            }
+            
+            /**
+             * Function for installing a template
+             */
+            function installTemplate(){ 
+                var isUpdateServer = updateDtConfig();
+                doInstall(JSON.stringify(dtConfigs), isUpdateServer);
+            }
+            
+            /**
+             * Next button action
+             */
+            function doNext(){ 
+                updateDtConfig();
+                nextPage();
+            }
+            
+            /**
+             * Updating dtConfigs and return whether the server should be updated
+             */
+            function updateDtConfig(){ 
+                var isUpdateServer = false;
+                if (dtConfigWidgets) {
+                    for (var tableName in dtConfigWidgets) {
+                        //@Sothea 140702
+                        dtConfigs[tableName] = dtConfigWidgets[tableName].tableConfiguration;
+                        if (dtConfigWidgets[tableName].updatePMS) isUpdateServer = true;
+                    }
+                }
+                return isUpdateServer;
+            } 
+            
+            /**
+             * Creating the widget for coniguring decision table configuration
+             */
+            function createDtConfigWidgets(parentEle) {
+                dtConfigWidgets = new Object();
+                var dvTabs = document.createElement('div');
+                dvTabs.id = "decsond-dtConfig-tabs";
+                dvTabs.style.fontSize = "11px;";
+                parentEle.appendChild(dvTabs);
+                
+                var ul = document.createElement('ul'); 
+                dvTabs.appendChild(ul);
+                
+                for (var t = 0; t < dpConfig.tables.length; t++) {
+                    var tblName = dpConfig.tables[t];
+                    var tblLabel = dtConfigs[tblName] ? dtConfigs[tblName].label : tblName; 
+                    var li = document.createElement('li');
+                    ul.appendChild(li);
+                    var ele_link = document.createElement('a');
+                    ele_link.href = "#decsond-dtConfig-tabs-"+tblName;
+                    ele_link.innerHTML = tblLabel;
+                    li.appendChild(ele_link);
+                    
+                    
+                    var dvTable = document.createElement('div');
+                    dvTable.id = "decsond-dtConfig-tabs-"+tblName;
+                    dvTable.className = "innertab";
+                    dvTabs.appendChild(dvTable);
+                    var dvTblContent = document.createElement('div');
+                    dvTblContent.id = "decsond-dtConfig-"+tblName;
+                    dvTable.appendChild(dvTblContent);
+                    
+                    //@Sothea 140702
+                    var availableColumns = availableColumnsMap ? availableColumnsMap[tblName] : [];
+                    
+                    // create DesTableConfigWidget
+                    var dtConfigWidget = new DesTableConfigWidget(tblName, {
+                        dpConfiguration : dpConfig,
+                        tableConfiguration : dtConfigs[tblName],
+                        availableColumns : availableColumns, 
+                        resizable : false,
+                        locale : '{!userLocale}',
+                        //hasEditRight : editor.hasEditRight,
+                    });
+                    var parentID = "#decsond-dtConfig-"+tblName;
+                    dtConfigWidget.createDialog({
+                        parent : jq(parentID),
+                        appendTo : parentID
+                    });
+                    dtConfigWidget.showDialog(jq(parentID));
+                    dtConfigWidgets[tblName] = dtConfigWidget;
+                }
+                $( "#decsond-dtConfig-tabs" ).tabs();
+            } 
+            
+            /**
+             * Refreshing the widget
+             */
+            function refreshDtConfigWidgetBlock(dpConfigJson, dtConfigJson, availableColumnsJson, isConfigDtStep){
+                try{
+                    //Decision point configuration
+                    dpConfig = (!dpConfigJson) ? null : $.parseJSON(dpConfigJson);
+                    //Decision table configuration
+                    dtConfigs = (!dtConfigJson) ? null : $.parseJSON(dtConfigJson);
+                    //custom field configuration
+                    availableColumnsMap = (!availableColumnsJson?null:$.parseJSON(availableColumnsJson));
+                    // FIXME Remove temp hack
+                    //if (Object.keys(availableColumnsMap).length>0) availableColumnsMap = availableColumnsMap[Object.keys(availableColumnsMap)[0]];
+                    //create the decision table configuration widget if none exsit
+                    var div_dtConfigWidget = getElementDivDtConfigWidget();
+                    if (!div_dtConfigWidget.innerHTML && dpConfig && dtConfigs) {
+                        createDtConfigWidgets(div_dtConfigWidget);
+                    }
+                    //show the decision table configuration widget
+                    showDtConfigWidgetBlock(isConfigDtStep);
+                }catch(ex){
+                    //TODO display error to user
+                    console.log(ex);
+                }
+            }
+            
+            /**
+             * Show/hide the widget
+             */
+            function showDtConfigWidgetBlock(isShow){
+                var pnStep2 = document.getElementById('thePage:theFormPolicyCreator:pngStep2');
+                pnStep2.style.display = isShow ? "block" : "none";
+                var mainBlock = document.getElementById('thePage:theFormPolicyCreator:theMainBlock');
+                mainBlock.style.display = !isShow ? "block" : "none";
+            }
+            
+            function getElementDivDtConfigWidget(){
+                return document.getElementById('dtConfigWidget');
+            }
+        </script>
+    </head> 
+    <body>
+    <apex:sectionHeader title="Business policy" subtitle="Policy Creator Wizard" help="" id="header"/>
+    <apex:form id="theFormPolicyCreator">
+        <apex:inputHidden value="{!selectedFQN}" id="theHiddenSelFQN"/> 
+        <apex:actionFunction name="setSelectedFQN" reRender="theMainBlock" >
+            <apex:param name="firstParam" assignTo="{!selectedFQN}" value="" />
+        </apex:actionFunction>
+        
+        <apex:actionFunction name="doInstall" action="{!doInstall}" rerender="theMainBlock" status="btnInstallStatus" oncomplete="showDtConfigWidgetBlock(false);">  
+            <apex:param name="firstParam" assignTo="{!dtConfigJson}" value="" />
+            <apex:param name="secondParam" assignTo="{!updateServer}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction name="nextPage" action="{!nextPage}" reRender="theMainBlock" status="btnLoadingStatus" oncomplete="refreshDtConfigWidgetBlock('{!JSENCODE(dpConfigJson)}', '{!JSENCODE(dtConfigJson)}', '{!JSENCODE(cfConfigJson)}', ('{!currentPage==2}'=='true'));"/> 
+        <apex:actionFunction name="previousPage" action="{!previousPage}" reRender="theMainBlock" status="btnLoadingStatus" oncomplete="showDtConfigWidgetBlock('{!currentPage==2}'=='true');"/>  
+        
+        
+        
+        <!-- Step 2 -->
+        <apex:outputPanel id="pngStep2" layout="block" style="display:none">
+            <apex:pageBlock mode="edit" id="psStep2" >
+                <apex:pageBlockButtons id="step2Actions" styleClass="buttonLocation">  
+                    <apex:commandButton id="btnPrevious" value="Previous" onclick="previousPage();return false;" />
+                    <apex:commandLink onclick="installTemplate();return false;" value="Install" id="btnInstall" styleClass="button-link" status="btnInstallStatus"/>&nbsp;
+                    <apex:commandButton id="btnNext" value="Next" onclick="doNext();return false;"/>&nbsp;
+                    <apex:commandLink value="Cancel" action="{!cancel}"/> 
+                </apex:pageBlockButtons>
+                
+                <apex:pageBlockSection ></apex:pageBlockSection>
+                <apex:pageBlockSection id="pbsStep2" columns="1" title="Configure Decision Tables">
+                    <div id="dtConfigWidget"></div>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        
+        
+        <apex:pageBlock mode="edit" id="theMainBlock" >
+<!--            <apex:pageMessages id="theMsg" showDetail="true"/> -->
+            <apex:pageBlockButtons id="pnActions" styleClass="buttonLocation">   
+                <apex:commandButton id="btnPrevious" value="Previous" onclick="previousPage();return false;" rendered="{!AND(currentPage!=1, (currentPage!=totalPage || NOT(isSuccess)))}"/>   
+                <apex:commandLink onclick="installTemplate();return false;" value="Install" id="btnInstall" styleClass="button-link" rendered="{!AND(OR(currentPage==1, currentPage==2, currentPage==3), numTemplates > 0, NOT(ISBLANK(selectedFQN)))}" status="btnInstallStatus"/>&nbsp;
+                <apex:commandButton id="btnDisableInstall" value="Install" disabled="true" rendered="{!AND(OR(currentPage==1, currentPage==2), numTemplates > 0, ISBLANK(selectedFQN))}" />
+                <apex:commandButton id="btnNext" value="Next" onclick="doNext();return false;" disabled="{!ISBLANK(selectedFQN)}" rendered="{!AND(OR(currentPage==1, currentPage==2), numTemplates > 0)}"/>&nbsp;
+                <apex:commandLink value="Cancel" action="{!cancel}" rendered="{!AND(numTemplates > 0, currentPage!=totalPage)}"/> 
+                <apex:commandButton id="btnClose" value="Close" action="{!cancel}" rendered="{!OR(numTemplates == 0, currentPage==totalPage)}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection id="pbs1"></apex:pageBlockSection>
+            
+            <!-- Step 1 -->
+            <apex:pageBlockSection id="pbsStep1" columns="1" title="Select a template" collapsible="false" rendered="{!currentPage==1}">
+                <apex:pageMessage summary="All available templates have already been installed for your organization" severity="info" strength="2" rendered="{!numTemplates==0}"/>
+                <apex:pageBlock mode="edit" id="pbTblTemplates" rendered="{!numTemplates > 0}">
+                    <apex:pageBlockSection id="pbsTblTemplates" columns="1" >
+                        <apex:panelGrid columns="2" id="pngSelObject" border="0" width="100%" columnClasses="pngSelObjCol1,pngSelObjCol2">
+                            <apex:outputLabel value="Show templates for " for="theRootObjSelList" style="font-weight:bold;"/>
+                            <apex:outputPanel id="pnSelectedObject" layout="block" styleClass="requiredInput">
+                                <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                                <apex:selectList id="theRootObjSelList" value="{!selectedObjName}" size="1">
+                                    <apex:selectOptions value="{!rootObjects}"/>
+                                    <apex:actionSupport event="onchange" action="{!resetSelectedFQN}" rerender="theMainBlock" status="objChangeStatus"/> 
+                                </apex:selectList>
+                                <apex:actionStatus id="objChangeStatus">
+                                    <apex:facet name="start">   
+                                     <apex:image url="/img/loading.gif"  /> 
+                                    </apex:facet>
+                                </apex:actionStatus>
+                           </apex:outputPanel> 
+                         </apex:panelGrid>
+                        
+                         <apex:outputPanel layout="block" id="pnTblTemplate" style="margin:10px;">
+                            <apex:pageBlockTable value="{!rootObjectTemplates}" var="template" id="templateTable" rows="4" >
+                               <apex:column width="5px">
+                                   <input type="radio" name="radioTemplate" value="{!template.FQN}" onchange="doSelectTemplate(this);"/> 
+                               </apex:column>
+                               <apex:column value="{!template.name}" width="85px" headerValue="Policy Name" /> 
+                                <apex:column value="{!template.objectLabel}" width="85px" headerValue="Applies To"/> 
+                               <apex:column value="{!template.description}" width="200px" headerValue="Description"/> 
+                               <apex:column width="75px">
+                                   <apex:facet name="header">Documentation</apex:facet>
+                                   <apex:outputLink value="{!template.documentationURL}" target="_blank" rendered="{!template.documentationURL!=null}">
+                                    View
+                                   </apex:outputLink>
+                                   <apex:outputText rendered="{!template.documentationURL==null}">Not available</apex:outputText>
+                               </apex:column>  
+                            </apex:pageBlockTable>
+                            <script>
+                                $('input:radio').each(function() {
+                                    if ($(this).val() == '{!JSENCODE(selectedFQN)}') {
+                                        $(this).prop('checked', true);
+                                    }
+                                }); 
+                            </script>
+                         </apex:outputPanel>
+                    </apex:pageBlockSection> 
+                </apex:pageBlock>
+            </apex:pageBlockSection>
+            
+            
+            <!-- Step 3 -->
+            <apex:pageBlockSection id="pbsStep3" columns="1" title="Customize the selected template" collapsible="false" rendered="{!AND(currentPage==3, NOT(ISBLANK(selTemplate)))}">
+                <apex:outputPanel id="pnTempInfo" layout="block" >
+                    <apex:pageBlock mode="edit" id="pbEditTempInfo" rendered="{!NOT(ISBLANK(selTemplate))}">
+                        <apex:pageBlockSection id="pbsEditTempInfo" columns="2" >
+                            <apex:outputPanel layout="block" id="pnEditTempInfo" style="margin:10px;">
+                                <apex:panelGrid columns="2" id="pngTemplateInfo" border="0" width="100%" columnClasses="pngCol1,pngCol2">
+<!--                                    <apex:outputLabel value="Policy Name" for="theTemName"/>-->
+<!--                                    <apex:inputText value="{!selTemplate.name}" id="theTemName" size="137"/> -->
+                                    <apex:outputLabel value="Description" for="theTemDescription"/>
+                                    <apex:inputTextarea value="{!selTemplate.description}" id="theTemDescription" cols="160" rows="5"/>
+                                    <apex:outputLabel value="Documentation URL" for="theTemDoc"/>
+                                    <apex:inputTextarea value="{!selTemplate.documentationURL}" id="theTemDoc" cols="160" rows="1"/> 
+                                </apex:panelGrid>
+                            </apex:outputPanel>
+                        </apex:pageBlockSection> 
+                    </apex:pageBlock>
+                    <br/><br/> 
+                    <apex:pageBlock mode="edit" id="pbTriggerOption" rendered="{!NOT(ISBLANK(selTemplate))}">
+                        <apex:pageBlockSection id="pbsTriggerOption" columns="1" >
+                            <h1>Trigger Options and Default Execution Log Level</h1> 
+                            <apex:outputPanel layout="block" id="pnLogLevelTriggerOpt" style="margin:10px;"> 
+                               <!-- Execution log level drop down  -->
+                                <apex:outputLabel value="Default execution log level"/>&nbsp;&nbsp;
+                                <apex:inputField id="inputLogLevel" value="{!policy.DecsOnD__Log_level__c}">
+                                    <apex:actionSupport event="onchange" action="{!changeLogLevel}" rerender="pnLogLevelTriggerOpt" status="theStatusLogLevel" />
+                                </apex:inputField>
+                                <apex:actionStatus id="theStatusLogLevel">
+                                    <apex:facet name="start">   
+                                         <apex:image url="/img/loading.gif"  /> 
+                                    </apex:facet>
+                                </apex:actionStatus><br/>
+                                <c:SettingTriggerOption policy="{!policy}" id="compTriggerOpt" parentId="thePage:theFormPolicyCreator:theMainBlock:pbsStep3:pbTriggerOption:pbsTriggerOption:compTriggerOpt"/>
+                            </apex:outputPanel>
+                        </apex:pageBlockSection> 
+                    </apex:pageBlock>   
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            
+            <!-- Step 4 -->
+            <apex:pageBlockSection id="pbsStep4" columns="1" title="Result" collapsible="false" rendered="{!currentPage==4}">
+                <apex:pageMessages id="theMsgInstallResult" showDetail="true"/>
+                 <apex:outputPanel layout="block" rendered="{!isSuccess}">
+                    <apex:outputLabel escape="false" value="To get started with the <b>{!JSENCODE(policy.DecsOnD__Applies_to__c)} {!JSENCODE(policy.name)}</b> policy : "/>
+                    <ul style="line-height:30px;padding:5px;"> 
+                        <li> 
+                            <a class="button-link" href="/{!policy.Id}" target="_self" style="width:50px">View Policy</a> &nbsp;&nbsp;
+                            <apex:outputLabel value="View the policy detail "/> 
+                        </li> 
+                        <li> 
+                            <a class="button-link" href="/apex/PolicyContentEditorWizardPage?id={!policy.Id}&version=1&callfrom=wizard" target="_self">Edit Policy</a> &nbsp;&nbsp;&nbsp;
+                            <apex:outputLabel value="Customize the policy such as adding business rules, organizing columns, etc.,"/> 
+                        </li> 
+                    </ul> 
+                </apex:outputPanel> 
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:actionStatus id="btnInstallStatus" >
+            <apex:facet name="start"><c:Load BackColor="#FFFFFF;" borderColor="#efefef" height="30px" width="100px" Message="Installing..." imageUrl="/img/loading.gif" /> </apex:facet>
+         </apex:actionStatus>
+         <apex:actionStatus id="btnLoadingStatus" >
+            <apex:facet name="start"><c:Load BackColor="#FFFFFF;" borderColor="#efefef" height="30px" width="100px" Message="Loading..." imageUrl="/img/loading.gif" /> </apex:facet>
+         </apex:actionStatus>
+         
+    </apex:form>
+    </body>
+</apex:page>

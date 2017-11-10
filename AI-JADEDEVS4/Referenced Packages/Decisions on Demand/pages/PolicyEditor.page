@@ -1,0 +1,1547 @@
+<!-- 
+ Copyright 2012-2016, Decisions on Demand, Inc.
+ All Rights Reserved.
+ -->
+<apex:page standardController="DecsOnD__Policy__c" extensions="DecsOnD.PolicyContentViewerController"  
+            sidebar="false" showHeader="false" id="thePage" applyBodyTag="false"> 
+    <head> 
+        <!-- Include JQuery Libraries from CDN -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css" media="screen"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>
+        <!-- Include JQuery Libraries from Static Resource-->
+<!--        <script src="{!URLFOR($Resource.JS_JQuery, 'jquery.min.js.js')}"></script>
+-->
+        
+        <!-- include Core Decisions on Demand scripts and styles in head -- they are used in global script components-->
+        <script src="{!URLFOR($Resource.JS_DecsOnD, 'core.js')}"></script>
+        <script src="{!URLFOR($Resource.JS_DecsOnD, 'PolicyManagement.js')}" ></script>
+        <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcUtils.js')}"></script>
+        <!-- Most of the include tags are at the end of the page for better performance -->
+        <style>
+            /* Ensure table resizes with window */
+            div.pbSubsection table.detailList
+            {
+                table-layout: fixed;
+            }
+
+            .textBold{ 
+                font-weight:bold;
+            }
+
+            .detailPage .bPageBlock, .editPage .bPageBlock {
+                border-top-width: 2px;
+            }
+
+/*            table.editablegrid{ 
+                font-size: 1em;
+                width: 100%;
+            }
+*/
+            .pGridCol1{
+               text-align : left;
+               padding-bottom : 10px;
+            }
+            .pGridCol2{
+                text-align : right;
+                padding-bottom : 10px;
+            }
+            .detailList td.pGridColBottom1{
+                width:30%;
+                vertical-align:middle;
+            }
+            .detailList td.pGridColBottom2{
+                width:23%;
+                text-align:right;
+                vertical-align:middle;
+            }
+            .detailList td.pGridColBottom3 {
+                width:47%;
+                text-align:left;
+                vertical-align:middle;
+            }
+            .mbutton{
+                width : 70px;
+            }
+            .buttonLocation{
+                text-align:center;
+                padding-bottom:10px;
+                padding-top:10px;
+            }
+
+            .wrapscroller{
+                width: inherit;
+            /*    height: 100%;*/
+                overflow-x: auto; 
+                max-height: 400px;
+            }
+            
+            .Popup{
+                position: absolute;
+                z-index: 99999;
+            }
+            
+            .InnerPopup{
+                margin: auto;
+                min-width: 380px;
+                min-height: 200px;
+                background-color: #fff;
+                -moz-border-radius-topright: 4px;
+                border-top-right-radius: 4px;
+                -moz-border-radius-topleft: 4px;
+                border-top-left-radius: 4px;
+                -moz-border-radius-bottomright: 4px;
+                border-bottom-right-radius: 4px;
+                -moz-border-radius-bottomleft: 4px;
+                border-bottom-left-radius: 4px;
+                border: 1px solid #75b2dd;
+            }
+            
+            .PopUpTitle{
+                background-color: rgba(0, 120, 204, 0.38); 
+                padding-left: 10px; 
+                padding-top:5px;
+                padding-bottom:5px; 
+                font-weight: bold; 
+                font-family:Arial,Helvetica,sans-serif;
+            }
+            
+            .colorbox{
+                padding: 2px 4px;
+                font-weight: bold;
+                position: absolute;
+                top: 300px;
+                left: 450px;
+                z-index:100000;
+            }
+            
+            /*@Sothea #492*/
+            .loading{
+                left:400px;
+            }
+            .loading .loading-overlay{
+                top:70px;
+            }
+            a img.removeTrgIcon {
+                background-image: url("/img/func_icons/clear28.png");
+                background-position: left top;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                height: 14px;
+                width: 14px;
+                display: block;
+                margin: 0 auto 0;
+                z-index: 10;
+            }
+            a:hover img.removeTrgIcon {
+                background-position: right top;
+                border:medium none;
+            }
+            
+            /*@Sothea #559*/
+            .GridCol1{
+                color: #333 !important;
+                font-size: 91%;
+                font-weight: bold;
+                text-align: right;
+                width: 145px;
+                padding: 0px 10px 10px 6px;
+                
+            }
+            .GridCol2{
+                text-align:left;
+                padding: 0px 0px 10px 6px;
+            }
+            div.run-batch-section{
+                border-bottom: 1px solid #D8D8D8;
+                border-left: 1px solid #D8D8D8;
+                border-right: 1px solid #D8D8D8;
+                border-top:3px solid #008ed6 !important;
+                border-radius:4px;"
+                
+            }
+            div.run-batch-header{
+                border-bottom: 1px solid #d8d8d8;
+                padding:5px;
+                padding-left:10px;
+                font-weight:bold;
+            }
+            
+            div.run-batch-buttons{
+                text-align:center;
+                border-top: 1px solid #d8d8d8;
+                padding: 10px;
+            }
+            
+            div.inlineMsgInput {
+                height: 100%;
+                position: relative;
+            }
+            div .inlineMsgInput .inlineInfoMsgBlock {
+                background-color: #0099ff;
+                bottom: 1px;
+                left: -4px;
+                position: absolute;
+                top: 1px;
+                width: 3px;
+            }
+            div .inlineMsgInput .inlineWarnMsgBlock {
+                background-color: #ffbf00;
+                bottom: 1px;
+                left: -4px;
+                position: absolute;
+                top: 1px;
+                width: 3px;
+            }
+            div .inlineMsgInput .inlineErrorMsgBlock {
+                background-color: #c00;
+                bottom: 1px;
+                left: -4px;
+                position: absolute;
+                top: 1px;
+                width: 3px;
+            }
+            div .inlineMsgInput .infoMsg{
+                color:#0099ff;
+                width:89.5%;
+            }
+            div .inlineMsgInput .warnMsg{
+                color:#ffbf00;
+                width:89.5%;
+            }
+            
+            div .inlineMsgInput .errorMsg{
+                color:#D74C3B;
+                width:89.5%;
+            }
+        </style>
+    </head>
+    
+    <!-- Form is required since there are input checkboxes in the list -->
+    <apex:form id="PolicyDisplayForm">
+        
+        <!-- @Vichet 141008: refresh "Edit Policy" button in every 5 minute -->
+        <apex:actionPoller interval="300" 
+                action="{!refreshLockData}" 
+                onsubmit="onRefreshLockDataSubmit({
+                    lockedById : '{!policy.LockedBy__c}',
+                    lockedBy : '{!policy.LockedBy__r.Name}',
+                    lockExpires: '{!DATETIMEVALUE(Policy__c.LockExpires__c)}',
+                    revision : '{!Policy__c.Revision__c}'
+                })"
+                oncomplete="onRefreshLockDataComplete({
+                    lockedById : '{!policy.LockedBy__c}',
+                    lockedBy : '{!policy.LockedBy__r.Name}',
+                    lockExpires: '{!DATETIMEVALUE(policy.LockExpires__c)}',
+                    revision : '{!policy.Revision__c}'
+                })"
+                reRender="pnLockWarnMsg,pnUnEditablePolicyMsg,pngVersion,VersionBlock" />         
+<!--        <apex:actionFunction name="reloadPage" action="TODO !refreshVersions}" reRender="pnLockWarnMsg, pnUnEditablePolicyMsg, pngVersion,VersionBlock, pbInvocationSettings, thePEMsg"/><!-- specific block for render after  refresh page -->
+        <apex:actionFunction name="actionReRenderVerBlock" reRender="VersionBlock"/>
+<!--        <apex:actionFunction name="actionDeletePolicy" 
+                action="{!deletePolicy}" 
+                oncomplete="top.location.href='/apex/DecsOnD__PolicyBrowser'"/> 
+                -->
+        <apex:actionFunction name="actionDeleteDraftVersion" 
+                action="{!deleteDraftVersion}" 
+                oncomplete="onCompleteDeleteDraft({
+                                                    versionNumber : {!versionNumber},
+                                                    versionJSON: '{!JSENCODE(versionJSON)}',
+                                                    dpConfigJSON: '{!JSENCODE(dpConfigJSON)}',
+                                                    tableConfigsJSON : '{!JSENCODE(tableConfigsJSON)}'
+                })" 
+                rerender="pbMain, pnUnEditablePolicyMsg, pnButton, VersionBlock, thePEMsg" 
+                status="deleteDraftStatus"/>
+        <!-- Need an action function as this can be called from a button as well as the version history table -->
+        <apex:actionFunction name="actionSetActiveVersion" 
+                action="{!setActiveVersion}" 
+                rerender="pngVersion, pnUnEditablePolicyMsg,pnButton, VersionBlock, thePEMsg" > 
+            <apex:param name="versionNum" assignTo="{!activeVersion}" value="{!versionNumber}" />
+        </apex:actionFunction>
+        
+        <!-- =========================== -->
+        <!-- Main Block                  -->
+        <!-- =========================== -->
+        <apex:pageBlock id="pbMain" rendered="{!userCanViewPolicy}" mode="edit"> 
+            <apex:pageMessages showDetail="true" id="thePEMsg" rendered="{!NOT(invocationSettingsEditMode)}"/>
+            <apex:outputPanel rendered="{!NOT(isValidPolicy)}">
+                <apex:pageMessage rendered="{!userCanDeletePolicy}" 
+                        summary="This policy is in an invalid state. You may delete it, or contact your administrator to restore it on the server" 
+                        severity="warning" 
+                        strength="3"/>
+                <apex:pageMessage rendered="{!NOT(userCanDeletePolicy)}" 
+                        summary="This policy is in an invalid state. Please contact your administrator to remove or restore it" 
+                        severity="warning" 
+                        strength="3"/>
+            </apex:outputPanel>
+            
+            <apex:pageBlockSection id="pbsMain" collapsible="false" columns="1" 
+                        rendered="{!isValidVersion}">
+                <apex:outputPanel rendered="{!NOT(isActivePolicy)}">
+                    <apex:pageMessage rendered="{!userCanEditPolicy}" summary="This policy has been archived. To invoke or edit it, please change the status back to Active" severity="info" strength="2"/>
+                    <apex:pageMessage rendered="{!NOT(userCanEditPolicy)}" summary="This policy has been archived. Please contact the owner of the policy or your administrator to restore it to Active state" severity="info" strength="2"/>
+                </apex:outputPanel>
+                
+               <!-- Panel to show locked policy warning message -->
+                <apex:outputPanel id="pnLockWarnMsg" layout="block" rendered="{!AND(userCanEditPolicy, NOT(okToLockPolicy))}">
+                    <apex:pageMessage id="theLockWarnMsg" rendered="{!isLockedByOtherUser}" summary="This policy is currently locked by {!policy.DecsOnD__LockedBy__r.Name}" severity="warning" strength="2"/>
+                    <apex:pageMessage id="theModifiedWarnMsg2" rendered="{!AND(NOT(isLockedByOtherUser), isModifiedByOtherUser)}" summary="This policy has been modified by {!policy.LastModifiedBy.Name}. Please refresh it before making changes!" severity="warning" strength="2"/>
+                </apex:outputPanel>
+                
+               <!-- Panel to show messages about a non-editable policy -->
+                <apex:outputPanel id="pnUnEditablePolicyMsg" layout="block" rendered="{!NOT(okToEditPolicy)}">
+                        <apex:pageMessage summary="Only the most recent policy version can be edited" severity="info" strength="2" 
+                                            rendered="{!AND(okToLockPolicy, NOT(isLatestVersion))}"/>
+                        <apex:pageMessage summary="You do not have sufficient access rights to edit this policy" severity="warning" strength="2" 
+                                        rendered="{!NOT(userCanEditPolicy)}"/>
+                </apex:outputPanel>
+                
+                <!-- =========================== -->
+                <!-- Version selector            -->
+                <!-- =========================== -->
+                <!-- TODO Consider using <apex:actionRegion> -->
+                <apex:panelGrid columns="2" border="0" width="100%" columnClasses="pGridCol1,pGridCol2" id="pngVersion">
+                    <!-- Version drop-down -->
+                       <apex:outputPanel layout="block" id="versionSelectorPanel"> 
+                        <apex:outputLabel value="Version"/>&nbsp;&nbsp;
+                        <apex:selectList id="version" value="{!versionNumber}" 
+                                size="1" style="width:300px" 
+                                disabled="{!NOT(okToChangeVersion)}">
+                            <apex:selectOptions value="{!versionSelectOptions}"/>
+                            <apex:actionSupport event="onchange" 
+                                                rerender="pbMain, VersionBlock" 
+                                                onsubmit="doSubmitChangeDisplayedVersion(this, event)"
+                                                oncomplete="onChangeDisplayedVersion({
+                                                    versionNumber : {!versionNumber},
+                                                    versionJSON: '{!JSENCODE(versionJSON)}',
+                                                    dpConfigJSON: '{!JSENCODE(dpConfigJSON)}',
+                                                    tableConfigsJSON : '{!JSENCODE(tableConfigsJSON)}'
+                                                })"                                                                    
+                                                status="versionSelectorStatus"/> 
+                        </apex:selectList>
+                        <apex:actionStatus id="versionSelectorStatus">
+                            <apex:facet name="start">   
+                                <apex:image url="/img/loading.gif"  /> 
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:outputPanel> 
+                    
+                    <!-- Created on block -->
+                    <apex:outputPanel layout="block" id="theVerInfoPanel" style="float:right;">
+                        <apex:outputLabel value="Created on : "/>
+                         <apex:outputText value="{!version.creationDateTime}"/>
+                         <apex:outputLabel value=" by "/>
+                        <apex:outputText value="{!version.createdByName}" rendered="{!LEN(version.createdByURL)==0}" />
+                        <apex:outputLink value="{!version.createdByURL}" target="_blank" style="color:#0B7EF0;" 
+                                        rendered="{!LEN(version.createdByURL)!=0}">
+                                        {!version.createdByName}
+                        </apex:outputLink>
+                        &nbsp;&nbsp;
+                        <apex:outputLink value="" target="_blank" style="color:#0B7EF0;" 
+                                                    onclick="event.preventDefault();" 
+                                                    onmouseover="showPopUp_NoBG('{!version.notes}', this, 335, 30);" 
+                                                    onmouseout="closePopUp();">
+                                (Notes)
+                        </apex:outputLink>
+                    </apex:outputPanel>
+                    
+                    <!-- =========================== -->
+                    <!-- Buttons block               -->
+                    <!-- =========================== -->
+                    <apex:outputPanel id="pnButton">
+                        <!-- @Sothea #546 allow user to edit the policy that is currently locked by himselft/herselft-->
+                        <!-- @Sothea #196 User can more easily find Edit button for policy -->
+                        <apex:commandButton id="btnEditPolicy" value="Edit" 
+                            onclick="top.location.href='/apex/PolicyContentEditorWizardPage?id={!DecsOnD__Policy__c.Id}';return false;" 
+                            styleClass="mbutton" 
+                            rendered="{!userCanEditPolicy}" 
+                            disabled="{!NOT(okToEditPolicy)}">
+                        </apex:commandButton>&nbsp;
+                        
+                        <!-- Test button --> <!-- @Sothea #540 Test button should not disabled when policy is locked -->
+                        <apex:commandButton id="btnTestPolicy" value="Test" 
+                            onclick="top.location.href='/apex/PolicyVersionTestPanel?id={!DecsOnD__Policy__c.Id}&version={!versionNumber}&callfrom=detail';return false;" 
+                            styleClass="mbutton" 
+                            rendered="{!userCanViewPolicy}" 
+                            disabled="{!NOT(okToTestPolicy)}">
+                        </apex:commandButton>
+                        &nbsp;                        
+                        <!-- Commit button -->
+                        <apex:commandButton id="btnCommitVersion" value="Commit" 
+                            onclick="top.location.href='/apex/PolicyContentEditorWizardPage?id={!DecsOnD__Policy__c.Id}&currentpage=3&callfrom=detail'; return false;" 
+                            styleClass="mbutton" 
+                            rendered="{!userCanEditPolicy}" 
+                            disabled="{!NOT(okToCommitVersion)}">
+                        </apex:commandButton>
+                        &nbsp;                        
+                        <!-- Activate button -->
+                        <apex:commandButton id="btnActivateVersion" value="Activate" 
+                            onclick="doChangeActiveVersion(this, event, {version:{!version.sequenceNum}});" 
+                            styleClass="mbutton" 
+                            rendered="{!userCanEditPolicy}" disabled="{!NOT(okToActivateVersion)}">
+                        </apex:commandButton>
+                        &nbsp;                        
+                        <!-- @Sothea #559 Run batch job button -->
+                        <apex:commandButton id="btnRunBatchJob" 
+                            value="Run Batch Job" 
+                            onclick="doShowBatchRunner();return false;" 
+                            rendered="{!userHasPolicyAdminRights}" 
+                            disabled="{!NOT(okToShowBatchRunner)}">
+                        </apex:commandButton>
+                        &nbsp;                        
+                        <!-- Delete draft version button  -->
+                        <apex:commandButton id="btnDeleteDraft" 
+                                value="Delete Draft" 
+                                styleClass="mbutton" 
+                                onClick="doDeleteDraftVersion(this, event);" 
+                                rendered="{!userCanEditPolicy}"
+                                disabled="{!NOT(okToDeleteVersion)}"
+                        />
+                    </apex:outputPanel> 
+                    
+                    <!-- =========================== -->
+                    <!-- Execution log level drop down  -->
+                    <!-- =========================== -->
+                    <apex:outputPanel layout="block" id="theExecutionLogLevelDropDown" style="float:right;"> 
+                        <apex:actionStatus id="theStatusLogLevel">
+                            <apex:facet name="start">   
+                                 <apex:image url="/img/loading.gif"  /> 
+                            </apex:facet>
+                        </apex:actionStatus>
+                        
+                        <apex:outputLabel value="Default execution log level"/>&nbsp;&nbsp;
+                        <apex:selectList value="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}" 
+                                rendered="{!NOT(okToChangeLogLevel)}"
+                                disabled="true">
+                            <apex:selectOption itemValue="" 
+                                itemLabel="--None--" 
+                                rendered="{!ISBLANK(DecsOnD__Policy__c.DecsOnD__Log_level__c)}"/>
+                            <apex:selectOption itemValue="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}" 
+                                itemLabel="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}" 
+                                rendered="{!NOT(ISBLANK(DecsOnD__Policy__c.DecsOnD__Log_level__c))}"/>
+                        </apex:selectList>
+                        
+                        <apex:inputField id="inputLogLevel" value="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}" 
+                            rendered="{!okToChangeLogLevel}">
+                            <apex:actionSupport event="onchange" action="{!saveExecutionLogLevel}" 
+                                    rerender="theExecutionLogLevelDropDown, pbInvocationSettings, thePEMsg, VersionBlock" 
+                                    status="theStatusLogLevel" />
+                        </apex:inputField> 
+                    </apex:outputPanel>
+                    
+                </apex:panelGrid>
+                <!-- =========================== -->
+                <!-- Popup (for version notes?)  -->
+                <!-- =========================== -->
+                <div id="PopUp" class="Popup" style="display:none;">
+                    <div class="InnerPopup">
+                        <div class="PopUpTitle"> 
+                            Notes
+                        </div>
+                        <p id="PopUpBody"></p>
+                    </div>
+                </div>
+                
+                <!-- =========================== -->
+                <!-- Run Batch Job editor        -->
+                <!-- =========================== -->
+                <apex:outputPanel id="pnRunBatchJob" layout="block" styleClass="run-batch-section" style="display:none;">
+                    <apex:outputPanel id="pnRunBatchJobHeader" layout="block" styleClass="run-batch-header">
+                        <apex:outputLabel value="Run Batch Job"/>
+                    </apex:outputPanel>
+                    <br/>
+                    
+                    <apex:actionFunction name="actionInitializeBatchRunner" 
+                                        reRender="pnRunBatchBody, pnRunBatchButtons" 
+                                        oncomplete="doShowRunBatchEditor(true);">
+                        <apex:param name="whereClause" assignTo="{!whereClause}" value="" />
+                        <apex:param name="batchSize" assignTo="{!batchSize}" value="0" />
+                        <apex:param name="emailUserOnCompletion" assignTo="{!emailUserOnCompletion}" value="" />
+                        <apex:param name="isRunBatch" assignTo="{!isRunBatch}" value="false" />
+                    </apex:actionFunction>
+                    
+                    <apex:actionFunction name="actionRunBatch" action="{!runBatch}" 
+                                        reRender="pnRunBatchBody, pnRunBatchButtons" 
+                                        status="runBatchStatus"/>
+                    
+                    <apex:outputPanel id="pnRunBatchBody" layout="block">
+                        <apex:pageMessages showDetail="true" id="theRunBatchMsg"/>
+                        <apex:pageMessage id="batchJobRunningMsg" escape="false" summary="The batch job is running...<br/><br/>If you have set <b>Send email on completion?</b> to <b>Yes</b> or <b>On failure only</b>, then you will receive an email after the batch job has finished." severity="Info" strength="3" rendered="{!isRunBatch}"/>
+                        
+                        <apex:panelGrid columns="2" id="theRunBatchJobGrid" width="100%" 
+                                columnClasses="GridCol1,GridCol2" border="0" 
+                                rendered="{!NOT(isRunBatch)}">
+                            <!-- Block to edit the where clause -->
+                            <apex:outputLabel value="Where Clause" for="txtAreaWhereClause"/>
+                            <apex:outputPanel id="pnWhereClause" layout="block" 
+                                        styleClass="{!IF(LEN(queryMessages)!=0, 'inlineMsgInput', '')}">
+                                <apex:outputPanel layout="block" 
+                                            styleClass="{!IF(invalidWhereClause, 'inlineWarnMsgBlock', 'inlineInfoMsgBlock')}"/>
+                                <apex:inputTextarea id="txtAreaWhereClause" value="{!whereClause}" 
+                                                rows="6" style="width:89.5%;">
+                                    <!-- onblur="doValidateWhereClause(this.value);return false;" -->
+                                    <apex:actionSupport event="onchange" 
+                                                rerender="pnWhereClause,pnRunBatchButtons" 
+                                                status="theValidateWhereClauseStatus"
+                                                focus=""/>
+                                </apex:inputTextarea>                                                    
+                                <br/>
+                                <apex:actionStatus id="theValidateWhereClauseStatus">
+                                    <apex:facet name="start">   
+                                        <apex:outputPanel >
+                                            <apex:image url="/img/loading.gif"/> 
+                                            <apex:outputLabel value="Validating where clause..." style="font-style:italic;color:#D74C3B;"/>
+                                        </apex:outputPanel>
+                                    </apex:facet>
+                                    <apex:facet name="stop">   
+                                        <apex:outputPanel layout="block" 
+                                                styleClass="{!IF(invalidWhereClause, 'warnMsg', 'infoMsg')}" 
+                                                rendered="{!LEN(queryMessages)>0}">
+                                            <div> <strong>{!IF(invalidWhereClause, 'Warning:', 'Info:')} </strong>&nbsp;{!queryMessages}</div>
+                                        </apex:outputPanel>
+                                    </apex:facet>
+                                </apex:actionStatus>                                
+                            </apex:outputPanel>
+                            
+                            <!-- Block to edit the batch size -->
+                            <apex:outputLabel value="Batch Size" for="txtBatchSize"/>
+                            <apex:outputPanel id="pnBatchSize" layout="block" 
+                                        styleClass="{!IF(LEN(batchSizeMessage)!=0, 'inlineMsgInput', '')}">
+                                <apex:outputPanel layout="block" 
+                                            styleClass="{!IF(invalidBatchSize, 'inlineWarnMsgBlock', 'inlineInfoMsgBlock')}"/>
+                                <apex:inputText id="txtBatchSize" value="{!batchSize}" 
+                                                style="width:89.5%;">
+                                                <!-- onchange="actionValidateBatchSize();" -->
+                                    <apex:actionSupport event="onchange" 
+                                            rerender="pnBatchSize,pnRunBatchButtons" 
+                                            status="theValidateBatchSizeStatus"
+                                            focus=""/>
+                                </apex:inputText>
+                                <br/>
+                                <apex:actionStatus id="theValidateBatchSizeStatus">
+                                    <apex:facet name="start">   
+                                        <apex:outputPanel >
+                                            <apex:image url="/img/loading.gif"/> 
+                                            <apex:outputLabel value="Validating batch size..." style="font-style:italic;color:#D74C3B;"/>
+                                        </apex:outputPanel>
+                                    </apex:facet>
+                                    <apex:facet name="stop">   
+                                        <apex:outputPanel id="pnBatchSizeMsg" layout="block" 
+                                                styleClass="{!IF(invalidBatchSize, 'warnMsg', 'infoMsg')}" 
+                                                rendered="{!LEN(batchSizeMessage)>0}">
+                                            <div> <strong>{!IF(invalidBatchSize, 'Warning:', 'Info:')} </strong>&nbsp;{!batchSizeMessage}</div>
+                                        </apex:outputPanel>
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:outputPanel>
+                            <!-- Send email on completion? block -->
+                            <apex:outputLabel value="Send email on completion?" for="cmbEmailUserOnCompletion"/>
+                            <apex:selectList value="{!emailUserOnCompletion}" size="1" style="width:90.2%;">
+                                 <apex:selectOptions value="{!emailUserOnCompletionOptions}"/>
+                            </apex:selectList>
+                        </apex:panelGrid>
+                    </apex:outputPanel>
+                    <br/>
+                    <apex:outputPanel id="pnRunBatchButtons" layout="block" styleClass="run-batch-buttons">
+                        <apex:actionStatus id="runBatchStatus">
+                            <apex:facet name="start">   
+                                <apex:image url="/img/loading.gif"/> 
+                            </apex:facet>
+                        </apex:actionStatus>
+                        <apex:commandButton id="btnRunBatch" 
+                                value="Run Batch" 
+                                onclick="doRunBatch();return false;" 
+                                disabled="{!NOT(okToRunBatch)}" 
+                                rendered="{!NOT(isRunBatch)}"/>
+                        <apex:commandButton id="btnCancelRunBatch" 
+                                value="{!IF(isRunBatch, 'Close', 'Cancel')}" 
+                                onclick="doCancelBatchRun();return false;"/>
+                    </apex:outputPanel>
+                </apex:outputPanel> 
+                
+                
+                <!-- =========================== -->
+                <!-- Policy Content Viewer       -->
+                <!-- =========================== -->
+                <apex:outputPanel id="pnPolicyEditor" layout="block" style="display:none;">
+                    <!-- Display error or/and warn message(invalid policy configuration such as invalid lookup type warning message) -->
+                    <apex:outputPanel id="pnPolContentMessage" layout="block" style="display:none;"/> 
+                    <!-- Showing business policy content as table -->
+                    <apex:outputPanel id="pnPolContentTableWidget" layout="block" style="width:auto;"/>
+                </apex:outputPanel>
+                <!-- =========================== -->
+                <!-- Loading spinner for table   -->
+                <!-- =========================== -->                
+                <!-- TODO Replace by standard overlay   -->
+                <apex:outputPanel id="pnPolicyEditorOverlay" layout="block" style="height:437px;display:block;">
+                      <div id="divOverlay" style="width:100%; height:437px;text-align:center; background-color: #FFFFFF; opacity:0.6;filter:alpha(opacity=60);z-index:99999;"></div>
+                      <apex:panelGrid id="pngTextLoading" columns="2" styleclass="colorbox">
+                          <apex:image value="/img/loading.gif" title="Refreshing"/>
+                          <apex:outputtext id="spinnerMessage" value="Loading..." style="color: red;font-size:13px;"/>
+                      </apex:panelGrid>
+                </apex:outputPanel>                                
+            </apex:pageBlockSection> <!-- pbsMain -->
+        </apex:pageBlock>  <!-- pbMain -->
+
+        <!-- =========================== -->
+        <!-- Version history page block  -->
+        <!-- =========================== -->                
+        <apex:pageBlock id="VersionBlock" rendered="{!AND(userCanViewPolicy, isValidPolicy)}" mode="edit">        
+            <apex:pageBlockSection title="Versions" columns="1" showHeader="false" id="VersionList" rendered="{!isValidPolicy}" > 
+                <h1>Version History</h1>                
+                <!-- Version table -->
+                <apex:pageBlockSectionItem id="VersionSectionItem">
+                    <apex:outputPanel id="VersionPanel" layout="block" 
+                        style="{!IF(numVersions >= 5, 'overflow-y:scroll;height:141px;', '')}">
+                        <apex:pageBlockTable value="{!versions}" var="vers" id="VersionTable">
+                            <apex:column >
+                                <apex:facet name="header">Version</apex:facet> 
+                                <apex:outputText value="{!vers.sequenceNum}" 
+                                    rendered="{!NOT(vers.draft)}" 
+                                    styleClass="{!IF(vers.active, 'textBold', '')}"/>
+                                <apex:outputText value="[Draft]" 
+                                    rendered="{!vers.draft}"/>
+                                &nbsp;&nbsp;
+                                <apex:outputLink value="" target="_blank" style="color:#0B7EF0;" 
+                                    onclick="event.preventDefault();" 
+                                    onmouseover="showPopUp_NoBG('{!vers.notes}', this, -60, -80);" 
+                                    onmouseout="closePopUp();">
+                                    (Notes)
+                                </apex:outputLink>                    
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Active</apex:facet>
+                                <apex:inputCheckbox value="{!vers.active}"  
+                                    onchange="doChangeActiveVersion(this, null, {version:{!vers.sequenceNum}})" 
+                                    disabled="{!NOT(AND(userCanSetActiveVersion, okToLockPolicy, vers.okToActivate))}"
+                                />
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Label</apex:facet>
+                                <apex:outputText value="{!vers.label}" styleClass="{!IF(vers.active, 'textBold', '')}" />
+                            </apex:column> 
+                            <apex:column >
+                                <apex:facet name="header">Source</apex:facet>
+                               <!--  <apex:outputLink value="{!vers.downloadURL}" target="_top" >Download</apex:outputLink>  -->
+                               <apex:commandLink action="{!downloadPolicy}" 
+                                    value="Download" id="cmdDownload" 
+                                    immediate="false" reRender="PolicyDisplayForm" 
+                                    styleClass="{!IF(vers.active, 'textBold', '')}">
+                                   <apex:param name="TheVerNum" value="{!vers.sequenceNum}" 
+                                        assignTo="{!policyDownloadVersionNumber}"/> 
+                              </apex:commandLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Created</apex:facet>
+                                <apex:outputText value="{!vers.creationDateTime}" styleClass="{!IF(vers.active, 'textBold', '')}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Created by</apex:facet>  
+                                    <apex:outputText value="{!vers.createdByName}" 
+                                            styleClass="{!IF(vers.active, 'textBold', '')}" 
+                                            rendered="{!LEN(vers.createdByURL)==0}"/>
+                                    <apex:outputLink value="{!vers.createdByURL}" target="_blank" 
+                                            styleClass="{!IF(vers.active, 'textBold', '')}" 
+                                            rendered="{!LEN(vers.createdByURL)!=0}">
+                                        {!vers.createdByName}
+                                    </apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Last Updated</apex:facet>
+                                <apex:outputText value="{!vers.updateDateTime}" styleClass="{!IF(vers.active, 'textBold', '')}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Updated by</apex:facet>
+                                <apex:outputText value="{!vers.updatedByName}" 
+                                        styleClass="{!IF(vers.active, 'textBold', '')}"  
+                                        rendered="{!LEN(vers.updatedByURL)==0}"/>
+                                <apex:outputLink value="{!vers.updatedByURL}" target="_blank" 
+                                        styleClass="{!IF(vers.active, 'textBold', '')}" 
+                                        rendered="{!LEN(vers.updatedByURL)!=0}">
+                                    {!vers.updatedByName}
+                                </apex:outputLink>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <br/><br/>
+        </apex:pageBlock>
+        
+        <!-- =========================== -->
+        <!-- Invocation settings         -->
+        <!-- =========================== -->                
+        <apex:actionFunction name="actionUpdateInvocationSettingsEditMode" 
+                reRender="pbsInvocationSettings" 
+                action="{!updateInvocationSettingsEditMode}">
+            <apex:param name="invocationSettingsEditMode" assignTo="{!invocationSettingsEditMode}" value="false"/>
+        </apex:actionFunction>
+<!--        <apex:actionFunction name="closeCustomizeSetting" action="{!closeCustomizeSetting}" reRender="pbsInvocationSettings"/>
+-->
+        <apex:actionFunction name="actionApplyInvocationSettings" 
+                action="{!applyInvocationSettings}" 
+                reRender="pbInvocationSettings"
+                status="invocationSettingsStatus"/>
+        <apex:actionFunction name="actionAddInvocationSetting" 
+                action="{!addInvocationSetting}" 
+                reRender="pbInvocationSettings"
+                status="invocationSettingsStatus">
+            <apex:param name="editMode" assignTo="{!invocationSettingsEditMode}" value="true"/>
+        </apex:actionFunction>
+<!--                status="AddStatus"/ -->
+        <apex:actionFunction name="actionDeleteInvocationSetting" 
+                action="{!deleteInvocationSetting}" 
+                reRender="pbInvocationSettings"
+                status="invocationSettingsStatus">
+            <apex:param name="settingToRemove" assignTo="{!settingToRemove}" value=""/>
+        </apex:actionFunction>
+        
+        <apex:pageBlock id="pbInvocationSettings" mode="edit" rendered="{!okToViewInvocationSetup}">
+            <!-- TODO Validate the log level logic -->
+<!--            <apex:variable value="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}" var="logLevel"/> -->
+            <apex:pageBlockSection id="pbsInvocationSettings" title="Triggers" columns="1" showHeader="false"> 
+                <h1>Triggers</h1>
+                <!-- @Sothea #492 -->
+                <apex:pageMessages showDetail="true" id="theInvokeSettingMsg" rendered="{!invocationSettingsEditMode}"/>
+                <!-- TODO Use label instaed of API name -->
+                <apex:outputText style="line-height:30px;" value="To invoke this policy automatically whenever a {!DecsOnD__Policy__c.DecsOnD__Applies_to__c} or related object is created or updated, activate the appropriate triggers below"/>
+                <apex:outputPanel id="invocationSettingPanel" layout="block" 
+                        style="{!IF(settingWrappers.size >= 5, 'overflow-y:scroll;height:141px;', '')}" 
+                        rendered="{!hasActiveTriggers}">
+                    <apex:pageBlockTable value="{!settingWrappers}" var="trgWrapper" id="pbTableTriggers">
+                        <apex:column headerValue="Object"> 
+                            <apex:outputText value="{!trgWrapper.objLabel}" rendered="{!NOT(invocationSettingsEditMode)}"/>
+                            <apex:outputPanel layout="block" styleClass="requiredInput" 
+                                    rendered="{!AND(okToUpdateInvocationSetup, invocationSettingsEditMode)}">
+                                <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                                <apex:selectList id="invokeObjName" value="{!trgWrapper.objName}" size="1" 
+                                            disabled="{!NOT(okToUpdateInvocationSetup)}">
+                                    <apex:selectOptions value="{!trgWrapper.triggerObjectOptions}"/>
+                                    <apex:actionSupport event="onchange" rerender="pnApplyTrgSettingEdit,pbTableTriggers"/>
+                                    </apex:selectList>
+                                <apex:outputPanel rendered="{!IF(trgWrapper.objNameErrorMsg=='',false,true)}">  
+                                    <div class="errorMsg"><strong>Error: </strong>{!trgWrapper.objNameErrorMsg}</div>
+                                </apex:outputPanel> 
+                            </apex:outputPanel> 
+                        </apex:column> 
+                        <apex:column headerValue="Event">  
+                            <apex:outputText value="{!trgWrapper.eventLabel}" 
+                                        rendered="{!NOT(invocationSettingsEditMode)}"/>
+                            <apex:outputPanel layout="block" styleClass="requiredInput" 
+                                        rendered="{!invocationSettingsEditMode}">
+                                <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                                <apex:selectList id="invokeEventName" 
+                                            value="{!trgWrapper.eventName}" 
+                                            size="1"> 
+                                    <apex:selectOptions value="{!trgWrapper.triggerEventOptions}"/> 
+                                    <apex:actionSupport event="onchange" 
+                                            rerender="pnApplyTrgSettingEdit,pbTableTriggers"/>
+                                </apex:selectList> 
+                                <apex:outputPanel rendered="{!IF(trgWrapper.eventNameErrorMsg=='',false,true)}">  
+                                    <div class="errorMsg"><strong>Error: </strong>{!trgWrapper.eventNameErrorMsg}</div>
+                                </apex:outputPanel>
+                           </apex:outputPanel> 
+                        </apex:column> 
+                        <apex:column id="tdIsLog" headerValue="Create Execution Record?">
+                             <!-- @Sothea #565 Change the Create execution record? checkbox to be a drop down-->
+                             <apex:outputText value="{!trgWrapper.CreateLogLabel}" 
+                                    rendered="{!NOT(invocationSettingsEditMode)}"/>
+                             <apex:selectList id="isCreateLog" 
+                                    value="{!trgWrapper.createLog}" size="1" 
+                                    rendered="{!invocationSettingsEditMode}" 
+                                    disabled="{!IF(trgWrapper.eventName=='',true,false)}">
+                                  <apex:selectOptions value="{!trgWrapper.createLogOptions}"/> 
+                                  <apex:actionSupport event="onchange" 
+                                        rerender="pnApplyTrgSettingEdit, pbTableTriggers"/>
+                             </apex:selectList> 
+                        </apex:column> 
+                        
+                        <!-- @Sothea #560 -->
+                        <apex:column id="tdIsEmailOnFailure" headerValue="Send email on failure?">
+                            <apex:outputPanel layout="block" rendered="{!NOT(invocationSettingsEditMode)}">
+                                <apex:image id="imgUncheckedEmailOnFailure" value="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" rendered="{!NOT(trgWrapper.isEmailUserOnFailure)}"/>
+                                <apex:image id="imgCheckedEmailOnFailure" 
+                                        value="/img/checkbox_checked.gif" 
+                                        width="21" height="16" styleClass="checkImg" 
+                                        rendered="{!trgWrapper.isEmailUserOnFailure}"/>
+                            </apex:outputPanel> 
+                            <apex:inputCheckbox id="chkIsEmailOnFailure" 
+                                    value="{!trgWrapper.isEmailUserOnFailure}" 
+                                    rendered="{!invocationSettingsEditMode}" 
+                                    disabled="{!OR(NOT(okToEditInvocationSettings), trgWrapper.eventName=='')}" >
+                                <apex:actionSupport event="onchange" rerender="btnApplyTrgSetting"/>
+                            </apex:inputCheckbox>
+                        </apex:column> 
+                        <apex:column id="tdAction" 
+                                headerValue="" 
+                                rendered="{!invocationSettingsEditMode}" style="width:10px;">
+                            <!-- reRender of something is mandatory here, else whole page refreshes -->
+                            <!-- But it should not include the trigger table, elese deleted setting re-appear -->
+                            <apex:commandLink id="linkRemoveTrg" 
+                                    onclick="doDeleteInvocationSetting(this, event, {settingToRemove:'{!trgWrapper.uuid}'});" reRender="linkRemoveTrg">
+<!--                                    reRender="pbInvocationSettings"  onclick="event.preventDefault();"> -->
+                                <apex:image id="imgRemoveTrg" 
+                                    styleClass="removeTrgIcon" 
+                                    value="/s.gif" 
+                                    onclick="doDeleteInvocationSetting(this, event, {settingToRemove:'{!trgWrapper.uuid}'});"/>
+                            </apex:commandLink>
+                        </apex:column>
+                    </apex:pageBlockTable> 
+                </apex:outputPanel> 
+                
+                <apex:outputPanel layout="block" rendered="{!NOT(hasActiveTriggers)}" style="border:1px solid #e0e3e5;width:100%;padding-top:5px;padding-bottom:5px;padding-left:5px;font-style: italic;">
+                    No trigger currently activated
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="pnApplyTrgSettingNoEdit" rendered="{!AND(okToEditInvocationSettings, NOT(invocationSettingsEditMode))}">
+                    <apex:commandButton id="btnEditInvocationSettings" 
+                        value="Edit"
+                        onclick="doEditInvocationSettings(this, event);" 
+                        rendered="{!hasActiveTriggers}"/>                    
+                    <apex:commandButton id="btnAddFirstInvocationSetting" 
+                        value="Add"
+                        onclick="doAddInvocationSetting(this, event);" 
+                        rendered="{!NOT(hasActiveTriggers)}"/>                    
+                </apex:outputPanel> 
+                <apex:outputPanel id="pnApplyTrgSettingEdit" rendered="{!AND(okToEditInvocationSettings, invocationSettingsEditMode)}">
+                    <apex:commandButton id="btnAddInvocationSetting" value="Add" 
+                        onclick="doAddInvocationSetting(this, event);" 
+                        disabled="{!hasNewInvocationSettingPlaceholder}"/>
+                    <apex:commandButton id="btnApplyInvocationSettings" value="Apply" 
+                        onclick="doApplyInvocationSettings(this, event);" 
+                        rendered="{!OR(hasActiveTriggers, hasModifiedInvocationSettings)}" 
+                        disabled="{!NOT(hasModifiedInvocationSettings)}"/>   
+                        <!-- TODO Check whether modifications are valid -->         
+                    <apex:commandButton id="btnCancelInvocationSettingsEdit" 
+                        value="Cancel" 
+                        onclick="doCancelInvocationSettingsEdit(this, event);"/>
+                </apex:outputPanel> 
+                <apex:actionStatus id="invocationSettingsStatus">
+                    <apex:facet name="start">   
+                        <apex:image url="/img/loading.gif"  /> 
+                        <apex:outputLabel value="Updating settings..." style="font-style:italic;color:#D74C3B;"/>
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageBlockSection>
+            <br/>            
+        </apex:pageBlock>
+
+       <!-- Div for displaying pop-up window that allow user to confirm delete Policy  -->    
+       <div id="overlayBackgroundConfirm" class="overlayBackground" style="width:100%; height:100%;display: none;position: fixed;"></div>    
+       <div id="confirmDialog" class="overlayDialog inlineEditDialog" style="width:400px;position:absolute; display: none; visibility: visible;">
+            <div class="topRight" style="height:30px;">
+                <div class="topLeft" style="height:20px;"> 
+                    <img id="theCloseIcon" class="dialogClose" src="/s.gif" 
+                            onclick="doCloseConfirmDialog(this, event);" 
+                            onmouseout="this.className = 'dialogClose'" 
+                            onmouseover="this.className = 'dialogCloseOn'"/>
+                    <div id="confirmDialogTitle" style="font-weight:bold; font-size:13px;"></div>
+                </div>
+            </div>
+            <div id="confirmDialogMiddle" class="middle" style="overflow:auto;height:100%;" >
+                 <div id="confirmDialogBody" class="innerContent" >
+                     <div id="confirmDialogContent" class="inlineEditCompoundDiv" align="center">     
+                         <div id="divConfirmMsg">
+                             <div id="delPolicyMsgDiv" class="warningM4">
+                                 <table border="0" cellpadding="0" cellspacing="0" class="messageTable" style="padding:0px;margin:0px;">
+                                    <tbody>
+                                      <tr valign="top">
+                                         <td> <img alt="warning" class="msgIcon" src="/s.gif" title="warning"/> </td>
+                                         <td class="messageCell">
+<!--                                             <div id="theWarningMsg" class="messageText" style="margin-left: 8px"></div><br/> -->
+                                             <div id="theWarningMsg" class="messageText" style="margin-left: 20px;text-align:center;"> Are you sure you want to proceed? </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                         </div>
+                         <div id="theBtnDiv" style="text-align:center;padding-top:10px;">
+                            <input id="btnYes" type="button" value="Yes" />&nbsp;&nbsp;
+                            <input id="btnNo" type="button" value="No" 
+                                onclick="doCloseConfirmDialog(this, event);" 
+                                style="width:40px;"/>
+                         </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="bottomRight">
+                <div class="bottomLeft"></div>
+            </div>
+       </div>
+       
+    </apex:form> <!-- PolicyDisplayForm -->
+    <script>                 
+    // =============================
+    // =============================
+    // Make sure various shared objects are initialized
+    DecsOnD.SFDC = DecsOnD.mergeObjects(DecsOnD.SFDC, {});
+    DecsOnD.SFDC.PageElements = DecsOnD.mergeObjects(DecsOnD.SFDC.PageElements, {});
+    DecsOnD.SFDC.BatchRunner = DecsOnD.mergeObjects(DecsOnD.SFDC.BatchRunner, {});
+    DecsOnD.SFDC.EditorComponent = DecsOnD.mergeObjects(DecsOnD.SFDC.EditorComponent, {});
+
+    var policyEditor;
+
+    // =============================
+    // Callbacks for refreshing locking info
+    // =============================
+    function onRefreshLockDataSubmit(lockInfo) {
+        var msg = "Refreshing locking data. ";
+        if (lockInfo) {
+            msg += "Current: ";
+            if (lockInfo.lockedBy) {
+                msg = msg + "locked by " + lockInfo.lockedBy + " until " + lockInfo.lockExpires + " GMT";
+            } else {
+                msg += "not locked";
+            }
+            msg = msg + ". Revision: " + lockInfo.revision;
+        } else {
+            msg += "!! No current lock info";
+        }
+        console.log(msg);
+    }
+    function onRefreshLockDataComplete(lockInfo) {
+        var msg = "Locking data refreshed. ";
+        if (lockInfo) {
+            msg += "New info: ";
+            if (lockInfo.lockedBy) {
+                msg = msg + "locked by " + lockInfo.lockedBy + " until " + lockInfo.lockExpires + " GMT";
+            } else {
+                msg += "not locked";
+            }
+            msg = msg + ". Revision: " + lockInfo.revision;
+        } else {
+            msg += "!! No lock info received";
+        }
+        console.log(msg);
+    }
+    // =============================
+    // Version management
+    // =============================
+    function doSubmitChangeDisplayedVersion(element, event) {
+        try {
+            console.log("User requested to change version");
+            deActivateButtons();
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+
+    // Called when new version info has been loaded
+    function onChangeDisplayedVersion(config) {
+        createPolicyEditor(config);
+//        initializeEditor({}, policyConfig);
+    }
+    function doChangeActiveVersion(element, event, config) {
+        try {
+            deActivateButtons();
+            actionSetActiveVersion(config?config.version:null);
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+
+    // Called when user clicks Delete button for a draft version            
+    function doDeleteDraftVersion(element, event){
+        try {
+            DecsOnD.SFDC.ConfirmationDialog.open({
+                element : element,
+                configY : 30,
+                configX : 350,
+                title   : 'Delete draft version',
+                messages: 'You are attempting to delete your draft updates',
+                confirm : function (){
+                    console.log("Deleting draft version");
+                    deActivateButtons();
+                    actionDeleteDraftVersion();
+                }
+            });
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+
+    function onCompleteDeleteDraft(config) {
+        createPolicyEditor(config);
+        DecsOnD.SFDC.showPolicyEditorOverlay(false);
+        DecsOnD.SFDC.ConfirmationDialog.close();
+    }
+
+    function createPolicyEditor(config) {
+        if (!config) return;
+        var newVersion = jq.parseJSON(config.versionJSON);
+        console.log("Version changed to " + newVersion.sequenceNum + ". Rerendering component");
+        // Re-initialize the context -- page elements may have been recreated with a new ID
+        initializeContext();
+        initializePolicyEditorComponent({
+            version:newVersion,
+            dpConfiguration : jq.parseJSON(config.dpConfigJSON),
+            tableConfigurations : jq.parseJSON(config.tableConfigsJSON)
+        });
+    }
+
+    // =============================
+    // Run Batch support
+    // =============================
+    // Called when user clicks the Run Batch button on the main page
+    function doShowBatchRunner() {
+        var pe = DecsOnD.SFDC.PageElements;
+        console.log("User requested to show batch runner");                
+        deActivateButtons();
+        actionInitializeBatchRunner(); // This will call doShowRunBatchEditor on completion
+        DecsOnD.setJQObjectVisibility(pe.getPolicyEditor(), false);
+        DecsOnD.setJQObjectVisibility(pe.getBatchRunnerComponent(), true);
+    }
+
+    // Callback called by BatchRunner component when visibility changes
+    function batchRunnerVisibilitySetCB(show) {
+        var pe = DecsOnD.SFDC.PageElements;
+        DecsOnD.setJQObjectVisibility(pe.getPolicyEditor(), !show);
+        DecsOnD.SFDC.enableButton(pe.getRunBatchJobButton(), !show);
+    }
+
+    // =============================
+    // Invocation setting support
+    // =============================
+    /**
+     * Action of button 'Customize'
+     * @Sothea #492
+     */
+    function doEditInvocationSettings(editBtn) {
+        var triggersTable = DecsOnD.SFDC.findVFObj("pbTableTriggers");
+        console.log("Editing invocation settings");
+        try {
+            deActivateButtons();
+            // FIXME Overlay styling is broken
+//            triggersTable.loadingOverlay({loadingText:"Please wait..."});
+            DecsOnD.SFDC.enableButton(editBtn, false);
+            actionUpdateInvocationSettingsEditMode(true);
+        } catch (ex){
+            DecsOnD.logException(ex, "Unable to edit invocation settings");
+        }
+    }
+
+    // ---------------------------------------------------
+    // Display message to the user
+    // ---------------------------------------------------
+    function displayWidgetMessage(editorWidget, severity, msg) {
+        // No need to log, that's already done
+        console.log(severity + ": " + msg);
+
+        // TODO See if we need this
+        // actionFlagEditingConfig(false);
+    }
+
+    // =============================
+    // Callbacks
+    // =============================
+    function acquireLockCB(editorWidget, action, updateDB, callback){
+        console.log("Acquiring lock");
+        DecsOnD.SFDC.acquireLockCB(editorWidget, action, updateDB, callback);
+    }
+
+    function releaseLockCB(editorWidget, callback){
+        console.log("Releasing lock");
+        DecsOnD.SFDC.releaseLockCB(editorWidget, callback);
+    }
+
+    // =============================
+    // Manage UI elements visibility and state
+    // =============================
+    function deActivateButtons() {
+        var pe = DecsOnD.SFDC.PageElements;
+        DecsOnD.SFDC.enableButton(pe.getEditPolicyButton(), false);
+        DecsOnD.SFDC.enableButton(pe.getCommitVersionButton(), false);
+        DecsOnD.SFDC.enableButton(pe.getActivateVersionButton(), false);
+        DecsOnD.SFDC.enableButton(pe.getDeleteDraftButton(), false);
+        DecsOnD.SFDC.enableButton(pe.getTestPolicyButton(), false);
+        DecsOnD.SFDC.enableButton(pe.getRunBatchJobButton(), false);
+    }
+
+    // =============================
+    // =============================
+    function initializeContext(){
+        var pe = DecsOnD.SFDC.PageElements;
+        console.log("Initializing context");
+        DecsOnD.SFDC.RemoteActionNames = DecsOnD.mergeObjects(
+            DecsOnD.SFDC.RemoteActionNames,
+            {
+                "loadTableContents" : "{!$RemoteAction.PolicyContentViewerController.getAllTableContents}",
+                "getPicklistValues" : "{!$RemoteAction.PolicyContentViewerController.getPicklistValues}",
+// Future                "getAvailableFields" : "{  !$RemoteAction.PolicyContentViewerController.getAvailableFields  }",
+                // Workaround for inability to modify remote API in patch
+                "getAvailableFields" : "{!$RemoteAction.PolicyContentViewerController.getAvailableColumns}",
+                "getAvailableColumns" : "{!$RemoteAction.PolicyContentViewerController.getAvailableColumns}",
+                "validateAndCompleteLookups" : "{!$RemoteAction.PolicyContentViewerController.validateAndCompleteLookupValues}",
+                //                    "contentsUpdatedCB" : "{!$RemoteAction.PolicyContentViewerController.getAllTableContents}",
+                "updateTableConfigurations" : "{!$RemoteAction.PolicyContentViewerController.updateMultipleTableConfigurations}",
+                "acquireLock" : "{!$RemoteAction.PolicyContentViewerController.acquireLock}",
+                "releaseLock" : "{!$RemoteAction.PolicyContentViewerController.releaseLock}",
+                // getLookupValueCB: handled without remote action
+                // TODO Add getAsyncResponse remote action in main dev
+                // Right now we're using getAllTableContents as a workaround
+                "getAsyncResponse" : "{!$RemoteAction.PolicyContentViewerController.getAllTableContents}"
+            });
+        DecsOnD.SFDC.Callbacks = DecsOnD.mergeObjects(
+            DecsOnD.SFDC.Callbacks,
+            {
+                acquireLockCB : acquireLockCB,
+                releaseLockCB : releaseLockCB,
+                sfdcDisplayMessage : displayWidgetMessage,
+                batchRunnerVisibilitySetCB : batchRunnerVisibilitySetCB
+            });
+        // Re-initialize these every time the editor is created
+        // Certain DOM objects can get recreated dynamically with new IDs
+        pe = DecsOnD.mergeObjects(pe, {
+            getMainBlock : function(){return DecsOnD.SFDC.findVFObj("pbMain");},
+            getMainBlockSection : function(){return DecsOnD.SFDC.findVFObj("pbsMain");},
+            getPolicyEditorOverlay : function(){return DecsOnD.SFDC.findVFObj("pnPolicyEditorOverlay");},
+            getPolicyEditor : function(){return DecsOnD.SFDC.findVFObj("pnPolicyEditor");},
+            getTableWidget : function(){return DecsOnD.SFDC.findVFObj("pnPolContentTableWidget");},
+            // Batch Runner
+            getBatchRunnerComponent : function(){return DecsOnD.SFDC.findVFObj("pnRunBatchJob");},
+            getRunBatchJobSection : function(){return DecsOnD.SFDC.findVFObj("pbsRunBatchJob");},
+            // Version Management
+            getVersionTable : function(){return DecsOnD.SFDC.findVFObj("VersionTable");},
+            getVersionList : function(){return DecsOnD.SFDC.findVFObj("VersionList");},
+            // Invocation Settings Management
+            getInvocationSettingsComponent : function(){return DecsOnD.jqObj("{!$Component.pbInvocationSettings}");},
+            getTriggersTable : function(){return DecsOnD.jqObj("{!$Component.pbInvocationSettings.pbsInvocationSettings.pbTableTriggers}");},
+            getEditPolicyButton : function(){return DecsOnD.SFDC.findVFObj("btnEditPolicy");},
+            getTestPolicyButton : function(){return DecsOnD.SFDC.findVFObj("btnTestPolicy");},
+            getCommitVersionButton : function(){return DecsOnD.SFDC.findVFObj("btnCommitVersion");},
+            getActivateVersionButton : function(){return DecsOnD.SFDC.findVFObj("btnActivateVersion");},
+            getDeleteDraftButton : function(){return DecsOnD.SFDC.findVFObj("btnDeleteDraft");},
+            getRunBatchJobButton : function(){return DecsOnD.SFDC.findVFObj("btnRunBatchJob");}            
+        });
+        pe.BatchRunner = DecsOnD.mergeObjects(pe.BatchRunner, {
+            getRunBatchButton : function(){return DecsOnD.SFDC.findVFObj("btnRunBatch");},
+            getCancelButton : function(){return DecsOnD.SFDC.findVFObj("btnCancelRunBatch");}
+        });
+        pe.InvocationSettings = DecsOnD.mergeObjects(pe.InvocationSettings, {
+            getEditButton : function(){return DecsOnD.SFDC.findVFObj("btnEditInvocationSettings");},
+            getAddSettingButton : function(){return DecsOnD.SFDC.findVFObj("btnAddInvocationSetting");},
+            getApplyButton : function(){return DecsOnD.SFDC.findVFObj("btnApplyInvocationSettings");},
+            getCancelButton : function(){return DecsOnD.SFDC.findVFObj("btnCancelInvocationSettingsEdit");},
+            getTriggersTable : function(){return DecsOnD.jqObj("{!$Component.pbInvocationSettings.pbsInvocationSettings.pbTableTriggers}");}
+        });
+        DecsOnD.SFDC.PageElements = pe;
+
+        // Temporarily fix methods that are broken in core components
+        applyPatches();
+
+        // Workaround for inability to modify remote API in patch
+        // TODO Verify whether we need this -- there may not be any async calls
+        DecsOnD.SFDC.remoteGetAsyncResponse = function(continuationURL, callback){
+            try {
+                // !! NOTE: pass extra parameter because really we are calling getAllTableContents
+                Visualforce.remoting.Manager.invokeAction(
+                    DecsOnD.SFDC.getRemoteActionName("getAsyncResponse"), "ASYNC" + continuationURL, null, callback);
+            }
+            catch (exc) {
+                DecsOnD.logException(exc, "Error invoking remote action");
+                return exc.toString();
+            }
+        };
+
+        // Workaround for inability to modify remote API in patch
+        DecsOnD.SFDC.remoteGetAvailableFields = function(editorWidget, objTypes, callback) {
+            try {
+                if (typeof objectTypes==="string") objectTypes = [objectTypes]; // Convert single string to array
+                var jq = editorWidget.jq, policyFQN = editorWidget.policy, dummyConfigMap = {}; 
+                console.log("Retrieving available fields for the following types: " + objTypes);
+                jq.each(objTypes, function(index, objType) {
+                    dummyConfigMap[objType] = new DecisionTableConfiguration();
+                });
+                Visualforce.remoting.Manager.invokeAction(
+                    DecsOnD.SFDC.getRemoteActionName("getAvailableColumns"),
+                    null, // Dummy
+                    dummyConfigMap,
+                    false,
+                    function(result, event) {
+                        var convertedResult = {};
+                        if (result && event.status) {
+                            if (Object.keys(result).length>0) {
+                                console.log("Found available fields for " + Object.keys(result).length +    
+                                            " out of " + DecsOnD.arrayLength(objTypes) + " objects");
+
+                                // results contains an array of section configs -- whereas widget expects just one
+                                jq.each(result, function(key, val) {
+                                    if (DecsOnD.isArray(val)) {
+                                        if (val.length>0) convertedResult[key] = val[0];
+                                    } else {
+                                        convertedResult[key] = val;
+                                    }
+                                });
+                            } else {
+                                console.log("No available fields found for any of the following types: " + objTypes);
+                            }
+                            callback(convertedResult);
+                        } else {
+                            // TODO Show error to user?
+                            DecsOnD.SFDC.showErrorMsg(editorWidget, "Error getting available fields: " + result); 
+                            callback(null, result);
+                        }
+                    }
+                );
+            } catch(ex){
+                DecsOnD.SFDC.reportRemoteActionException(editorWidget, "Failed to retrieve available fields", ex, callback);
+           }
+        }
+    };
+
+    // =============================
+    // =============================
+    $(function() {
+        var jq = DecsOnD.initJQ(), isError = ('{!isError}'=='true');
+        //if error exist when viewing policy content(via controller), disable "Edit Policy" button on PolicyEditor page
+        if (isError) {
+            console.error("Error found during initialization");
+        } else {
+            sforce.sessionId = '{!GETSESSIONID()}';
+            sforce.connection.sessionId=sforce.sessionId;
+
+            // Initialize context settings required by component
+            initializeContext();
+
+            // Initialize component
+            initializePolicyEditorComponent({
+                version : jq.parseJSON("{!JSENCODE(versionJSON)}"),
+                dpConfiguration : jq.parseJSON("{!JSENCODE(dpConfigJSON)}"),
+                tableConfigurations : jq.parseJSON("{!JSENCODE(tableConfigsJSON)}")
+            });
+            console.log("editor initialized: " + Date.now());
+//            createFixedHeader();
+            // Remove loading spinner after 60 secs (so that the user sees something in case of some script error)
+            setTimeout(function(){
+//                    removeFixedHeader();
+                    DecsOnD.SFDC.showPolicyEditorOverlay(false);
+//                    actionReRenderVerBlock();
+                },
+                60000
+            );
+        }
+    });
+
+    // =============================
+    // =============================
+    // Functions to be moved to separate component in future
+    // =============================
+    // =============================
+    function initializePolicyEditorComponent(editorConfig, skipRendering) {
+        console.log("initializePolicyEditorComponent called");
+        var jq = DecsOnD.initJQ(),
+            policyObj = {
+                Id : "{!policy.Id}",
+                Name : "{!JSENCODE(policy.Name)}",
+                Applies_to__c : "{!JSENCODE(policy.Applies_to__c)}",
+                DecsOnD__Applies_to__c : "{!JSENCODE(policy.Applies_to__c)}",
+                // The following are not required in JS but need to be present for controller code to work
+                UUID__c : "{!JSENCODE(policy.UUID__c)}",
+                Status__c : "{!JSENCODE(policy.Status__c)}",
+                DecsOnD__Revision__c : "{!policy.DecsOnD__Revision__c}",
+                DecsOnD__LockedBy__c : "{!policy.DecsOnD__LockedBy__c}",
+                DecsOnD__LockExpires__c : "{!policy.DecsOnD__LockExpires__c}"
+            };
+        // Set some default values to the config
+        // Can be overwritten by the caller
+        editorConfig = jq.extend(
+            {
+                // TODO Clarify relationship between editMode and hasEditRight
+                hasEditRight : ("{!userCanEditPolicy}"==="true"),
+                locale : "{!userLocale}",
+                isEditable : false,
+                disableConfigEditor: false,
+                version: new VersionDescriptor() // Default to avoid NPE. Should be overwritten by editorConfig                
+            }, 
+            editorConfig); 
+        PolicyEditorWidget.imageBasePath = "{!URLFOR($Resource.JS_PolicyEditorWidget, 'images')}";
+        DesTableConfigWidget.imageBasePath = "{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'images')}"
+        return DecsOnD.SFDC.initializePolicyEditorComponent(policyObj, editorConfig, skipRendering);
+    }
+   // 
+    // =============================
+    // Scripts to be moved to Batch Runner component
+    // =============================
+    // Called from Run Batch button in the Run Batch component
+    function doRunBatch(){
+        var pe = DecsOnD.SFDC.PageElements,
+            brElements = (pe)?pe.BatchRunner:null;
+        console.log("doRunBatch");
+        if (brElements) {
+            DecsOnD.SFDC.enableButton(brElements.getCancelButton(), false);
+            DecsOnD.SFDC.enableButton(brElements.getRunBatchButton(), false);
+        }
+        actionRunBatch();
+    }
+
+    function doCancelBatchRun() {
+        doShowRunBatchEditor(false);
+    }
+    // Called (indirectly) when user clicks the Run Batch button in the main page, or directly from the Cancel button in the batch runner
+    function doShowRunBatchEditor(isShow) {
+        var pe = DecsOnD.SFDC.PageElements;
+        console.log("doShowRunBatchEditor: " + isShow);
+        DecsOnD.setJQObjectVisibility(pe.getBatchRunnerComponent(), isShow);
+        if (DecsOnD.SFDC.Callbacks && DecsOnD.SFDC.Callbacks.batchRunnerVisibilitySetCB) {
+            DecsOnD.SFDC.Callbacks.batchRunnerVisibilitySetCB(isShow);
+        }
+    }
+
+    // =============================
+    // Scripts to be moved to the Invocation Settings component
+    // =============================
+    /**
+     * Add a new trigger setting
+     * @Sothea #492
+     */
+    function doAddInvocationSetting(btn, event) {
+        try {
+            var triggersTable = DecsOnD.SFDC.findVFObj("pbTableTriggers");
+            console.log("Adding invocation setting");
+            // FIXME Overlay styling is broken
+//            triggersTable.loadingOverlay({loadingText:"Adding"});
+            if (btn) DecsOnD.SFDC.enableButton(jq(btn), false);
+            disableTriggerSection();
+            actionAddInvocationSetting(true);
+        } catch (ex){
+            DecsOnD.logException(ex, "Unable to add invocation setting");
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+
+    /**
+     * Delete an invocation setting
+     */
+    function doDeleteInvocationSetting(element, event, config){
+        try {
+            // No button here -- this is called from X at right of row
+            var settingToRemove = (config?config.settingToRemove:"");
+                // FIXME Overlay styling is broken
+    //            triggersTable.loadingOverlay({loadingText:"Adding"});
+            if (settingToRemove) {
+                console.log('Deleting invocation setting ' + settingToRemove);
+                disableTriggerSection();
+                actionDeleteInvocationSetting(settingToRemove);
+            } else {
+                console.warn('Unable to delete invocation setting: no UUID provided');
+            }
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+    
+    /**
+     * Save changes made in settings editor
+     */
+    function doApplyInvocationSettings(btn, event) {
+        try {
+            var triggersTable = DecsOnD.SFDC.findVFObj("pbTableTriggers");
+                // FIXME Overlay styling is broken
+    //            triggersTable.loadingOverlay({loadingText:"Applying"});
+            if (btn) DecsOnD.SFDC.enableButton(jq(btn), false);
+            disableTriggerSection();
+            actionApplyInvocationSettings();
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+            
+    /**
+     * Close invocation settings editor without saving
+     */
+    function doCancelInvocationSettingsEdit(btn, event) {
+        try {
+            var triggersTable = DecsOnD.SFDC.findVFObj("pbTableTriggers");
+            console.log("Cancelling invocation settings edit");
+            // FIXME Overlay styling is broken
+    //            triggersTable.loadingOverlay({loadingText:"Cancelling"});
+    //            if (btnClose) jq(btnClose).parent().hide();
+            if (btn) DecsOnD.SFDC.enableButton(jq(btn), false);
+            disableTriggerSection();
+            actionUpdateInvocationSettingsEditMode(false);
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+
+    function disableTriggerSection() {
+        var pe = DecsOnD.SFDC.PageElements,
+            is = pe.InvocationSettings;
+        if (!is) return;
+        DecsOnD.SFDC.enableButton(is.getEditButton(), false);
+        DecsOnD.SFDC.enableButton(is.getAddSettingButton(), false);
+        DecsOnD.SFDC.enableButton(is.getApplyButton(), false);
+        DecsOnD.SFDC.enableButton(is.getCancelButton(), false);
+        is.getTriggersTable().prop("disabled",true); // FIXME This does not appear to really work
+    }
+
+    // =============================
+    // Scripts to be moved to shared utility scripts (or maybe deleted)
+    // =============================
+    function doCloseConfirmDialog(element, event){
+        try {
+            DecsOnD.SFDC.ConfirmationDialog.close();
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+    
+    // Seems unused for now
+    function doOpenConfirmDialog (element, event, config){
+        try {
+            DecsOnD.SFDC.ConfirmationDialog.open(config);
+        }
+        finally {
+            if (event) event.preventDefault();
+        }
+    }
+
+    // =============================
+    // Other
+    // =============================
+    function createFixedHeader(){
+        var vTable = DecsOnD.SFDC.getVersionTable(),
+            vList = DecsOnD.SFDC.PageElements.getVersionList();
+        try {
+            if (!DecsOnD.isJQObject(vTable)) return;
+            // TODO Use $Component if possible to avoid hard-coding entire path
+            new FixedHeader(vTable.get(0));
+            vList.add(DecsOnD.jqObj('theFixedHeader'));
+        }
+        catch (e) {DecsOnD.logException(e, "Unable to create fixed header");}
+    }
+    
+     /**
+      * Function for removing fixed header
+      */
+     function removeFixedHeader(){
+         var fixedHeader = document.getElementById('theFixedHeader');
+         if (fixedHeader)fixedHeader.parentNode.removeChild(fixedHeader);
+     }
+     
+    // =============================
+    // Popup for version notes
+    // =============================
+    function showPopUp_NoBG(msg, ele, configX, configY) {
+        //if($("#PopUp").is(':visible')) return ClosePopUp();
+        //$("#PopUp").fadeIn('slow');
+        $("#PopUp").show('fast');
+        $("#PopUpBody")[0].innerHTML = msg;
+        $("#PopUp").offset({top: DecsOnD.UI.findPositionY(ele) + configY,left: DecsOnD.UI.findPositionX(ele) - configX});
+    };
+                    
+    function closePopUp() {
+        //$("#PopUp").fadeOut('slow');
+        $("#PopUp").hide('fast');
+    };
+    
+    // =============================
+    // Temp patches that should be moved into static resources
+    // =============================
+    function applyPatches() {
+        if (typeof DecsOnD.SFDC.applyPatches==="function") DecsOnD.SFDC.applyPatches();
+        
+        PolicyEditorRenderer.prototype.toggleTableWarningIndicator = function(polTableOrName) {
+            var policyTable = DecsOnD.isObject(polTableOrName) ? polTableOrName : this.getPolicyTable(polTableOrName),
+                tab = null;
+            if (!policyTable) return;
+            // JVG Patch 1.14.61 We cannot rely on the index, it is not always set
+            tab = this.jqObj("tabs > ul > li").filter("[id*='" + policyTable.name + "']");  
+            if (!DecsOnD.isJQObject(tab)) return;
+            tab.find("img").first().toggleClass("hidden", !(policyTable.hasValidationError() && this.editorWidget.isContentEditorMode())); 
+        };
+    }              
+
+    </script>    
+    <!-- Patch 1.8.27 Include standard script to support onLookup -->
+    <!-- FIXME Find a way that doesn't hard-code the 1412790252000. Something like: -->
+    <!--   <script type="text/javascript" src="/sfdc/main.js"></script>     -->
+    <script src="/jslibrary/1412790252000/sfdc/main.js"></script>
+    <!-- FIXME Update versions? -->
+    <!-- Better not to use apex:includeScript: that adds references to trhe <head> element rather than at the end of the page -->
+    <script src="/soap/ajax/15.0/connection.js"></script>
+    <script src="/soap/ajax/15.0/apex.js"></script>
+
+
+    <!-- include javascript files for NumberFormat library -->
+    <script src="{!URLFOR($Resource.JS_Globalize, 'globalize.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Globalize, 'cultures/globalize.cultures.js')}"></script>
+    
+    <!-- @Sothea 141030 Include JQuery plugin for showing loading spinner -->
+    <script src="{!URLFOR($Resource.JS_LoadingSpinner, 'loading-overlay.min.js')}" type="text/javascript"></script>
+    <link type="text/css" href="{!URLFOR($Resource.JS_LoadingSpinner, 'css/loadingoverlay_decsond.css')}" rel="stylesheet"></link>
+    
+    <!-- include javascript and css files for the EditableGrid library -->
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_renderers.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_editors.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_validators.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_utils.js')}" ></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid.css')}" type="text/css" media="screen"/> 
+    
+    <!-- include javascript and css files for multiselect -->
+    <!-- 
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/jquery.multiselect.min.js')}" ></script>
+    -->
+    
+    <!-- include jQuery extensions -->
+    <link rel="stylesheet" media="all" type="text/css" href="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-timepicker-addon.css')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-timepicker-addon.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-sliderAccess.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryCSV, 'jquery.csv-0.71.min.js')}" ></script>
+
+<!-- TODO Evaluate    <script type="text/javascript" src="{!URLFOR($Resource.JS_FixedHeader, 'FixedHeader.js')}"></script> -->
+    
+    <!-- Include EditableGrid extensions -->
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/multiselect.js')}" ></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/ui.dropdownchecklist.themeroller.css')}" type="text/css" media="screen"/>        
+
+    <link href="{!URLFOR($Resource.JS_Dynatree, 'skin/ui.dynatree.css')}" rel="stylesheet" type="text/css" id="skinSheet"></link>
+    <script src="{!URLFOR($Resource.JS_Dynatree, 'jquery.dynatree.js')}" type="text/javascript"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.js')}" type="text/javascript"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.ui.position.js')}" type="text/javascript"></script>
+    <link href="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.css')}" rel="stylesheet" type="text/css" />
+    
+    <!--@Sothea #412, #423 Include SemanticUI -- Popup for showing message as tooltip -->
+    <script src="{!URLFOR($Resource.JS_SemanticUI_Popup, 'popup.js')}" type="text/javascript"></script>
+    <link type="text/css" href="{!URLFOR($Resource.JS_SemanticUI_Popup, 'css/popup.css')}" rel="stylesheet"></link>
+            
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_DecsOnD, 'css/decsond.css')}" type="text/css" media="screen"/>
+
+    <!-- include JS libraries for customizing decision table configuration -->
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DataTypeMapper.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'MatchOperatorManager.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_editor.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_renderer.js')}" ></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'css/dt-config-widget.css')}" media="screen"/>
+    
+    <!-- Include PolicyEditorWidget scripts and styles -->
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'DatePeriodManager.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyTable.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget_renderer.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget_editor.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'custom.ui.dropdownchecklist-1.4-min.js')}"></script>        
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'EditableGridExtensions.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'MultiSelectExtensions.js')}"></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_PolicyEditorWidget, 'css/editablegrid-decsond.css')}" type="text/css" media="screen"/>
+
+    <!-- Custom SFDC style overrides styles -->
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_Callbacks, 'css/decsond-sfdc.css')}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_Callbacks, 'css/decsond-sfdc-classic.css')}" type="text/css" media="screen"/>
+    
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'DatePeriodManager.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcUtils.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcCallbacks.js')}"></script>
+</apex:page>

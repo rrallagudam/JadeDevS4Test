@@ -1,0 +1,9 @@
+<!--
+ - Created by ichan on 3/16/16.
+ -->
+
+<apex:page standardController="sbaa__ApprovalRule__c" extensions="sbaa.ApprovalRuleExtController" action="{!onOverrideClone}">
+    <apex:sectionHeader title="Clone Quote" subtitle="{!sbaa__ApprovalRule__c.Name}"/>
+
+    <apex:pageMessages />
+</apex:page>

@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>lbl_actions</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Column header on Deal Desk page. Contains the actions a user can take.</shortDescription>
+        <value>Actions</value>
+    </labels>
+    <labels>
+        <fullName>lbl_additional_cloned_items</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Additional copied items</shortDescription>
+        <value>+ {0} more</value>
+    </labels>
+    <labels>
+        <fullName>lbl_approval_requests</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Requests</shortDescription>
+        <value>Approval Requests</value>
+    </labels>
+    <labels>
+        <fullName>lbl_approval_settings</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Settings</shortDescription>
+        <value>Approval Settings</value>
+    </labels>
+    <labels>
+        <fullName>lbl_approve</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approve Label</shortDescription>
+        <value>Approve</value>
+    </labels>
+    <labels>
+        <fullName>lbl_approved</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Table header. Table contains lines in Approved Status</shortDescription>
+        <value>Approved</value>
+    </labels>
+    <labels>
+        <fullName>lbl_assign</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Assign Label</shortDescription>
+        <value>Assign</value>
+    </labels>
+    <labels>
+        <fullName>lbl_blank_line</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Option on EditSettings page. Created by pressing the Return key twice.</shortDescription>
+        <value>Blank Line</value>
+    </labels>
+    <labels>
+        <fullName>lbl_cancel</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel Label</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>lbl_clone_related</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Copy Related items</shortDescription>
+        <value>Clone Related</value>
+    </labels>
+    <labels>
+        <fullName>lbl_clone_rule_related_items</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Clone Approval Rule and related items</shortDescription>
+        <value>Clone Approval Condition and Tracked Field</value>
+    </labels>
+    <labels>
+        <fullName>lbl_comments</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Comments Label</shortDescription>
+        <value>Comments</value>
+    </labels>
+    <labels>
+        <fullName>lbl_deal_desk</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Page header for Deal Desk</shortDescription>
+        <value>Deal Desk</value>
+    </labels>
+    <labels>
+        <fullName>lbl_deal_desk_settings</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Settings</shortDescription>
+        <value>Deal Desk Settings</value>
+    </labels>
+    <labels>
+        <fullName>lbl_details</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Tab Name. Shows Quote/Opportunity details.</shortDescription>
+        <value>DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>lbl_edit_settings</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit Settings</shortDescription>
+        <value>Edit Settings</value>
+    </labels>
+    <labels>
+        <fullName>lbl_edit_settings_long</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Title on the EditSettings Page</shortDescription>
+        <value>SteelBrick Advanced Approvals Settings</value>
+    </labels>
+    <labels>
+        <fullName>lbl_line_break</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Option on EditSettings page. Created by pressing the Return key.</shortDescription>
+        <value>Line Break</value>
+    </labels>
+    <labels>
+        <fullName>lbl_lines</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Tab Name. Shows Quote/Opportunity lines to approve.</shortDescription>
+        <value>LINES</value>
+    </labels>
+    <labels>
+        <fullName>lbl_pending</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Table header. Table contains lines in Pending Status</shortDescription>
+        <value>Pending</value>
+    </labels>
+    <labels>
+        <fullName>lbl_preview</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Allows you to preview what approvals will be required if you submit for approval</shortDescription>
+        <value>Preview Approvals</value>
+    </labels>
+    <labels>
+        <fullName>lbl_quick_save</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button on Deal Desk page allows you to save and stay on the page</shortDescription>
+        <value>Quick Save</value>
+    </labels>
+    <labels>
+        <fullName>lbl_reassign</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Reassign Label</shortDescription>
+        <value>Reassign</value>
+    </labels>
+    <labels>
+        <fullName>lbl_reassign_to</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Reassign To a person or group</shortDescription>
+        <value>Reassign To</value>
+    </labels>
+    <labels>
+        <fullName>lbl_recalled</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Table header. Table contains lines in Recalled Status</shortDescription>
+        <value>Recalled</value>
+    </labels>
+    <labels>
+        <fullName>lbl_reject</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Reject Label</shortDescription>
+        <value>Reject</value>
+    </labels>
+    <labels>
+        <fullName>lbl_rejected</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk Table header. Table contains lines in Rejected Status</shortDescription>
+        <value>Rejected</value>
+    </labels>
+    <labels>
+        <fullName>lbl_resend_request</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Resend Label</shortDescription>
+        <value>Resend Request</value>
+    </labels>
+    <labels>
+        <fullName>lbl_return</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel and Return</shortDescription>
+        <value>Return to {0}</value>
+    </labels>
+    <labels>
+        <fullName>lbl_return_label</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Return Label</shortDescription>
+        <value>Return</value>
+    </labels>
+    <labels>
+        <fullName>lbl_save</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Save Label</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>lbl_save_close</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Save &amp; Close Label</shortDescription>
+        <value>Save &amp; Close</value>
+    </labels>
+    <labels>
+        <fullName>lbl_select</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Select Label</shortDescription>
+        <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>lbl_smart_approval</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enable Smart Approval Column Label</shortDescription>
+        <value>Smart Approval</value>
+    </labels>
+    <labels>
+        <fullName>lbl_submit_for_approval</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Submit for Approval Label</shortDescription>
+        <value>Submit for Approval</value>
+    </labels>
+    <labels>
+        <fullName>lbl_unchained_rule</fullName>
+        <categories>Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Rule not assigned to an Approval Chain</shortDescription>
+        <value>Unchained Rule</value>
+    </labels>
+    <labels>
+        <fullName>msg_approval_not_allowed</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Not Allowed</shortDescription>
+        <value>Not Allowed to approve because you don&apos;t have permission</value>
+    </labels>
+    <labels>
+        <fullName>msg_approval_not_requested</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval has not been Requested</shortDescription>
+        <value>Action can only be taken on approvals in Requested status.</value>
+    </labels>
+    <labels>
+        <fullName>msg_approval_not_requested_resend</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Not Requested When Resend</shortDescription>
+        <value>You cannot resend this request until the approval is in requested status.</value>
+    </labels>
+    <labels>
+        <fullName>msg_approval_request_inactive</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>The Approval that was Requested is Inactive</shortDescription>
+        <value>This approval request is not active.</value>
+    </labels>
+    <labels>
+        <fullName>msg_cannot_find_relationship</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>The approval does not have a related record.</shortDescription>
+        <value>Approval object has no lookup to specified ID. Please check your Advanced Approvals setup.</value>
+    </labels>
+    <labels>
+        <fullName>msg_condition_number_not_exist</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>The condition number that you used does not exist.</shortDescription>
+        <value>Condition Index Number {0} does not exist.</value>
+    </labels>
+    <labels>
+        <fullName>msg_custom_not_allow_initially</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Custom cannot be selected initially</shortDescription>
+        <value>No condition can currently be used with Custom Conditions Met. Please create a rule that does not initially require Custom Conditions Met.</value>
+    </labels>
+    <labels>
+        <fullName>msg_dd_needs_approval_submission</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Need Approval submission</shortDescription>
+        <value>Object must be submitted for approval before accessing Deal Desk.</value>
+    </labels>
+    <labels>
+        <fullName>msg_invalid_advanced_condition</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid advanced condition</shortDescription>
+        <value>The Advanced Condition is invalid.</value>
+    </labels>
+    <labels>
+        <fullName>msg_invalid_operator</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown when evaluating Approval Variable</shortDescription>
+        <value>Invalid operator: {0} [{1}]</value>
+    </labels>
+    <labels>
+        <fullName>msg_logical_operator_cannot_be_used_after_left_parenthesis</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>A logical operator cannot be used immediately after a left parenthesis.</shortDescription>
+        <value>A logical operator cannot be used immediately after a left parenthesis.</value>
+    </labels>
+    <labels>
+        <fullName>msg_logical_operator_cannot_be_used_after_logical_operator</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Logical operators cannot appear consecutively within Advanced Condition field.</shortDescription>
+        <value>Logical operators cannot appear consecutively within Advanced Condition field.</value>
+    </labels>
+    <labels>
+        <fullName>msg_logical_operator_cannot_be_used_at_start</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>A logic statement cannot begin with a logical operator. Example: &quot;AND 1 OR 2&quot;</shortDescription>
+        <value>A logic string cannot begin with a logical operator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_advanced_condition</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>The field Custom Condition Met is missing Advanced Condition logic.</shortDescription>
+        <value>The field Custom Condition Met is missing Advanced Condition logic.</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_aggregate_function</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown when evaluating Approval Variable</shortDescription>
+        <value>Missing aggregate function. [{0}]</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_approval_condition</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Condition is missing in previously approved items</shortDescription>
+        <value>Error evaluating {0} [{1}].  Approval Condition Information is missing.  Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_field</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Rule references non-existent field</shortDescription>
+        <value>Error evaluating {0} [{1}].  Field {2} does not exist.  Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_left_parenthesis</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>A left parenthesis &quot;(&quot; is missing</shortDescription>
+        <value>A left parenthesis is missing.</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_logical_operator</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>A logical operator (AND or OR) is missing.</shortDescription>
+        <value>A logical operator is missing.</value>
+    </labels>
+    <labels>
+        <fullName>msg_missing_right_parenthesis</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>A right parenthesis &quot;)&quot; is missing</shortDescription>
+        <value>A right parenthesis is missing.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_approval_requests</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Approvals are currently Requested Message</shortDescription>
+        <value>No Approval Requests</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_approval_rule_specified</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Approval Rule was Specified</shortDescription>
+        <value>No approval rule specified in call to clone related items.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_approvals_required</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Approvals are Required Message</shortDescription>
+        <value>No Approvals Required</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_child_relationship</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown on Related Cloner page</shortDescription>
+        <value>No child relationship from {0} on lookup field {1}</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_crm_content_license</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>msg_no_field_fls</shortDescription>
+        <value>You are not a Salesforce CRM Content User. Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_deal_desk_line_items</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deal Desk has no items to review.</shortDescription>
+        <value>Deal Desk has no line items to review.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_field_fls</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>You do not have permission for the fields. Please contact your administrator.</shortDescription>
+        <value>You do not have {0} permission for field {1}. Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_field_fls_with_obj</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>You do not have permission for a field on an object.</shortDescription>
+        <value>You do not have {0} permission for field {1} on object {2}. Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_id_specified</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No ID specified</shortDescription>
+        <value>No ID specified</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_longer_pending_approval</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Unable to process your request because the record is no longer pending approval.</shortDescription>
+        <value>Unable to process your request because the record is no longer pending approval.</value>
+    </labels>
+    <labels>
+        <fullName>msg_no_object_crud</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>You do not have access on object. Please contact your administrator.</shortDescription>
+        <value>You do not have {0} access on object {1}. Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>msg_only_accept_and_or</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Only the following logical operators are accepted: AND, OR.</shortDescription>
+        <value>Only the following logical operators are accepted: AND, OR.</value>
+    </labels>
+    <labels>
+        <fullName>msg_reassign_not_allowed</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Reassign Not Allowed</shortDescription>
+        <value>You do not have sufficient privileges to reassign.</value>
+    </labels>
+    <labels>
+        <fullName>msg_rejection_not_allowed</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Rejection Not Allowed</shortDescription>
+        <value>You do not have sufficient privileges to reject.</value>
+    </labels>
+    <labels>
+        <fullName>msg_request_status</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Request Status</shortDescription>
+        <value>This request has been {0}.</value>
+    </labels>
+    <labels>
+        <fullName>msg_target_object_missing</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Target Object does not exist</shortDescription>
+        <value>Target Object does not exist.</value>
+    </labels>
+    <labels>
+        <fullName>msg_target_object_missing_effective_date_field</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Target Object missing Start Date Field</shortDescription>
+        <value>Target Object does not contain the selected Effective Date Field value. Please change one or both.</value>
+    </labels>
+    <labels>
+        <fullName>msg_unable_to_find_approver</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown when Approver cannot be evaluated</shortDescription>
+        <value>Unable to find Approver for Rule ID: {0}</value>
+    </labels>
+    <labels>
+        <fullName>msg_unable_to_resolve_field</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown while evaluating Approval Variable</shortDescription>
+        <value>Unable to resolve aggregate field [{0}] on {1}</value>
+    </labels>
+    <labels>
+        <fullName>msg_unknown_error</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown evaluating invalid advanced condition</shortDescription>
+        <value>Unknown Error</value>
+    </labels>
+    <labels>
+        <fullName>msg_unrecognized_user</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Unrecognized User</shortDescription>
+        <value>Unable to determine user</value>
+    </labels>
+    <labels>
+        <fullName>msg_unsupported_function</fullName>
+        <categories>Messages</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error shown while evaluating Approval Variable</shortDescription>
+        <value>Unspported aggregate function: {0} [{1}]</value>
+    </labels>
+</CustomLabels>

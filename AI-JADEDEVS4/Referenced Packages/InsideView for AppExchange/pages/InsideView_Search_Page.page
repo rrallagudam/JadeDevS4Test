@@ -1,0 +1,45 @@
+<apex:page showHeader="true">
+
+  <form id="SalesViewProdSearchId" method="post" name="SalesViewProdSearchName" action="https://my.insideview.com/iv/crm/search.do" target="_blank" style="background-color: transparent;" class="searchModule">
+    <input name="methodName" value="executeSearch" type="hidden"/>
+    <input name="searchTarget" value="COMPANY" type="hidden"/>
+    <input name="pageNum" value="0" type="hidden"/>
+    <input name="fromIndex" value="0" type="hidden"/>
+    <input name="crmUID" type="hidden" value="0000000kqqf00000000aLg"/>
+    <input name="crm_version" type="hidden" value="v110"/>
+    <input name="solutionVerson" type="hidden" value="1.23"/>
+    
+    <input class="searchTextBox" name="searchString"/>&nbsp;<input class="btn" title="Go" value="Go!" type="submit"/>
+  </form>
+  
+  <style>
+     body { margin: 0 !important;}
+  </style>
+  
+  <script language="JavaScript" type="text/javascript">  
+    
+  var d = document,w=window ;
+  var ivCon = {
+    
+    getC : function ( cn ) {
+        var r = d.cookie.match ( '(^|;) ?' + cn + '=([^;]*)(;|$)' );
+        if ( r ) return ( unescape ( r[2] ) ); else return null;
+    },
+    cVal : null,
+    load : function(){      
+        document.forms['SalesViewProdSearchId'].crmUID.value = ivCon.getC('sid_Client');
+    },
+    defaultActions : function(){
+          this.cVal=ivCon.getC('sid_Client');
+          if (w.addEventListener){ 
+            w.addEventListener("load", this.load , false);
+            }else if (w.attachEvent){
+            var evt = w.attachEvent("onload", this.load );
+            }else {w.onload = this.load ;}
+     }
+   };
+   
+   
+  (function(){ivCon.defaultActions();})();  
+  </script>
+</apex:page>

@@ -1,0 +1,65 @@
+<apex:page standardController="User" extensions="SBQQ.ThemeLookupController" showHeader="{!(!$Setup.GeneralSettings__c.GlobalHeaderPermUsed__c || !$Permission.SBQQ__HideGlobalHeader)}" standardStylesheets="false">
+    <script type="text/javascript" src="{!$Resource.jQuery}"></script>
+    <script type="text/javascript" src="{!$Resource.jQueryUI}"></script>
+    <apex:stylesheet value="{!$Resource['sb']}"/>
+
+    <apex:form >
+    	<div class="qq sb themePage">
+	        <c:pageHeader title="User Theme Selector - {!User.name}">
+	            <div class="sbButtons">
+	                <apex:commandButton styleClass="sbBtn" value="Save" action="{!save}"/>
+	            </div>
+	        </c:pageHeader>
+	        <div id='themeId' style="display:none;">{!User.Theme__c}</div>
+	        <apex:selectRadio value="{!selectedValue}" layout="pageDirection">
+                <apex:selectOptions value="{!items}"/>
+            </apex:selectRadio>
+	    </div>
+	    <div id="styleSheet">
+	    </div>
+    </apex:form>
+    <script>
+	    $(document).ready(function() {
+			var defaultVal = $('#themeId').text();
+			//setting the default value on the controller, would prevent us
+			if(defaultVal==''){
+				$('table[role=presentation] tr:first-child input').prop('checked',true);
+			}
+			else{
+				$('input[value="'+defaultVal+'"]').prop('checked',true);
+			}
+			var compiledString = '<link class="user" href="/servlet/servlet.FileDownload?file='+defaultVal+'" rel="stylesheet" type="text/css">';
+			$('#styleSheet').html(compiledString);
+			//add table simulation to radio button
+			$('table[role=presentation]').addClass('sbTable');
+			//add event listener to inputs to trigger new style sheet loading on click
+			$('table[role=presentation] td input').change(loadNewStyleSheet);
+		});
+
+		function loadNewStyleSheet(){
+			var radioValue = $(this).val();
+			var compiledString = '<link class="user" href="/servlet/servlet.FileDownload?file='+radioValue+'" rel="stylesheet" type="text/css">';
+			$('#styleSheet').html(compiledString);
+		}
+	</script>
+	<style>
+	fieldset {
+	    padding: 0px !important;
+	}
+
+	.sbTable{
+	    max-width:600px !important;
+	    width:600px !important;
+	    margin-left:auto !important;
+	    margin-right:auto !important;
+	}
+	.themePage .sbTable>tbody>tr>td {
+	    font-size:1.4em !important;
+	}
+
+	.sbTable>tbody>tr>td, .sbTable>thead>tr>th{
+	    padding-top:15px !important;
+	}
+
+	</style>
+</apex:page>

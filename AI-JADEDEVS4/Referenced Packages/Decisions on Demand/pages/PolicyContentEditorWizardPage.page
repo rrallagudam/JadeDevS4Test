@@ -1,0 +1,2168 @@
+<!-- 
+ Copyright 2012-2017, Decisions on Demand, Inc.
+ All Rights Reserved.
+ -->
+<apex:page standardController="DecsOnD__Policy__c" id="thePage" 
+        extensions="DecsOnD.PolicyContentEditorWizardController" 
+        sidebar="false" 
+        action="{!acquireLock}" 
+        applyBodyTag="false" > <!-- No body tag -- we are providing our own -->
+<!--    <apex:sectionHeader title="Business policy" subtitle="Editor Wizard" />-->
+<!--  <apex:includeScript value="/jslibrary/1412790252000/sfdc/main.js"></apex:includeScript> -->
+  <head> 
+    <!-- FIXME Update versions? -->
+    <!-- Better not to use apex:includeScript: that adds references to the <head> element rather than at the end of the page -->
+    <script src="/soap/ajax/15.0/connection.js"></script>
+    <script src="/soap/ajax/15.0/apex.js"></script>    
+
+    <!-- Include JQuery Libraries from CDN -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>
+    <!-- include Core Decisions on Demand scripts and styles in head -- they are used in global script components-->
+    <script src="{!URLFOR($Resource.JS_DecsOnD, 'core.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_DecsOnD, 'PolicyManagement.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcUtils.js')}"></script>
+    <!-- Most of the include tags are at the end of the page for better performance -->
+    
+    <style type="text/css" title="currentStyle">
+/*        table.editablegrid{ 
+            font-size: 1em;
+            width: 100%;
+        }
+        */
+        .buttonLocation {
+            text-align: right;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        .mbutton {
+            width: 70px;
+        }
+        .colGridLeft {
+            text-align:left;
+        }
+        .colGridRight {
+            text-align:right;
+        }
+        .secHeader{
+            margin-top:-30px; 
+            padding-right:5px;
+            text-align:right;
+            color:black;
+            font-weight:bold;
+            font-size:13px;
+        }
+        .s2TopButton{
+            margin-bottom:-45px;
+            padding-right:15px
+        }
+        .s2BottomButton{
+            z-index:10000;
+            position:absolute;
+            bottom:30px;
+            right:25px
+        }
+        .downLocation{
+            color:#0B7EF0;
+            right:35px;
+            position:absolute;
+            top:180px;
+        }
+        
+        .colorbox{
+            padding: 2px 4px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 330px;
+            left: 550px;
+            z-index:100000;
+        }
+        .inactiveP1UI{
+            position:absolute; 
+            left:1px; 
+            top:1px; 
+            width:100%; 
+            height:100%; 
+            text-align:center; 
+            background-color:#FFFFFF; 
+            opacity:0.1;
+            filter:alpha(opacity=10); 
+            z-index:99999;
+            display:none;
+        }
+        
+/*        .iframe{
+            overflow-y: auto;  
+        }  
+        */
+        div.pbSubsection table.detailList
+        {
+            table-layout: fixed;
+        }
+
+        table.detailList div.ui-tabs 
+        {
+            font-size: 1em;
+        }
+        
+        .versionGridCol1{
+            color: #333 !important;
+            font-size: 91%;
+            font-weight: bold;
+            text-align: right;
+            width: 100px;
+            padding: 0px 10px 6px 6px;
+            
+        }
+         .versionGridCol2{
+            text-align:left;
+            width:100%;
+        }
+         div.pbBottomButtons{
+            margin-top:0px !important;
+/*            border-top-width: 0px !important; */
+        }
+
+        /* Remove these when updated stylesheet is uploaded */
+        img.warningIcon {
+          width : 10px !important;
+          height : 10px !important;
+          background-image: url("{!URLFOR($Resource.JS_PolicyEditorWidget, 'images/warning10.png')}") !important;
+          background-position: 0% 0% !important;
+        }
+        .listButtons{
+            display:none; 
+        }             
+        .pbSubheader {
+              background-image: url('/img/alohaSkin/opacity75.png');
+              color : black !important;
+        }
+        .bPageFooter .noTableFooter {
+          display : none;
+        }
+        div.topNavTab div.toggleButton {
+          display : none;          
+        }
+
+    </style>
+ <!-- #          background-image: url("{!URLFOR($Resource.JS_PolicyEditorWidget, 'images/warning10.png')}");
+ -->
+  </head>
+  <body style="background-color:#F8F8F9;">        
+    <apex:outputPanel id="pnMain">
+      <apex:variable var="policy" value="{!DecsOnD__Policy__c}" />
+      <apex:outputPanel id="pnHeader">
+        <apex:sectionHeader id="header1"
+            title="Business policy" 
+            subtitle="Editor Wizard" 
+            help="{!$Page.DecsOnD__Policy_Editor_Edit_Page_Help}" 
+            rendered="{!currentPage==1}"/>
+        <apex:sectionHeader id="header2"
+            title="Business policy" 
+            subtitle="Editor Wizard" 
+            help="{!$Page.DecsOnD__Policy_Editor_Test_Page_Help}" 
+            rendered="{!currentPage==2}"/>
+        <apex:sectionHeader id="header3"
+            title="Business policy" 
+            subtitle="Editor Wizard" 
+            help="{!$Page.DecsOnD__Policy_Editor_Update_Page_Help}" 
+            rendered="{!currentPage==3}"/>
+      </apex:outputPanel> <!-- END pnHeader -->
+      <!-- Need separate form for the command buttons and download link, 
+          due to obscure conflicts with the inputFile used to upload a new Excel file
+      -->
+      <apex:form id="formMain">
+        <apex:pageMessages showDetail="true" id="mainMessages" rendered="{!NOT(isBuildFailed)}"/>
+        <!-- Form must be top level element, since pageBlock must be direct parent of pageBlockButtons -->
+        <apex:pageBlock id="pbMain"> 
+          <!-- Top buttons -->
+          <apex:pageBlockButtons id="pbbButtonsTop" styleClass="buttonLocation" location="top">
+            <apex:commandButton id="btnPreviousPage"
+                        value="Previous" 
+                        onclick="doGoToPreviousPage(this, event);" 
+                        rendered="{!AND(showNavigationButtons, NOT(isFirstPage))}" 
+                        disabled="{!disablePreviousPageButton}">
+            </apex:commandButton>
+            &nbsp;
+            <apex:commandButton id="btnNextPage" 
+                    value="Next" 
+                    onclick="doGoToNextPage(this, event);" 
+                    rendered="{!AND(showNavigationButtons, NOT(isLastPage))}" 
+                    disabled="{!disableNextPageButton}">
+            </apex:commandButton>
+            &nbsp;
+            <apex:commandButton id="btnP1SaveDraft" 
+                    value="Save Draft" 
+                    onclick="doSaveDraft(this, event);" 
+                    rendered="{!currentPage==1}">
+            </apex:commandButton>
+            <apex:commandButton id="btnP3SaveDraft" 
+                    value="Save as Draft" 
+                    action="{!updateDraftVersionInfo}" 
+                    rendered="{!AND(currentPage==3, callFrom!='detail')}"> 
+            </apex:commandButton>
+            &nbsp; 
+            <apex:commandButton id="btnCommit"
+                    value="Commit" 
+                    action="{!commitVersion}"  
+                    rendered="{!currentPage==3}">
+            </apex:commandButton>
+            &nbsp;
+            <apex:commandButton id="btnCommitAndActivate"
+                    value="Commit and activate" 
+                    action="{!commitAndActivate}" 
+                    rendered="{!currentPage==3}">
+            </apex:commandButton>
+            &nbsp;
+            <apex:commandLink value="Cancel" action="{!cancel}" /> 
+          </apex:pageBlockButtons>
+          <!-- Page 1 header -->
+          <apex:pageBlockSection id="pbsPage1Header" columns="2" 
+                  collapsible="false"
+                  rendered="{!currentPage==1}">
+            <apex:facet name="header">
+              <h3>Step 1: Edit business policy</h3>
+              <h3 style="float: right;">Step 1 of 3</h3>
+            </apex:facet>
+            <apex:outputField value="{!policy.Name}"/> <!--  style="float: left;" -->
+            <apex:pageBlockSectionItem >
+              <apex:outputLabel value="Version" for="txtVersionNumber"/>
+              <apex:outputText id="txtVersionNumber" value="{!versionNumber} (draft)"/>
+            </apex:pageBlockSectionItem>
+            <apex:outputField value="{!policy.DecsOnD__Applies_to__c}"/> <!--  style="float: left;" -->
+            <apex:pageBlockSectionItem >
+              <apex:outputLabel value="" for="cmdDownload"/> <!-- Empty label for formatting purposes -->
+              <apex:commandLink id="cmdDownload" immediate="false"
+                  value="Download the most recent Excel"
+                  action="{!downloadPolicy}"
+                  reRender="formMain">
+              </apex:commandLink>
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+          <!-- Page 2 header -->
+          <apex:pageBlockSection id="pbsPage2Header" 
+                collapsible="false" 
+                columns="2"
+                rendered="{!currentPage==2}">
+            <apex:facet name="header">
+              <h3>Step 2: Select Test Data</h3>
+              <h3 style="float: right;">Step 2 of 3</h3>
+            </apex:facet>
+            <apex:outputField value="{!DecsOnD__Policy__c.Name}"/>
+            <apex:pageBlockSectionItem id="pbsecitmversion">
+                <apex:outputLabel value="Version"/>
+                  <apex:outputText value="{!versionNumber} (draft)"/>
+<!--                <apex:selectList id="version" value="{!versionNumber}" size="1">-->
+<!--                    <apex:selectOptions value="{!versions}"/>-->
+<!--                </apex:selectList>-->
+            </apex:pageBlockSectionItem>
+            <apex:outputField value="{!DecsOnD__Policy__c.DecsOnD__Applies_to__c}"/>
+            
+            
+            <!-- Execution log level dropdown  -->
+            <apex:pageBlockSectionItem id="pbsecExeLogLevel">
+                <apex:outputLabel value="Execution log level"/>
+<!--                <apex:form id="frmExeLogLevel"> -->
+                    <apex:inputField id="inputLogLogLevel" value="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}">
+                        <apex:actionSupport event="onchange" rerender="inputLogLogLevel" /> 
+                    </apex:inputField>
+<!--                </apex:form> -->
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+          <!-- Page 3 START -->
+          <apex:pageBlockSection id="pbsPage3" columns="1" 
+                    rendered="{!currentPage==3}" 
+                    collapsible="false">
+            <apex:facet name="header">
+              <h3>Step 3: Version details</h3>
+              <h3 style="float: right;">Step 3 of 3</h3>
+            </apex:facet>
+            <apex:panelGrid columns="2" id="theGrid" width="100%" 
+                        columnClasses="versionGridCol1,versionGridCol2">
+              <apex:outputLabel value="Version">
+              </apex:outputLabel>
+              <apex:outputText value="{!versionNumber}">
+              </apex:outputText>
+                    
+              <apex:outputLabel value="Label" style="width:100px;"/>
+              <apex:inputText value="{!version.Label}" style="width:100%;">
+              </apex:inputText>
+                    
+              <apex:outputLabel value="Notes">
+              </apex:outputLabel>
+              <apex:inputTextarea id="note" value="{!version.notes}" rows="6" style="width:99.78%;">
+              </apex:inputTextarea>
+            </apex:panelGrid>
+          </apex:pageBlockSection>
+          <!-- Page 3 END -->
+        </apex:pageBlock> <!-- pbMain -->          
+          <!-- Shared functions -->
+        <apex:actionFunction name="actionNextPage" 
+              action="{!nextPage}" 
+              rerender="pnHeader,pbMain,mainMessages,pbButtonsBottom" 
+              status="statusPageTransition"
+              oncomplete="onShowNextPage('{!currentPage}');"> 
+        </apex:actionFunction>
+        <apex:actionFunction name="actionPreviousPage" 
+              action="{!previousPage}" 
+              oncomplete="onShowPreviousPage('{!currentPage}');"
+              status="statusPageTransition"
+              rerender="pnHeader,pbMain,mainMessages,pbButtonsBottom"/>
+        <apex:actionFunction name="actionMarkAsyncOperationComplete" 
+              action="{!markAsyncOperationComplete}" 
+              oncomplete="onCompleteAsyncOperation();"
+              rerender="pbMain, pbButtonsBottom, pbBuildFailed, formExcelUpload">
+        </apex:actionFunction>          
+        <apex:actionFunction name="actionMarkAsyncUpdateSuccess" 
+                action="{!markAsyncUpdateSuccess}" 
+                oncomplete="onCompleteAsyncOperation();"
+                rerender="pbMain, pbButtonsBottom, pbBuildFailed, formExcelUpload">
+              <apex:param name="versionInfo" assignTo="{!versionJSON}" value="" />
+        </apex:actionFunction>          
+        <apex:actionFunction name="actionSaveDraft" 
+                action="{!uploadCSV}" 
+                rerender="formMain, formExcelUpload, pbButtonsBottom" 
+                timeout="90000"
+                status="saveDraftStatus" 
+                oncomplete="onCompleteSaveDraft({
+                    success: '{!NOT(isBuildFailed)}',
+                    asyncRequestContinuationURL : '{!asyncRequestContinuationURL}',
+                    version : jq.parseJSON('{!JSENCODE(versionJSON)}'),
+                    dpConfiguration : jq.parseJSON('{!JSENCODE(dpConfigJSON)}'),
+                    tableConfigurations : jq.parseJSON('{!JSENCODE(tableConfigsJSON)}'),
+                    showingTempDraft : ('{!showingTempDraft}'==='true')
+                })">
+              <apex:param name="updatedPolicyContent" assignTo="{!jsonMapCSVContents}" value="" />
+        </apex:actionFunction>
+<!--        <apex:actionFunction name="actionCompleteAddDecisionTable" 
+              action="{!refreshConfigurations}" 
+              rerender="formMain, pbButtonsBottom, pbBuildFailed, formExcelUpload"
+              oncomplete="onCompleteAddDecisionTable({
+                  success: '{!NOT(isBuildFailed)}',
+                  asyncRequestContinuationURL : '{!asyncRequestContinuationURL}',
+                  version : jq.parseJSON('{!JSENCODE(versionJSON)}'),
+                  dpConfiguration : jq.parseJSON('{!JSENCODE(dpConfigJSON)}'),
+                  tableConfigurations : jq.parseJSON('{!JSENCODE(tableConfigsJSON)}'),
+                  showingTempDraft : ('{!showingTempDraft}'==='true')
+              })">
+        </apex:actionFunction>
+-->        
+        <apex:actionStatus id="statusPageTransition">
+          <apex:facet name="start">
+            <c:Load BackColor="#FFFFFF;" borderColor="#efefef" height="30px" width="200px" 
+                      Message="Please wait..." imageUrl="/img/loading.gif"/> 
+          </apex:facet>
+        </apex:actionStatus>
+      </apex:form> <!-- formMain -->
+      <apex:pageBlock id="pbBuildFailed" html-style="display:none;">
+        <apex:form id="formBuildFailed"> <!-- must have form for the paginator -->
+          <!-- This section below must always be rendered -- otherwise it will display properly when needed -->
+          <!-- But it is initially hidden -->
+          <apex:pageBlockSection id="pbsBuildFailed" 
+                  title="Build Errors and Warnings"
+                  columns="1" 
+                  collapsible="true">
+            <!-- Build Failed Message Table -->
+            <apex:pageMessage summary="Policy failed to build. Please fix the errors below and try saving again." 
+                severity="error" strength="2" escape="false">
+            </apex:pageMessage>
+            <apex:outputText value="Build Errors and Warnings" 
+              style="color:#D74C3B;;font-size:13px;font-weight:bold;"/>
+            <apex:pageBlockTable id="buildFailedTable" border="1" 
+                style="border-style:solid;border-color:red;" cellpadding="3" width="100%"
+                value="{!displayListBuildMsg}" var="bm">
+                <apex:column >
+                      <apex:facet name="header">Item Type</apex:facet>
+                      <apex:outputText value="{!bm.itemType}"/>  
+                 </apex:column>
+                 <apex:column > 
+                      <apex:facet name="header">Worksheet</apex:facet> 
+                      <apex:outputText value="{!bm.worksheet}"/>
+                 </apex:column> 
+                 <apex:column >
+                      <apex:facet name="header">Row</apex:facet>
+                      <apex:outputText value="{!bm.rowNumberForDisplay}"/>
+                 </apex:column>
+                 <apex:column >
+                      <apex:facet name="header">Column</apex:facet>
+                      <apex:outputText value="{!bm.columnLabel}"/>
+                 </apex:column>
+                 <apex:column >
+                      <apex:facet name="header">Message</apex:facet>
+                      <img title="{!If( bm.severity=='WARNING' ,'warning' ,'error')}" src="/s.gif" 
+                            class="{!If( bm.severity=='WARNING' ,'warningSmall' ,'errorSmall')}" 
+                            alt="{!If( bm.severity=='WARNING' ,'warning' ,'error')}"/>
+                      &nbsp;
+                      <apex:outputText value="{!bm.message}"/>
+                 </apex:column>
+            </apex:pageBlockTable>
+                 <!-- @Sothea #545 : the paginator to build failed table to resolve Collection size limitation -->
+            <apex:outputpanel id="theBuildFailedPagination" 
+                        layout="block" styleClass="paginator" 
+                        rendered="{!showBuildMsgPaginator}">
+              <apex:actionFunction name="changePageSize" action="{!buildMsgPaginator.onPageSizeChange}" rerender="pbBuildFailed" status="theSelectPageSizeStatus">
+                  <apex:param name="firstParam" assignTo="{!buildMsgPaginator.pageSize}" value="" />
+              </apex:actionFunction>
+                      
+              <apex:actionFunction name="actionGoToFirstPage" action="{!buildMsgPaginator.firstPage}" rerender="pbBuildFailed"/>
+              <apex:actionFunction name="actionGoToPreviousPage" action="{!buildMsgPaginator.previous}" rerender="pbBuildFailed"/>
+              <apex:actionFunction name="actionGoToNextPage" action="{!buildMsgPaginator.next}" rerender="pbBuildFailed"/>
+              <apex:actionFunction name="actionGoToLastPage" action="{!buildMsgPaginator.lastPage}" rerender="pbBuildFailed"/>
+              <br/>
+              <apex:outputpanel id="pnDisplayRecordPerPage" styleClass="left">
+                    <apex:outputLabel value="Display"/>&nbsp;
+                    <apex:selectList value="{!buildMsgPaginator.pageSize}" size="1" 
+                          onchange="changePageSize(this.value);">
+                        <apex:selectOption itemValue="5" itemLabel="5"/>
+                        <apex:selectOption itemValue="10" itemLabel="10"/>
+                        <apex:selectOption itemValue="15" itemLabel="15"/>
+                        <apex:selectOption itemValue="20" itemLabel="20"/> 
+                    </apex:selectList>           
+                    <apex:outputLabel value="records per page"/>&nbsp;&nbsp; 
+                    <apex:actionStatus id="theSelectPageSizeStatus">
+                          <apex:facet name="start">   
+                          <apex:image url="/img/loading.gif"  /> 
+                          </apex:facet>
+                    </apex:actionStatus>
+              </apex:outputpanel>
+              <!-- TODO Disable buttons when appropriate -->
+              <apex:outputpanel id="pngPrevNext" styleClass="prevNextLinks">
+                <apex:outputpanel id="pnPrev">
+                  <apex:outputpanel styleClass="prevNext" >
+                    <apex:commandLink onclick="doApplyPaginatorAction(this, event, actionGoToFirstPage);">
+                      <apex:image value="/s.gif" styleClass="{!IF(buildMsgPaginator.hasPrevious, 'first', 'firstoff')}" title="First Page" alt="First Page"/>
+                    </apex:commandlink>   
+                  </apex:outputpanel> 
+                  <apex:outputpanel styleClass="prevNext">
+                    <apex:commandLink onclick="doApplyPaginatorAction(this, event, actionGoToPreviousPage);">
+                          <apex:image value="/s.gif" styleClass="{!IF(buildMsgPaginator.hasPrevious, 'prev', 'prevoff')}" title="Previous Page" alt="Previous Page"/>
+                    </apex:commandlink>
+                  </apex:outputpanel> 
+                </apex:outputpanel> 
+
+                <apex:outputpanel id="theRecordNum" style="color:black;" styleClass="prevNext">
+                  <apex:outputLabel value="{!buildMsgPaginator.fromRow} - {!buildMsgPaginator.toRow} of {!buildMsgPaginator.resultSize} Records"/>          
+                </apex:outputpanel>                       
+
+                <apex:outputpanel id="pnNext">
+                  <apex:outputpanel styleClass="prevNext">
+                    <apex:commandLink onclick="doApplyPaginatorAction(this, event, actionGoToNextPage);">
+                      <apex:image value="/s.gif" styleClass="{!IF(buildMsgPaginator.hasNext, 'next', 'nextoff')}" title="Next Page" alt="Next Page"/>
+                    </apex:commandlink>
+                  </apex:outputpanel>
+                  <apex:outputpanel styleClass="prevNext">
+                    <apex:commandLink onclick="doApplyPaginatorAction(this, event, actionGoToLastPage);">
+                      <apex:image value="/s.gif" styleClass="{!IF(buildMsgPaginator.hasNext, 'last', 'lastoff')}" title="Last Page" alt="Last Page"/>
+                    </apex:commandlink>
+                  </apex:outputpanel>
+                </apex:outputpanel>
+
+                <apex:outputpanel id="thePageNum" styleClass="right">
+                  <apex:outputLabel value="Page {!buildMsgPaginator.pageNumber} of {!buildMsgPaginator.totalPage}"/>
+                </apex:outputpanel>
+              </apex:outputpanel>
+              <!-- END -->
+              <br/><br/>
+            </apex:outputPanel> 
+          </apex:pageBlockSection> <!-- pbsBuildFailed -->
+        </apex:form> <!-- formBuildFailed -->
+      </apex:pageBlock> <!-- pbBuildFailed -->
+      <!-- Need to render this on all pages -- else the list fails to initialize -->
+<!--      <apex:pageBlock id="pbPage2" html-style="display:none;"> -->
+      <apex:outputPanel id="pnPage2" layout="block" style="display:none;">
+        <apex:pageBlock id="pbPage2"> 
+          <apex:pageBlockSection title="Select Test Data" 
+                  collapsible="false" 
+                  columns="1">
+            <apex:outputPanel layout="block">
+                <apex:enhancedList id="listview" rowsPerPage="10" type="{!policy.DecsOnD__Applies_to__c}" height="360" customizable="false">
+                </apex:enhancedList>
+            </apex:outputPanel>
+            <apex:outputPanel layout="block" style="text-align:center;padding-top:6px; padding-bottom:6px;">
+                <apex:form id="formActionButtons">
+                    <apex:commandButton id="btnRunTest" value="Run Test" 
+                          onclick="doRunTest(this, event);" style="margin-left:12px"/>
+                </apex:form>
+            </apex:outputPanel>
+          </apex:pageBlockSection>
+        </apex:pageBlock> <!-- pbPage2 -->
+        <apex:form id="frmResult">
+            <apex:actionFunction name="actionRunTest" action="{!tpc.runTest}" 
+                  oncomplete="onTestComplete({!tpc.versionNumber})"
+                  reRender="frmResult,formActionButtons">
+                <apex:param name="testIds" assignTo="{!tpc.testDataIds}" value="" />
+            </apex:actionFunction> 
+<!--            <apex:inputHidden id="testIds" value="{!tpc.testDataIds}"/> -->
+<!--            <apex:inputHidden id="version" value="{!tpc.versionNumber}"/> -->
+            <apex:pageblock title="Test Results" mode="edit" id="pbresult" rendered="{!tpc.lstResult!=null}">   
+                <apex:pageMessages id="theTestResultMsg"/>
+                <apex:pageBlockTable value="{!tpc.lstResult}" var="rslt" id="resultTable" rendered="{!tpc.lstResult.size != 0}">
+                    <apex:column value="{!rslt.name}">
+                        <apex:facet name="header">Name</apex:facet>
+                    </apex:column>
+                    <apex:column value="{!rslt.sta}">
+                        <apex:facet name="header">Status</apex:facet>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Actions</apex:facet>
+                        <apex:dataTable value="{!rslt.actions}" var="action" id="actionTable" frame="none" rules="rows" columns="1" width="100%">
+                            <apex:column width="100%">
+                                <apex:repeat value="{!action.messages}" var="message" id="msgList">
+                                    {!message}<br/>
+                                </apex:repeat>
+                            </apex:column>                      
+                        </apex:dataTable>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Execution Record</apex:facet>
+                        <apex:outputLink id="theLink" 
+                                onclick="doOpenExecutionRecordDetailWindow(this, event, {index : '{!rslt.recIndex}'});" 
+                                rendered="{!rslt.executionRecord!=null}">
+                                Details
+                        </apex:outputLink>
+                        <apex:inputHidden id="theRecIndex" value="{!rslt.recIndex}"/> 
+                            
+                      <!-- TODO Externalize the inline styles -->
+                      <div id="overlayBackgroundOverview{!rslt.recIndex}" class="overlayBackground" 
+                          style="width:100%; height:100%;display: none; left: 0px; top: 0px;position: fixed;">
+                      </div>
+                      <!-- TODO Extenalize this dialog -->
+                       <div id="InlineEditDialogOverview{!rslt.recIndex}" class="overlayDialog inlineEditDialog" 
+                              style="left:350px;top:90px;width:700px;position:fixed; display: none; visibility: visible; overflow:auto;">
+                            <div class="topRight" style="height:30px;">
+                                <div class="topLeft" style="height:20px;"> 
+                                    <img id="InlineEditDialogXOverview" class="dialogClose" src="/s.gif" 
+                                          onclick="doCloseExecutionRecordDetailWindow(this, event, {index : '{!rslt.recIndex}'});" 
+                                          onmouseout="this.className = 'dialogClose'" 
+                                          onmouseover="this.className = 'dialogCloseOn'"/>
+                                    <div id="popuptitleoverview"><h2 id="InlineEditDialogTitle">Policy Execution Record</h2></div>
+                                </div>
+                            </div>
+                            <div class="middle" style="height:370px;" >
+                                 <div id="InlineEditDialogContentOverview" class="innerContent"  >
+                                    <div class="activeField" >
+                                        <div class="inlineEditCompoundDiv" id="contentPopupPanelOverview" align="center" style="height:300px;">                           
+                                            <apex:pageBlock id="pb" >
+                                                <apex:pageBlockButtons location="bottom" style="text-align:center;" >
+                                                    <apex:commandButton value="Close" 
+                                                                onclick="doCloseExecutionRecordDetailWindow(this, event, {index : '{!rslt.recIndex}'});"/>
+                                                </apex:pageBlockButtons>
+                                                <div style="background-color:#84DBFF;padding-left:15px;height:20px;padding-top:4px;"><b>Policy Execution Record Detail</b></div> 
+                                                <div style="overflow:auto;height:250px;">
+                                                <apex:pageBlockSection >
+                                                    <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                        <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Invocation_Status__c.Label}" />
+                                                        <apex:outputField value="{!rslt.executionRecord.DecsOnD__Invocation_Status__c}" />
+                                                    </apex:pageBlockSectionItem>
+                                                    <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                        <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Main_object__c.Label}" />
+                                                        <apex:outputLink value="/{!rslt.mainObjId}">{!rslt.mainObjName}</apex:outputLink>
+                                                    </apex:pageBlockSectionItem>
+                                                    <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                        <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Action_Applied__c.Label}" />
+                                                        <apex:outputField value="{!rslt.executionRecord.DecsOnD__Action_Applied__c}" />
+                                                    </apex:pageBlockSectionItem>
+                                                 </apex:pageBlockSection> 
+                                                  <apex:pageBlockSection columns="1">
+                                                      <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                          <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Decision_Server_Messages__c.Label}"/>
+                                                          <apex:outputField value="{!rslt.executionRecord.DecsOnD__Decision_Server_Messages__c}" />
+                                                      </apex:pageBlockSectionItem>
+                                                  </apex:pageBlockSection> 
+                                             </div>
+                                            </apex:pageBlock>
+                                         </div>
+                                    </div>
+                                </div> 
+                                
+                            </div>
+                            <div class="bottomRight">
+                                <div class="bottomLeft"></div>
+                            </div>
+                       </div>
+                   </apex:column>     
+                </apex:pageBlockTable>                 
+            </apex:pageblock>
+        </apex:form>
+      </apex:outputPanel>
+      <!-- Content viewer/editor -->
+      <apex:pageBlock id="pbContentEditor">
+        <apex:pageBlockSection id="pbsContentEditor" 
+                title="Decision Tables"
+                columns="1" 
+                collapsible="false"
+                rendered="{!NOT(isLastPage)}">
+          <!-- Excel upload needs a separate form -- because of the inputFile element -->
+          <apex:form id="formExcelUpload" rendered="{!currentPage==1}">
+            <br/>
+            <apex:outputPanel >
+    <!--      <apex:pageBlock id="pbExcelUpload" rendered="{!currentPage==1}"> -->
+    <!--            <apex:variable value="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}" var="logLevel"/> -->
+                <!-- clear settings on controller -->
+                <!-- Result of this action is a page refresh -- continuation is handled in document onLoad function -->
+              <apex:actionFunction name="actionUploadExcel" 
+                        action="{!uploadExcel}" 
+                        timeout="90000">
+              </apex:actionFunction>
+              <apex:outputLabel value="Upload from Excel" for="uploadFromExcel" />
+              &nbsp;&nbsp;&nbsp;
+              <apex:inputFile id="uploadFromExcel" 
+                    styleClass="buttonLocation"
+                    value="{!policyFileContent}" 
+                    filename="{!policyFileName}" />
+              <apex:commandButton id="btnUploadExcel" 
+                    styleClass="buttonLocation"
+                    value="Upload" 
+                    onclick="doUploadExcel(this, event);" />
+        <!--            <apex:pageBlockSection id="pbs1"></apex:pageBlockSection> -->
+    <!--      </apex:pageBlock> -->
+            </apex:outputPanel>
+            <br/>
+          </apex:form> <!-- formExcelUpload -->
+          <!-- Showing business policy content as table -->
+          <apex:outputPanel id="pnPolicyEditorComponent" layout="block" style="display:none;">
+                <!-- Display error or/and warn message(invalid policy configuration such as invalid lookup type warning message) -->
+                <apex:outputPanel id="pnPolContentMessage" layout="block" style="display:none;"/> 
+                <!-- Showing business policy content as table -->
+                <apex:outputPanel id="pnPolContentTableWidget" layout="block"/>
+          </apex:outputPanel>
+          <!-- Div for showing loading spinner -->
+          <apex:outputPanel id="pnPolicyEditorOverlay" layout="block" style="height:437px;display:block;">
+                  <div id="divOverlay1" style="width:100%; height:437px;text-align:center; background-color: #FFFFFF; opacity:0.6;filter:alpha(opacity=60);z-index:99999;"></div>
+                  <apex:panelGrid id="pngTextLoading" columns="2" styleclass="colorbox">
+                      <apex:image value="/img/loading.gif" title="Refreshing"/>
+                      <apex:outputtext id="txtSpinnerMessage" value="Loading..." style="color: red;font-size:13px;"/>
+                  </apex:panelGrid>
+          </apex:outputPanel>  
+        </apex:pageBlockSection> <!-- pbsContentEditor -->
+      </apex:pageBlock> <!-- pbContentEditor -->          
+    <!-- Includes does not work reliably
+    <apex:include id="includePage2" pageName="DecsOnD__PolicyVersionTestPanel" rendered="{!currentPage==2}"/>
+    <apex:iframe id="theTestPanel" 
+          src="/apex/PolicyVersionTestPanel?id={!policy.Id}&version={!versionNumber}&callFrom=wizard" height="800px" scrolling="false"/>
+    -->
+    <apex:form id="formButtonsBottom">
+      <apex:pageBlock id="pbButtonsBottom" html-style="border-top-width:0px;">
+          <apex:pageBlockButtons id="pbbButtonsBottom" styleClass="buttonLocation" location="bottom">
+            <apex:commandButton id="btnPreviousPageBottom"
+                    value="Previous" 
+                    onclick="doGoToPreviousPage(this, event);" 
+                    rendered="{!AND(showNavigationButtons, NOT(isFirstPage))}" 
+                    disabled="{!disablePreviousPageButton}">
+            </apex:commandButton>
+<!--                    status="statusPageTransition" -->
+            &nbsp;
+            <apex:commandButton id="btnNextPageBottom" 
+                    value="Next" 
+                    onclick="doGoToNextPage(this, event);" 
+                    rendered="{!AND(showNavigationButtons, NOT(isLastPage))}" 
+                    disabled="{!disableNextPageButton}">
+            </apex:commandButton>
+<!--                    status="statusPageTransition" -->
+            &nbsp;
+            <apex:commandButton id="btnP1SaveDraftBottom" 
+                    value="Save Draft" 
+                    onclick="doSaveDraft(this, event);" 
+                    rendered="{!currentPage==1}">
+            </apex:commandButton>
+            <apex:commandButton id="btnP3SaveDraftBottom" 
+                    value="Save as Draft" 
+                    action="{!updateDraftVersionInfo}" 
+                    rendered="{!AND(currentPage==3, callFrom!='detail')}"> 
+            </apex:commandButton>
+            &nbsp; 
+            <apex:commandButton id="btnCommitBottom" 
+                    value="Commit" 
+                    action="{!commitVersion}"  
+                    rendered="{!currentPage==3}">
+            </apex:commandButton>
+            &nbsp;
+            <apex:commandButton id="btnCommitAndActivateBottom" 
+                    value="Commit and activate" 
+                    action="{!commitAndActivate}" 
+                    rendered="{!currentPage==3}">
+            </apex:commandButton>
+            &nbsp;
+            <apex:commandLink value="Cancel" action="{!cancel}" /> 
+          </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <!-- Action function to set build messages in step 1 -->
+        <apex:actionFunction name="actionSetBuildMessages" 
+                rerender="pbBuildFailed"
+                action="{!markAsyncOperationComplete}"
+                oncomplete="onBuildMessagesSet({
+                   buildFailed : '{!isBuildFailed}',
+                   buildMsgs : '{!listBuildMsgJSON}'
+                });">
+                <apex:param name="messages" assignTo="{!listBuildMsgJSON}" value="" />
+        </apex:actionFunction>
+      </apex:form>
+    </apex:outputPanel> <!-- pnMain -->
+
+    
+    <script>
+        var policyEditor,
+            testConsoleController,
+            onContentsUpdateSuccess,
+            onContentsUpdateComplete;
+
+        // =============================
+        // Save Draft support
+        // =============================
+        function doSaveDraft(btn, event){
+            try {
+                saveDraft(btn);
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+
+        function saveDraft(btn, callback){
+            var editedContents, pe = DecsOnD.SFDC.PageElements;
+            if (!policyEditor) return;
+            try {
+                editedContents = policyEditor.getAllContents(true);
+                if (editedContents) {
+                    console.log("Saving contents for tables: " + Object.keys(editedContents));
+                } else {
+                    editedContents = policyEditor.getAllContents(false);
+                    console.log("Saving contents for all tables");
+                    if (!editedContents) editedContents = {};
+                }
+                prepareUpload('Saving...', btn);
+                pe.getSaveDraftButtonsP1().val('Saving...');
+                // Save the callback in a global variable for now -- move to a controller later
+                onContentsUpdateSuccess = callback; 
+                actionSaveDraft(JSON.stringify(editedContents));
+            }
+            catch (ex) {
+                // TODO Show error to user
+                DecsOnD.logException(ex, "Failed to save draft");
+                DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), true);      
+                DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), true);  
+//                pe.getUploadExcelChooser().prop("disabled", false);                      
+//                DecsOnD.SFDC.enableButton(btn, true);      
+            }
+        }
+
+        function onCompleteSaveDraft(config) {
+            handleUploadResponse(config);
+        }
+
+        // =============================
+        // Upload Excel support
+        // =============================
+        function doUploadExcel(btn, event){
+            var pe = DecsOnD.SFDC.PageElements;
+            try {
+                console.log("Uploading Excel");
+//                showUploadStatus(true);
+                prepareUpload('Uploading...', btn);
+                pe.getUploadExcelButton().val("Uploading...");
+                actionUploadExcel();
+                console.log("Excel file uploaded -- waiting for results");
+                contentsUpdated = false; // TODO Remove global variable
+            }
+            catch (ex) {
+                // TODO Show error to user
+                DecsOnD.logException(ex, "Failed to upload Excel");
+                DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), true);      
+                DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), true);      
+//                pe.getUploadExcelChooser().prop("disabled", false);                      
+//                DecsOnD.SFDC.enableButton(btn, true);      
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+
+// Not used -- Excel upload leads to a page refresh
+/*        function onCompleteUploadExcel(config) {
+            config = DecsOnD.mergeObjects({reloadContents : true}, config);
+            handleUploadResponse(config);
+        }
+*/
+        // =============================
+        // Page navigation support
+        // =============================
+        function hasModifiedTables() {
+            return (policyEditor && (DecsOnD.arrayLength(policyEditor.getUpdatedTableNames())>0));
+        }
+
+        // Go to the next page. Save contents if they are modified
+        function doGoToNextPage(btn, event){
+            try {
+                if (hasModifiedTables() || (policyEditor && policyEditor.showingTempDraft)) {
+                    saveDraft(btn, function () {
+                        DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                        executePageTransition(btn, "Showing next page...", actionNextPage);
+                    });
+                } else{
+                    executePageTransition(btn, "Showing next page...", actionNextPage);
+                } 
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+        
+        function onShowNextPage(pageNum){
+            setPageElementVisibilityAfterTransition(pageNum);
+        }
+
+        // Go to the previous page
+        function doGoToPreviousPage(btn, event){
+            try {
+                executePageTransition(btn, "Showing previous page...", actionPreviousPage);
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+
+        function onCompleteAsyncOperation() {
+            var pe = DecsOnD.SFDC.PageElements;
+            // Disable Save Draft buttons after async operation
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), hasModifiedTables());
+            applyContentsUpdateCallbacks();
+        }
+
+        function onShowPreviousPage(pageNum){
+            setPageElementVisibilityAfterTransition(pageNum);
+        }
+
+        // Update visibility of page elements
+        function setPageElementVisibilityAfterTransition(pageNum) {
+            var pe = DecsOnD.SFDC.PageElements;
+            try {
+                console.log("Now showing page " + pageNum);
+                modifyPageElements(); // Standard changes
+                // Hack to get enhancedList to refresh properly
+                if ((pageNum==="2") && DecsOnD.isObject(ListViewport.instances)) {
+                    for (listKey in ListViewport.instances) {
+                      try {
+                        if (ListViewport.instances.hasOwnProperty(listKey) && (listKey.indexOf("pbPage2")>=0)) { 
+                          ListViewport.instances[listKey].refreshList();
+                        }
+                      }
+                      catch (e) {
+                        DecsOnD.logException(e, "Unable to refresh list: " + listKey);
+                      }
+                    }
+                }
+                DecsOnD.UI.setJQObjectVisibility(pe.getTestPanelBlock(), (pageNum==="2"));
+                if (pageNum==="3") {
+                    DecsOnD.UI.setJQObjectVisibility(pe.getDecisionTablesBlock(), false);
+                } else {
+                    reRenderPolicyEditor(pageNum==="1");
+                    DecsOnD.UI.setJQObjectVisibility(pe.getDecisionTablesBlock(), true);
+                }          
+            }
+            catch (e) {
+                DecsOnD.logException(e, "Unable to show all elements of page " + pageNum);
+            }
+        }
+
+        // =============================
+        // Support for uploading a new version
+        // Either from editor or Excel
+        // =============================
+        // Handle the response returned from the VF controller
+        // Determine if it is synchronous or async, and dispatch accordingly
+        function handleUploadResponse(config){
+            if (!config) return;
+            if (Boolean(config.asyncRequestContinuationURL)) {
+                DecsOnD.SFDC.showPolicyEditorOverlay(true, "Validating policy...");   
+                DecsOnD.SFDC.handleRemoteOperationResponse({
+                  status : "async",
+                  url : config.asyncRequestContinuationURL
+                }, 
+                {status : true}, 
+                function(result, event){
+                      if (event && event.status && result) {
+                          handleAsyncUploadResponse(result, config);
+                      } else {
+                          console.warn("Unable to handle async upload response");
+                          actionMarkAsyncOperationComplete();
+                      }
+                });                
+            } else {
+                handleUploadResponseImpl(config);
+            }
+        }
+
+        function extractBuildMessagesFromResponse(result){
+            if (!result) {
+                return null;
+            } else if (result.build_messages) {
+                return result.build_messages;
+            } else if (result.server_error) {
+                if (result.server_error.details) {
+                    if (result.server_error.details.buildMessages) {
+                        return result.server_error.details.buildMessages;
+                    } else {
+                        return [{message: result.server_error.details.fullMessage}];
+                    }
+                } else {
+                    return [{message: result.server_error.fullMessage}];
+                }
+            } else if (result.body) {
+                return extractBuildMessagesFromResponse(result.body);
+            }
+            return null;
+        }
+
+        // Handle an async response to an upload request
+        function handleAsyncUploadResponse(result, config){
+            if (!result) {
+                config = DecsOnD.mergeObjects(config, {
+                    success : false
+                });
+            } else if (result.body) {
+                handleAsyncUploadResponse(result.body, config);
+            } else if (result.version) {
+                config = DecsOnD.mergeObjects(config, {
+                    success : true,
+                    version : result.version
+                });
+            } else {
+                config = DecsOnD.mergeObjects(config, {
+                    success : false
+                });
+                config.buildMessages = extractBuildMessagesFromResponse(result);
+            }
+            handleUploadResponseImpl(DecsOnD.mergeObjects(config, {async: true}));
+        }
+
+        // Apply the response to an upload request        
+        function handleUploadResponseImpl(config){
+            var pe = DecsOnD.SFDC.PageElements,
+                buildSucceeded = config && config.success;            
+            if (!config) return;
+//            buildFailed = !config.success && DecsOnD.isObject(config.buildMessages);
+            console.log("Policy update " + ((buildSucceeded)?"succeeded":"FAILED"));
+            initializeContext();
+            if (buildSucceeded || config.reloadContents) clearContentsUpdated();
+            if (!buildSucceeded || !policyEditor || config.reloadContents) {                
+                // On failure or Excel upload, rebuild the entire editor
+                policyEditor = initializePolicyEditorComponent(
+                    {
+                        version : config.version,
+                        dpConfiguration : config.dpConfiguration,
+                        tableConfigurations : config.tableConfigurations,
+                        showingTempDraft : config.showingTempDraft
+                    },
+                    !buildSucceeded // Don't render yet if the build failed
+                ); 
+                if (!buildSucceeded) {
+                    if (DecsOnD.isArray(config.buildMessages)) {
+                      console.log("Build failed. Found " + config.buildMessages.length + " issues");
+                      actionSetBuildMessages(JSON.stringify(config.buildMessages));
+                    } else if (DecsOnD.isObject(config.buildMessages)) {
+                      console.log("Build failed. Found build messages in object form");
+                      actionSetBuildMessages(JSON.stringify([config.buildMessages]));
+                    } else {
+                      console.log("Build failed. No further details available");
+                      if (config.async) actionMarkAsyncOperationComplete();
+                      DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                    }
+                } else {
+                    if (config.reloadContents) console.log("Forcing reload of policy contents");
+                    DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                }
+            } else if (typeof onContentsUpdateSuccess !== "function") {
+                // If a callback is set, skip rerendering -- the callback should do it
+                // Otherwise, just rerender the widget with the contents we already have
+                // unless we were instructed to reload them (for instance in the Excel case)
+                policyEditor.render(pe.getTableWidget());
+                DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+            }
+            // Tell the controller about our update in the async case
+            if (config.async) {
+                if (buildSucceeded) {
+                    actionMarkAsyncUpdateSuccess(JSON.stringify(config.version));
+    //            } else if (!DecsOnD.isObject(config.buildMessages)) {
+                } else {
+                    // No need to update server here, already done above 
+                    onContentsUpdateSuccess = null; // Skip success callback if there is a failure
+                }
+            } else {
+                applyContentsUpdateCallbacks();
+            }
+        }
+
+        function applyContentsUpdateCallbacks() {
+            if (typeof onContentsUpdateSuccess === "function") {
+                onContentsUpdateSuccess();
+            } else if (typeof onContentsUpdateComplete === "function") {
+                onContentsUpdateComplete();
+            }
+            onContentsUpdateSuccess = null;
+            onContentsUpdateComplete = null;
+        }
+
+        function onBuildMessagesSet(data) {
+            var pe = DecsOnD.SFDC.PageElements;
+            console.log("Build messages were set. Build failed: " + data.buildFailed);
+            console.log("Msgs: " + data.buildMsgs);
+            if (policyEditor) policyEditor.render(pe.getTableWidget());
+            DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+            DecsOnD.UI.setJQObjectVisibility(pe.getBuildFailedBlock(), true); 
+            // TODO Verify if this is appropriate. We should have reverted to previous saved version, so maybe not  
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), true);    
+        }
+
+        // Build message paginator support
+        function doApplyPaginatorAction(element, event, action) {
+            try {
+                if (typeof action==="function") action();
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+
+        // =============================
+        // Support for adding new decision table
+        // =============================
+        function onCompleteAddDecisionTable(config) {
+            policyEditor = initializePolicyEditorComponent(
+                {
+                    version : config.version,
+                    dpConfiguration : config.dpConfiguration,
+                    tableConfigurations : config.tableConfigurations,
+                    showingTempDraft : config.showingTempDraft
+                },
+                false 
+            ); 
+            DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+        }
+
+        // =============================
+        // Support for running tests
+        // =============================
+        function doRunTest(btn, event){
+            var pe = DecsOnD.SFDC.PageElements;
+            try {
+                if (testConsoleController) {                    
+                    testConsoleController.doRunTest(btn, function(selIds) {
+                        try {
+                          console.log("Selected IDs: " + selIds);
+                          disableActions();
+                          actionRunTest(selIds);
+                        }
+                        catch (exc) {
+                            DecsOnD.logException(exc, "Exception while running test");
+                            DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), true);      
+                            DecsOnD.SFDC.enableButton(pe.getPreviousPageButtons(), true);      
+                        }
+                    });
+                }
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+        
+        function onTestComplete(versionNumber) {
+            var pe = DecsOnD.SFDC.PageElements;
+            DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), true);      
+            DecsOnD.SFDC.enableButton(pe.getPreviousPageButtons(), true);      
+            if (testConsoleController) {
+                console.log("Tests completed. Version number: " + versionNumber);
+                testConsoleController.onTestComplete(versionNumber);
+            }
+        }
+        
+        function doOpenExecutionRecordDetailWindow(btn, event, options) {
+            try {
+                if (testConsoleController) {
+                    testConsoleController.doOpenExecutionRecordDetailWindow(options?options.index:null);
+                }
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+
+        function doCloseExecutionRecordDetailWindow(btn, event, options){
+            try {
+                if (testConsoleController) {
+                    testConsoleController.doCloseExecutionRecordDetailWindow(options?options.index:null);
+                }
+            }
+            finally {
+                if (event) event.preventDefault();
+            }
+        }
+        
+        // =============================
+        // Misc support methods
+        // =============================
+        function disableActions(btn) {
+            var pe = DecsOnD.SFDC.PageElements;
+//            if (btn) DecsOnD.SFDC.enableButton(btn, false);      
+            DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), false);      
+            DecsOnD.SFDC.enableButton(pe.getPreviousPageButtons(), false);      
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), false);      
+            DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), false);      
+//            pe.getUploadExcelChooser().prop("disabled", true);
+        }
+
+        function prepareUpload(spinnerMsg, btn) {
+            var pe = DecsOnD.SFDC.PageElements;
+            if (!Boolean(spinnerMsg)) spinnerMsg = 'Uploading...';
+            DecsOnD.SFDC.showPolicyEditorOverlay(true, spinnerMsg);
+            disableActions(btn);
+            DecsOnD.UI.setJQObjectVisibility(pe.getBuildFailedBlock(), false);
+        }
+
+        function executePageTransition(btn, msg, actionFunc) {
+            disableActions(btn);
+            console.log(msg);
+            if (typeof actionFunc==="function") actionFunc();
+        }
+
+        function reRenderPolicyEditor(editable) {
+            var pe = DecsOnD.SFDC.PageElements;
+            if (policyEditor) {
+                // Hack to get tables to display properly in editable/not editable mode
+                // TODO See if we need to do more than just setting this flag
+                policyEditor.isEditable = editable;
+                for (var i = 0; i < policyEditor.policyTables.length; i++) {
+                  var policyTable = policyEditor.policyTables[i];
+                  policyTable.isEditable = editable;
+                }
+                policyEditor.render(pe.getTableWidget());   
+            }
+            DecsOnD.SFDC.showPolicyEditorOverlay(false);
+            DecsOnD.UI.setJQObjectVisibility(pe.getUploadExcelForm(), editable);
+            DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), editable);
+//            pe.getUploadExcelChooser().prop("disabled", !editable);
+            DecsOnD.UI.setJQObjectVisibility(pe.getBuildFailedBlock(), false); 
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), false);    
+        }
+
+        function clearContentsUpdated() {
+            var pe = DecsOnD.SFDC.PageElements;
+            //clearing grid content update state
+            if (policyEditor) policyEditor.clearContentsUpdated();
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), false);      
+        }
+
+        function handleAsyncResponse(continuationURL, callback){
+            try {
+                console.log("Handling async request response [URL: " + continuationURL + "]");
+//                showUploadStatus(true);
+//                DecsOnD.SFDC.showPolicyEditorOverlay(true);   
+                DecsOnD.SFDC.handleAsyncResponseImpl(continuationURL, function(result, event){
+//                console.log("Async response received: " + result);
+                    // TODO Handle exception results and display build errors
+//                    showUploadStatus(false);
+                    if (typeof callback==="function") {
+                        callback(result, event);
+                    } else {
+                        DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                        actionMarkAsyncOperationComplete();
+                    }
+                }, 1000, 300000);                
+                return true;
+            }
+            catch (e) {
+                DecsOnD.logException(e, "Exception while handling async request");
+                showUploadStatus(false);
+                DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                return false;
+            }
+        
+        }
+        
+    // =============================
+    // Callbacks for editor widget
+    // =============================
+   function acquireLockCB(editorWidget, action, updateDB, callback){
+        var pe = DecsOnD.SFDC.PageElements,
+            policyId = editorWidget.sfdcPolicyObj.Id;
+        if ((action === "openConfigEditor") || (action === "openNewTableCreator")) {
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), false);      
+            DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), false);
+            DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), false);
+//            pe.getUploadExcelChooser().prop("disabled", true);
+        } else if (action === "cancelConfigEditing") {
+            DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), hasModifiedTables());      
+            DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), true);
+            DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), true);
+//            pe.getUploadExcelChooser().prop("disabled", false);                      
+        }
+        return DecsOnD.SFDC.acquireLockCB(editorWidget, action, updateDB, function(isAcquired, result){
+            if (isAcquired){
+                // Former implementation. TODO: Re-enable what we need
+                // editorWidget.sfdcPolicyObj = DecsOnD.mergeObjects(editorWidget.sfdcPolicyObj, result.policy);
+            } else {
+                window.top.location.href='/apex/PolicyLockedWarningMessage?id='+policyId+'&idle='+result.isIdle+'&updated='+result.isModifiedByOther;
+            }          
+            callback(isAcquired, (result?result.message:null));
+        });
+    }
+
+    function contentsUpdatedCB(editorWidget, grid, action, rowIndex, columnIndex, oldValue, newValue, row, isAcquiredLock){
+        var pe = DecsOnD.SFDC.PageElements;
+        if (!editorWidget.isEditable) console.warn("contentsUpdatedCB called for widget that is not editable");
+        console.log("[" + grid.name + "] Contents updated");    
+        // Activate Save Draft button
+        DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), true);      
+        DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), true);      
+    }
+
+    // TODO Deprecate isSaveToServer -- this code (or the VF controller) should determine what needs saving or not 
+    function tableConfigsUpdatedCB(editorWidget, mapEditedTableConfigs, mapEditedNonStructuralValues, 
+                                          version, isSaveToServer, callback){
+        var pe = DecsOnD.SFDC.PageElements,
+            buildMessages,
+            remoteActionCalled = DecsOnD.SFDC.tableConfigsUpdatedCB(editorWidget, mapEditedTableConfigs, mapEditedNonStructuralValues, 
+                  version, isSaveToServer, 
+                  function (success, result) {
+                      if (success) {
+                          console.log("Config update succeeded");
+                          DecsOnD.UI.setJQObjectVisibility(pe.getBuildFailedBlock(), false); 
+                          if (isSaveToServer) {
+                              actionMarkAsyncUpdateSuccess(JSON.stringify(result));
+                          } else {
+                              actionMarkAsyncOperationComplete();
+                          }
+                      } else if (DecsOnD.isObject(result)) {
+                          buildMessages = extractBuildMessagesFromResponse(result);
+                          if (!buildMessages) {
+                              console.log("Config update failed -- no build messages. Error: " + result.message);
+                              // TODO Display message -- maybe create a dummay build message? 
+                          } else {
+                              actionSetBuildMessages(JSON.stringify(buildMessages));
+                              console.log("Build messages were set: " + buildMessages);
+                              if (policyEditor) policyEditor.render(pe.getTableWidget());
+                              DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                              DecsOnD.UI.setJQObjectVisibility(pe.getBuildFailedBlock(), true); 
+                          }
+                      } else {
+                          console.log("Config update failed -- Error: " + result);
+                      }
+                      if (typeof callback==="function") callback(success, result);
+                      // Save Draft is always disabled -- even on success we just saved the draft
+                      DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), false); 
+                      DecsOnD.SFDC.enableButton(pe.getUploadExcelButton(), true); 
+                      // This one is enabled if config was successfully saved
+                      DecsOnD.SFDC.enableButton(pe.getNextPageButtons(), success);      
+                      DecsOnD.SFDC.showPolicyEditorOverlay(false); 
+                  });
+        if (remoteActionCalled) {
+            DecsOnD.SFDC.showPolicyEditorOverlay(true); 
+        }
+        return remoteActionCalled;
+    }
+
+
+    // Display message to the user
+    function displayWidgetMessage(editorWidget, severity, msg) {
+        // No need to log, that's already done
+        console.log(severity + ": " + msg);
+    }
+
+    // =============================
+    // Support for policy content editor
+    // =============================
+
+    // Make sure the SFDC constant is initialized
+    DecsOnD.SFDC = DecsOnD.mergeObjects(DecsOnD.SFDC, {});
+
+    // Initialize callbacks and names of remote action functions
+    function initializeContext(){
+        console.log("Initializing context");
+        DecsOnD.SFDC.RemoteActionNames = DecsOnD.mergeObjects(
+            DecsOnD.SFDC.RemoteActionNames,
+            {
+                // Viewing
+                "loadTableContents" : "{!$RemoteAction.PolicyContentEditorWizardController.getAllTableContents}",
+                "getPicklistValues" : "{!$RemoteAction.PolicyContentEditorWizardController.getPicklistValues}",
+                "getAvailableColumns" : "{!$RemoteAction.PolicyContentEditorWizardController.getAvailableColumns}",
+                "getAvailableObjects" : "{!$RemoteAction.PolicyContentEditorWizardController.getAvailableObjects}",
+                "getAvailableFields" : "{!$RemoteAction.PolicyContentEditorWizardController.getAvailableFields}",
+                "validateAndCompleteLookups" : "{!$RemoteAction.PolicyContentEditorWizardController.validateAndCompleteLookupValues}",
+                // getLookupValueCB: handled without remote action
+                // Editing
+                "acquireLock" : "{!$RemoteAction.PolicyContentEditorWizardController.acquireLock}",
+                "releaseLock" : "{!$RemoteAction.PolicyContentEditorWizardController.releaseLock}",
+                "updateTableConfigurations" : "{!$RemoteAction.PolicyContentEditorWizardController.updateTableConfigurations}",
+                "getAsyncResponse" : "{!$RemoteAction.PolicyContentEditorWizardController.getAsyncResponse}"
+
+            });
+        DecsOnD.SFDC.Callbacks = DecsOnD.mergeObjects(
+            DecsOnD.SFDC.Callbacks,
+            {
+    //                    loadTableContentsCB : loadTableContentsCB_Custom,
+//                acquireLockCB : DecsOnD.SFDC.acquireLockCB,
+                acquireLockCB : acquireLockCB,
+                releaseLockCB : DecsOnD.SFDC.releaseLockCB,
+                contentsUpdatedCB : contentsUpdatedCB,
+                tableConfigsUpdatedCB : tableConfigsUpdatedCB,
+                getAvailableObjectsCB : DecsOnD.SFDC.getAvailableObjectsCB,
+//                getAvailableColumnsCB : getAvailableColumnsCB,
+                // FIXME Remove this shortcut when JavaScript is updated
+//                decisionTableAddedCB : function(editor, tableName, newDtConfig, version, insertBefore, createDefaultRule, callback) {
+//                    return decisionTableAddedCB(editor.editorWidget, tableName, newDtConfig, version, insertBefore, createDefaultRule, callback);
+//                },
+//                multipleTableConfigsUpdatedCB : tableConfigsUpdatedCB, // Backward compatibility. TODO Remove
+    //                    releaseLockCB : releaseLockCB_Custom,
+    //                    getPicklistValuesCB : getPicklistValuesCB,
+    //                    getLookupValueCB : getLookupValueCB,
+    //                    getAvailableColumnsCB : getAvailableColumnsCB,
+    //                    validateAndCompleteLookupsCB : validateAndCompleteLookupsCB,
+    //                    tableConfigUpdatedCB : tableConfigUpdatedCB,
+                sfdcDisplayMessage : displayWidgetMessage
+            });
+
+        // Use functions instead of variables
+        // Certain DOM objects can get recreated dynamically with new IDs
+        // With a function they will be requeried every time
+        // Slightly less effciient but much more reliable
+        DecsOnD.SFDC.PageElements = DecsOnD.mergeObjects(DecsOnD.SFDC.PageElements, {
+            getDecisionTablesBlock : function(){return DecsOnD.SFDC.findVFObj("pbContentEditor");},
+            getPolicyEditor : function(){return DecsOnD.SFDC.findVFObj("pnPolicyEditorComponent");},
+            getPolicyEditorOverlay : function(){return DecsOnD.SFDC.findVFObj("pnPolicyEditorOverlay");},
+            getBuildFailedBlock : function(){return DecsOnD.SFDC.findVFObj("pbBuildFailed").parents(".apexp");},
+//            getTestPanelBlock : function(){return DecsOnD.SFDC.findVFObj("pbPage2").parents(".apexp");},  
+            getTestPanelBlock : function(){return DecsOnD.SFDC.findVFObj("pnPage2");},  
+            getTableWidget : function(){return DecsOnD.SFDC.findVFObj("pnPolContentTableWidget");},
+            getSaveDraftButtonsP1 : function(){return DecsOnD.SFDC.findVFObj("btnP1SaveDraft").add(DecsOnD.SFDC.findVFObj("btnP1SaveDraftBottom"));},
+            getUploadExcelChooser : function(){return DecsOnD.SFDC.findVFObj("uploadFromExcel");},
+            getUploadExcelButton : function(){return DecsOnD.SFDC.findVFObj("btnUploadExcel");},
+            getUploadExcelForm : function(){return DecsOnD.SFDC.findVFObj("formExcelUpload");},
+            getNextPageButtons : function(){return DecsOnD.SFDC.findVFObj("btnNextPage").add(DecsOnD.SFDC.findVFObj("btnNextPageBottom"));},
+            getPreviousPageButtons : function(){return DecsOnD.SFDC.findVFObj("btnPreviousPage").add(DecsOnD.SFDC.findVFObj("btnPreviousPageBottom"));},
+            getRunTestButton : function(){return DecsOnD.SFDC.findVFObj("btnRunTest");}
+        });
+
+        // Init JavaScript controller for Test Console
+        testConsoleController = new DecsOnD.SFDC.TestConsoleController({
+            cancelButtonName : "" // No cancel button on this page
+        });
+
+        return DecsOnD.SFDC.PageElements;
+    };
+
+    function modifyPageElements() {
+        var jq = DecsOnD.initJQ(),
+            buttonsBlock = DecsOnD.SFDC.findVFObj("pbButtonsBottom");
+        buttonsBlock.children(".pbBody").hide();
+        buttonsBlock.css("border-top-width", "0px");
+        // Hide duplicate footer caused by apex:include
+//        jq(".bPageFooter .noTableFooter").hide();
+        // Hide toggle between chatter and list view
+//        jq("div.topNavTab > div.toggleButton").hide();
+    }
+    // =============================
+    // =============================
+    // Main function called when page is fully loaded
+    // =============================
+    // =============================
+    $(function() {
+        // Fix methods that are broken in core components
+        applyPatches();   
+
+        var jq = DecsOnD.initJQ(),
+            continuationURL = "{!asyncRequestContinuationURL}",
+            operationInProgress = "{!operationInProgress}",
+            dpConfiguration = jq.parseJSON("{!JSENCODE(dpConfigJSON)}"),
+            tableConfigurations = jq.parseJSON("{!JSENCODE(tableConfigsJSON)}"),
+            version = jq.parseJSON("{!JSENCODE(versionJSON)}"),
+            pe = initializeContext();
+
+        // Handle async response from Excel upload
+        // Cannot be done the usual way since it involves a page refresh
+        if (Boolean(continuationURL)) {
+            try {
+                console.log("Editor wizard page loaded with pending async request [URL: " + continuationURL + "]");
+  //                showUploadStatus(true);
+                DecsOnD.SFDC.showPolicyEditorOverlay(true, "Validating policy...");   
+                DecsOnD.SFDC.handleAsyncResponseImpl(continuationURL, function(result, event){
+                  DecsOnD.SFDC.processRemoteOperationResponse(result, event, function(result, event){
+                      handleAsyncUploadResponse(result, {
+                          reloadContents : true,
+                          version : version,
+                          dpConfiguration : dpConfiguration,
+                          tableConfigurations : tableConfigurations,
+                          showingTempDraft : false
+                      });
+                })
+              }, 1000, 300000);                
+            }
+            catch (e) {
+                DecsOnD.logException(e, "Exception while handling async request");
+  //                showUploadStatus(false);
+                DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+            }
+        } else {
+            // Patch 1.14.62 Show build errors after synchronous Excel upload
+            if ("{!isBuildFailed}"=="true") {
+                console.log("Editor wizard page loaded after build failure");
+                DecsOnD.SFDC.showPolicyEditorOverlay(false);   
+                DecsOnD.UI.setJQObjectVisibility(pe.getBuildFailedBlock(), true); 
+            } else {
+                console.log("Editor wizard page loaded in normal mode");
+            }
+            // FIXME Need to handle build failure in Excel upload case
+            // Initialize component
+            if ("{!currentPage}"!=="3") {
+                policyEditor = initializePolicyEditorComponent({
+                    version : version,
+                    dpConfiguration : dpConfiguration,
+                    tableConfigurations : tableConfigurations
+                });
+                // Call once to initialize cache
+                // TODO Remove this temp fix
+                DecsOnD.SFDC.getAvailableObjectsCB(policyEditor, function(){});
+            }
+            //hide misc. page elements that cannot be hidden any other way
+            modifyPageElements();
+
+            if ("{!callFrom}"=="detail") {
+                DecsOnD.UI.setJQObjectVisibility(pe.getDecisionTablesBlock(), false);
+            } else {
+                //disable Save Draft button by default  
+                DecsOnD.SFDC.enableButton(pe.getSaveDraftButtonsP1(), false);      
+            }
+        }
+//        DecsOnD.UI.setVisibility(pe.getTestPanelBlock(), false);
+    });
+
+    // =============================
+    // =============================
+    // Functions to be moved to separate component in future
+    // =============================
+    // =============================
+    function initializePolicyEditorComponent(editorConfig, skipRendering) {
+        console.log("initializePolicyEditorComponent called");
+        var jq = DecsOnD.initJQ(),
+            policyObj = {
+                Id : "{!policy.Id}",
+                Name : "{!JSENCODE(policy.Name)}",
+                Applies_to__c : "{!JSENCODE(policy.Applies_to__c)}",
+                DecsOnD__Applies_to__c : "{!JSENCODE(policy.Applies_to__c)}",
+                // The following are not required in JS but need to be present for controller code to work
+                Status__c : "{!JSENCODE(policy.Status__c)}",
+                DecsOnD__Revision__c : "{!policy.DecsOnD__Revision__c}",
+                DecsOnD__LockedBy__c : "{!policy.DecsOnD__LockedBy__c}",
+                DecsOnD__LockExpires__c : "{!policy.DecsOnD__LockExpires__c}"
+            };
+        // Set some default values to the config
+        // Can be overwritten by the caller
+        editorConfig = jq.extend(
+            {
+                // TODO Clarify relationship between editMode and hasEditRight
+                hasEditRight : ("{!userCanEditPolicy}"==="true"),
+                locale : "{!userLocale}",
+                isEditable : ("{!isEditable}"==="true"),
+                // TODO Fix this...
+//                    disableConfigEditor : ("{!isConfigEditable}"==="false"),
+                disableConfigEditor: ("{!isEditable}"!=="true"),
+                version: new VersionDescriptor(), // Default to avoid NPE. Should be overwritten by editorConfig
+                showingTempDraft : ("{!showingTempDraft}"==="true") // Are we showing a temporary version that does not exist on the server?
+            }, 
+            editorConfig); 
+        PolicyEditorWidget.imageBasePath = "{!URLFOR($Resource.JS_PolicyEditorWidget, 'images')}";
+        DesTableConfigWidget.imageBasePath = "{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'images')}"
+        return DecsOnD.SFDC.initializePolicyEditorComponent(policyObj, editorConfig, skipRendering);
+    }
+
+    // =============================
+    // Temp patches that should be moved into static resources
+    // =============================
+    function applyPatches() {
+        if (typeof DecsOnD.SFDC.applyPatches==="function") DecsOnD.SFDC.applyPatches();
+
+// ------------------
+// ------------------
+// VALIDATED & MERGED
+// ------------------
+// ------------------
+/* 
+DecsOnDDateTimeCellValidator.prototype = new CellValidator;
+
+DecsOnDColumn.prototype.isValid = function(value, element, skipValidate) {
+  // TODO Put various check for aggregate and NOT expressions here, rather than in various cell validators
+    var column = this, editableGrid = column.editablegrid;
+    for (var i = 0; i < column.cellValidators.length; i++){ 
+        if (!column.cellValidators[i].isValid(value,element, skipValidate)) {
+          return editableGrid.isValidExpression(column, value, element);
+        }
+    }
+    return true;
+};
+DecsOnDEditableGrid.prototype.isValidExpression = function(column, value, element) {
+    // TODO Much more in depth check, including check that the input parameter and field exist, and that the datatype matches
+  // Also cover composite expressions
+    return (value && (value.toString().trim().startsWith("field:") || value.toString().trim().startsWith("computed:")));
+};
+
+DecsOnDSelectCellEditor.prototype.getEditor = function (element, value)
+{  
+  var editablegrid = this.editablegrid, 
+    cellEditor = this,  editor = null,
+        enumProvider = DecsOnD.isObject(this.column)?this.column.enumProvider:null, 
+        origOptionValuesForEdit = DecsOnD.isObject(enumProvider)?enumProvider.getOptionValuesForEdit:null;
+
+      function getOptionValuesForEditFunc(grid, column, rowIndex) {
+            var optionValues = origOptionValuesForEdit?origOptionValuesForEdit(grid, column, rowIndex):null,
+                actualValues = editablegrid.getSplitAndTrimmedValues(value),
+                invalidValues = [],
+                mergedValues = [];
+                
+            if (optionValues==null) optionValues = column.optionValues;
+            if (DecsOnD.arrayLength(optionValues)<=0) optionValues = [];
+            invalidValues = DecsOnDEditableGrid.getInvalidValues(column, actualValues, optionValues.map(function(val) {
+                return val.value;
+            }), false);//!grid.caseSensitiveValidation);//@Sothea #396 should not case to lower case, otherwise invalid drop-down option will be improperly created 
+            
+            
+          //@Sothea 140529 : 
+            // JVG 1.9 aggregate options can be shown even if value is required -- but not for action columns
+          //@Sothea 140528 : Add "[empty]" and "[not empty]" option if the "show_aggregate_options" field is true for the associated Restriction            
+          if (!column.action && DecisionTableConfiguration.isShowAggregateOptions(column.restriction)){
+                  if (!optionValues.some(function(optionVal) {
+                      return DecsOnD.isObject(optionVal) && (typeof optionVal.value==="string") && (optionVal.value.trim()==DecsOnD.Constants.VALUE_EMPTY);
+                  })) {
+                    optionValues.push({
+                          value : DecsOnD.Constants.VALUE_EMPTY,
+                          label : DecsOnD.Constants.LABEL_EMPTY
+// JVG Story #419 Disable [not empty] option
+//                        },{
+//                            value : DecsOnD.Constants.VALUE_NOT_EMPTY,
+//                            label : DecsOnD.Constants.LABEL_NOT_EMPTY
+                      });
+                  } 
+          }
+            //Add blank option if value is optional (only for single picklist)
+            // JVG Patch 1.8.23 If match == null consider it a single match 
+          //@Sothea #445 fix DEFECT: picklist value is required for action columns, even if it is configured as optional
+            if (!DecisionTableConfiguration.isValueRequired(column.required)){ //} && !column.action) {
+              if ((DecsOnD.isNull(column.match) || DecisionTableConfiguration.isSingleMatch(column)) && !optionValues.some(function(optionVal) {
+                    return DecsOnD.isObject(optionVal) && (typeof optionVal.value==="string") && (optionVal.value.trim().length==0);
+                })) {
+                    // TODO Also add additional values for 'any' or 'none'
+                optionValues.push({
+                            value : "",
+                            label : DecsOnD.Constants.LABEL_ANY_VALUE
+                        });
+                }
+            }
+            
+            if (DecsOnD.arrayLength(invalidValues)>0) {
+                //mergedValues = optionValues.slice(0); // make copy
+                invalidValues.forEach(function(val) {
+                   //@Sothea #396 set invalid value in an unnamed group
+                  mergedValues.push({value : val, label : val, group:""}); // We don't know anything about the label, so just use the value
+                });
+                //@Sothea #396 add invalid value to the beginning
+                optionValues = mergedValues.concat(optionValues);
+            }
+            //@Sothea #396 group the date periods
+            if (DecisionTableConfiguration.isSpecialSource(column.restriction)){
+              optionValues = DatePeriodManager.getDatePeriodsByGroup(optionValues);
+            }
+            return optionValues;
+        }; 
+  
+    //@Vichet 141028 backup to determine whether the value should convert to NOT expression 
+  this.originalValue = value;
+  //@Vichet 141028 extract the NOT expression value if it is
+  value = DecsOnDEditableGrid.getNOTExpressionValues(value);  
+  
+  if (DecsOnD.isObject(editablegrid) && DecsOnD.isObject(enumProvider)) {
+        enumProvider.getOptionValuesForEdit = getOptionValuesForEditFunc;
+    }
+
+  // Call baseclass
+    this.adaptHeight = false;
+    editor = SelectCellEditor.prototype.getEditor.call(this, element, value);
+    
+    //@Vichet 141028 When a new value is selected we apply it
+    editor.onchange = function(event) { 
+        var select = this,
+            tableCell = select.element,
+            celleditor = select.celleditor,
+            newValue = cellEditor.getEditorValue(select);
+        select.onblur = null; 
+        if (!celleditor.applyEditing(tableCell, newValue)) {
+          // JVG 170211 Clear editor (and maybe other editor) if not valid
+          // TODO Provide feedback to the user in some way, rather than just not doing anythung
+          console.warn("Unable to apply picklist value: " + newValue);
+          celleditor.cancelEditing(tableCell); 
+        } 
+    };
+  
+    // Restore original provider
+    if (enumProvider) {
+        enumProvider.getOptionValuesForEdit = origOptionValuesForEdit;
+    }
+    return editor;
+};
+
+MatchOperatorManager.getDefaultMatchOperator = function (column){
+  var defaultMatchOperator = null,
+    availableOperators = MatchOperatorManager.getAvailableMatchOperators(column, true);
+  // JVG 170210 Avoid NPE
+  if (!availableOperators) return null;
+  jq.each(availableOperators, function(matchTypeLabel, arrayOperators) {
+    if (arrayOperators) {
+      jq.each(arrayOperators, function(i, operator) {
+        if (operator.isDefault) {
+          defaultMatchOperator = operator;
+          return;
+        }
+      });
+    }
+  });
+  return defaultMatchOperator;
+};
+DesTableConfigWidget.getFormats = function (fieldType, locale)
+{ 
+  if (!fieldType) return null;
+  if (!locale) locale = PolicyEditorWidget.getBrowserLocale();
+  var formattings = null;
+  var culture = Globalize.culture(locale);
+  if (DataTypeMapper.isDateType(fieldType)
+      || DataTypeMapper.isTimeType(fieldType)
+      || DataTypeMapper.isDateTimeType(fieldType)) {
+    formattings = FormattingType.getDateTimeFormats(culture, fieldType);
+  } else if (DataTypeMapper.isNumberType(fieldType)){
+    formattings = FormattingType.getNumericFormats(DataTypeMapper.NUMBER);
+  }
+  return formattings;
+};
+DesTableConfigEditor.prototype.updateColumnSourceValueOperator = function(colConfig, value)
+{ 
+  if(!colConfig || !colConfig.source || (colConfig.source.value_operator == value))return false;
+  if (!value) {
+    colConfig.data_type = colConfig.source.normalized_data_type;
+    colConfig.source.value_operator = null;
+  } else {
+    var valueOperator = ValueOperatorManager.getValueOperator(value);
+    if (!valueOperator) {
+      console.log("Failed to set value operator -- "+value + ": Not found!");
+      return false;
+    }
+    colConfig.data_type = valueOperator.resultType;
+    colConfig.source.value_operator = valueOperator.value;
+    if (valueOperator.resultFormat) colConfig.format = valueOperator.resultFormat; 
+  }
+  return true;
+};
+        ValueOperatorManager.valueOperatorsMap = {
+    "yearsFromToday"  : { label:"years from today", value:"yearsFromToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER , resultFormat : "n"},  
+    "monthsFromToday" : { label:"months from today", value:"monthsFromToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "weeksFromToday"  : { label:"weeks from today", value:"weeksFromToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "daysFromToday"   : { label:"days from today", value:"daysFromToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    
+    "hoursFromNow"    : { label:"hours from now", value:"hoursFromNow", normalized_dataType:DataTypeMapper.TIME, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "minutesFromNow"  : { label:"minutes from now", value:"minutesFromNow", normalized_dataType:DataTypeMapper.TIME, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    
+    "yearsBeforeToday"  : { label:"years before today", value:"yearsBeforeToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "monthsBeforeToday" : { label:"months before today", value:"monthsBeforeToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "weeksBeforeToday"  : { label:"weeks before today", value:"weeksBeforeToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "daysBeforeToday"   : { label:"days before today", value:"daysBeforeToday", normalized_dataType:DataTypeMapper.DATE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    
+    "hoursBeforeNow"    : { label:"hours before now", value:"hoursBeforeNow", normalized_dataType:DataTypeMapper.TIME, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    "minutesBeforeNow"  : { label:"minutes before now", value:"minutesBeforeNow", normalized_dataType:DataTypeMapper.TIME, resultType:DataTypeMapper.INTEGER, resultFormat : "n" },
+    
+    "getDatePart" : { label:"date only", value:"getDatePart", normalized_dataType:DataTypeMapper.DATETIME, resultType:DataTypeMapper.DATE, resultFormat : "d" },
+    "getTimePart" : { label:"time only", value:"getTimePart", normalized_dataType:DataTypeMapper.DATETIME, resultType:DataTypeMapper.TIME, resultFormat : "t" },
+    
+    "getDomainName" : { label:"domain name", value:"getDomainName", normalized_dataType:DataTypeMapper.STRING, native_dataType:[DataTypeMapper.EMAIL, DataTypeMapper.URL], resultType:DataTypeMapper.STRING },
+    "getAreaCode"   : { label:"area code", value:"getAreaCode", normalized_dataType:DataTypeMapper.STRING, native_dataType:DataTypeMapper.PHONE, resultType:DataTypeMapper.INTEGER, resultFormat : "n" }
+};
+PolicyEditorRenderer.prototype.toggleTableWarningIndicator = function(polTableOrName) {
+            var policyTable = DecsOnD.isObject(polTableOrName) ? polTableOrName : this.getPolicyTable(polTableOrName),
+                tab = null;
+            if (!policyTable) return;
+            // JVG Patch 1.14.61 We cannot rely on the index, it is not always set
+            tab = this.jqObj("tabs > ul > li").filter("[id*='" + policyTable.name + "']");  
+            if (!DecsOnD.isJQObject(tab)) return;
+            tab.find("img").first().toggleClass("hidden", !(policyTable.hasValidationError() && this.editorWidget.isContentEditorMode())); 
+        };
+
+DecsOnDTimeCellEditor.prototype.displayEditor = function(element, htmlInput) 
+{   
+  // call base method
+  TextCellEditor.prototype.displayEditor.call(this, element, htmlInput);
+  //htmlInput.disabled = true;
+
+  jq(htmlInput).timepicker({ 
+    controlType: 'select',
+    timeFormat: 'h:mm:ss TT',
+        alwaysSetTime : true,
+    beforeShow: function(input_ele) {
+      // the field cannot be blurred until the datepicker has gone away
+      // otherwise we get the "missing instance data" exception
+      this.onblur_backup = this.onblur;
+      this.onblur = null;
+    },
+    onClose: function(dateText, dp_inst, tp_inst) {
+            // JVG Hack to distinguish between clicking Done button and closing without any input
+            // In the former case the dateText will by an empty string if the user has not modified the default, but we want to set the time anyway
+            if (dateText === '') {
+        var err = new Error();
+              if (err.stack && (err.stack.indexOf('_checkExternalClick')<0)) {
+                    dateText = (tp_inst && tp_inst.formattedTime)?tp_inst.formattedTime:'12:00:00 AM';
+        }
+      }
+      //@Sothea #136 set selected value back to htmlInput
+      htmlInput.value = dateText;
+      // apply date if any, otherwise call original onblur event
+      if (dateText != '') this.celleditor.applyEditing(htmlInput.element, this.celleditor.getEditorValue(htmlInput));
+      else if (this.onblur_backup != null) this.onblur_backup();
+      
+    }
+  }).datepicker('show');
+};
+
+DecsOnDEditableGrid.prototype.createActionCellRenderer = function() {
+    var editor = this.editorWidget.editor, editableGrid = this; // JVG Ignore Eclipse warning on editor variable
+    return new CellRenderer({
+        render: function(cell, value) {   
+            var actionTable = document.createElement("table"); 
+            actionTable.className = "actionCol";
+            cell.appendChild(actionTable);
+            
+            var trAction = document.createElement("tr"); 
+            actionTable.appendChild(trAction);
+            var tdUpDown = document.createElement("td"); 
+            tdUpDown.className = "moveupdown action";
+            var tdDeleteDuplicate = document.createElement("td"); 
+            tdDeleteDuplicate.className = "deleteandduplicate action";
+            trAction.appendChild(tdUpDown);
+            trAction.appendChild(tdDeleteDuplicate);
+            
+            //create move row up element
+            var moveUpElement = document.createElement("a"); 
+            moveUpElement.title = "Move row up";
+            var moveUpClass = "move up ";
+            moveUpElement.className = (cell.rowIndex <= 0) ? moveUpClass : moveUpClass + "cursorpointer";
+            moveUpElement.onclick = function(event) {
+              // TODO Have this go through the PolicyEditorEditor
+              editableGrid.moveRowUpDown(jq(this), cell.rowIndex, -1, editor);
+            };
+            var upIcon = document.createElement("img");
+            upIcon.src = PolicyEditorWidget.image("bullet_arrow_up.png");
+            moveUpElement.appendChild(upIcon);
+            tdUpDown.appendChild(moveUpElement);    
+        
+            //create move row down element
+            var moveDownElement = document.createElement("a"); 
+            moveDownElement.title = "Move row down";
+            var moveDownClass = "move down ";
+            moveDownElement.className = (cell.rowIndex >= editableGrid.data.length - 1) ? moveDownClass : moveDownClass + "cursorpointer";
+            moveDownElement.onclick = function(event) {
+              // TODO Have this go through the PolicyEditorEditor
+              editableGrid.moveRowUpDown(jq(this), cell.rowIndex, 0, editor);
+            };
+            var downIcon = document.createElement("img");
+            downIcon.src = PolicyEditorWidget.image("bullet_arrow_down.png");
+            moveDownElement.appendChild(downIcon);
+            tdUpDown.appendChild(moveDownElement);  
+        
+            //create action delete element
+            var deleteElement = document.createElement("a"); 
+            deleteElement.title = "Delete row";
+            deleteElement.border = 0;
+            deleteElement.style.cursor = "pointer";
+            deleteElement.style.paddingLeft = "3px";
+            deleteElement.onclick = function(event) {
+                // JVG 170207 Pass unfiltered row ID
+              var rowId = editableGrid.data[cell.rowIndex].id,
+                originalIndex = editableGrid.data[cell.rowIndex].originalIndex;
+              // TODO Have this go through the PolicyEditorEditor
+              if (confirm('Are you sure you want to delete this row?')) {
+                    editableGrid.remove(cell.rowIndex);
+//                    editor.modelChanged(editableGrid, DecsOnD.Constants.ROW_DELETED, rowId);
+                } 
+            };
+            var deleteIcon = document.createElement("img");
+            deleteIcon.src = PolicyEditorWidget.image("delete13.png");
+            deleteIcon.style.verticalAlign = "middle";
+            deleteElement.appendChild(deleteIcon);
+            tdDeleteDuplicate.appendChild(deleteElement);
+            
+            //@Sothea #428 create action add new empty row element
+            var addEmptyRowElement = document.createElement("a"); 
+            addEmptyRowElement.title = "Add new row";
+            addEmptyRowElement.border = 0;
+            addEmptyRowElement.style.cursor = "pointer";
+            addEmptyRowElement.style.paddingLeft = "3px";
+            addEmptyRowElement.onclick = function(event) {
+              // TODO Have this go through the PolicyEditorEditor
+              editableGrid.addNewEmptyRow(cell.rowIndex, editor);
+            };
+            var addEmptyRowIcon = document.createElement("img");
+            addEmptyRowIcon.src = PolicyEditorWidget.image("add13.png");
+            addEmptyRowIcon.style.verticalAlign = "middle";
+            addEmptyRowElement.appendChild(addEmptyRowIcon);
+            tdDeleteDuplicate.appendChild(addEmptyRowElement);   
+            
+            //create action duplicate element
+            var duplicateElement = document.createElement("a"); 
+            duplicateElement.title = "Duplicate row";
+            duplicateElement.border = 0;
+            duplicateElement.style.cursor = "pointer";
+            duplicateElement.style.paddingLeft = "3px";
+            duplicateElement.onclick = function(event) {
+              // TODO Have this go through the PolicyEditorEditor
+                editableGrid.duplicate(cell.rowIndex, editor);
+            };
+            var duplicateIcon = document.createElement("img");
+            duplicateIcon.src = PolicyEditorWidget.image("duplicate13.png");
+            duplicateIcon.style.verticalAlign = "middle";
+            duplicateElement.appendChild(duplicateIcon);
+            tdDeleteDuplicate.appendChild(duplicateElement);    
+        }
+    }
+    );
+};
+    DecsOnD_DecisionTableConfiguration.MODE_LOAD_BALANCED = "LoadBalanced";
+      var createAssignOwnerActionColumnOrig = DecsOnD_ColumnConfiguration.createAssignOwnerActionColumn;
+        DecsOnD_ColumnConfiguration.createAssignOwnerActionColumn = function(paramVal, paramLabel, targetObjectType) {
+            var col = createAssignOwnerActionColumnOrig(paramVal, paramLabel, targetObjectType);
+            if (col && col.restriction && (paramVal == DecisionTableConfiguration.ACTION_PARAM_ASSIGNMENT_MODE)) {
+        col.restriction.restriction_type = DecisionTableConfiguration.RESTRICTION_PICKLIST;
+                col.restriction.values = [
+                    {value:DecisionTableConfiguration.MODE_ROUND_ROBIN, label:"Round Robin", is_default:false},
+                    {value:DecisionTableConfiguration.MODE_LOAD_BALANCED, label:"Load Balanced", is_default:false},
+                    {value:DecisionTableConfiguration.MODE_DIRECT, label:"Direct", is_default:false},
+                    {value:DecisionTableConfiguration.MODE_RANDOM, label:"Random", is_default:false},
+                    {value:DecisionTableConfiguration.MODE_CUSTOM, label:"Custom", is_default:false}
+                ];
+      }
+      return col;
+    }
+
+DesTableConfigEditor.prototype.updateColumnPicklistValues = function(colConfig, data)
+{
+  if (!colConfig || !colConfig.restriction) return false;
+  var pickListValues = colConfig.restriction.values,
+    pickValLength = DecsOnD.arrayLength(pickListValues);
+    attrName = data.attrName,
+    newValue = data.newValue,
+    rowIndex = data.rowIndex,
+    updated = false,
+    objPickVal = null;
+  if (pickValLength <= 0) pickListValues = new Array();
+  if (data.removed) { //remove a picklist value
+    if (pickValLength > 1) {
+      pickListValues.splice(rowIndex, 1);
+      updated = true;
+    }
+  } else { //update or add a picklist value
+    objPickVal = pickListValues[rowIndex];
+    if (objPickVal) {
+      objPickVal[attrName] = newValue;
+      updated = true;
+      //if change setting is_default to true, then need to update the other to false 
+      if (attrName == DecsOnD.Constants.KEY_RESTRICTION_VALUES_IS_DEFAULT && newValue == true) {
+        jq.each(pickListValues, function(i, optVal) {
+          if (i != rowIndex) optVal.is_default = false;
+        });
+      }
+    } else { //add new value
+      objPickVal = new Object();
+      objPickVal[attrName] = newValue;
+      pickListValues.push(objPickVal);
+      updated = true;
+    }
+  }
+  if (!colConfig.restriction.values || colConfig.restriction.values.length == 0) {
+    // JVG 170211 Clear other picklist settings to avoid confusion
+    colConfig.restriction.source_type = DecsOnD_DecisionTableConfiguration.SOURCE_VALUES;
+    delete colConfig.restriction.source;
+    colConfig.restriction.values = pickListValues;
+  }
+  return updated;
+};
+
+// Fix for AIPAC rule editing issue when filter is present
+PolicyEditorEditor.prototype.rowRemoved = function(editableGrid, rowId, originalIndex) {
+  console.log("Row " + rowId + " was removed from grid " + editableGrid.name);  
+  // TODO See if we need more smarts to determine row index from row ID
+  this.modelChanged(editableGrid, DecsOnD.Constants.ROW_DELETED, originalIndex);
+};
+
+// ------------------
+// ------------------
+DecsOnDEditableGrid.prototype.rowRemoved = function(oldRowIndex, rowId, originalIndex) {
+  var widget = this.editorWidget,
+    editor = widget?widget.editor:null;
+  if (editor && editor.rowRemoved) editor.rowRemoved(this, rowId, originalIndex);
+};
+
+DecsOnDEditableGrid.prototype.remove = function(rowIndex)
+{
+  var editableGrid = this, rowId = editableGrid.data[rowIndex].id,
+    originalIndex = editableGrid.data[rowIndex].originalIndex,
+    _data = (editableGrid.dataUnfiltered == null) ? editableGrid.data : editableGrid.dataUnfiltered;
+
+  // delete row from DOM (needed for attach mode)
+  var tr = _$(this._getRowDOMId(rowId));
+  if (tr != null) this.tBody.removeChild(tr);
+
+  // delete row from data (both filtered and unfiltered, if applicable)
+  editableGrid.data.splice(rowIndex, 1);
+  if (editableGrid.dataUnfiltered != null) {
+
+      editableGrid.dataUnfiltered.splice(originalIndex, 1); 
+  }
+
+  // update originalRowIndex and ID
+  for (var r = 0; r < _data.length; r++) {
+    if (_data[r].originalIndex > originalIndex) {
+      _data[r].originalIndex--;
+      _data[r].id--;
+    }
+  }
+
+  // callback
+  this.rowRemoved(rowIndex,rowId, originalIndex);
+
+  // refresh grid
+  this.refreshGrid();
+};
+
+DecsOnDEditableGrid.prototype.addNewRow = function(rowIndex, values, editor) 
+{
+    var editableGrid = this, rowId = editableGrid.data[rowIndex].id,
+      originalIndex = editableGrid.data[rowIndex].originalIndex,
+      _data = (editableGrid.dataUnfiltered == null) ? editableGrid.data : editableGrid.dataUnfiltered,
+      newRowId = 0, warningsAttribute;
+    // get id for new row (max id + 1)
+    // TODO See if there is a simpler way...
+    for (var r = 0; r < _data.length; r++) {
+      newRowId = Math.max(newRowId, parseInt(_data[r].id) + 1);
+    }
+    // TODO See if we can put all this in the rowAdded callback
+    // JVG 170208 Make a copy of this array
+    if (DecsOnD.isArray(this.data[rowIndex].warnings)) {
+        warningsAttribute = {'warnings':this.data[rowIndex].warnings.slice(0)};  
+    } else {
+        warningsAttribute = {'warnings':this.data[rowIndex].warnings};
+    }
+    
+    // add new row
+    this.insertAfter(rowIndex, newRowId, values, warningsAttribute, true);
+    // JVG PATCH 9/5/13 -- maybe can be removed?
+    if (!editor) editor = this.editorWidget.editor;
+
+    // JVG 170208 Pass the original index, not the filtered one
+    editor.modelChanged(this, DecsOnD.Constants.ROW_ADDED, originalIndex, null, null, values);
+};
+
+EditableGrid.prototype._insert = function(rowIndex, offset, rowId, cellValues, rowAttributes, dontSort)
+{
+  var originalRowId = null;
+  var originalIndex = 0;
+  var _data = this.dataUnfiltered == null ? this.data : this.dataUnfiltered;
+
+  if (typeof this.data[rowIndex] != "undefined") {
+    originalRowId = this.data[rowIndex].id;
+    originalIndex = this.data[rowIndex].originalIndex + offset;
+  }
+
+  // append row in DOM (needed for attach mode)
+  if (this.currentContainerid == null) {
+    var tr = this.tBody.insertRow(rowIndex + offset);
+    tr.rowId = rowId;
+    tr.id = this._getRowDOMId(rowId);
+    for (var c = 0; c < this.columns.length; c++) tr.insertCell(c);
+  }
+
+  // build data for new row
+  var rowData = { visible: true, originalIndex: originalIndex, id: rowId };
+  if (rowAttributes) for (var attributeName in rowAttributes) rowData[attributeName] = rowAttributes[attributeName]; 
+  rowData.columns = [];
+  for (var c = 0; c < this.columns.length; c++) {
+    var cellValue = this.columns[c].name in cellValues ? cellValues[this.columns[c].name] : "";
+    rowData.columns.push(this.getTypedValue(c, cellValue));
+  }
+
+  // update originalRowIndex
+  for (var r = 0; r < _data.length; r++) if (_data[r].originalIndex >= originalIndex) _data[r].originalIndex++;
+
+  // append row in data
+  this.data.splice(rowIndex + offset, 0, rowData);
+  if (this.dataUnfiltered != null) {
+    if (originalRowId === null) this.dataUnfiltered.splice(rowIndex + offset, 0, rowData);
+    else for (var r = 0; r < this.dataUnfiltered.length; r++) if (this.dataUnfiltered[r].id == originalRowId) { this.dataUnfiltered.splice(r + offset, 0, rowData); break; }
+  }
+
+  // refresh grid
+  this.refreshGrid();
+
+  // sort and filter table
+  if (!dontSort) this.sort();
+  // JVG 170208 Don't reapply the filter if we just added a row -- else it will immediately get hidden 
+  if (this.dataUnfiltered == null) this.filter();
+};
+
+DecsOnD.SFDC.remoteGetAvailableObjects = function(editorWidget, includeFields, callback) {
+    try {
+        var policyFQN = editorWidget.policy; 
+      console.log("Retrieving available objects");
+        Visualforce.remoting.Manager.invokeAction(
+            DecsOnD.SFDC.getRemoteActionName("getAvailableObjects"),
+            includeFields,
+            function(result, event) {
+                if (result && event.status) {
+                    console.log("Found " + Object.keys(result).length + " available objects");
+                    callback(result);
+                } else {
+                    console.log("Unable to load available objects");
+                    // TODO Show error to user?
+                    DecsOnD.SFDC.showErrorMsg(editorWidget, "Error getting available objects: " + result);
+                    callback(null, result);
+                }
+            },
+            {
+              timeout : 120000
+            }
+        );
+    } catch(ex){
+        DecsOnD.SFDC.reportRemoteActionException(editorWidget, "Failed to retrieve available objects", ex, callback);
+    }
+};
+
+*/
+// ------------------
+// ------------------
+// No longer required - handled by baseclass
+// ------------------
+// ------------------
+/*
+DecsOnDDateTimeCellValidator.prototype.isValid = function(value, element) 
+{ 
+   var result = this.grid.checkDateTime(value, element);
+   // JVG 170211 Check for a dynamic expression
+   if (result.isError && this.isValidExpression(value, element, "DateTime")) {
+//      if (DecsOnDEditableGrid.isAggregateEmpty(value) || DecsOnDEditableGrid.containNOTExpression(value)) {
+//        return TextCellValidator.prototype.isValid.call(validator, [value], element);
+//      }
+     return true;
+   }
+  return value == "" || !result.isError;
+};
+// ------------------
+// ------------------
+DecsOnDNumberCellValidator.prototype.isValid = function(value, element) 
+{ 
+  var validator = this, column = this.column;
+  if (!column) return false;
+  //@Sothea #136 get NOT expression values as string if any
+  // JVG 161020 Cannot have NOT expression in action or RANGE match columns
+  // TODO Apply similar check in all column validators
+  if (!column.action && !DecisionTableConfiguration.isRangeMatch(column)) {
+    value = DecsOnDEditableGrid.getNOTExpressionValues(value);
+  }
+  //allow user to input "[empty]"
+  if (DecsOnDEditableGrid.isAggregateEmpty(value) || DecsOnDEditableGrid.containNOTExpression(value)) {
+    return TextCellValidator.prototype.isValid.call(validator, [value], element);
+  }
+   // JVG 170211 Check for a dynamic expression 
+   if (validator.isValidExpression(value, element, "Number")) {    
+     return true;
+   }
+  // JVG 1601020 Add normalization step
+  value = DecsOnDEditableGrid.normalizeNumericValue(value, column, validator.grid.locale, true, false, true) 
+  return NumberCellValidator.prototype.isValid.call(validator, value);
+};
+*/
+    }
+    </script>
+  </body>
+
+
+    <!-- include javascript files for NumberFormat library -->
+    <script src="{!URLFOR($Resource.JS_Globalize, 'globalize.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Globalize, 'cultures/globalize.cultures.js')}"></script>
+    
+    <!-- @Sothea 141030 Include JQuery plugin for showing loading spinner -->
+    <script src="{!URLFOR($Resource.JS_LoadingSpinner, 'loading-overlay.min.js')}" type="text/javascript"></script>
+    
+    <!-- include javascript and css files for the EditableGrid library -->
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_renderers.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_editors.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_validators.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_utils.js')}" ></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_EditableGrid, 'editablegrid.css')}"/> 
+    
+    <!-- include javascript and css files for multiselect -->
+    <!-- 
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/jquery.multiselect.min.js')}" ></script>
+    -->
+    
+    <!-- include jQuery extensions -->
+    <script type="text/javascript" src="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-timepicker-addon.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-sliderAccess.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryCSV, 'jquery.csv-0.71.min.js')}" ></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_DateTimePicker, 'jquery-ui-timepicker-addon.css')}"/>
+    
+    <script src="{!URLFOR($Resource.JS_Dynatree, 'jquery.dynatree.js')}" type="text/javascript"></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_Dynatree, 'skin/ui.dynatree.css')}"/>
+
+    <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.js')}" type="text/javascript"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.ui.position.js')}" type="text/javascript"></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_JQueryContextMenu, 'jquery.contextMenu.css')}"/>
+    
+    <!--@Sothea #412, #423 Include SemanticUI -- Popup for showing message as tooltip -->
+    <script src="{!URLFOR($Resource.JS_SemanticUI_Popup, 'popup.js')}" type="text/javascript"></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_SemanticUI_Popup, 'css/popup.css')}"/>
+            
+    <!-- Include EditableGrid extensions -->
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/multiselect.js')}" ></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_EditableGrid, 'extensions/multiselect/ui.dropdownchecklist.themeroller.css')}"/>
+
+    <!-- include JS libraries for customizing decision table configuration -->
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DataTypeMapper.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'MatchOperatorManager.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_editor.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_renderer.js')}" ></script>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_DecisionTableConfigWidget, 'css/dt-config-widget.css')}"/>
+    
+    <!-- Include PolicyEditorWidget scripts and styles -->
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'DatePeriodManager.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyTable.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget_renderer.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget_editor.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'custom.ui.dropdownchecklist-1.4-min.js')}"></script>        
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'EditableGridExtensions.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'MultiSelectExtensions.js')}"></script>    
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'DatePeriodManager.js')}"></script>
+
+    <!-- Standard callbacks for SFDC pages -->
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcCallbacks.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcControllers.js')}"></script>
+
+    <!-- Style sheet overrides -->
+    <!-- Order is significant: most specific should be last -->
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_DecsOnD, 'css/decsond.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_LoadingSpinner, 'css/loadingoverlay_decsond.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_PolicyEditorWidget, 'css/editablegrid-decsond.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_Callbacks, 'css/decsond-sfdc.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.DecsOnD__JS_Callbacks, 'css/decsond-sfdc-classic.css')}"/>
+    <!-- Scripts that may be required for test console -->
+<!--    <script src="/static/111213/js/picklist.js"></script>
+   <apex:includeScript value="/EXT/ext-3.2.2/ext.js"></apex:includeScript>
+   <apex:includeScript value="/jslibrary/1466812160000/sfdc/Zen.js"></apex:includeScript>
+   <apex:includeScript value="/jslibrary/1466812160000/sfdc/Chatter.js"></apex:includeScript>
+   <apex:includeScript value="/jslibrary/1466812160000/sfdc/ChatterDefer.js"></apex:includeScript>
+   -->
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page standardController="Opportunity" extensions="sbaa.OpportunityExtController" action="{!onSubmit}">
+<apex:pageMessages />
+	<script>
+		// Mobile only - desktop users will redirect from return PageReference on controller.
+		// FormFactor is usedin controller to determine how to redirect.
+		function redirect(){
+			urlstring = '{!oppUrl}';
+			urlstring = urlstring.replace(/[\[\]\ ]/g,"");
+			urls = urlstring.split(",");
+			sforce.one.navigateToSObject(urls[0]);
+			sforce.one.navigateToSObject(urls[1]);
+		}
+		var previousOnload = window.onload;
+		window.onload = function() { if (previousOnload) { previousOnload(); }
+			redirect(); }
+	</script>
+</apex:page>

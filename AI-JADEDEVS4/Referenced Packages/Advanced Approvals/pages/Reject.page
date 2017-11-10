@@ -1,0 +1,87 @@
+<apex:page standardController="sbaa__Approval__c" extensions="sbaa.ApprovalExtController" showQuickActionVfHeader="false">
+	<apex:pageMessages />
+	
+	<apex:form >
+		<apex:commandButton rendered="{!isApprovalRequested == false}" style="margin: 4px 0px 0px 20px;" action="{!onReturn}" value="{!$Label.lbl_cancel}" onclick="disableOnSubmit(this);"/>
+	<apex:pageBlock rendered="{!isApprovalRequested}">
+		<apex:pageBlockButtons >
+			<apex:commandButton action="{!onReject}" value="{!$Label.lbl_reject}" onclick="disableOnSubmit(this);"/>
+			<apex:commandButton action="{!onReturn}" value="{!$Label.lbl_cancel}" onclick="disableOnSubmit(this);"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection columns="1">
+			<apex:pageBlockSectionItem >
+				<apex:outputLabel value="{!$Label.lbl_comments}"/>
+				<apex:inputTextarea value="{!comments}" rows="5" cols="100"/>
+			</apex:pageBlockSectionItem>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	</apex:form>
+	<style type="text/css">
+		@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+			table{
+				margin-left: auto;
+				margin-right: auto;
+				width: auto;
+			}
+			tr,td{
+				display: block;
+			}
+			input,
+			textarea,
+			button{
+				font-family: sans-serif;
+				font-size: 15px;
+				box-sizing: border-box;
+				color: #3c3d3e;
+				padding: 7px 14px;
+				line-height: 25px;
+				border-radius: 5px;
+				border: 1px solid #cfd0d2;
+			}
+			input {
+				border: 1px solid #cfd0d2;
+				border-radius: 3px;
+				background-color: #fff;
+				box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07);
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				padding: 6px 7px 7px 6px;
+				margin-bottom: 14px;
+				margin-right: 10px;
+				text-align: center;
+				background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));
+				background-image: -webkit-linear-gradient(top, #ffffff, #f1f1f1);
+				background-image: -moz-linear-gradient(top, #ffffff, #f1f1f1);
+				background-image: -ms-linear-gradient(top, #ffffff, #f1f1f1);
+				background-image: -o-linear-gradient(top, #ffffff, #f1f1f1);
+			}
+			label {
+				font-size: 13px;
+				font-family: sans-serif;
+				color: #696e71;
+				margin: 0;
+				padding-bottom: 5px;
+				/*display: none;*/
+			}
+			textarea {
+				-webkit-rtl-ordering: logical;
+				-webkit-user-select: text;
+				flex-direction: column;
+				cursor: auto;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+				background-color: #fff;
+				box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.07);
+				width: 100%;
+			}
+		}
+	</style>
+	<script>
+		function disableOnSubmit(input) {
+            var btn = input;
+            setTimeout(function(){
+                btn.disabled = 'disabled';
+                btn.className = 'btnDisabled';
+            }, 50);
+        }
+	</script>
+</apex:page>

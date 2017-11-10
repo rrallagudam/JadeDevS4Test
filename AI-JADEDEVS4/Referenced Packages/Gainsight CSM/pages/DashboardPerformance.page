@@ -1,0 +1,94 @@
+<apex:page showHeader="false" standardStyleSheets="false" cache="false" contentType="text/javascript">
+// Set a name for the current cache
+var cacheName = '{!$Resource.JBCXM__Optimized_Analytics}';
+
+// Default files to always cache
+var cacheFiles = [
+    "{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS,'css/ScoreCards.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/slick.grid.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.columnpicker.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.pager.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/chosen/chosen.min.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/gridster/jquery.gridster.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__jqGrid, 'css/ui.jqgrid.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/reports/JQgrid-slider.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/slider.css'))}",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor, 'js/vendor/data_charting/raphael-min.js'))}",
+    "/support/console/30.0/integration.js",
+    "{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/homepage/gs-home.css'))}"
+];
+
+
+self.addEventListener('install', function(e) {
+    console.log('[ServiceWorker] Installed');
+    
+    self.skipWaiting();
+    // e.waitUntil Delays the event until the Promise is resolved
+    e.waitUntil(
+
+      // Open the cache
+      caches.open(cacheName).then(function(cache) {
+
+        // Add all the default files to the cache
+      console.log('[ServiceWorker] Caching cacheFiles');
+      return cache.addAll(cacheFiles);
+      })
+  ); // end e.waitUntil
+});
+
+
+self.addEventListener('activate', function(e) {
+    console.log('[ServiceWorker] Activated');
+
+    e.waitUntil(
+
+      // Get all the cache keys (cacheName)
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(cacheNames.map(function(thisCacheName) {
+
+        // If a cached item is saved under a previous cacheName
+        if (thisCacheName !== cacheName) {
+
+          // Delete that cached file
+          console.log('[ServiceWorker] Removing Cached Files from Cache - ', thisCacheName);
+          return caches.delete(thisCacheName);
+        }
+      }));
+    }).then(function() {
+      
+      return self.clients.claim();
+      
+    })
+  ); // end e.waitUntil
+
+});
+
+
+
+self.addEventListener('fetch', function(e) {
+  // e.respondWidth Responds to the fetch event
+  e.respondWith(
+
+    // Check in cache for the request being made
+    caches.match(e.request)
+
+
+      .then(function(response) {
+
+        // If the request is in the cache
+        if ( response ) {
+          console.log("[ServiceWorker] Found in Cache", e.request.url, response);
+          // Return the cached version
+          return response;
+        }
+
+        // If the request is NOT in the cache, fetch and return 
+
+        return fetch(e.request);
+      
+      }) // end caches.match(e.request)
+  ); // end e.respondWith
+});
+
+</apex:page>

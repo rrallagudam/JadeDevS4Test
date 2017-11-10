@@ -1,0 +1,91 @@
+<apex:page tabStyle="Administration__tab" docType="html-5.0" sidebar="false" controller="JBCXM.ConfigBroker" extensions="JBCXM.GSCommonBroker" title="{!IF(($CurrentPage.parameters.surveyId != ''),'Module Level Permissions','Copilot Permissions')}">
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/jquery/jquery-UI-1.10/css/redmond/jquery-ui-1.10.3.custom.min.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/core/gsCore.css'))}" />
+    <!-- Appcontainer css -->
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/core/gsAppContainer.css'))}" />
+    <!-- End of AppContainer css -->
+    <style>
+        .Custom44Tab .pageTitleIcon, .individualPalette .Custom44Block .pageTitleIcon {
+            background-image: none;
+        }
+    </style>
+
+    <script>
+
+        var GS = GS || {};
+
+        GS.remotingEndPoint     = '{!$RemoteAction.ConfigBroker.configRequestBroker}';
+        GS.commonRemotingEndPoint = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+
+        GS.packageNS            = "{!(pkgNS)}";
+        GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+
+        GS.userConfig = {
+              userLocale        : {!(dateTimeFormatByLocale)},
+              userName          : "{!$User.FirstName}"+" "+"{!$User.LastName}",
+              userId            : "{!$User.Id}",
+              emailId           : "{!$User.Email}",
+              profilePhoto      : "{!(profilePhoto)}",
+              gainsightTabs     : {!(gainsightTabs)},
+              isLightningEnabled: {!(isLightningEnabled)},
+              userDisplayName   : "{!(userDisplayName)}"
+            };
+
+        GS.customerId = "";
+
+        GS.surveyId = unescape("{!URLENCODE($CurrentPage.parameters.surveyId)}");
+
+    </script>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null , true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.CustomJS, 'Optimized/touchhubpermissions/touchhubpermissions.min.js'))}"></script>  
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.CustomJS, IF(isPkgInstance,'Optimized/touchhubpermissions/touchhubpermissions.packaged.js', 'Optimized/touchhubpermissions/touchhubpermissions.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "build" , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/CustomJS/Optimized/touchhubpermissions/touchhubpermissions-libs.min.js"></script>
+         <script>
+         require.config({
+                baseUrl : "",
+                paths : {
+                'framework': ("{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}").split('?')[0],
+                'newStack' : ("{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js'))}").split('?')[0], 
+                'vendor' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}").split('?')[0],
+                'text' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}").split('?')[0]
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+            });
+        </script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/CustomJS/Optimized/touchhubpermissions/touchhubpermissions.min.js"></script>  
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">
+        <script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/CustomJS/Optimized/touchhubpermissions/touchhubpermissions.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    </apex:outputpanel>
+
+    <div id="gs-app-container">
+        <div class="gs-module-container">
+            <div id="permissionsMainCntr" class="survey-permissions"></div>
+        </div>
+    </div>
+
+     <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/permissions/permissions-style.css'))}"/>
+     <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/layout/layout_stylesheet.css'))}"/>
+     <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/CS360/gsApps-new.css'))}"/>
+     <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/touchhubpermissions/touchhubpermissions.css'))}"/>
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="https://localhost/Gainsight/GSAppCSS/css/permissions/permissions-style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://localhost/Gainsight/GSAppCSS/css/CS360/gsApps.css"/>
+    <link rel="stylesheet" type="text/css" href="https://localhost/Gainsight/GSAppCSS/css/layout/layout_stylesheet.css"/>
+     -->
+ 
+</apex:page>

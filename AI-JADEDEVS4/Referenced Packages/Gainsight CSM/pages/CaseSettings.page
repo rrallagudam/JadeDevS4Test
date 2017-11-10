@@ -1,0 +1,55 @@
+<apex:page docType="html-5.0" sidebar="false" title="C360 Layouts Configuration | Gainsight" controller="JBCXM.ConfigBroker" extensions="JBCXM.NSRemoting,JBCXM.GSCommonBroker" tabStyle="Administration__tab">
+    <script src="{!JSENCODE(URLFOR($Resource.JBCXM__NS,'NS/newStack/js/restclient/restClient.js'))}"> </script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/cs360Layouts/cs360LayoutsAdmin.css'))}" />
+    
+    
+    <script>
+        var GS                         = GS || {};
+        GS.remotingConfigEndPoint      = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+        GS.remotingCommonBulkEndPoint  ='{!$RemoteAction.GSCommonBroker.gsCommonBulkRequestBroker}';
+        GS.remotingEndPoint            = '{!$RemoteAction.ConfigBroker.configRequestBroker}';
+        GS.commonRemotingEndPoint      = GS.remotingConfigEndPoint;
+        GS.remoting                    = "{!$RemoteAction.NSRemoting.apinsinvoke}";
+        GS.NSSessionId                 = "{!(NSSessionId)}";
+        GS.orgId                       = "{!$Organization.Id}";
+    </script>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null , true, false)}">
+         <c:AlertForm />
+         <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_CS360, 'Minified/cs360Layouts/cs360Layouts.min.js'))}"></script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized_CS360, IF(isPkgInstance,'Minified/cs360Layouts/cs360Layouts.packaged.js', 'Minified/cs360Layouts/cs360Layouts.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "build" , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/UI")}/Optimized_CS360/Minified/cs360Layouts/cs360Layouts-libs.min.js"></script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/UI")}/Optimized_CS360/Minified/cs360Layouts/cs360Layouts.min.js"></script>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">
+        <script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath,'https://localhost:8080/UI')}/Optimized_CS360/Minified/cs360Layouts/cs360Layouts.js"
+                  src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    </apex:outputpanel>
+    
+    <div id="gs-app-container">
+        <div class="gs-module-container">
+            <div class="gs-cs360layouts-main-container"></div>
+        </div>
+    </div>
+    <script>
+        var GSGA = {
+            orgId   : "{!$Organization.Id}",
+            orgName : "{!$Organization.Name}",
+            userName: "{!$User.FirstName}"+" "+"{!$User.LastName}"
+        };
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </script>
+    <script src="{!JSENCODE(URLFOR($Resource.CustomJS,'CustomJS/analyticsWrapper.js'))}"></script>
+    <script>
+        gainsightTrackEvents.pushPageViews('Layout configuration');
+    </script>
+    <apex:Form ></apex:Form>
+</apex:page>

@@ -1,0 +1,27 @@
+<apex:page controller="sbaa.ResendRequestsController" standardStylesheets="false">
+    <apex:pageMessages />
+
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!onResend}" value="{!$Label.lbl_resend_request}" onclick="disableOnSubmit(this);"/>
+                <apex:commandButton action="{!onCancel}" rendered="true" value="{!$Label.lbl_cancel}" onclick="disableOnSubmit(this);"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.lbl_comments}"/>
+                    <apex:inputTextarea value="{!comments}" rows="5" cols="100"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+        function disableOnSubmit(input) {
+            var btn = input;
+            setTimeout(function(){
+                btn.disabled = 'disabled';
+                btn.className = 'btnDisabled';
+            }, 50);
+        }
+    </script>
+</apex:page>

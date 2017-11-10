@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>ApprovalVariableHelp</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This is the Approval Variable associated with your Approval.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>AggregateField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field that&apos;s acted upon by the aggregate function.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field that&apos;s acted upon by the aggregate function.</inlineHelpText>
+        <label>Aggregate Field</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Quantity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>List_Total__c</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Total Price</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subtotal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>AggregateFunction__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Aggregate function used to calculate this variable.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Aggregate function used to calculate this variable.</inlineHelpText>
+        <label>Aggregate Function</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Count</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sum</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Average</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Min</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Max</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CombineWith__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Another approval variable to compose with this approval variable if your condition is based on both results.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Another approval variable to compose with this approval variable if your condition is based on both results.</inlineHelpText>
+        <label>Combine With</label>
+        <referenceTo>ApprovalVariable__c</referenceTo>
+        <relationshipLabel>Approval Variables (Combine With)</relationshipLabel>
+        <relationshipName>CombinedSummaryVariables</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FilterField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Select the field to use when filtering items for inclusion in this approval variable.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the field to use when filtering items for inclusion in this approval variable.</inlineHelpText>
+        <label>Filter Field</label>
+        <picklist>
+            <controllingField>TargetObject__c</controllingField>
+            <picklistValues>
+                <fullName>Product Family</fullName>
+                <default>false</default>
+                <controllingFieldValues>Opportunity Product</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product_Code__c</fullName>
+                <default>false</default>
+                <controllingFieldValues>Opportunity Product</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FilterValue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Enter the value to match in this filter.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the value to match in this filter.</inlineHelpText>
+        <label>Filter Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ListVariable__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Approval Variable responsible for calculating Total List</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approval Variable responsible for calculating Total List</inlineHelpText>
+        <label>List Variable</label>
+        <referenceTo>ApprovalVariable__c</referenceTo>
+        <relationshipLabel>Approval Variables (List Variable)</relationshipLabel>
+        <relationshipName>ListSummaryVariables</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>NetVariable__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Approval Variable responsible for calculating Total Net</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approval Variable responsible for calculating Total Net</inlineHelpText>
+        <label>Net Variable</label>
+        <referenceTo>ApprovalVariable__c</referenceTo>
+        <relationshipLabel>Approval Variables (Net Variable)</relationshipLabel>
+        <relationshipName>NetSummaryVariables</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Operator__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Choose the operator to use in your filter.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Choose the operator to use in your filter.</inlineHelpText>
+        <label>Operator</label>
+        <picklist>
+            <picklistValues>
+                <fullName>equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>not equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>less than</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>less or equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>greater than</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>greater or equals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>starts with</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ends with</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>contains</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TargetObject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Select the object you want to aggregate.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the object you want to aggregate.</inlineHelpText>
+        <label>Target Object</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Opportunity Product</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>When Discount is chosen, List Variable and Net Variable must be populated. When Summary is chosen, Aggregate Field and Aggregate Function must be populated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When Discount is chosen, List Variable and Net Variable must be populated. When Summary is chosen, Aggregate Field and Aggregate Function must be populated.</inlineHelpText>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Summary</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Discount</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Approval Variable</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Type__c</columns>
+        <columns>TargetObject__c</columns>
+        <columns>FilterField__c</columns>
+        <columns>Operator__c</columns>
+        <columns>FilterValue__c</columns>
+        <columns>AggregateField__c</columns>
+        <columns>AggregateFunction__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Variable Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Approval Variables</pluralLabel>
+    <recordTypes>
+        <fullName>Generic</fullName>
+        <active>true</active>
+        <label>Generic</label>
+        <picklistValues>
+            <picklist>AggregateField__c</picklist>
+            <values>
+                <fullName>List_Total%5F%5Fc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quantity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Total Price</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>AggregateFunction__c</picklist>
+            <values>
+                <fullName>Average</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Max</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Min</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sum</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>FilterField__c</picklist>
+            <values>
+                <fullName>Product Family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product_Code%5F%5Fc</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Operator__c</picklist>
+            <values>
+                <fullName>contains</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ends with</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>greater or equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>greater than</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>less or equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>less than</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>not equals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>starts with</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>TargetObject__c</picklist>
+            <values>
+                <fullName>Opportunity Product</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Discount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Discount_Variable_Required_Fields</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(Type__c, &apos;Discount&apos;) &amp;&amp; (ISBLANK(ListVariable__c) || ISBLANK(NetVariable__c ))</errorConditionFormula>
+        <errorMessage>Values for List Variable and Net Variable are required for Discount Variables</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Summary_Variable_Required_Fields</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(Type__c, &apos;Summary&apos;) &amp;&amp; (ISPICKVAL( AggregateField__c, &apos;&apos;) || ISPICKVAL(AggregateFunction__c, &apos;&apos;))</errorConditionFormula>
+        <errorMessage>Values for Aggregate Field and Aggregate Function are required for Summary Variables</errorMessage>
+    </validationRules>
+</CustomObject>

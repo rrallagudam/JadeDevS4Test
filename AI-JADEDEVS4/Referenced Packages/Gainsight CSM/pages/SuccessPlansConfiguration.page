@@ -1,0 +1,159 @@
+<apex:page tabStyle="Administration__tab" docType="html-5.0" controller="JBCXM.AdminBroker" sidebar="false" title="SuccessPlans Configuration" extensions="JBCXM.GSCommonBroker">
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jsforce.min.js'))}"></script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/jquery/jquery-UI-1.10/css/redmond/jquery-ui-1.10.3.custom.min.css'))}"/>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-1.10.2.min.js'))}"></script> 
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-UI-1.10/js/jquery.ui.min.js'))}"></script>
+    <apex:includeScript value="{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS, 'CustomJS/date.format.js'))}" />
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/lib/jquery.event.drag-2.2.js'))}"></script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/slick.grid.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.columnpicker.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.pager.css'))}"/>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.core.js'))}"></script>   
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.rowselectionmodel.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.cellrangeselector.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.cellrangedecorator.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.cellselectionmodel.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.rowmovemanager.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.autotooltips.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.grid.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.dataview.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/slick.editors.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/controls/slick.columnpicker.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/controls/slick.pager.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/grids/slickgrid/plugins/slick.checkboxselectcolumn.js'))}"></script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/simplecolorpicker/jquery.simplecolorpicker.css'))}"/>   
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/simplecolorpicker/jquery.simplecolorpicker.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/underscore-min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/backbone-min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js/restclient/restClient.js'))}"> </script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/multiple-select/jquery.multiple.select.js'))}" type="text/javascript"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery-scrollto.js'))}"></script>
+    
+    <script src="/soap/ajax/31.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/31.0/apex.js" type="text/javascript"></script>
+      	
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles,'css/module/successplans/sp-config-admin.css'))}" />  	
+  	
+    <script type="text/javascript">
+        var j$ = $.noConflict();
+        window.jLatest = j$;
+    </script>
+    
+    <script>
+        var GS = GS || {};
+            
+            GS.remotingEndPoint     = '{!$RemoteAction.AdminBroker.adminRequestBroker}';    
+            GS.remotingBulkEndPoint     = '{!$RemoteAction.AdminBroker.adminBulkRequestBroker}';
+            
+            GS.commonRemotingEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+            GS.commonRemotingBulkEndPoint     = '{!$RemoteAction.GSCommonBroker.gsCommonBulkRequestBroker}';
+              
+            GS.packageNS            = "{!(pkgNS)}";
+    		GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";    
+            GS.sessionId      = "{!(sessionId)}"
+            GS.customLabels         = eval({!(customLabelsMap)});
+            
+            GS.userConfig = {
+                userLocale  : {!(dateTimeFormatByLocale)},
+                userName    : "{!$User.FirstName}"+" "+"{!$User.LastName}", 
+                userId      : "{!$User.Id}",
+                emailId     : "{!$User.Email}",
+                photo       : "{!(profilePhoto)}",
+                gainsightTabs: {!(gainsightTabs)},
+        		isLightningEnabled: {!(isLightningEnabled)}
+            };
+             
+            GS.emailId =  GS.userConfig.emailId || "";
+            GS.currencyConfig       = {!(currencyConfigJSON)};
+            GS.userBlankPhoto = "{!JSENCODE(URLFOR($Resource.GSAppCSS, 'images/workflow/No-User.jpg'))}"; 
+            
+            require.config({
+                baseUrl : "",
+                    paths : {
+                    'framework': "{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}",
+                    //'framework': "https://localhost:8090/LI/GSApp/js/Gainsight",
+                    'vendor' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}",
+                    'text' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}",
+                    'async':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/async'))}",
+                    'src':"{!JSENCODE(URLFOR($Resource.src,''))}",
+                    'tether':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/tether/tether'))}",
+                    'tether-drop':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/tether-drop/drop'))}",                    
+                    'rangy-core':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/rangy/1_3_0/rangy-core'))}",
+                   	'spectrum':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/colorpicker/spectrum'))}",
+			        'sly':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/sly/sly.min'))}",
+			        'encoder':"{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/encoder'))}"    
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                },
+                 shim: {
+                        'tether-drop' : {
+                            'deps' : ['tether']
+                       	},
+		       			'sly':{
+		            		'deps':['jquery']
+                     	}
+                  },
+                urlArgs: "bust=" +  (new Date()).getDate()
+                
+            });
+            
+            var successplansConfigManager = null;
+            
+            define("jQuery", [], function(){
+                    return window.jLatest;
+            });
+            define("jquery", [], function(){
+                     return window.jLatest;
+            });
+                
+            j$(document).ready(function() {
+                
+                
+                 require([
+                            "src/js/com/gainsight/app/core/components/containers/sfdc/app/AppContainer",
+                            "framework/views/admin/successplans/ConfigurationManager",
+                            "framework/utils/jQueryProxy",
+                            "vendor/velocity/velocity.min",
+                            'tether',
+                            'tether-drop',                             
+                            'rangy-core',
+                            'spectrum',
+				            'sly',
+				            'encoder'
+                          
+                        ], 
+                        function(AppContainer,ConfigManager,j$){    
+                            var appContainer = new AppContainer();
+                            var deferred = appContainer.init();
+                            deferred.done(function(){
+                               	successplansConfigManager =  new ConfigManager({data:{eventChannel:"SP_TEMPLATE"}});
+                            	j$(".successplans-config").append(successplansConfigManager.$el);
+                               	appContainer.registerModule(successplansConfigManager,"Administration", "Success Plans", {"id":"administration-workflow-success-plans"});
+                               
+                            });
+                        }
+                );
+                
+            });
+            
+
+</script>
+    <style>
+.slick-header{z-index: 1;}
+.noSidebarCell{padding:0px;}
+</style>
+    <div id="gs-app-container">
+		<div class="gs-module-container">
+			<div class="successplans-config"></div>
+		
+		</div>
+	</div>
+<apex:form ></apex:form>
+ 
+</apex:page>

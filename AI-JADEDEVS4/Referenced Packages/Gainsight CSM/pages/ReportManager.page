@@ -1,0 +1,123 @@
+<apex:page docType="html-5.0" controller="JBCXM.ReportBroker" sidebar="false" title="Success Snapshot" tabStyle="Administration__tab" extensions="JBCXM.NSRemoting,JBCXM.GSCommonBroker">
+
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor, 'js/vendor/gridster/jquery.gridster.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor, 'js/vendor/texteditor/jquery.wysiwyg.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/slick.grid.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor,'js/vendor/grids/slickgrid/controls/slick.QBRcolumnpicker.css'))}"/>
+    
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/success-snapshot/success-snapshot.css'))}"/>
+    <apex:form ></apex:form> 
+    
+    
+    <script>
+        var nsParams = eval({!(nsParams)});
+        
+        var GS = GS || {};
+        GS.remotingEndPoint         = '{!$RemoteAction.ReportBroker.reportRequestBroker}';
+        GS.remoting                 = "{!$RemoteAction.NSRemoting.apinsinvoke}";
+        GS.commonRemotingEndPoint =  '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+        GS.sessionId                = "{!NSSessionId}";
+        GS.isScorecardEnabled       = {!(isScorecardEnabled)};
+        GS.nsURL                    = nsParams.url;
+        GS.isNSEnabled = nsParams.nsenabled == "true" ? true : false;      
+        GS.operatorsListMap     = {!(operatorsListMap)};  
+           
+        GS.usageConfigInfo          = eval({!(UsageConfigInfo)});        
+        GS.packageNS            = "{!(pkgNS)}";
+        GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+        GS.customLookUpConfig       = eval({!(customLookUpConfigMap)});
+        GS.userConfig = {
+          userLocale        : {!(dateTimeFormatByLocale)},
+          userName          : "{!$User.FirstName}"+" "+"{!$User.LastName}", 
+          userId            : "{!$User.Id}",
+          emailId           : "{!$User.Email}",
+          profilePhoto      : "{!(profilePhoto)}",
+          userDisplayName   : "{!(userDisplayName)}",
+          gainsightTabs: {!(gainsightTabs)},
+          isLightningEnabled: {!(isLightningEnabled)}
+        };
+        
+        GS.customLabels         = {!(customLabelsMap)};
+        GS.operatorsListMap     = {!(operatorsListMap)};
+        GS.fiscalYrEnabled      = {!(IsCustomFiscalYearSettingsEnabled)};
+        GS.customLookUpConfig   = {!(customLookUpConfigMap)};
+        GS.churnLabelMap        = {!(churnLabelMap)};
+        GS.currencyConfig       = {!(currencyConfigJSON)};
+        GS.generalPageSize      = 500;
+        GS.scmuPageSize         = 100;
+        GS.honourTimezonePreferences = true; // Only in few pages needs to honor, timezone needs to honored for sfdc data
+        GS.displayTimezone = true; // Display Timezone on UI (Especially in the Grid)
+    </script>
+  
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null , true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized, 'Minified/qbr/qbr.min.js'))}"></script>
+        
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized, IF(isPkgInstance,'Minified/qbr/qbr.packaged.js', 'Minified/qbr/qbr.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "build" , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized/Minified/qbr/qbr-libs.min.js"></script>
+        
+         <script>
+         require.config({
+                baseUrl : "",
+                paths : {
+                'framework': ("{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}").split('?')[0],
+                'newStack' : ("{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js'))}").split('?')[0], 
+                'vendor' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}").split('?')[0],
+                'text' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}").split('?')[0],
+                'src':"{!JSENCODE(URLFOR($Resource.src,''))}"
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+            });
+        </script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized/Minified/qbr/qbr.min.js"></script>
+        
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">
+        <script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost/GS-UI")}/Optimized/Minified/qbr/qbr.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        
+    </apex:outputpanel>
+
+  
+    <!--QBR Report Setting-->
+   
+  <div id="gs-app-container">
+        <div class="gs-module-container">
+             <div class="qbr_ctn gs_homepage_cont">
+                <div class="container-fluid .gs_table_cont">
+                    <div class="QBR_Report_Setting_ctn" style="display:none">
+                    </div>
+                    <div class = "editReportCont" style="display:none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 
+  <button onclick="fm.open();">Browse</button> -->
+   
+    <script type = "template" id = "uiBlocker">
+        <div class = "ui-blocker-gs">
+            &nbsp;
+        </div>
+        <div class = "blocker-Text">
+            <div class="blocker-Text-loader"></div>
+            <div class="blocker-message" style = "display: inline-block;position: relative;"></div>
+        </div>    
+    </script>  
+</apex:page>

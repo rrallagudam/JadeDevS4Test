@@ -1,0 +1,239 @@
+<!-- 
+ Copyright 2012-2015, Decisions on Demand, Inc.
+ All Rights Reserved.
+ -->
+<apex:page standardController="DecsOnD__Policy__c" id="thePage" sidebar="false" showHeader="true" extensions="DecsOnD.PolicyVersionTestPanelController"  
+        applyBodyTag="false" >
+    <!-- TODO Externalize style to CSS file -->
+    <!-- Include JQuery Libraries from CDN -->
+    <head> 
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css" media="screen"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>
+        <style>
+            .listButtons{
+                display:none; 
+            }
+            .toggleButton{
+                display:none; 
+            }
+            .x-grid3-td-ACTION_COLUMN{
+                display:none; 
+            }
+            
+            .x-grid3-hd x-grid3-cell{   
+                display:none;
+            }
+            
+            .secItemLabel{
+                vertical-align:text-top;
+            }
+            .secItemData{
+                width:500px;
+            }
+            .divWizard{
+                height:40px;
+                background-color:#F8F8F8;
+                border:1px solid #E6E4E4;
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            .divPadWizard{
+                height:20px;
+                background-color:#F8F8F8;
+                border-left:1px solid #E6E4E4;
+                border-right:1px solid #E6E4E4;
+            }
+        </style>
+    </head>
+  <body style="background-color:#F8F8F9;">        
+    <apex:sectionHeader title="Policy" subtitle="Test panel" rendered="false"/>
+    <apex:variable var="policy" value="{!DecsOnD__Policy__c}" />
+    <apex:variable value="{!policy.DecsOnD__Applies_to__c}" var="sobjType"/>
+    <apex:variable value="{!policy.DecsOnD__Status__c}" var="polStatus"/>
+    <apex:variable value="{!policy.DecsOnD__Log_level__c}" var="logLevel"/>
+    <apex:variable value="{!policy.DecsOnD__Log_level__c}" var="logLevel2"/>
+    <apex:variable value="{!policy.DecsOnD__Revision__c}" var="rev"/>
+    <apex:variable value="{!policy.DecsOnD__LockedBy__c}" var="lb"/>
+    <apex:variable value="{!policy.DecsOnD__LockExpires__c}" var="le"/>
+        
+    <apex:pageblock id="pbpolicy" mode="edit" title="Test Business policy">
+        <apex:pageBlockSection ></apex:pageBlockSection>        
+        <apex:pageBlockSection id="pbspolicy" collapsible="false" columns="2">
+            <apex:outputField value="{!DecsOnD__Policy__c.Name}"/>
+            <apex:pageBlockSectionItem id="pbsecitmversion">
+                <apex:outputLabel value="Version"/>
+                <apex:form id="frmversion">
+                    <apex:outputText id="version" value="{!versionNumber}"/>
+<!--                <apex:selectList id="version" value="{!versionNumber}" size="1">-->
+<!--                    <apex:selectOptions value="{!versions}"/>-->
+<!--                </apex:selectList>-->
+                </apex:form>
+            </apex:pageBlockSectionItem>
+            <apex:outputField value="{!DecsOnD__Policy__c.DecsOnD__Applies_to__c}"/>
+            
+            
+            <!-- Execution log level dropdown  -->
+            <apex:pageBlockSectionItem id="pbsecExeLogLevel">
+                <apex:outputLabel value="Execution log level"/>
+                <apex:form id="frmExeLogLevel">
+                    <apex:inputField id="inputLogLogLevel" value="{!DecsOnD__Policy__c.DecsOnD__Log_level__c}">
+                        <apex:actionSupport event="onchange" rerender="inputLogLogLevel" /> 
+                    </apex:inputField>
+                </apex:form>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Select Test Data" collapsible="false" columns="1"></apex:pageBlockSection>
+        <apex:outputPanel layout="block">
+            <apex:enhancedList id="listview" rowsPerPage="10" type="{!sobjType}" height="360" customizable="false"/>
+        </apex:outputPanel>
+        <apex:outputPanel layout="block" style="text-align:center;padding-top:6px; padding-bottom:6px;">
+            <apex:form id="formActionButtons">
+                <apex:commandButton id="btnCancel" value="Cancel" action="{!cancel}"/>
+                <apex:commandButton id="btnRunTest" value="Run Test" 
+                    onclick="doRunTest(this);return false;" style="margin-left:12px"/>
+            </apex:form>
+        </apex:outputPanel>
+       
+    </apex:pageblock>
+    
+    <apex:form id="frmResult">
+        <apex:actionFunction name="actionRunTest" action="{!runTest}" 
+                status="runTestStatus" 
+                oncomplete="onTestComplete" 
+                reRender="frmResult,formActionButtons">
+            <apex:param name="testIds" assignTo="{!testDataIds}" value="" />
+        </apex:actionFunction> 
+<!--        <apex:inputHidden id="version" value="{!versionNumber}"/> -->
+        <apex:pageblock title="Test Result" mode="edit" id="pbresult" rendered="{!lstResult!=null}">   
+            <apex:pageMessages />
+                
+<!--            <apex:outputText value="{!NoScriptStatements}"/> -->
+            <apex:pageBlockTable value="{!lstResult}" var="rslt" id="resultTable" rendered="{!lstResult.size != 0}">
+                <apex:column value="{!rslt.name}">
+                    <apex:facet name="header">Name</apex:facet>
+                </apex:column>
+                <apex:column value="{!rslt.sta}">
+                    <apex:facet name="header">Status</apex:facet>
+                </apex:column>
+<!--                <apex:column value="{!rslt.msg}">
+                    <apex:facet name="header">Messages</apex:facet>
+                </apex:column>
+                -->
+                <apex:column >
+                    <apex:facet name="header">Actions</apex:facet>
+                    <apex:dataTable value="{!rslt.actions}" var="action" id="actionTable" frame="none" rules="rows" columns="1" width="100%">
+                        <apex:column width="100%">
+                            <apex:repeat value="{!action.messages}" var="message" id="msgList">
+                                {!message}<br/>
+                            </apex:repeat>
+                        </apex:column>                      
+                    </apex:dataTable>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Execution Record</apex:facet>
+                    <apex:outputLink id="theLink" 
+                            onclick="doOpenExecutionRecordDetailWindow('{!rslt.recIndex}'); return false;" 
+                            rendered="{!rslt.executionRecord!=null}">
+                        Details
+                    </apex:outputLink>
+                    <apex:inputHidden id="theRecIndex" value="{!rslt.recIndex}"/> 
+                    <!-- TODO Externalize the inline styles -->
+                    <div id="overlayBackgroundOverview{!rslt.recIndex}" class="overlayBackground" 
+                            style="width:100%; height:100%;display: none; left: 0px; top: 0px;position: fixed;">
+                    </div>
+                    <!-- TODO Externalize this dialog -->
+                    <div id="InlineEditDialogOverview{!rslt.recIndex}" class="overlayDialog inlineEditDialog" 
+                            style="left:350px;top:90px;width:700px;position:fixed; display: none; visibility: visible; overflow:auto;">
+                        <div class="topRight" style="height:30px;">
+                            <div class="topLeft" style="height:20px;"> 
+                                <img id="InlineEditDialogXOverview" class="dialogClose" src="/s.gif" 
+                                        onclick="doCloseExecutionRecordDetailWindow('{!rslt.recIndex}');return false;" 
+                                        onmouseout="this.className = 'dialogClose'" 
+                                        onmouseover="this.className = 'dialogCloseOn'"/>
+                                <div id="popuptitleoverview"><h2 id="InlineEditDialogTitle">Policy Execution Record</h2></div>
+                            </div>
+                        </div>
+                        <div class="middle" style="height:370px;" >
+                             <div id="InlineEditDialogContentOverview" class="innerContent"  >
+                                <div class="activeField" >
+                                    <div class="inlineEditCompoundDiv" id="contentPopupPanelOverview" align="center" style="height:300px;">                           
+                                        <apex:pageBlock id="pb" >
+                                            <apex:pageBlockButtons location="bottom" style="text-align:center;" >
+                                                <apex:commandButton value="Close" 
+                                                    onclick="doCloseExecutionRecordDetailWindow('{!rslt.recIndex}');return false;"/>
+                                            </apex:pageBlockButtons>
+                                            <div style="background-color:#84DBFF;padding-left:15px;height:20px;padding-top:4px;">
+                                                <b>Policy Execution Record Detail</b>
+                                            </div> 
+                                            <div style="overflow:auto;height:250px;">
+                                            <apex:pageBlockSection >
+                                                <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                    <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Invocation_Status__c.Label}" />
+                                                    <apex:outputField value="{!rslt.executionRecord.DecsOnD__Invocation_Status__c}" />
+                                                </apex:pageBlockSectionItem>
+                                                <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                    <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Main_object__c.Label}" />
+                                                    <apex:outputLink value="/{!rslt.mainObjId}">{!rslt.mainObjName}</apex:outputLink>
+                                                </apex:pageBlockSectionItem>
+                                                <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                    <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Action_Applied__c.Label}" />
+                                                    <apex:outputField value="{!rslt.executionRecord.DecsOnD__Action_Applied__c}" />
+                                                </apex:pageBlockSectionItem>
+                                             </apex:pageBlockSection> 
+                                            <apex:pageBlockSection columns="1">
+                                                <apex:pageBlockSectionItem labelStyle="vertical-align:text-top;" dataStyle="vertical-align:text-top;">
+                                                    <apex:outputText value="{!$ObjectType.DecsOnD__PolicyExecutionRecord__c.Fields.DecsOnD__Decision_Server_Messages__c.Label}"/>
+                                                    <apex:outputField value="{!rslt.executionRecord.DecsOnD__Decision_Server_Messages__c}" />
+                                                </apex:pageBlockSectionItem>
+                                            </apex:pageBlockSection> 
+                                         </div>
+                                        </apex:pageBlock>
+                                     </div>
+                                </div>
+                            </div> 
+                            
+                        </div>
+                        <div class="bottomRight">
+                            <div class="bottomLeft"></div>
+                        </div>
+                   </div>
+               </apex:column>     
+            </apex:pageBlockTable>
+             
+        </apex:pageblock>
+    </apex:form>
+    <script>
+        var controller;
+
+        function doRunTest(btn){
+            if (controller) controller.doRunTest(btn, function(selIds) {
+                console.log("Selected IDs: " + selIds);
+                actionRunTest(selIds);
+            });
+        }
+        
+        function onTestComplete() {
+            if (controller) controller.onTestComplete();
+        }
+        
+        function doOpenExecutionRecordDetailWindow(recIndex) {
+            if (controller) controller.doOpenExecutionRecordDetailWindow(recIndex);
+        }
+
+        function doCloseExecutionRecordDetailWindow(recIndex){
+            if (controller) controller.doCloseExecutionRecordDetailWindow(recIndex);
+        }
+
+        $(function() {
+    //        initPageElements();
+            controller = new DecsOnD.SFDC.TestConsoleController();
+        });
+
+    </script>
+    <script src="{!URLFOR($Resource.JS_DecsOnD, 'core.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcUtils.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcControllers.js')}"></script>
+    </body>
+</apex:page>

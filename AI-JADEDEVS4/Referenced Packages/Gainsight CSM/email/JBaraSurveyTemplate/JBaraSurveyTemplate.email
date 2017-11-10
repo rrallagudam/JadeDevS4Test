@@ -1,0 +1,8 @@
+Hello {!SurveyParticipant__c.DisplayName__c},<br/>
+<br/>
+Can you please respond on the link below:<br/>
+{!SurveyParticipant__c.SurveyURL__c}?surveyId={!SurveyParticipant__c.SurveyId__c}&participantId={!SurveyParticipant__c.Token__c}<br/>
+<br/>
+Thank You<br/>
+{!SurveyParticipant__c.OwnerFirstName}
+<img src="{!SurveyParticipant__c.EmailOpenURL__c}?participantId={!SurveyParticipant__c.Id} " style="visibility:hidden" width="1" height="1"/>

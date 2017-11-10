@@ -1,0 +1,287 @@
+<!-- 
+ Copyright 2012-2016, Decisions on Demand, Inc.
+ All Rights Reserved.
+ -->
+<apex:page standardController="DecsOnD__Policy__c" id="thePage" sidebar="false" showHeader="false" 
+            extensions="DecsOnD.PolicyContentViewerController"
+            applyBodyTag="false" > <!-- No body tag -- we are providing our own -->
+    <head> 
+        <!-- Include JQuery Libraries from CDN -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css" media="screen"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>
+        <!-- include Core Decisions on Demand scripts and styles in head -- they are used in global script components-->
+        <script src="{!URLFOR($Resource.JS_DecsOnD, 'core.js')}"></script>
+        <script src="{!URLFOR($Resource.JS_DecsOnD, 'PolicyManagement.js')}" ></script>
+        <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcUtils.js')}"></script>
+        <!-- Most of the include tags are at the end of the page for better performance -->
+    </head>
+    
+    <body style="background-color:#F8F8F9;">        
+        <apex:form id="Theform">
+            <apex:outputPanel id="divThePageMsg" layout="block" style="display:none;">
+                <apex:pageMessages id="theMsg" showDetail="true"/>
+            </apex:outputPanel>
+            
+            <!-- div for showing the script errors -->
+            <div id="divScriptErrMsg" style="display:none;">
+                <div class="message errorM3">
+                    <table cellspacing="0" cellpadding="0" border="0" style="padding:0px;margin:0px;" class="messageTable">
+                        <tbody>
+                            <tr valign="top">
+                                <td><img title="error" src="/s.gif" class="msgIcon" alt="error"/></td>
+                                <td class="messageCell" >
+                                    <div class="messageText" id="scriptErrMsgText"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Showing business policy content as table -->
+            <apex:outputPanel id="PolicyContentViewerComponent" layout="block" style="display:none;">
+                <!-- Display error or/and warn message(invalid policy configuration such as invalid lookup type warning message) -->
+                <apex:outputPanel id="pnPolContentMessage" layout="block" style="display:none;"/> 
+                <!-- Showing business policy content as table -->
+                <apex:outputPanel id="pnPolContentTableWidget" layout="block"/>
+            </apex:outputPanel>
+            <apex:outputPanel id="pnLoadingSpinner" layout="block" style="height:437px;display:block;">
+                  <div id="divOverlay" style="width:100%; height:437px;text-align:center; background-color: #FFFFFF; opacity:0.6;filter:alpha(opacity=60);z-index:99999;"></div>
+                  <apex:panelGrid id="pngTextLoading" columns="2" styleclass="colorbox">
+                      <apex:image value="/img/loading.gif" title="Refreshing"/>
+                      <apex:outputtext id="spinnerMessage" value="Loading..." style="color: red;font-size:13px;"/>
+                  </apex:panelGrid>
+                <script>
+                </script>
+            </apex:outputPanel>
+        </apex:form>
+      
+        <!--  Override default styles to achieve proper fit -->
+        <style type="text/css" id="testStyle">
+            /* Main grid */
+            
+            #decsond-tabs div.innertab {
+                /*max-height: 365px;*/
+                overflow : hidden;
+            }
+            table.editablegrid{ 
+                font-family: Arial,Helvetica,sans-serif;
+                font-size: 14px;
+            }
+        </style>
+        <script>     
+    // =============================
+    // Custom callbacks for editor widget
+    // =============================
+     // Display message to the user
+    function displayWidgetMessage(editorWidget, severity, msg) {
+        // No need to log, that's already done
+        console.log(severity + ": " + msg);
+    }
+
+    // =============================
+    // =============================
+    // Make sure the SFDC constant is initialized
+    DecsOnD.SFDC = DecsOnD.mergeObjects(DecsOnD.SFDC, {});
+
+    function initializeContext(){
+        console.log("Initializing context");
+        DecsOnD.SFDC.RemoteActionNames = DecsOnD.mergeObjects(
+            DecsOnD.SFDC.RemoteActionNames,
+            {
+                "loadTableContents" : "{!$RemoteAction.PolicyContentViewerController.getAllTableContents}",
+                "getPicklistValues" : "{!$RemoteAction.PolicyContentViewerController.getPicklistValues}",
+// Future                "getAvailableFields" : "{ !$RemoteAction.PolicyContentViewerController.getAvailableFields }",
+                // Workaround for inability to modify remote API in patch
+                "getAvailableFields" : "{!$RemoteAction.PolicyContentViewerController.getAvailableColumns}",
+                "getAvailableColumns" : "{!$RemoteAction.PolicyContentViewerController.getAvailableColumns}",
+                "validateAndCompleteLookups" : "{!$RemoteAction.PolicyContentViewerController.validateAndCompleteLookupValues}",
+                "acquireLock" : "{!$RemoteAction.PolicyContentViewerController.acquireLock}",
+                "releaseLock" : "{!$RemoteAction.PolicyContentViewerController.releaseLock}",
+                // getLookupValueCB: handled without remote action
+                // TODO Add getAsyncResponse remote action in main dev
+                // Right now we're using getAllTableContents as a workaround
+                "getAsyncResponse" : "{!$RemoteAction.PolicyContentViewerController.getAllTableContents}"
+            });
+        DecsOnD.SFDC.Callbacks = DecsOnD.mergeObjects(
+            DecsOnD.SFDC.Callbacks,
+            {
+                sfdcDisplayMessage : displayWidgetMessage
+            });
+        // Re-initialize these every time the editor is created
+        // Certain DOM objects can get recreated dynamically with new IDs
+        DecsOnD.SFDC.PageElements = DecsOnD.mergeObjects(DecsOnD.SFDC.PageElements, {
+            getDecisionTablesBlock : function(){return DecsOnD.SFDC.findVFObj("pbContentEditor");},
+            getPolicyContentViewer : function(){return DecsOnD.SFDC.findVFObj("PolicyContentViewerComponent");},
+            getLoadingSpinner : function(){return DecsOnD.SFDC.findVFObj("pnLoadingSpinner");},
+            getTableWidget : function(){return DecsOnD.SFDC.findVFObj("pnPolContentTableWidget");}
+        });
+    };
+
+    // =============================
+    // =============================
+    $(function() {
+        var jq = DecsOnD.initJQ(), isError = ('{!isError}'=='true');
+        //if error exist when viewing policy content(via controller), disable "Edit Policy" button on PolicyEditor page
+        if (isError) {
+            console.error("Error found during initialization");
+        } else {
+            sforce.sessionId = '{!GETSESSIONID()}';
+            sforce.connection.sessionId=sforce.sessionId;
+
+            // Workaround for inability to modify remote API in patch
+            DecsOnD.SFDC.remoteGetAsyncResponse = function(continuationURL, callback){
+                try {
+                    // Temp solution: use getAllTableContents with special policyId to send async request
+                    Visualforce.remoting.Manager.invokeAction(
+                        DecsOnD.SFDC.getRemoteActionName("getAsyncResponse"), continuationURL, null, callback);
+                }
+                catch (exc) {
+                    DecsOnD.logException(exc, "Error invoking remote action");
+                    return exc.toString();
+                }
+            };
+            // Initialize context settings required by component
+            initializeContext();
+
+            // Initialize component
+            DecsOnD.SFDC.initializePolicyViewerComponent({
+                version : jq.parseJSON("{!JSENCODE(versionJSON)}"),
+                dpConfiguration : jq.parseJSON("{!JSENCODE(dpConfigJSON)}"),
+                tableConfigurations : jq.parseJSON("{!JSENCODE(tableConfigsJSON)}")
+            });
+//            policyEditorGlobal = initializeEditor();
+//            console.log("editor initialized: " + Date.now());
+        }
+    });
+
+    // =============================
+    // Separate this method -- it will be moved to a component in future
+    // =============================
+    DecsOnD.SFDC.initializePolicyViewerComponent = function(editorConfig, callbacks) {
+        console.log("initializePolicyViewerComponent called");
+        try {  
+            var jq = DecsOnD.initJQ(),
+                policyObj = {
+                    Id : "{!Policy__c.Id}",
+                    Name : "{!JSENCODE(Policy__c.Name)}",
+                    Applies_to__c : "{!JSENCODE(Policy__c.Applies_to__c)}",
+                    // The following are not required in JS but need to be present for controller code to work
+/* Comment due to securiy scan
+                    Status__c : "{!JSENCODE(Policy__c.Status__c)}",
+                    DecsOnD__Revision__c : "{policy.DecsOnD__Revision__c}",
+                    DecsOnD__LockedBy__c : "{policy.DecsOnD__LockedBy__c}",
+                    DecsOnD__LockExpires__c : "{policy.DecsOnD__LockExpires__c}",
+                    LockedByName : "{Policy__c.DecsOnD__LockedBy__r.Name}",
+                    LastModifiedBy : "{Policy__c.LastModifiedBy.Name}"
+*/
+                }; 
+
+//            console.log("JSON parsed: " + Date.now());
+            // TODO Pass activeTableName?
+            editorConfig = jq.extend(
+                {
+                    // TODO Clarify relationship between editMode and hasEditRight
+                    hasEditRight : ("{!userCanEditPolicy}"==="true"),
+                    locale : "{!userLocale}",
+                    isEditable : ("{!isEditable}"==="true"),
+                    disableConfigEditor : ("{!isConfigEditable}"==="false"),
+                    version: new VersionDescriptor() // Default to avoid NPE. Should be overwritten by editorConfig
+                }, 
+                DecsOnD.SFDC.Callbacks,
+                editorConfig); 
+            console.log("Initializing editor in component. Version: " + editorConfig.version.sequenceNum);
+            PolicyEditorWidget.imageBasePath = "{!URLFOR($Resource.JS_PolicyEditorWidget, 'images')}";
+            DesTableConfigWidget.imageBasePath = "{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'images')}"
+            return DecsOnD.SFDC.createPolicyEditor(
+                    DecsOnD.SFDC.PageElements.getTableWidget(), policyObj, editorConfig);
+        } catch(ex) {
+            DecsOnD.logException(ex, "Error initializing editor");
+//            showScriptErrorMsg(ex.toString(), true, editMode); // show the error and hide loading spinner
+        } finally {
+            DecsOnD.SFDC.setLoadingSpinnerVisibility(false);   
+        }
+    }
+</script>
+
+    </body>
+
+    <!-- Patch 1.8.27 Include standard script to support onLookup -->
+    <!-- FIXME Find a way that doesn't hard-code the 1412790252000. Something like: -->
+    <!--   <script type="text/javascript" src="/sfdc/main.js"></script>     -->
+    <script src="/jslibrary/1412790252000/sfdc/main.js"></script>
+    <!-- FIXME Update versions? -->
+    <!-- Better not to use apex:includeScript: that adds references to trhe <head> element rather than at the end of the page -->
+    <script src="/soap/ajax/15.0/connection.js"></script>
+    <script src="/soap/ajax/15.0/apex.js"></script>
+
+
+    <!-- include javascript files for NumberFormat library -->
+    <script src="{!URLFOR($Resource.JS_Globalize, 'globalize.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Globalize, 'cultures/globalize.cultures.js')}"></script>
+    
+    <!-- @Sothea 141030 Include JQuery plugin for showing loading spinner -->
+    <script src="{!URLFOR($Resource.JS_LoadingSpinner, 'loading-overlay.min.js')}" type="text/javascript"></script>
+    <link type="text/css" href="{!URLFOR($Resource.JS_LoadingSpinner, 'css/loadingoverlay_decsond.css')}" rel="stylesheet"></link>
+    
+    <!-- include javascript and css files for the EditableGrid library -->
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_renderers.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_editors.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_validators.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid_utils.js')}" ></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_EditableGrid, 'editablegrid.css')}" type="text/css" media="screen"/> 
+    
+    <!-- include javascript and css files for multiselect -->
+    <!-- 
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/jquery.multiselect.min.js')}" ></script>
+    -->
+    
+    <!-- include jQuery extensions -->
+    <link rel="stylesheet" media="all" type="text/css" href="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-timepicker-addon.css')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-timepicker-addon.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.JS_DateTimePicker, 'jquery-ui-sliderAccess.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryCSV, 'jquery.csv-0.71.min.js')}" ></script>
+    
+    <!-- Include EditableGrid extensions -->
+    <script src="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/multiselect.js')}" ></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_EditableGrid, 'extensions/multiselect/ui.dropdownchecklist.themeroller.css')}" type="text/css" media="screen"/>        
+
+    <link href="{!URLFOR($Resource.JS_Dynatree, 'skin/ui.dynatree.css')}" rel="stylesheet" type="text/css" id="skinSheet"></link>
+    <script src="{!URLFOR($Resource.JS_Dynatree, 'jquery.dynatree.js')}" type="text/javascript"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.js')}" type="text/javascript"></script>
+    <script src="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.ui.position.js')}" type="text/javascript"></script>
+    <link href="{!URLFOR($Resource.JS_JQueryContextMenu, 'jquery.contextMenu.css')}" rel="stylesheet" type="text/css" />
+    
+    <!--@Sothea #412, #423 Include SemanticUI -- Popup for showing message as tooltip -->
+    <script src="{!URLFOR($Resource.JS_SemanticUI_Popup, 'popup.js')}" type="text/javascript"></script>
+    <link type="text/css" href="{!URLFOR($Resource.JS_SemanticUI_Popup, 'css/popup.css')}" rel="stylesheet"></link>
+            
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_DecsOnD, 'css/decsond.css')}" type="text/css" media="screen"/>
+
+    <!-- include JS libraries for customizing decision table configuration -->
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DataTypeMapper.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'MatchOperatorManager.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_editor.js')}" ></script>
+    <script src="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'DesTableConfigWidget_renderer.js')}" ></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_DecisionTableConfigWidget, 'css/dt-config-widget.css')}" media="screen"/>
+    
+    <!-- Include PolicyEditorWidget scripts and styles -->
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'DatePeriodManager.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyTable.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget_renderer.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'PolicyEditorWidget_editor.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'custom.ui.dropdownchecklist-1.4-min.js')}"></script>        
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'EditableGridExtensions.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'MultiSelectExtensions.js')}"></script>
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_PolicyEditorWidget, 'css/editablegrid-decsond.css')}" type="text/css" media="screen"/>
+
+    <!-- Custom SFDC style overrides styles -->
+    <link rel="stylesheet" href="{!URLFOR($Resource.JS_PolicyEditorWidget, 'css/decsond-sfdc.css')}" type="text/css" media="screen"/>
+    
+    <script src="{!URLFOR($Resource.JS_PolicyEditorWidget, 'DatePeriodManager.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_Callbacks, 'sfdcCallbacks.js')}"></script>
+</apex:page>

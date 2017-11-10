@@ -1,0 +1,37 @@
+<apex:page controller="sbaa.ResendRequestsController" standardStylesheets="false" title="{!$Label.lbl_approval_requests}">
+    <apex:stylesheet value="{!$Resource['sb']}"/>
+    <style>
+        body .pbBody {
+            background-color: #F8F8F8 !important;
+        }
+    </style>
+    <apex:pageMessages />
+    <apex:form rendered="{!recordId != null}">
+        <div id="sbListApprovals" class="sb">
+            <c:pageHeader title="{!$Label.lbl_approval_requests}" subtitle="{!recordName}" formFactor="desktop" iconName="sf-icon-post">
+                <div class="sbButtons">
+                    <apex:commandButton styleClass="sbBtn" value="{!$Label.lbl_select}" action="{!onSelect}" rendered="{!approvalList.size > 0}"/>
+                    <apex:commandButton styleClass="sbBtn" value="{!cancelBtnText}" action="{!onCancel}"/>
+                </div>
+            </c:pageHeader>
+        </div>
+        <apex:pageBlock mode="maindetail">
+            <apex:pageBlockSection columns="1" showHeader="false">
+                <apex:outputPanel rendered="{!approvalList.size > 0}">
+                    <apex:pageBlockTable value="{!approvalList}" var="approval" id="table">
+                        <apex:column headerValue="{!$Label.lbl_select}">
+                            <apex:inputCheckbox value="{!approval.selected}"/>
+                        </apex:column>
+                        <apex:column value="{!approval.record.Name}"/>
+                        <apex:column value="{!approval.record.sbaa__Approver__c}"/>
+                        <apex:column value="{!approval.record.sbaa__AssignedTo__c}"/>
+                        <apex:column value="{!approval.record.sbaa__Rule__c}"/>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!approvalList.size = 0}">
+                    <apex:outputText value="{!$Label.msg_no_approval_requests}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,7 @@
+Hello {!SurveyParticipant__c.DisplayName__c},<br/>
+<br/>
+Can you please respond on the link below:<br/>
+{!SurveyParticipant__c.SurveyURL__c}?stid={!SurveyParticipant__c.AnonymousTokenId__c}&atid={!SurveyParticipant__c.Token__c}<br/>
+<br/>
+Thank You<br/>
+{!SurveyParticipant__c.OwnerFirstName}

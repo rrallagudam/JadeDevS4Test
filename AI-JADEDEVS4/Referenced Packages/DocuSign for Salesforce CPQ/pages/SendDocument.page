@@ -1,0 +1,21 @@
+<apex:page standardController="SBQQ__QuoteDocument__c" extensions="SBQQDS.QuoteDocumentExtController">
+	<apex:pageMessages />
+	<apex:form >
+		<apex:pageBlock title="Sending Document for Signature">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Send" action="{!onSend}"/>
+				<apex:commandButton value="Cancel" action="{!onCancel}"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="Confirm Document Recipient" collapsible="false" columns="1">
+				<apex:pageBlockSectionItem >
+					<apex:outputText value="Primary Contact"/>
+					<apex:outputLink value="/{!quoteDocument.SBQQ__Quote__r.SBQQ__PrimaryContact__c}">{!quoteDocument.SBQQ__Quote__r.SBQQ__PrimaryContact__r.Name}</apex:outputLink>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputText value="Primary Contact Email"/>
+					<apex:outputText value="{!quoteDocument.SBQQ__Quote__r.SBQQ__PrimaryContact__r.Email}"/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

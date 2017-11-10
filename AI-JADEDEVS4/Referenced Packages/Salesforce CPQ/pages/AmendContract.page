@@ -1,0 +1,63 @@
+<apex:page standardController="Contract" extensions="SBQQ.AmendContractController" showHeader="{!(!$Setup.GeneralSettings__c.GlobalHeaderPermUsed__c || !$Permission.SBQQ__HideGlobalHeader)}" standardStylesheets="false" title="SteelBrick: Amend Contract">
+	<link rel="shortcut icon" href="{!URLFOR($Resource.sbFavicon)}" />
+	<apex:stylesheet value="{!$Resource['sb']}"/>
+	<c:theme />
+    <div id="sbAmendContract" class="sb">
+	    <apex:form >	    	
+	    	<c:pageHeader title="Amend Contract" subtitle="{!contractNumber}" formFactor="desktop" iconName="sf-icon-contract-1">
+		    	<div class="sbButtons">
+	                <apex:commandButton styleClass="sbBtn" value="Amend" action="{!onAmend}" onclick="displayLoadingMask()"/>
+	                <apex:commandButton styleClass="sbBtn" action="{!returnToContract}" value="Cancel" />
+	            </div>
+			</c:pageHeader>
+		</apex:form>
+		<div class="sbBody">
+			<div class="sbPageBlockSection">
+				<table class="sbTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th></th>
+							<th>{!$ObjectType.Subscription__c.fields.Name.label}</th>
+							<th>{!$ObjectType.Subscription__c.fields.Product__c.label}</th>
+							<th>{!$ObjectType.Subscription__c.fields.Quantity__c.label}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<apex:repeat var="id" value="{!aggregatedSubs}" rows="15">
+							<tr>
+								<td></td>
+								<td>{!aggregatedSubs[id].subName}</td>
+								<td>{!aggregatedSubs[id].productName}</td>
+								<td>{!aggregatedSubs[id].quantity}</td>
+							</tr>
+						</apex:repeat>
+		            </tbody>
+		        </table>
+	        </div>
+		</div>
+		<div class="sbLoadingMask">
+	        <div class="sbLoading sb-icon-loading">
+	            <div class="sb-icon-bounce1"></div>
+	            <div class="sb-icon-bounce2"></div>
+	            <div class="sb-icon-bounce3"></div>
+	        </div>
+	    </div>
+	</div>
+    <script>
+
+        var displayLoadingMask = function() {
+        	document.getElementsByClassName('sbLoadingMask')[0].style.visibility="visible";
+        }
+
+        function setFavicon (iconURL) { //hacky way to set the favicon
+		  var links = document.getElementsByTagName('link')
+		  for (var i=0; i<links.length; i++) {
+		    if(links[i].rel === 'shortcut icon'){
+		      links[i].href=iconURL;
+		    }
+		  }
+		}
+
+		setFavicon("{!URLFOR($Resource.sbFavicon)}");
+    </script>
+</apex:page>

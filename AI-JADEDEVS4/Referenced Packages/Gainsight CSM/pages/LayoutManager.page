@@ -1,0 +1,138 @@
+<apex:page docType="html-5.0" controller="JBCXM.LayoutBroker" sidebar="false" title="Layout Manager" tabStyle="Administration__tab" extensions="JBCXM.NSRemoting,JBCXM.GSCommonBroker">
+
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}"/>
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__jqGrid, 'css/ui.jqgrid.css'))}"/> 
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor, 'js/vendor/gridster/jquery.gridster.css'))}"/>
+	<apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/layout/layout.css'))}"/>
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/date/moment.2.13.0.min.js'))}"></script>
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/date/moment-timezone-with-data.0.5.3.min.js'))}"></script>
+
+    
+    <script>
+        
+        var GS = GS || {};
+            var nsParams                = eval({!(nsParams)}); 
+            GS.remotingEndPoint     = '{!$RemoteAction.LayoutBroker.layoutRequestBroker}';
+            GS.commonRemotingEndPoint   = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';          
+            GS.packageNS            = "{!(pkgNS)}";
+    		GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";      
+            
+            GS.nsURL                = nsParams.url;
+            GS.remoting = "{!$RemoteAction.NSRemoting.apinsinvoke}";
+            GS.sessionId = "{!NSSessionId}";
+            GS.isNSEnabled = nsParams.nsenabled == "true" ? true : false; 
+            GS.isScorecardEnabled       = {!(isScorecardEnabled)};
+            GS.customLookUpConfig       = JSON.parse("{!(JSENCODE(customLookUpConfigMap))}");
+
+                        
+            GS.customLabels  = eval({!(customLabelsMap)});
+            GS.maxContainerCountPerLayout    = '{!(maxContainerCount)}';
+            GS.maxContainerCountPerLayout = (typeof GS.maxContainerCountPerLayout != 'undefined' && GS.maxContainerCountPerLayout != '') 
+                                                ? parseInt(GS.maxContainerCountPerLayout) : 10;
+            GS.churnLabelMap        = {!(churnLabelMap)};
+            GS.honourTimezonePreferences = true; // Only in few pages needs to honor, timezone needs to honored for sfdc data
+            GS.displayTimezone = true; // Display Timezone on UI (Especially in the Grid)
+    </script>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null , true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_Analytics, 'layoutdesigner/layoutdesigner.min.js'))}"></script>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_Analytics, 'reportContainer/reportContainer.min.js'))}"></script>
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized_Analytics, IF(isPkgInstance,'layoutdesigner/layoutdesigner.packaged.js', 'layoutdesigner/layoutdesigner.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized_Analytics, IF(isPkgInstance,'reportContainer/reportContainer.packaged.js', 'reportContainer/reportContainer.js')))}"></script>
+        
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "build" , true, false)}">
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/layoutdesigner/layoutdesigner-libs.min.js"></script>
+        
+        <script>
+         require.config({
+                baseUrl : "",
+                paths : {
+                'framework': ("{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}").split('?')[0],
+                'newStack' : ("{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js'))}").split('?')[0], 
+                'vendor' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}").split('?')[0],
+                'text' : ("{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}").split('?')[0],
+                'src':"{!JSENCODE(URLFOR($Resource.src,''))}"
+                },
+                config: {
+                    text: {
+                            useXhr: function(url, protocol, hostname, port) {
+                                return true;
+                            }
+                    }
+                }
+                ,urlArgs: "bust=" +  (new Date()).getDate()
+            });
+        </script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/layoutdesigner/layoutdesigner.min.js"></script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/reportContainer/reportContainer.min.js"></script>
+         
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">
+        <script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/layoutdesigner/layoutdesigner.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized_Analytics/reportContainer/reportContainer.js"></script>   
+    </apex:outputpanel>
+    
+
+ 
+ <style>
+ 
+    .gridster li {
+    
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 100%;
+        text-align: center;
+        background-color: #FFF; list-style: none;
+    
+    }
+    
+    .gridster {
+        margin: 0 auto;
+        opacity: 0.8;
+        transition: opacity 0.6s ease 0s;
+    }
+
+    
+    .ui-dialog{
+        z-index:99999 !important;
+    }
+    
+    .report-item-helper{
+        z-index:1000 !important;
+    }
+    
+    .noSidebarCell, .sidebarCell .fixed {
+        padding: 0px !important;
+    }
+    
+</style>
+ 
+<div id="gs-app-container">
+ <div class="gs-module-container">
+    <div class="layoutManager"></div>
+ </div>
+ </div>
+    <script>
+        var GSGA = {
+            orgId: "{!$Organization.Id}",
+            orgName: "{!$Organization.Name}",
+            userName: "{!$User.FirstName}"+" "+"{!$User.LastName}"
+        };
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    
+    </script>
+    <script src="{!JSENCODE(URLFOR($Resource.CustomJS,'CustomJS/analyticsWrapper.js'))}"></script>
+    <script>
+        gainsightTrackEvents.pushPageViews('Administration - Layout Manager');
+    </script>
+   <apex:form ></apex:form>
+</apex:page>

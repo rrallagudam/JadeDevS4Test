@@ -1,0 +1,178 @@
+<!-- Copyright (c) 2014 Gainsight Software, Inc.  
+---- Purpose                    : None.
+----                              None.
+---- Other comments (optional)  : None. 
+--> 
+
+<apex:page sidebar="false" title="Administration" showHeader="false" docType="html-5.0" showChat="false" extensions="JBCXM.GSCommonBroker,JBCXM.NSRemoting" controller="JBCXM.ConfigBroker">
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jsforce.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-1.10.2.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery.htmlClean.min.js'))}"></script>    
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/jquery/jquery-UI-1.10/js/jquery.ui.min.js'))}"></script>
+    <apex:includeScript value="{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS, 'CustomJS/date.format.js'))}" /> 
+    <script src="{!JSENCODE(URLFOR($Resource.CustomJS, 'CustomJS/jbaraCustomUtility.js'))}" ></script> 
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/tooltip/qtip2/2.2.1/jquery.qtip.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/jstree/jstree.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/underscore-min.js'))}"></script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/backbone-min.js'))}"></script>
+
+
+    <script src="{!JSENCODE(URLFOR($Resource.NS,'NS/newStack/js/restclient/restClient.js'))}"> </script>
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/multiple-select/jquery.multiple.select.js'))}"></script>
+    
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/reports/themes/default/style.min.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSVendor, 'js/vendor/tooltip/qtip2/2.2.1/jquery.qtip.min.css'))}"/> 
+    <script src="{!JSENCODE(URLFOR($Resource.GSVendor, 'js/vendor/multiple-select/jquery.multiselect.filter.js'))}"></script>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/CS360/gsApps-new.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles, 'css/module/cs360Layouts/alertsByOpportunity.css'))}" />
+    <!-- <link href = "https://localhost:8080/UI/GSAppCSS/css/summaryadmin/Summaryconfig.css" rel = "stylesheet" />
+        <link href = "https://localhost:8080/UI/GSAppCSS/css/summaryadmin/sponsortrackeradmin.css" rel = "stylesheet" />
+    -->
+    
+   <script>
+        var j$ = $.noConflict();
+        window.jLatest = j$; 
+        var GS = GS || {};
+            GS.remotingEndPoint     = '{!$RemoteAction.ConfigBroker.configRequestBroker}';
+            GS.commonRemotingEndPoint  = '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+            GS.packageNS            = "{!(pkgNS)}";
+            GS.isPackagedInstance   = (GS.packageNS) ? "true" : "false";
+            GS.remoting             = "{!$RemoteAction.NSRemoting.apinsinvoke}";
+            GS.sessionId            = "{!NSSessionId}";
+            
+            function urlParams (){
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for(var i = 0; i < hashes.length; i++)
+                {
+                  hash = hashes[i].split('=');
+                  vars.push(hash[0]);
+                  vars[hash[0]] = hash[1];
+                }
+                return vars;
+          }
+    
+       var urlParamsMap = urlParams();
+       GS.callbackfnAfterSave = ""+urlParamsMap["callback"];
+       GS.callbackfnAfterCancel = ""+urlParamsMap["callbackCancel"];
+       GS.editingName  = ""+urlParamsMap["name"];
+       GS.sectionId = urlParamsMap["secId"];
+       GS.sectionType = urlParamsMap["type"];
+       GS.isUsage   = urlParamsMap["isUsage"];
+       GS.isNSEnabled   = urlParamsMap["isNSEnabled"];
+       GS.layoutId   = urlParamsMap["layoutId"];
+       GS.currencyConfig       = eval({!(currencyConfigJSON)});
+       GS.hasToolingAPIPermission = "{!(hasToolingAPIPermission)}";
+       require.config({
+            baseUrl : "",
+            paths : {
+                'framework': "{!JSENCODE(URLFOR($Resource.GSApp,'js/Gainsight'))}",
+                //'framework': "https://localhost:8080/UI/GSApp/js/Gainsight",
+                'vendor'   : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor'))}",
+                'text' : "{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/text'))}",
+                'src': ("{!JSENCODE(URLFOR($Resource.src,''))}").split('?')[0]
+            },
+            config: {
+                text: {
+                        useXhr: function(url, protocol, hostname, port) {
+                            return true;
+                        }
+                }
+            },
+            urlArgs: "bust=" +  (new Date()).getDate()
+            
+        });
+        
+        j$(document).ready(function() {
+                if(GS.editingName === "summary") {
+                    require(["framework/views/summaryadmin/SummaryAdminView"], function(SummaryAdminView) {
+                        var summAdmin = new SummaryAdminView();
+                        summAdmin.on("SAVE", function() {
+                            if(GS.callbackfnAfterSave) {
+                                window.parent[GS.callbackfnAfterSave]();
+                            }
+                        });
+                        
+                        summAdmin.on("CANCEL", function(data) {
+                            if(GS.callbackfnAfterCancel) {
+                                window.parent[GS.callbackfnAfterCancel]();
+                            }
+                        });
+                        
+                        j$(".parentContainer").html(summAdmin.$el);
+                        
+                    });
+                }
+                else if(GS.editingName === "sponsortracking") {
+                    require(["framework/views/sponsortracking/SponsorTrackingAdminView"], function(SponsorTrackingAdminView) {
+                        var stAdmin = new SponsorTrackingAdminView({});
+                        stAdmin.on("SAVE", function() {
+                            if(GS.callbackfnAfterSave) {
+                                window.parent[GS.callbackfnAfterSave]();
+                            }
+                        });
+                        
+                        stAdmin.on("CANCEL", function(data) {
+                            if(GS.callbackfnAfterCancel) {
+                                window.parent[GS.callbackfnAfterCancel]();
+                            }
+                        });
+                        
+                        j$(".parentContainer").html(stAdmin.$el);
+                        
+                    });             
+                } else if(GS.editingName === "customersearch") {
+                   require(["framework/views/customer360/customer-search/CustomerSearchAdmin"], function(CustomerSearchAdmin) {
+                        var csConfig = new CustomerSearchAdmin();
+                        csConfig.on("SAVE", function() {
+                            if(GS.callbackfnAfterSave) {
+                                window.parent[GS.callbackfnAfterSave]();
+                            }
+                        });
+                        
+                        csConfig.on("CANCEL", function(data) {
+                            if(GS.callbackfnAfterCancel) {
+                                window.parent[GS.callbackfnAfterCancel]();
+                            }
+                        });
+                        
+                        j$(".parentContainer").html(csConfig.render().$el);
+                    });        
+                } else {
+                   require(["framework/views/customer360/section/CS360SectionConfig"], function(CS360SectionConfig) {
+                        var csConfig = new CS360SectionConfig();
+                        window.configView = csConfig; 
+                        j$(".parentContainer").html(csConfig.$el);
+                    });       
+                }    
+        }); 
+        
+   </script>
+   
+   <div class = "parentContainer">
+   
+   </div>
+   <style>
+   .ad-summaru-configsec .sectionLabel #showLabel {
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        height: 24px;
+        width: 159px !important;
+        padding-left: 5px;
+    }
+    .customTreeContainer .customTree_js .jstree-container-ul {
+      overflow-y: auto;
+    }
+    .gs-rb-choose-lists .treeColumnChooser {
+      max-width : 310px !important;
+    }
+    .gs-rb-mapping-list {
+        top : 0px;
+        margin-top:0px;
+    }
+    .noDataFound {
+       width : 95% !important; 
+    }
+   </style>
+</apex:page>

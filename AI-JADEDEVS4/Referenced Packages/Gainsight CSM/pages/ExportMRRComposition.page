@@ -1,0 +1,192 @@
+<apex:page sidebar="false" Controller="JBCXM.ReportBuilder" extensions="JBCXM.NSRemoting" applyBodyTag="false" >
+	<apex:includeScript value="{!JSENCODE(URLFOR($Resource.JBCXM__NS, 'NS/RestClient/NS_RestClient.js'))}" />
+	<style>
+		#grid {
+			font: 13px/1.65 DroidSansWeb, "Segoe UI", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+			border: 1px solid #CCC;
+			border-bottom: none;
+		}
+		.table {
+			display: table;
+			table-layout: fixed;
+			width: 100%;
+			height: auto;
+		}
+		.row {
+			display: table-row;
+		}
+		.cell {
+			display: table-cell;
+			height: 100%;
+			width: 70px;
+			vertical-align: middle;
+			border-bottom: 1px solid #CCC;
+			height: auto;
+			padding-left: 5px;
+		}
+		.row.even {
+			background-color: #F2F2F2
+		}
+		.rules-head {
+			background-color: #505050;
+			height: 40px;
+			color: #D7D7D7;
+		}
+		.ruleRun {
+			width: 50px;
+			text-align: right
+		}
+		.run {
+			text-shadow: 0 1px 0 #fff;
+			-webkit-transition: border-color .218s;
+			-moz-transition: border .218s;
+			-o-transition: border-color .218s;
+			transition: border-color .218s;
+			background: #f3f3f3;
+			background: -webkit-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
+			background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
+			border: solid 1px #dcdcdc;
+			border-radius: 2px;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			margin-right: 10px;
+			outline: none;
+			cursor: pointer;
+			color: blue;
+		}
+		.run:hover {
+			text-shadow: 0 1px 0 #fff;
+			-webkit-transition: border-color .218s;
+			-moz-transition: border .218s;
+			-o-transition: border-color .218s;
+			transition: border-color .218s;
+			border: 1px solid green
+		}
+		#gs-log {
+			right: -9999px;
+		}
+		.log {
+			height: 30px;
+			width: 400px;
+			line-height: 30px;
+			position: fixed;
+			bottom: 0px;
+			text-align: center;
+		}
+		.success {
+			background-color: #DFF2BF;
+			color: green;
+			right: 0px;
+		}
+		.error {
+			background-color: #FFBABA;
+			color: red;
+			right: 0px;
+		}
+	</style>
+	<div class="log" id="gs-log"></div>
+	<div id="grid" class="grid table">
+
+	</div>
+	<script type="text/html" id="default_html">
+		<div class="row">
+		<div class="rules-head ruleID cell">
+		Rule
+		</div>
+		<div class="rules-head ruleName cell">
+		Name
+		</div>
+		<div class="rules-head ruleDesc cell">
+		Description
+		</div>
+		<div class="rules-head ruleRun cell">
+
+		</div>
+		</div>
+	</script>
+	<script type="text/html" id="rule_tmpl">
+		<div id="{a}" class="row {class}>">
+		<div class="rules-info ruleID cell">
+		{a}
+		</div>
+		<div class="rules-info ruleName cell">
+		{b}
+		</div>
+		<div class="rules-info ruleDesc cell">
+		{c}
+		</div>
+		<div class="rules-info ruleRun cell">
+		<input type="button" class="run" value="Run" onclick="runRule(event,this,'{a}');"/>
+		</div>
+		</div>
+	</script>
+	<script>
+        function nano( template, data ) {
+            return template.replace( /\{([\w\.]*)\}/g, function( str, key ) {
+                var keys = key.split( "." ), v = data[   keys.shift( ) ];
+                for( var i = 0, l = keys.length; i < l; i++ )
+                    v = v[ keys[ i ] ];
+                return ( typeof v !== "undefined" && v !== null ) ? v : "";
+            } );
+        }
+
+        function showLog( type, mesg ) {
+            var log = document.getElementById( 'gs-log' ), str = "log ";
+            if( type === 0 ) {
+                log.className = str + " success";
+            } else {
+                log.className = str + " error";
+            }
+            log.innerHTML = mesg;
+            log.style.right = "0px";
+            window.setTimeout( function( ) {
+                log.style.right = "-9999px";
+            }, 3000 );
+        }
+        restClient.config = {
+            remoting: "{!$RemoteAction.NSRemoting.apinsinvoke}",
+            sessionId: "{!NSSessionId}"
+        };
+        restClient.serveRequest( "GetRuleIDForTenant/apinstenantid", "GET", "", {}, true, ( function( data ) {
+            putData( data );
+        } ) );
+        function putData( json ) {
+            json.result && ( function( data ) {
+                if( data.length == 0 ) {
+                    showLog( 1, "Unable to load Data!" );
+                    return;
+                }
+                var show_rule = document.getElementById( 'rule_tmpl' ).innerHTML, html = "", defaultHtml = document.getElementById( 'default_html' ).innerHTML;
+                for( var i = 0; i < data.length; i++ ) {
+                    var splt = data[ i ].split( '___' ), obj = {
+                        a: splt[ 0 ],
+                        b: splt[ 1 ],
+                        c: splt[ 2 ]
+                    };
+                    html += nano( show_rule, obj );
+                }
+                grid.innerHTML = defaultHtml + html;
+            } )( json.data.RuleInfo || [ ] );
+        }
+
+        function runRule( e, target1, ruleId1 ) {
+            return ( function( target, ruleId ) {
+                target.disabled = true;
+                target.value = "In progress!";
+                try{ 
+                restClient.serveRequest( "CallBulkApiJob/apinstenantid/" + ruleId, "GET", "", {}, true, ( function( data ) {
+                    var str = "Rule - ";
+                    str += ruleId + " : " + data.errorDesc + ", " + data.errorCode;
+                    showLog( 0, str );
+                    target.disabled = false;
+                    target.value = "Run";
+                } ) );
+                }catch(e){
+                	target.disabled = false;
+                    target.value = "Run";
+                    showLog( 1, "Unable to load Data!" );
+                }
+            } )( target1, ruleId1 );
+        }
+	</script>
+</apex:page>

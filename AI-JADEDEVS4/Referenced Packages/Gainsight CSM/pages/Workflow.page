@@ -1,0 +1,264 @@
+<apex:page docType="html-5.0" controller="JBCXM.WorkFlowBroker" sidebar="false" title="Cockpit" tabStyle="Cockpit__tab" extensions="JBCXM.NSRemoting,JBCXM.GSCommonBroker">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no;"/>
+<style id="gs-app-temp-style-for-flash" type="text/css">
+    object{
+        opacity: 0
+    }
+</style>
+<script type="text/javascript">
+    window.addEventListener('load', function(){
+        var styleNode = document.querySelector('#gs-app-temp-style-for-flash');
+        styleNode.remove ? styleNode.remove() : styleNode.parentElement.removeChild(styleNode);
+    });
+</script>
+<apex:outputpanel rendered="{!If($CurrentPage.parameters.traceperformance == "true" , true, false)}">
+    <script type="text/javascript">
+        if(window.performance && window.performance.mark && window.performance.measure){
+            window.GSPerformance = {
+                mark: function(){
+                    try{
+                        window.performance.mark.apply(window.performance, arguments);
+                    } catch(e){
+                        console.log("Failed to create mark", e);
+                    }
+                },
+                measure: function(){
+                    try{
+                        window.performance.measure.apply(window.performance, arguments);
+                    } catch(e){
+                        console.log("Failed to create measure", e);
+                    }
+                }
+            };
+        }
+    </script>
+</apex:outputpanel>
+    <script type="text/javascript">
+        if(!window.GSPerformance){
+            window.GSPerformance = {};
+            window.GSPerformance.mark = window.GSPerformance.measure = function(){};
+        }
+        window.GSPerformance.mark('vendor_resource_start');
+
+        var GS = GS || {};
+            GS.antConfig                = eval({!(ANTConfig)});
+            GS.remoting                 	= "{!$RemoteAction.NSRemoting.apinsinvoke}";
+            GS.remotingEndPoint     		= '{!$RemoteAction.WorkFlowBroker.workFlowRequestBroker}';
+            GS.remotingBulkEndPoint     	= '{!$RemoteAction.WorkFlowBroker.workFlowBulkRequestBroker}';
+            GS.commonRemotingEndPoint     	= '{!$RemoteAction.GSCommonBroker.gsCommonRequestBroker}';
+            GS.commonRemotingBulkEndPoint    = '{!$RemoteAction.GSCommonBroker.gsCommonBulkRequestBroker}';
+
+            GS.NSSessionId   = "{!(nssessionId)}";
+            GS.allUsersPhoto = "{!JSENCODE(URLFOR($Resource.GSAppCSS, 'images/workflow/all-owners.png'))}";
+            GS.userBlankPhoto = "{!JSENCODE(URLFOR($Resource.GSAppCSS, 'images/workflow/No-User.jpg'))}";
+
+            GS.nsParams                 = eval({!(nsParams)});
+            GS.isNSEnabled              = GS.nsParams.nsenabled == "true" ? true : false;
+            GS.nsURL                    = GS.nsParams.url;
+            var nsParams = GS.nsParams;
+            GS.activityServiceUrl = nsParams.url + "/ant";
+            GS.hasAccessToCallCenter =  {!(IsCallCenterIsAssignedToLoggedInUser)};
+			GS.isCustomizedCTI = {!(IsCustomizedCTI)};
+			GS.isDAMigrationInProcess = {!(IsDAMigrationInProcess)};
+            GS.statePreservation= {!(statePreservation)};
+		    GS.sessionId   =  "{!(sessionId)}";
+
+            GS.generalPageSize = 500; //used in grid pagination
+			GS.isRelationshipEnabled = {!(isRelationshipEnabled)};
+
+            if(!window.Visualforce) {
+                        var redirectURL = window.location.href;
+                        var numOfReloads = "{!($CurrentPage.parameters.numOfReloads)}";
+                        numOfReloads = parseInt(numOfReloads || 0);
+                        if(numOfReloads <= 1) {
+                                var joinerChar = (redirectURL.indexOf("?") > 0) ? "&" : "?"
+                                numOfReloads = numOfReloads+1;
+                                window.location.href = redirectURL+joinerChar+"numOfReloads="+numOfReloads+"";
+                        }
+               }
+    </script>
+    <script type="text/javascript" src="/support/console/30.0/integration.js"></script>
+    <script type="text/javascript" src="/soap/ajax/31.0/connection.js"></script>
+    <script type="text/javascript" src="/soap/ajax/31.0/apex.js"></script>
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/date/moment.2.13.0.min.js'))}"></script>
+    <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/date/moment-timezone-with-data.0.5.3.min.js'))}"></script>
+
+     <script>
+        GS.isSFConsole = sforce.console.isInConsole();
+
+        window.GSPerformance.mark('vendor_resource_end');
+        window.GSPerformance.measure("time_taken_to_load_vendor_files", "vendor_resource_start", "vendor_resource_end");
+        window.GSPerformance.mark('app_resource_start');
+    </script>
+    <div id="gs-app-container">
+        <div class="gs-module-container">
+            <div class="gs-cockpit-wrapper gs-container">
+                <div class="gs-cockpit-module-ctn clearfix workflow-module">
+                    <div class="gs-cockpit-header"></div>
+                    <div class="gs-cockpit-body"></div>
+                    <div class="workflow-child-iframe-ctn" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <apex:form >
+        <apex:actionFunction name="actionCTAIdforChatter" action="{!getCTAIdForChatter}" reRender="chatterIdCTA, rerenderCTAChatterPanel" oncomplete="onChatterElementRendered()" >
+            <apex:param name="paramCTAId" value="" />
+        </apex:actionFunction>
+    </apex:form>
+
+    <div class="gs-chatter-loader-img" style="display:none;">
+            <div class="gs-chatter-loader"></div>
+            <span>Loading Chatter</span>
+    </div>
+
+    <div class="chatterMainDivClass" style="display:none;">
+        <apex:outputPanel id="rerenderCTAChatterPanel">
+            <apex:outputPanel id="renderCTAChatterPanel">
+                <div id="chatterDivId">
+                    <chatter:feed entityId="{!ctaChatterId}" id="chatterIdCTA" />
+                </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </div>
+
+    <script>
+        var GSGA = {
+            orgId: "{!$Organization.Id}",
+            orgName: "{!$Organization.Name}",
+            userName: "{!$User.FirstName}"+" "+"{!$User.LastName}"
+        };
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+        function injectRemoteScript(url, onReady, id){
+            var script = document.createElement('script');
+            script.src = url;
+            script.async = 1;
+            script.defer = 1;
+            if(id){
+                script.id = id;
+            }
+            function invokeCallBack(){
+                if(onReady){
+                    onReady();
+                    onReady = null;
+                }
+            }
+
+            if(onReady){
+                script.onload = invokeCallBack
+                script.onreadystatechange = function(){
+                    if(script.readyState == 'loaded'){
+                        invokeCallBack();
+                    }
+                }
+            }
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+        injectRemoteScript("{!JSENCODE(URLFOR($Resource.JBCXM__CustomJS,'CustomJS/analyticsWrapper.js'))}");
+    </script>
+
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__JQuery,'css/redmond/jquery-ui-1.8.11.custom.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS,'css/emailbuilder/emailbuilder.min.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__GSAppCSS, 'css/medium-editor/5.22.1/medium-editor.css'))}"/>
+    <apex:stylesheet value="{!JSENCODE(URLFOR($Resource.JBCXM__Styles,'css/module/cockpit/gsCockpit.css'))}"/>
+
+    <style>
+    #contentWrapper {position: relative; z-index: 0;}
+    .slick-header-column {
+        -webkit-box-sizing: content-box !important;
+        -moz-box-sizing: content-box !important;
+        box-sizing: content-box !important;
+    }
+    </style>
+
+    <script>
+       function getCTAIdFromQryStr(url){
+           var id ="{!$CurrentPage.parameters.ctaId}"
+           return id||null;
+        }
+
+        function getSubTabNameFromQryStr(url){
+        	var id ="{!$CurrentPage.parameters.stab}"
+           	return id||null;
+        }
+
+
+        GS.ctaId            =  getCTAIdFromQryStr(window.location.href);
+        GS.sTab = getSubTabNameFromQryStr(window.location.href); //This  is used to me from success plan templates map playbook interface.
+
+
+        //Used for opening CTA account links within service console.
+        function openConsolePrimiaryTab(url, caseNumber) {
+
+            window.sforce && window.sforce.console.openPrimaryTab(null, url, true,
+                caseNumber, window.openCust360Success, caseNumber);
+
+        };
+
+        //On Chatter Element is rendered
+        GS.onChatterElementRendered = false;
+        function onChatterElementRendered(){
+            GS.onChatterElementRendered = true;
+            if(window.prepareChatterControl){
+                prepareChatterControl(); // This function will be in main js file.
+            }
+        }
+        var workflowManager = null;
+    </script>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == null , true, false)}">
+        <c:AlertForm />
+        <link rel="preload" href="{!JSENCODE(URLFOR($Resource.Optimized_CS360,'11-20-lib.min.js'))}" as="script"></link>
+        <link rel="preload" href="{!JSENCODE(URLFOR($Resource.Optimized_CS360,'6-10-lib.min.js'))}" as="script"></link>
+        <link rel="preload" href="{!JSENCODE(URLFOR($Resource.Optimized,'Minified/workflow/workflow-libs.min.js'))}" as="script"></link>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.Optimized, 'Minified/workflow/workflow.min.js'))}"></script>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.CustomJS, 'Optimized/emailbuilder/emailbuilder.min.js'))}"></script>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.CustomJS, 'Optimized/embedreport/embedreport.min.js'))}"></script>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "debug", true, false)}">
+        <script type="text/javascript" data-main="{!JSENCODE(URLFOR($Resource.Optimized, IF(isPkgInstance,'Minified/workflow/workflow.packaged.js', 'Minified/workflow/workflow.js')))}" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.CustomJS, 'Optimized/emailbuilder/emailbuilder.min.js'))}"></script>
+        <script type="text/javascript" src="{!JSENCODE(URLFOR($Resource.CustomJS, 'Optimized/embedreport/embedreport.min.js'))}"></script>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "build" , true, false)}">
+        <c:AlertForm />
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/Optimized/Minified/workflow/workflow.min.js"></script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/CustomJS/Optimized/emailbuilder/emailbuilder.min.js'))}"></script>
+        <script type="text/javascript" src="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost:8080/Gainsight-UI")}/CustomJS/Optimized/embedreport/embedreport.min.js'))}"></script>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!If($CurrentPage.parameters.env == "dev" , true, false)}">
+       <apex:stylesheet value="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath,'https://localhost:8080/UI')}/Styles/css/module/activities_timeline/activity-timeline.css" />
+       <script type="text/javascript">
+            /*Defining the other modules*/
+            require = {
+                paths: {
+                    Emailbuilder: '../../../CustomJS/Optimized/emailbuilder/emailbuilder',
+                    EmbedReport: '../../../CustomJS/Optimized/embedreport/embedreport'
+
+                }
+            };
+        </script>
+        <script type="text/javascript">var suffix = "";</script>
+        <script type="text/javascript" data-main="{!IF($CurrentPage.parameters.apppath!=null,$CurrentPage.parameters.apppath, "https://localhost/UI")}/Optimized/Minified/workflow/workflow.js" src="{!JSENCODE(URLFOR($Resource.GSVendor,'js/vendor/require.min.js'))}"></script>
+
+    </apex:outputpanel>
+   <apex:outputPanel rendered="{!IsCallCenterIsAssignedToLoggedInUser}">
+        <div class="sfSoftPhoneLayout" style="display:none;">
+            <div class="cti-frame-header ui-state-default ui-widget-content ui-state-default ui-widget-header ui-state-default">
+                <!--<div class="cti-frame-control" data-control="X"><a href="#" onclick="return false;">X</a></div>-->
+                <div class="cti-frame-state" data-state="+"><div class="cti-title">Click to Call</div><a href="javasctipt:viod(0)" onclick="return false;" class="cti-plus">+</a></div>
+            </div>
+            <iframe src="/apex/SurveyQuestionFrame" width="300" height="395" style="overflow:hidden"></iframe>
+        </div>
+
+        </apex:outputPanel>
+</apex:page>

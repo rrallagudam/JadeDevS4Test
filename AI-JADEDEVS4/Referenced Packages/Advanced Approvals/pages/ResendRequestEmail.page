@@ -1,0 +1,27 @@
+<apex:page standardController="sbaa__Approval__c" extensions="sbaa.ApprovalExtController">
+    <apex:pageMessages />
+
+    <apex:form >
+        <apex:pageBlock rendered="{!isApprovalRequested}">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!onResend}" value="{!$Label.lbl_resend_request}" onclick="disableOnSubmit(this);"/>
+                <apex:commandButton action="{!onReturn}" rendered="true" value="{!$Label.lbl_cancel}" onclick="disableOnSubmit(this);"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.lbl_comments}"/>
+                    <apex:inputTextarea value="{!comments}" rows="5" cols="100"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+        function disableOnSubmit(input) {
+            var btn = input;
+            setTimeout(function(){
+                btn.disabled = 'disabled';
+                btn.className = 'btnDisabled';
+            }, 50);
+        }
+    </script>
+</apex:page>
