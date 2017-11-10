@@ -1,0 +1,8 @@
+<apex:page >
+  <apex:form >
+      <apex:pageblock title="Presale Activities Report">
+          <apex:outputLink value="/apex/OpportunityActivitiesPage" target="_blank">Opportunity Presale Activities</apex:outputLink> <br/> <br/>
+          <apex:outputLink value="/apex/closedlostopportunityActivities" target="_blank">Closed Won/ Closed Lost Activities</apex:outputLink>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

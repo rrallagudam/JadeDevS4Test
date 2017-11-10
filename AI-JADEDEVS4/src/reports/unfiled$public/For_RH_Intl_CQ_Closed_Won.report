@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Order_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$StageName</field>
+    </columns>
+    <columns>
+        <field>Opportunity$ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Probability</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Order_Type__c</column>
+            <operator>equals</operator>
+            <value>New Customer,Renewal,Existing: Add-On</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>Sent to Orders,Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <operator>equals</operator>
+            <value>Balraj Dard,Chikanobu Shinohara,Kenji Yoshioka,Ian Preston,Jeremy Church,Lee Nelson,Thomas Franklin,Peter Dixon,Ian Anderson,Richard Ford</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Channel_Classification__c</column>
+            <operator>notEqual</operator>
+            <value>OEM</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>For RH - Intl CQ Closed Won</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Booking_Details__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

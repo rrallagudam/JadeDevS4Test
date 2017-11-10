@@ -1,0 +1,143 @@
+<apex:page controller="ForecastController" sidebar="false" showHeader="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+	<apex:remoteObjects jsNamespace="ForecastObjects">
+        <apex:remoteObjectModel name="UserRole" fields="Id,Name,DeveloperName,ForecastUserId,ParentRoleId">
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="User" fields="Id,Username,UserRoleId,Name,Email,FirstName,LastName,ProfileId,UserType">
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="Opportunity" fields="Id,AccountId,Name,Amount,StageName,CurrencyIsoCode,ForecastCategory,ForecastCategoryName,IsSplit,IsWon,IsClosed,CloseDate,CreatedDate,Fiscal,FiscalQuarter,FiscalYear,NextStep,OwnerId,Probability">
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="OpportunityTeamMember" fields="Id,Name,OpportunityId,UserId,Title,TeamMemberRole,OpportunityAccessLevel">
+            <apex:remoteObjectField name="IsClosed__c" jsShorthand="IsClosed"/>
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="OpportunitySplit" fields="Id,OpportunityId,Split,SplitAmount,SplitNote,SplitOwnerId,SplitPercentage,SplitTypeId">
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+    <html>
+      <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width"/>
+  		<title>Forecast Tests</title>
+        <apex:stylesheet value="{!URLFOR($Resource.lib, 'qunit.css')}" />
+    </head>
+	<body>
+        <div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+		<apex:includeScript value="{!URLFOR($Resource.lib, 'jquery.min.js')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.lib, 'qunit.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.lib, 'rsvp-latest.min.js')}"/>
+        <apex:includeScript value="{!$Resource.forecast_api}"/>
+        <apex:includeScript value="{!$Resource.forecast_remote}"/>
+        <script>
+        	QUnit.config.autostart = false;
+        	var APP = APP || {};
+        	APP.CurrentUserId = '{!CurrentUserId}';
+	        console.log('APP.CurrentUserId=' + APP.CurrentUserId);
+        	APP.CurrentUser = {};
+        	APP.UserRoles = [];
+        	APP.getUser(APP.CurrentUserId)
+				.then( function(user){
+					APP.CurrentUser = user;
+					console.log('App.CurrentUser initialized.');
+					APP.getAllUserRoles()
+                    	.then( function(userRoles){
+							APP.UserRoles = userRoles;
+							console.log('App.UserRoles initialized. Starting unit tests...');
+							QUnit.start();
+						});
+			});
+        	/* Default state requires:
+                Current user should view forecast of all open opportunities for the next X quarters.
+                Should be able to view all Forecasts in role hierarchy, then summed up on client.
+                Opportunities summed up by ForecastCategory (Best Case, etc...)
+                Ability to drill down to any Opportunity
+                All Opportunities, Forecasts, Adjustment for current User.
+                All available date ranges.
+                */
+                
+                /*
+                Object dependencies for forecasting
+                Current -> Get all subordinate userRoles
+                Get all users in subordinate userRoles
+                get all OpportunityTeamMember records where UserID IN above list
+                Get all Opportunities for team members
+                ---- Data can be displayed at this point (?)
+                Additional data required:
+                OpportunitySplits
+                ForecastAdjustments for each opportunity.
+            	*/
+        	QUnit.test( "CurrentUser Tests", function( assert ) {
+                var done = assert.async();
+                assert.ok( APP.CurrentUser != null, "APP.CurrentUser context must be initialized." );
+                APP.getUser(APP.CurrentUserId)
+                    .then( function(user){
+                        assert.ok( user != null, "getUser returns User context." );
+                        assert.ok( user.Id == APP.CurrentUserId, "getUser must return a User context." );
+                        assert.ok( user.Name != null, "User must have a Name." );
+                        assert.ok( user.Username != null, "User must have a Username." );
+                        assert.ok( user.Email != null, "User must have an Email." );
+                        assert.ok( user.UserRoleId  != null, "User must have a UserRoleId." );
+                        done();
+                    });
+            });
+        	
+        	QUnit.test( "UserRole Tests", function( assert ) {
+                var done = assert.async();
+                assert.ok( APP.CurrentUser != null, "APP.CurrentUser context must be initialized." );
+                APP.getAllUserRoles()
+                    .then( function(allUserRoles){
+                        assert.ok( allUserRoles != null, "getAllUserRoles returns all user roles." );
+                        var rootNodesFound = 0;
+                        for(var i=0; i< allUserRoles.length;i++){
+                        	if(!allUserRoles[i].ParentRoleId){
+								rootNodesFound++;
+							}
+                        }
+                        assert.ok(rootNodesFound > 1,"Expected at least one root node in collection.");
+                        var currentRole = APP.getUserRole(APP.CurrentUser, allUserRoles);
+                        assert.ok( currentRole != null, "Expected CurrentUser role to exist" );
+                        var subRoles = [currentRole];
+                        subRoles = APP.getSubordinateRoles(subRoles, allUserRoles);
+                        assert.ok( subRoles.length > 0, "Expected APP.getSubordinateRoles to return more than one role");
+                        APP.getUsersByRoles( subRoles )
+                        	.then( function(subordinateUsers){
+                                assert.ok( subordinateUsers != null, "Expected to retrieve users in subordinate roles");
+								done(); 
+							});
+					});
+            });
+        	
+        	QUnit.test( "getOpportunity Test", function( assert ) {
+                var done = assert.async();
+                APP.getOpportunityTeamMembers([APP.CurrentUser])
+                    .then( function(teams){
+                        assert.ok( teams != null, "getOpportunityTeamMembers returns teams." );
+                        assert.ok( teams.length > 0, "At least one open Oppty Team exists." );
+                        APP.getOpportunitiesByTeams( teams )
+                            .then( function(opportunities){
+                                assert.ok( opportunities != null, "getOpportunities returns records." );
+                                assert.ok( opportunities.length > 3, "At least one open opportunity exists." );
+                                var totalSum = APP.sumAmount(opportunities);
+                                assert.ok(totalSum > 0, 'Total Sum of open opportunity amount > $0');
+                                var commitSum = APP.sumAmountByCategory(opportunities, 'commit');
+                                assert.ok(commitSum > 0, 'Sum of open commit opportunity amount > $0');
+                                var omittedSum = APP.sumAmountByCategory(opportunities, 'omitted');
+                                assert.ok(omittedSum > 0, 'Sum of open omitted opportunity amount > $0');
+                            	done();
+                        	});
+                    });
+            });
+        	
+			QUnit.test( "getSubordinateOpportunities Test", function( assert ) {
+				var done = assert.async();
+                APP.getSubordinateOpportunities(APP.CurrentUser, APP.UserRoles)
+                	.then( function(opportunities){
+                        console.log(opportunities);
+                        assert.ok(opportunities != null, "Expected opportunities");
+                        assert.ok(opportunities.length > 0, "Expected opportunities");
+                        done();
+					});
+			});
+        </script>
+	</body>
+  </html>
+</apex:page>

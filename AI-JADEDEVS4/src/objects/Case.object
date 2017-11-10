@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChangeStatus</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CloneAsChild</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CloseCase</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MassClose</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewCase</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AssetId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BusinessHoursId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ClosedDate</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Comments</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactEmail</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactFax</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContactMobile</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactPhone</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>IsClosedOnCreate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>IsEscalated</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Old_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Old ID</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Origin</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ParentId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Priority</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Reason</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>User didn&apos;t attend training</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New problem</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SourceId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Escalated</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <closed>true</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unassigned</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Assigned</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In progress</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Resolved</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Subject</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedCompany</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedEmail</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedName</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedPhone</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Problem</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Feature Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Zendesk__Created_At__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Created At</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Zendesk__Initially_Assigned_At__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Initially Assigned At</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Zendesk__Resolution_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Resolution Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zendesk__Solved_At__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Solved At</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Zendesk__Updated_At__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Updated At</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Zendesk__Zendesk_Ticket_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Zendesk Ticket ID</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>AllOpenCases</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>All Open Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>Cases_OM</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>OWNER_NAME</columns>
+        <columns>CASES.TYPE</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Problem</value>
+        </filters>
+        <label>Cases_OM</label>
+        <queue>Cases_OM</queue>
+        <sharedTo>
+            <group>Finance</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Cases_OM_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Cases_OM</label>
+        <queue>Cases_OM</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Implementation_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Implementation</label>
+        <queue>Implementation</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>MyCases</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>MyOpenCases</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Open Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>Reference_Requests_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Reference Requests</label>
+        <queue>Reference_Requests</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SFDCHelp_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>SFDCHelp</label>
+        <queue>SFDCHelp</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SalesTeam_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Sales Team</label>
+        <queue>SalesTeam</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>CASES.CASE_NUMBER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CASES.SUBJECT</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CASES.CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CASES.PRIORITY</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CASES.CASE_NUMBER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CASES.SUBJECT</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CASES.STATUS</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CASES.CASE_NUMBER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CASES.SUBJECT</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CASES.STATUS</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CASE_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWriteTransfer</sharingModel>
+    <webLinks>
+        <fullName>DecsOnD__Assign</fullName>
+        <availability>online</availability>
+        <description>Case Assignment</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Assign</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>{!URLFOR(&quot;../apex/DecsOnD__ApplyPolicy&quot;, &quot;&quot;)}?id={!Case.Id}&amp;policy=Assignment&amp;audit=false</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Zendesk__Zendesk_Ticket_View_Link</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Zendesk Ticket View Link</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)}
+
+var pageUrl = sforce.apex.execute(&quot;Zendesk.ZendeskPageURL&quot;, &quot;getPageUrl&quot;, {ticketid:&quot;{!Case.Zendesk__Zendesk_Ticket_ID__c}&quot;});
+window.location.href =  pageUrl;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>dsfs__Send_with_DocuSign</fullName>
+        <availability>online</availability>
+        <description>This button will initiate a DocuSign Envelope that is linked to the Case</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send with DocuSign</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/apex/dsfs__DocuSign_JavaScript&quot;)}
+DocuSign_CreateEnvelope();</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Create_List</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create List</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;https://sforce.insidesales.com/js/json.js&apos;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/36.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/lib/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/lib/jsonp.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/lib/persist.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/ISConference.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/c2c/ISClickToCall.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/c2csf.js&quot;)}
+
+var getTabClass = function() {
+    var bodytags = document.getElementsByTagName(&quot;body&quot;);
+    var classes  = bodytags[0].className.split(&apos; &apos;);
+    var hostname = window.location.hostname;
+    try {
+        try {
+            sforce.connection.sessionId=&quot;{!$Api.Session_ID}&quot;;
+        } catch (e) {
+            //
+        }
+        user  = sforce.connection.getUserInfo();
+        var theme = user.userUiSkin;
+        return {
+            &quot;css_base&quot;  : &quot;https://&quot;+window.location.hostname,
+            &quot;css_theme&quot; : theme,
+            &quot;css_class&quot; : classes[0]};
+    } catch (e) {
+        return {
+            &quot;css_base&quot; : &quot;https://&quot;+window.location.hostname,
+            &quot;css_class&quot; : classes[0],
+            &quot;css_theme&quot; : false
+        };
+    }
+};
+var getTabClassString = function() {
+    var css_info = getTabClass();
+    var tmp_url = &quot;&quot;;
+    tmp_url += &apos;&amp;css_base=&apos;+encodeURIComponent(css_info.css_base);
+    if (css_info.css_theme) {
+        tmp_url += &apos;&amp;css_theme=&apos;+encodeURIComponent(css_info.css_theme);
+    }
+    tmp_url += &apos;&amp;css_class=&apos;+encodeURIComponent(css_info.css_class);
+    return tmp_url;
+};
+
+var openPopup = function() {
+    var data = &quot;&quot;;
+    var items = idArray.join(&quot;,&quot;);
+
+    pd.requestSalesforceInstance(sforce.connection.sessionId);
+    pd.makeRequest(&apos;getAuthToken&apos;,
+        function (result) {
+            var jwt = typeof result == &apos;object&apos; &amp;&amp; &apos;token&apos; in result ? result.token : &apos;&apos;;
+            var use_jwt = jwt != &apos;&apos;;
+            pd.makeRequest(&apos;createStaticDialerList&apos;,
+                function (data) {
+                    if (!data) {
+                        alert(&apos;There was a problem creating the list.&apos;);
+                        return;
+                    }
+                    if (data.errors &amp;&amp; data.errors.length &gt; 0) {
+                        var err = &quot;&quot;;
+                        if (data.errors[0] &amp;&amp; data.errors[0][&apos;message&apos;]) {
+                            err = &apos;\nThe following message was returned.\n\n&apos;+data.errors[0][&apos;message&apos;];
+                        }
+                        alert(&apos;There was a problem creating the list.&apos;+err);
+                        return;
+                    }
+                    if (!data.items || !data.items.length) {
+                        alert(&apos;At least one selected row must be related to an Account, Contact, or Lead.&apos;);
+                        return;
+                    }
+                    var html = &quot;&lt;form name=&apos;createList&apos; method=&apos;post&apos; action=&apos;https://{!$User.qbdialer__is_subdomain__c}.insidesales.com/noauth/create_sf_list?&quot;;
+                    html += &quot;salesforce_package_version=6.35.8&quot;;
+                    html += &quot;&amp;type=Task&quot;;
+                    if (!use_jwt) {
+                        html += &quot;&amp;organization_id={!$Organization.Id}&quot;;
+                        html += &quot;&amp;token={!User.qbdialer__is_token__c}&quot;;
+                    }
+                    html += &quot;&amp;agent_phone={!User.Phone}&quot;;
+                    html += getTabClassString();
+                    html += &quot;&apos;&gt;&lt;input type=&apos;submit&apos; style=&apos;visibility:hidden&apos;&gt;&quot;;
+                    if (use_jwt) {
+                        html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;Authorization&apos; value=&apos;&quot;+jwt+&quot;&apos;&gt;&quot;;
+                    }
+                    for (var i=0; i &lt; data.items.length; i++) {
+                        html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;leads[]&apos; value=&apos;&quot;+data.items[i]+&quot;&apos;&gt;&quot;;
+                    }
+                    html += &quot;&lt;&quot;+&quot;/form&gt;&quot;;
+                    html += &quot;&lt;script&gt;document.createList.submit();&lt;&quot;+&quot;/script&gt;&quot;;
+                    var host = document.location.protocol + &quot;//&quot; + document.location.hostname;
+                    var w = window.open(host, &quot;&quot;, &quot;height=700,width=800,menubar=0,resizable=1,scrollbars=1,status=0,titlebar=0,toolbar=0,location=0&quot;);
+                    w.document.write(html);
+                },
+                function (err) {
+                    alert(&apos;There was a problem creating the list.\n\n&apos;+err);
+                },
+                &quot;&amp;type=Case&amp;ids=&quot; + items
+            );
+        }
+    );
+}
+
+var user_oauth_token = &apos;{!JSENCODE($User.qbdialer__is_token__c)}&apos;;
+if (!user_oauth_token) {
+    window.location.href=&quot;/apex/qbdialer__InsideSales_OAuth_Setup&quot;;
+} else {
+    var idArray = {!GETRECORDIDS($ObjectType.Case)};
+    if (idArray.length == 0){
+        alert(&quot;Please select at least one row&quot;);
+    } else {
+        openPopup();
+    }
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Launch_Click_to_Call</fullName>
+        <availability>online</availability>
+        <description>For Beta</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Launch Click-to-Call</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var th = window.top.document.body;
+            var s = window.top.document.createElement(&apos;script&apos;);
+            s.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);
+            s.setAttribute(&apos;src&apos;,&quot;/resource/qbdialer__c2c_resources/20160923114522/c2c_console.js&quot;);
+            th.appendChild(s);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Manage_Lists</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Manage Lists</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/36.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/lib/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/lib/jsonp.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/lib/persist.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/ISConference.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/c2c/ISClickToCall.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160923114522/c2csf.js&quot;)}
+
+var openPopup = function() { 
+    pd.requestSalesforceInstance(sforce.connection.sessionId);
+    pd.makeRequest(&apos;getAuthToken&apos;,
+        function (result) {
+            var jwt = typeof result == &apos;object&apos; &amp;&amp; &apos;token&apos; in result ? result.token : &apos;&apos;;
+            var use_jwt = jwt != &apos;&apos;;
+            var html = &quot;&lt;html&gt;&lt;body&gt;&lt;form id=&apos;createList&apos; name=&apos;createList&apos; method=&apos;post&apos; action=&apos;https://{!$User.qbdialer__is_subdomain__c}.insidesales.com/noauth/manage_sf_lists?&quot;;
+            html += &quot;salesforce_package_version=6.35.8&quot;;
+            if (!use_jwt) {
+                html += &quot;&amp;organization_id={!$Organization.Id}&quot;;
+                html += &quot;&amp;token={!User.qbdialer__is_token__c}&quot;;
+            }
+            html += &quot;&amp;agent_phone={!User.Phone}&apos;&gt;&quot;; 
+            if (use_jwt) {
+                html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;Authorization&apos; value=&apos;&quot;+jwt+&quot;&apos;&gt;&quot;;
+            }
+            html += &quot;&lt;input type=&apos;submit&apos; style=&apos;visibility:hidden&apos;&gt;&lt;&quot;+&quot;/form&gt;&quot;; 
+            html += &quot;&lt;script&gt;document.createList.submit();&lt;&quot;+&quot;/script&gt;&lt;/body&gt;&lt;/html&gt;&quot;; 
+            var host = document.location.protocol+&quot;//&quot;+ 
+            document.location.hostname; 
+            var w = window.open(host, &quot;&quot;, &quot;height=200,width=600,menubar=0,resizable=1,scrollbars=1,status=0,titlebar=0,toolbar=0,location=0&quot;); 
+            w.document.write(html); 
+        }
+    );
+} 
+
+var user_oauth_token = &apos;{!JSENCODE($User.qbdialer__is_token__c)}&apos;;
+if (!user_oauth_token) {
+    window.location.href=&quot;/apex/qbdialer__InsideSales_OAuth_Setup&quot;;
+} else {
+    openPopup();
+}</url>
+    </webLinks>
+</CustomObject>

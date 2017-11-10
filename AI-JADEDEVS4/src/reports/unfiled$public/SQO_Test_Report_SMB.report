@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_5764647</developerName>
+        <masterLabel>NA v. Intl</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Brian Flaherty</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chris Shea</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Don Jennings</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Eric Fisketjon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jason Sturgess</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Erickson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Obadiah Howe</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Scott Parsons</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Charlie Janes</sourceValue>
+            </sourceValues>
+            <value>NA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Balraj Dard</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chikanobu Shinohara</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Douglas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert S Hull</sourceValue>
+            </sourceValues>
+            <value>Intl</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_87332119</developerName>
+        <masterLabel>SAO v. SQO</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>SQO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Solution Exploration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Proposal Presentation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Commitment &amp; Negotiation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Prepare for Signature</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Signed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sent to Orders</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Won - Installments</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Non-Pursuit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Field Nurture</sourceValue>
+            </sourceValues>
+            <value>SQO or Above</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Prospect</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Need Analysis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Disqualified</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SDR Nurture</sourceValue>
+            </sourceValues>
+            <value>SAO or Below</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_70730352</developerName>
+        <masterLabel>Segment (# Employees</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>EMPLOYEES</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>250</to>
+            </sourceValues>
+            <value>SMB</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>250</from>
+                <to>2,000</to>
+            </sourceValues>
+            <value>MM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>2,000</from>
+            </sourceValues>
+            <value>ENT</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Oppy_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Timestamp_SAO__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Forecast_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Commit__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Likely__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Best_case__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Total_New_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>BucketField_70730352</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Timestamp_SAO__c</column>
+            <operator>equals</operator>
+            <value>LAST_N_MONTHS:3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_70730352</column>
+            <operator>equals</operator>
+            <value>SMB</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_5764647</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Classification__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_87332119</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SQO Test Report - SMB</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

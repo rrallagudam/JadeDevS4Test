@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_63592919</developerName>
+        <masterLabel>Disco Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Discovery Embedded Base Fee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Enterprise (CPM Suite) - Base Fee (Corporate)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Enterprise (CPM Suite) - Base Fee (Enterprise)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Enterprise (CPM Suite) - Base Fee (Regional)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Enterprise (Standalone BI) - Base Fee (Corporate)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Enterprise (Standalone BI) - Base Fee (Enterprise)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery for NetSuite (Standalone BI) - Base Fee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery for NetSuite (CPM Suite) - Base Fee</sourceValue>
+            </sourceValues>
+            <value>Enterprise</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Discovery Professional  (Corporate) - Base Fee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional  (Enterprise) - Base Fee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional (Corporate) - Base Fee (Seeded)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional (Enterprise) - Base Fee (Seeded)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional (Regional) - Base Fee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional (Regional) - Base Fee (Seeded)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional - Base Fee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Discovery Professional - Base Fee (Seeded)</sourceValue>
+            </sourceValues>
+            <value>Professional</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Contract$Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>Contract$Account.Owner</field>
+    </columns>
+    <columns>
+        <field>Contract$Account</field>
+    </columns>
+    <columns>
+        <field>Contract$Account.Partner__c</field>
+    </columns>
+    <columns>
+        <field>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</field>
+    </columns>
+    <columns>
+        <field>Contract$StartDate</field>
+    </columns>
+    <columns>
+        <field>Contract$EndDate</field>
+    </columns>
+    <columns>
+        <field>Contract$ContractTerm</field>
+    </columns>
+    <columns>
+        <field>Contract.SBQQ__Subscriptions__r$SBQQ__Quantity__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Contract$Status</column>
+            <operator>equals</operator>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</column>
+            <operator>contains</operator>
+            <value>Discovery</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</column>
+            <operator>contains</operator>
+            <value>base</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$Account.Partner__c</column>
+            <operator>contains</operator>
+            <value>NetSuite</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$StartDate</column>
+            <operator>lessOrEqual</operator>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</column>
+            <operator>contains</operator>
+            <value>Professional</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_63592919</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Disco Pro for NS Customers</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AI_Configurations_with_Subscriptions__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Contract$Account</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Contract$EndDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-03-22</startDate>
+    </timeFrameFilter>
+</Report>

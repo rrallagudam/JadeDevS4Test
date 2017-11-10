@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Notice to Field Marketing that the campaign is Ready to review</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Local Event Ready to Review</name>
+    <style>none</style>
+    <subject>Local Event is Ready to Review - {!Campaign.Name}</subject>
+    <textOnly>Local Event is Ready to Review
+
+Owner: {!IF(Campaign.OwnerId = &quot;00561000001Y3ee&quot;, &quot;Ashley Moskovitz&quot;, IF(Campaign.OwnerId=&quot;00561000001Y3fF&quot;, &quot;Rebecca Howarth&quot;, IF(Campaign.OwnerId=&quot;00561000001Y3bL&quot;, &quot;Kristine Melanson&quot;, IF(Campaign.OwnerId=&quot;00561000001XyMD&quot;,&quot;Kim Korupp&quot;, IF(Campaign.OwnerId=&quot;00561000001Y3fg&quot;,&quot;Natia Seegars&quot;, IF(Campaign.OwnerId=&quot;00561000001Y3cf&quot;,&quot;Petina Kearney&quot;,&quot;Unknown&quot;)))))}
+{!Campaign.Name}
+https://na4.salesforce.com/{!Campaign.Id}
+
+Status: {!Campaign.Status}
+Start Date: {!Campaign.StartDate}
+Venue:
+{!Campaign.Venue_Name__c}
+{!Campaign.Venue_Address_1__c)}
+{!Campaign.Venue_Address_City__c}, {!Campaign.Venue_Address_State__c} {!Campaign.Venue_Address_Postal_Code__c}
+Venue Phone: {!Campaign.Venue_Address_Phone__c}
+
+RM: {!Campaign.Regional_Manager__c}
+CAM: {!Campaign.CAM_Name__c}
+AVP: {!Campaign.AVP__c} Partner: {!Campaign.Sales_Partner__c}
+
+Event Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

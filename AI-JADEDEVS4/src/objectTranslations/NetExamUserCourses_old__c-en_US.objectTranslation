@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>NetExam UserCourses_old</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>NetExamUserCourses_old</value>
+    </caseValues>
+    <fields>
+        <label><!-- Course Completed Date --></label>
+        <name>Course_Completed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Enrolled Date --></label>
+        <name>Course_Enrolled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Expiration Date --></label>
+        <name>Course_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course ID --></label>
+        <name>Course_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Name --></label>
+        <name>Course_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Score --></label>
+        <name>Course_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Status --></label>
+        <name>Course_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course --></label>
+        <name>Course__c</name>
+        <relationshipLabel><!-- NetExamUserCourses_old --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Days Valid --></label>
+        <name>Days_Valid__c</name>
+    </fields>
+    <fields>
+        <label><!-- NetExam Course Status --></label>
+        <name>NetExam_Course_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- NetExamUserCourses_old --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

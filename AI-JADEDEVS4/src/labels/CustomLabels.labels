@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>CaroleeSign</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaroleeSign</shortDescription>
+        <value>&lt;img src = &quot;https://c.na34.content.force.com/servlet/servlet.ImageServer?id=01561000001PO5I&amp;oid=00D0q0000000Rc7&amp;lastMod=1489725037000&quot;/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Channel_Team_Email_Address</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Channel_Team_Email_Address</shortDescription>
+        <value>Channelaccounting@adaptiveinsights.com</value>
+    </labels>
+    <labels>
+        <fullName>ContractitemBatch_Query</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContractitemBatch_Query</shortDescription>
+        <value>SBQQ__QuoteLine__c = null</value>
+    </labels>
+    <labels>
+        <fullName>CustomQuoteClone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CustomQuoteClone</shortDescription>
+        <value>https://sbqq.na34.visual.force.com</value>
+    </labels>
+    <labels>
+        <fullName>ELOQUA_USER_SF_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ELOQUA USER SF ID</shortDescription>
+        <value>00561000001XyHU</value>
+    </labels>
+    <labels>
+        <fullName>EXCLUDE_PABLO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EXCLUDE_PABLO</shortDescription>
+        <value>00561000001XyK8AAK</value>
+    </labels>
+    <labels>
+        <fullName>Eloqua_User_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Eloqua_User_Id</shortDescription>
+        <value>00561000001XyK8</value>
+    </labels>
+    <labels>
+        <fullName>Lead_Partner_Campaign_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead Partner Campaign ID</shortDescription>
+        <value>70161000000Mzc3</value>
+    </labels>
+    <labels>
+        <fullName>Legal_Team_Email_Address</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Legal_Team_Email_Address</shortDescription>
+        <value>bhehir@adaptiveinsights.com</value>
+    </labels>
+    <labels>
+        <fullName>NetExam_API_Key</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NetExam_API_Key</shortDescription>
+        <value>ga2Oi+8wTeYE8VRJ13NMlyqoWZU8m3GyCPonJ8Y2+Q==</value>
+    </labels>
+    <labels>
+        <fullName>NetExam_API_Pass</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NetExam_API_Pass</shortDescription>
+        <value>2$!ogG8+</value>
+    </labels>
+    <labels>
+        <fullName>NetExam_API_User</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NetExam_API_User</shortDescription>
+        <value>adaptiveAPIuser</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Close_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Close Date</shortDescription>
+        <value>270</value>
+    </labels>
+    <labels>
+        <fullName>Oppty_Activity_report</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Activity Report label</shortDescription>
+        <value>https://na34.salesforce.com/</value>
+    </labels>
+    <labels>
+        <fullName>Other_Account_Countries</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Account Countries</shortDescription>
+        <value>00561000001bW7C</value>
+    </labels>
+    <labels>
+        <fullName>Other_Countries</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other_Countries</shortDescription>
+        <value>00561000001Y3eF</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Agreement</shortDescription>
+        <value>Partner Program Enrollment Form</value>
+    </labels>
+    <labels>
+        <fullName>Partner_NDA_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner NDA Agreement</shortDescription>
+        <value>Non-Disclosure Agreement</value>
+    </labels>
+    <labels>
+        <fullName>Partner_UserId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner UserId</shortDescription>
+        <value>0053B000000UceF</value>
+    </labels>
+    <labels>
+        <fullName>Subsidiary_Austraila</fullName>
+        <categories>Adaptive Subsidiary Addresses</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subsidiary Austraila</shortDescription>
+        <value>Adaptive Insights Pty Ltd
+Level 1, 7 Clunies Ross Court
+Eight Mile Plains, Brisbane, QLD  4113
+Australia</value>
+    </labels>
+    <labels>
+        <fullName>Subsidiary_Canada</fullName>
+        <categories>Adaptive Subsidiary Addresses</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subsidiary Canada</shortDescription>
+        <value>Adaptive Insights, Ltd.
+595 Burrard Street, Suite 2600
+Three Bentall Centre
+Vancouver BC V7X 1L3
+Canada</value>
+    </labels>
+    <labels>
+        <fullName>Subsidiary_Japan</fullName>
+        <categories>Adaptive Subsidiary Addresses</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subsidiary Japan</shortDescription>
+        <value>Adaptive Insights Co., Ltd.
+Oak Minami-Azabu Building 2F,
+3-19-23 Minami-Azabu,
+Minato-ku, Tokyo, 106-0047
+Japan</value>
+    </labels>
+    <labels>
+        <fullName>Subsidiary_UK</fullName>
+        <categories>Adaptive Subsidiary Addresses</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subsidiary UK</shortDescription>
+        <value>Adaptive Insights Limited
+Avaland House
+110 London Road, Apsley
+Hemel Hempstead
+Hertfordshire, HP3 9SD
+United Kingdom</value>
+    </labels>
+    <labels>
+        <fullName>Subsidiary_US</fullName>
+        <categories>Adaptive Subsidiary Addresses</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subsidiary US</shortDescription>
+        <value>Adaptive Insights, Inc.
+3350 W. Bayshore Road, Suite 200
+Palo Alto, CA  94303
+United States</value>
+    </labels>
+    <labels>
+        <fullName>TrialSupportTeamSenderEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Trial support team sender email address</shortDescription>
+        <value>trialrequest@adaptiveinsights.com</value>
+    </labels>
+    <labels>
+        <fullName>Unassigned_Account_Owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unassigned Account Owner</shortDescription>
+        <value>00561000001bW7C</value>
+    </labels>
+</CustomLabels>

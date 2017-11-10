@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Partner__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>StageName</column>
+            <operator>equals</operator>
+            <value>Prospect,SAO,SQO,Solution Exploration,Proposal Presentation,Need Analysis,Commitment &amp; Negotiation,Prepare for Signature,Signed,Sent to Orders</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Type</column>
+            <operator>equals</operator>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Is_Installment_Opportunity__c</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
+        <relatedTable>Opportunity</relatedTable>
+        <relatedTableJoinColumn>Account</relatedTableJoinColumn>
+    </crossFilters>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Accounts with Open Renewal Opportunities</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

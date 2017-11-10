@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Course</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>AccessType__c</fullName>
+        <externalId>false</externalId>
+        <label>AccessType</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cost__c</fullName>
+        <description>Cost ( Currency )</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Cost</inlineHelpText>
+        <label>Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Course_Description__c</fullName>
+        <description>Course Description</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Course Description</inlineHelpText>
+        <label>Course Description</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Course_Duration__c</fullName>
+        <description>Course Duration</description>
+        <externalId>false</externalId>
+        <label>Course Duration</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Id__c</fullName>
+        <description>Course Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Course Id</inlineHelpText>
+        <label>Course Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Modality__c</fullName>
+        <description>Course Modality</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Course Modality</inlineHelpText>
+        <label>Course Modality</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Name__c</fullName>
+        <description>Course Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Course Name</inlineHelpText>
+        <label>Course Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Status__c</fullName>
+        <description>Course Status</description>
+        <externalId>false</externalId>
+        <label>Course Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Type__c</fullName>
+        <description>Course Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Course Type</inlineHelpText>
+        <label>Course Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Hours__c</fullName>
+        <description>Credit Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Credit Hours</inlineHelpText>
+        <label>Credit Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UserTypes__c</fullName>
+        <description>UserTypes For Taser</description>
+        <externalId>false</externalId>
+        <label>UserTypes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>NE Course</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>NE-{00000000}</displayFormat>
+        <label>NE-Reference</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Courses</pluralLabel>
+    <recordTypes>
+        <fullName>CustomerAccessible</fullName>
+        <active>true</active>
+        <label>CustomerAccessible</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>EmployeeAccessible</fullName>
+        <active>true</active>
+        <label>EmployeeAccessible</label>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Course_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Id__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Modality__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cost__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Id__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course_Id__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Id__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Launch</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Launch</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var session = &apos;{!$Api.Session_ID}&apos;;
+var url = &apos;{!$Api.Enterprise_Server_URL_290}&apos;;
+var course = &apos;{!NE_Course__c.Course_Id__c}&apos;;
+
+
+var fullUrl = &quot;http://v6.netexam.com/sso?ss=&quot; + session + &quot;&amp;serverUrl=&quot; + url   + &quot;&amp;loc=cs&quot; + course;
+
+
+window.open(fullUrl);</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,7 @@
+<h2  style="font-family: helvetica, Arial, sans-serif; color:#006098; font-size:20px; line-height:16px;">Adaptive Live Customer Award Nomination Notice</h2>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">Your Customer {!CampaignMember.FirstName} {!CampaignMember.LastName} from {!CampaignMember.CompanyOrAccount} has been nominated for an Adaptive Live Customer Award. No action is needed at this time, this is just an FYI.</p>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">{!CampaignMember.Link} </p>
+<p style="font-family: helvetica, Arial, sans-serif;  font-size:12px; line-height:16px;">Thank You<br>
+Sonia Torres<br>
+storres@adaptiveinsights.com<br>
+650-422-7335</p>

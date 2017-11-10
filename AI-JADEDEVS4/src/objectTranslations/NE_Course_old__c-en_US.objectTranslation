@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>NE Course_old</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Courses_old</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccessType --></label>
+        <name>AccessType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cost --></help>
+        <label><!-- Cost --></label>
+        <name>Cost__c</name>
+    </fields>
+    <fields>
+        <help><!-- Course Description --></help>
+        <label><!-- Course Description --></label>
+        <name>Course_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Duration --></label>
+        <name>Course_Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- Course Id --></help>
+        <label><!-- Course Id --></label>
+        <name>Course_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Course Modality --></help>
+        <label><!-- Course Modality --></label>
+        <name>Course_Modality__c</name>
+    </fields>
+    <fields>
+        <help><!-- Course Name --></help>
+        <label><!-- Course Name --></label>
+        <name>Course_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Status --></label>
+        <name>Course_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Course Type --></help>
+        <label><!-- Course Type --></label>
+        <name>Course_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Credit Hours --></help>
+        <label><!-- Credit Hours --></label>
+        <name>Credit_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- UserTypes --></label>
+        <name>UserTypes__c</name>
+    </fields>
+    <layouts>
+        <layout>Course Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- CustomerAccessible --></label>
+        <name>CustomerAccessible</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- EmployeeAccessible --></label>
+        <name>EmployeeAccessible</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Launch --></label>
+        <name>Launch</name>
+    </webLinks>
+</CustomObjectTranslation>

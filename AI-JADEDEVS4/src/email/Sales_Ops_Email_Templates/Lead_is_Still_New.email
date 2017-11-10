@@ -1,0 +1,11 @@
+Dear {!Lead.OwnerFirstName},
+
+Leads cannot be in a Contact Status of New for more than 1 business day. Please update the Contact Status to Accept or Reject today.
+
+{!Lead.Link}
+
+The following report contains all leads which have not been accepted or rejected for three or more days:
+https://cs59.salesforce.com/00O2C000000O54u
+
+The following report contains all leads which have not been accepted or rejected for five or more days:
+https://cs59.salesforce.com/00O2C000000O54z

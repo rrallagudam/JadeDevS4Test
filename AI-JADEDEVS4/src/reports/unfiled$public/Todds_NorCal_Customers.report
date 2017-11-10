@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Adaptive_Industry__c</field>
+    </columns>
+    <columns>
+        <field>SALES</field>
+    </columns>
+    <columns>
+        <field>Account.Adaptive_Revenue__c</field>
+    </columns>
+    <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>Account.Adaptive_Revenue__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Account.Current_ARR__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Current_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Account.Current_GL__c</field>
+    </columns>
+    <columns>
+        <field>Account.Relationship_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Current_GL_Other__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>PHONE1</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 AND 2 AND 3 AND 4 AND (5 OR 6 OR 7)) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>CA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Adaptive_Revenue__c</column>
+            <operator>greaterOrEqual</operator>
+            <value>USD 100000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>415,(415,+1.415,+1 415,1.415,341,(341,+1.341,+1 341,1.341,369,(369,+1.369,+1 369,1.369,510,(510,+1.510,+1 510,1.510,530,(530,+1.530,+1 530,1.530,707,(707,+1.707,+1 707,1.707</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>916,(916,+1.916,+1 916,1.916,925,(925,+1.925,+1 925,1.925,559,(559,+1.559,+1 559,1.559,669,(669,+1.669,+1 669,1.669,831,(831,+1.831,+1 831,1.831,209,(209,+1.209,+1 209,1.209</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <operator>equals</operator>
+            <value>Todd Meldrum</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <operator>notEqual</operator>
+            <value>Matthew Kim,Kimberley Kirley,Pam Rubly,John Gambaro</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>Todds NorCal Customers</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>INDUSTRY</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

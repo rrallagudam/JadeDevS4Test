@@ -1,0 +1,7 @@
+Dear Manager,
+
+The following contact has had a Contact Status of New or Restored for 3 days: 
+{!Contact.Link} 
+
+It is owned by {!Contact.OwnerFullName}. For a full list of contacts which are in violation of this SLA, please see the following report: 
+https://cs59.salesforce.com/00O2C000000O6gP

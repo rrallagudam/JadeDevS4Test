@@ -1,0 +1,9 @@
+<h2  style="font-family: helvetica, Arial, sans-serif; color:#006098; font-size:20px; line-height:16px;">Adaptive Live Prospect Registration Notice</h2>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">{!CampaignMember.FirstName} {!CampaignMember.LastName} from {!CampaignMember.CompanyOrAccount} has registered for Your Path to Active Planning. </p>
+
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">Take the opportunity to reach out and make a connection.  Thank him/her for registering and provide your contact details so you can connect on site and provide any assistance.</p>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">{!CampaignMember.Link} </p>
+<p style="font-family: helvetica, Arial, sans-serif;  font-size:12px; line-height:16px;">Thank You<br>
+Sonia Torres<br>
+storres@adaptiveinsights.com<br>
+650-422-7335</p>

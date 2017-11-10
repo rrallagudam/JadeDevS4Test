@@ -1,0 +1,90 @@
+<apex:page standardController="Contact" extensions="ContactsFindMatchesExtension">
+
+    <apex:form >
+        <apex:sectionHeader subtitle="{!objContact.Name} - Find Matches" title="Contact"/>
+        <apex:pagemessages ></apex:pagemessages>
+        
+        <apex:outputLabel style="color:red;" rendered="{!displayValidationMsg}" value="{!strValidationMsg}">
+            <br/><br/>
+        </apex:outputLabel>
+        
+        
+        <!--  Contact Details Section -- START -->
+        <apex:pageBlock mode="maindetail">
+            
+            <apex:pageblockButtons location="bottom">
+                <!--apex:commandButton value="Search" action="{!loadMatchingRecords}" rerender = "RelatedContacts"/-->
+                <apex:commandButton value="Back" action="{!Cancel}"/>
+            </apex:pageblockButtons>
+            
+            <apex:pageblockSection columns="1">                
+                
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel styleClass="labelCol vfLabelColTextWrap  first" value="First Name"/>
+                    <apex:outputPanel >
+                        <apex:outputText value="{!strContactFirstName}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>
+                <apex:pageblockSectionItem > 
+                    <apex:outputLabel styleClass="labelCol vfLabelColTextWrap  first" value="Last Name"/>
+                    <apex:outputPanel >
+                        <apex:outputText value="{!strContactLastName}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem> 
+
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Email"/>
+                    <apex:outputPanel >
+                        <apex:outputText value="{!strContactEmail}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>
+                
+            </apex:pageblockSection>
+        </apex:pageBlock>
+         <!--  Lead Details Section -- END -->
+         
+         
+        <!--  Matching Contacts Section -- START -->
+        <apex:pageblock title="Matching Contacts" id="RelatedContacts">
+            <apex:pagemessages ></apex:pagemessages>
+
+            <apex:pageblockTable value="{!matchingContacts}" var="con">
+
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="/{!con.objContact.Id}">{!con.objContact.Name}</apex:outputLink>
+                </apex:column>    
+                <apex:column headerValue="Title">
+                    <apex:outputField value="{!con.objContact.Title}"/>
+                </apex:column>
+                <apex:column headerValue="Role">
+                    <apex:outputField value="{!con.objContact.Role__c}"/>
+                </apex:column>
+                <apex:column headerValue="Account Name">
+                    <apex:outputLink value="/{!con.objContact.AccountId}">{!con.objContact.Account.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:outputField value="{!con.objContact.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:outputField value="{!con.objContact.Email}"/>
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:outputField value="{!con.objContact.Status__c}"/>
+                </apex:column>    
+                <apex:column headerValue="Owner">
+                    <apex:outputLink value="/{!con.objContact.OwnerId}">{!con.objContact.Owner.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Lead Score">
+                    <apex:outputField value="{!con.objContact.Calculated_Score__c}"/>
+                </apex:column>
+                <apex:column headerValue="Partner Account">
+                    <apex:outputLink value="/{!con.objContact.Partner__c}">{!con.objContact.Partner__r.Name}</apex:outputLink>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageblock>
+        <!--  Matching Contacts Section -- END -->
+         
+        
+    </apex:form>
+
+</apex:page>

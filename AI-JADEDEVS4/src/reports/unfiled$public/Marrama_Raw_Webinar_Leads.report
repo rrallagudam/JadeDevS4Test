@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>PHONE</field>
+    </columns>
+    <columns>
+        <field>STATE</field>
+    </columns>
+    <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>ANNUAL_REVENUE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 and 10 and 11 and 12</booleanFilter>
+        <criteriaItems>
+            <column>STATUS</column>
+            <operator>equals</operator>
+            <value>Raw</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONVERTED</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATE</column>
+            <operator>equals</operator>
+            <value>DE,DC,MD,VA,NC,SC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ANNUAL_REVENUE</column>
+            <operator>lessOrEqual</operator>
+            <value>USD 75000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notContain</operator>
+            <value>.org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <operator>equals</operator>
+            <value>Alex Joseph,Andrew Parks,Brian Marrama,Brian O&apos;Donnell,John Swartz,Max Eriksson,Rigoberto Simental,Stephen Eddinger,Thomas Marian,William Pescosolido</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LAST_ACTIVITY</column>
+            <operator>lessThan</operator>
+            <value>3/1/2017</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>notContain</operator>
+            <value>vista,HBCS,the bancorp,sevone,knowland,brookes publishing,community blood,colan associates,railey mountain,coastal beverage,transenerix,correll insurance,cdr fundraising,reged,tamro capital,castle hill,mris,ansible,veris,cyren,cloudburst,ecp,advanced patient,fair square,exostar,cross-fit,inpractice,weddingwire,solid gold pet,health decisions,topaz shared services,senseonics,rally health,the federal home,marpac,cytomudix,globe express,fishbowl,osiris,motley fool,select group,sucampo,novavax,xo communication,curo health,horizon land,campbell &amp; company,arcatech,bespoke sports,shady grove,ob manage,cube hydro,colorado benefits,the center for international,ascom,carson dellosa,alarm.com,strickland insurance,b/e aerospace,webassign,lavoie cpa,caci,aaa mid,wynyard,lucor,landcare,connections education,the budd group,cort business,advance america,southern states,perdue farms,university of north carolina,duke university,milennial media,yves,snagajob,nea member,stansberry,spok,tower engineeri</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>notContain</operator>
+            <value>luck companies,ralph lauren,airlines reporting,maybe pharma,inovalon,catholic relief,politico,triangle ortha,bob jones university,acell,howden,hargray communications,neosystems,epes transport,maxpoint,acn,national counseling,national recreation,hr certification,coalition of kaiser,joseph&apos;s villa,340b,ashoka,astd,neighborworks,society of the,stop hunger,lakeland tours,patient-centered,electricities of n,the aspen,aipac,national alliance,servicesource,american nurses,freedomworks,grameen,volunteers of america,american geo,community health,cruise line,northern virginia family,independent sector,international center,american academy of phy,lutheran world,mortgage bankers,national defense,food allergy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>notContain</operator>
+            <value>population action,ahri,association,national league,the humane,society for,weta,united service,aircract owners,american,auto care,dowless,unesc,vii network,logianalytics,coventor,fidelis,snl financial,tenable network,zachary piper,icontrol,2u,blackbaud,benefitfocus,force 3,agdata,monarch,new river,comscore,clarabridge,zenimax,infovista,broadsoft,advance systems,nemetschek,bank of america,boa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>notContain</operator>
+            <value>goucher,metrolina,a&amp;d enviro,d-wise,affordable care,aui fine,macrogenics,reancloud,charles koch,thomas road,lieber institute,mary&apos;s center,centronia,editorial projects,meals on wheels,center for american,rights and resources,hudson institute,haywood vocation,greenwood metro,lutheran family,blue cross and blue,bcbs,search for common,national quality,telecommunications ind,global commun,spreedly,howard university,sodexo,martin agency,modern auto,cisco,dlt,envision,learnzillion,sunshine house,north carolina A&amp;T,aaa,alliance beh,icct,smithsonian</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Marrama Raw Webinar Leads</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Lead.Lead_Created_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

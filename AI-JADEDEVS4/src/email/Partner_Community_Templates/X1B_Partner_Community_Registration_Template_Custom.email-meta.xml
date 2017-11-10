@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Adaptive Insights Partner Community registration (this is for Partner prospects who register)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>1B. Partner Community Registration Template - Custom</name>
+    <style>none</style>
+    <subject>Adaptive Insights Partner Community Registration</subject>
+    <textOnly>Hi {!Lead.Name},
+
+Thank you for your interest in the Adaptive Insights Partner Program!
+
+Our program is designed with your success in mind and we understand that your participation in any partner program requires commitment and a good fit with your business model.
+
+We’re evaluating the information that you’ve provided and a member of our team will be in touch with you shortly.
+
+If you need any assistance during this time, please connect with us directly at partners@adaptiveinsights.com
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

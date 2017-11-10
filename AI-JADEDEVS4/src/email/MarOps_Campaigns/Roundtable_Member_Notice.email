@@ -1,0 +1,6 @@
+<h2  style="font-family: helvetica, Arial, sans-serif; color:#006098; font-size:20px; line-height:16px;">Roundtable Member Registered & Attended Notice</h2>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">The person below has attended the <a href="https://na34.salesforce.com/{!CampaignMember.CampaignId}"> {!CampaignMember.Campaign}</a></p>
+<p style="font-family: helvetica, Arial, sans-serif;  font-size:12px; line-height:16px;">{!CampaignMember.FirstName} {!CampaignMember.LastName}</br></br>{!CampaignMember.Link} </p>
+<p style="font-family: helvetica, Arial, sans-serif;  font-size:12px; line-height:16px;">Please follow up<br>
+Tom Peff<br>
+tpeff@adaptiveinsights.com</p>

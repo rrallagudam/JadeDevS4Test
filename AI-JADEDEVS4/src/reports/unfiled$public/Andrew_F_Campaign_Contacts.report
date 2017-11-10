@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>MEMBER_STATUS</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Campaign.Roadshow,Campaign.Customer_Campaigns,Campaign.Default_Campaigns,Campaign.Live_User_Conference,Campaign.Local_Sales_Webinar,Campaign.Seminar_Workshop,Campaign.Tradeshows,Campaign.Webinar_Landing_Page,Campaign.Webinars</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>Ontario,ON,Quebec,QC,New Brunswick,NB,Nova Scotia,NS,Prince Edward Island,PE,PEI,Newfoundland,NE,NF,NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>lessOrEqual</operator>
+            <value>250</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_STATUS</column>
+            <operator>equals</operator>
+            <value>Registered - Canceled,Registered - Cancelled,Registered - Confirmed,Registered - Not Attended</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Andrew F - Campaign Contacts</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignContact</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+</Report>

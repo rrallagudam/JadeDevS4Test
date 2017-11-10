@@ -1,0 +1,50 @@
+<apex:page controller="ClosedLostOpportunityActivities" readOnly="true">
+    <apex:form id="frmId">
+        <apex:pageblock >
+        <apex:pageBlockSection columns="1">
+        <apex:pageblockSectionItem >
+            
+                <apex:outputlabel value="Opportunity Stage"/>
+                <apex:selectList value="{!selectedStage}" size="1">
+                    <apex:selectoption itemLabel="Closed Lost" itemValue="Closed Lost"/>
+                    <apex:selectoption itemLabel="Closed Won" itemValue="Closed Won"/>
+                </apex:selectList>
+            </apex:pageblockSectionItem>
+            
+
+            <apex:pageblockSectionItem >
+                <apex:outputlabel value="From Date"/>
+                <apex:inputField value="{!opp1.OpttyClosedWonLostActy__c}" />
+            </apex:pageblockSectionItem>
+            <apex:pageblockSectionItem >
+                <apex:outputlabel value="To Date"/>
+                 <apex:inputField value="{!opp2.OpttyClosedWonLostActy__c}" />
+             </apex:pageblockSectionItem>
+        </apex:pageBlockSection>
+        <center>
+            <apex:commandButton value="Run Report" action="{!runReport}" />&nbsp;&nbsp;
+            <apex:commandButton value="Export" action="{!ExportToExcel}" />
+        </center><br/>
+        <apex:outputPanel rendered="{!IF(lstOpp.size==0,TRUE,FALSE)}">
+            <center><font color="red"><b>No Records To Display</b></font></center>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!IF(lstOpp.size==0,FALSE,TRUE)}">
+            <apex:pageblocktable value="{!lstOpp}" var="opp">
+                <apex:column headerValue="Opportunity Name">
+                    <apex:outputLink value="/{!opp.oppty.Id}" target="_blank">{!opp.oppty.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!opp.oppty.Owner.Name}" headerValue="Opportunity Owner"/>
+                <apex:column value="{!opp.oppty.Account.Name}" headerValue="Account Name"/>
+                <apex:column value="{!opp.oppty.StageName}" headerValue="Opportunity Stage"/>
+                <!--<apex:column value="{!opp.oppty.Solutions_Exploration_Stage_Start_Date__c}"/>-->
+                <apex:column value="{!opp.oppty.CloseDate}" headerValue="Close Date"/>  
+                <apex:column value="{!opp.oppty.Total_New_ARR__c}" headerValue="ARR Amount"/> 
+                <apex:column value="{!opp.objTask.Owner.Name}" headerValue="Assigned To"/> 
+                <apex:column value="{!opp.objTask.Subject}"/>   
+                <apex:column value="{!opp.objTask.Type}"/>                                
+                <apex:column value="{!opp.relatedTo}" headerValue="Related To"/>           
+            </apex:pageblocktable>
+        </apex:outputPanel>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>Account.Adaptive_Industry__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Current_GL__c</field>
+    </columns>
+    <columns>
+        <field>Account.Current_GL_Other__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>3 And (1 or 2)</booleanFilter>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <operator>equals</operator>
+            <value>&quot;Educational Services, Colleges&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Adaptive_Industry__c</column>
+            <operator>contains</operator>
+            <value>Education</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Rubly - HE Customers</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

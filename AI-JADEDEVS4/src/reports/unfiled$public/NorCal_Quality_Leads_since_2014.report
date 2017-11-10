@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CampaignMember.Lead_Score__c</field>
+    </columns>
+    <columns>
+        <field>MEMBER_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Lead_Status__c</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>PHONE</field>
+    </columns>
+    <columns>
+        <field>Lead.Lead_Source_Most_Recent__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Lead_Offer_Most_Recent__c</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(((1 OR 2 OR 3) AND 4 AND 5) AND 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>PHONE</column>
+            <operator>startsWith</operator>
+            <value>415,(415,+1.415,+1 415,1.415,341,(341,+1.341,+1 341,1.341,369,(369,+1.369,+1 369,1.369,510,(510,+1.510,+1 510,1.510,530,(530,+1.530,+1 530,1.530,707,(707,+1.707,+1 707,1.707</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE</column>
+            <operator>startsWith</operator>
+            <value>916,(916,+1.916,+1 916,1.916,925,(925,+1.925,+1 925,1.925,559,(559,+1.559,+1 559,1.559,669,(669,+1.669,+1 669,1.669,831,(831,+1.831,+1 831,1.831,209,(209,+1.209,+1 209,1.209</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_OWNER</column>
+            <operator>equals</operator>
+            <value>Preston Nunez</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ANNUAL_REVENUE</column>
+            <operator>greaterOrEqual</operator>
+            <value>USD 100000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notContain</operator>
+            <value>.edu</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Lead_Source_Most_Recent__c</column>
+            <operator>equals</operator>
+            <value>Customer Referral,Employee Customer Referral,Inbound Call,Seminar,Website,Workshop</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_CREATED_DATE</column>
+            <operator>greaterThan</operator>
+            <value>1/1/2014 12:00 AM</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>NorCal Quality Leads since 2014</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLead</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Lead.Lead_Offer_Most_Recent__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+</Report>

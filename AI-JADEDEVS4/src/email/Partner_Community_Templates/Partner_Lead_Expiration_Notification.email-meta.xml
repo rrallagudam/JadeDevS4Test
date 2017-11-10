@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Lead owner and partner contact should receive a notification one week before it expires and then again on the day that it expires.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Partner Lead Expiration Notification</name>
+    <style>none</style>
+    <subject>Adaptive Insights Lead Registration</subject>
+    <textOnly>Hi {!Lead.Partner_Contact__c},
+Your lead registration for {!Lead.Name} {!LeadCompany} is about to expire, as we have not received any activity updates from you.
+If you are continuing to pursue this prospect, please document your activities on the lead by creating a new task through the Partner Community, within the next week.
+You can log a task by clicking on the lead name, and click new task. 
+
+The Adaptive Insights Channel Team
+
+Follow us!</textOnly>
+    <type>custom</type>
+</EmailTemplate>

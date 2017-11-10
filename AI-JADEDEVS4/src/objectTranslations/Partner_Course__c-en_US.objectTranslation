@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Course</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Courses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Partner Courses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Course Completed By Date --></label>
+        <name>Course_Completed_By_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Completed Date --></label>
+        <name>Course_Completed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Expiration Date --></label>
+        <name>Course_Expire_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course ID --></label>
+        <name>Course_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Score --></label>
+        <name>Course_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Course Status --></label>
+        <name>Course_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- NE Course --></label>
+        <name>Course__c</name>
+        <relationshipLabel><!-- Partner Courses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Days To Complete --></label>
+        <name>Days_To_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Name__c</name>
+        <relationshipLabel><!-- Partner Courses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- NetExam Course Status --></label>
+        <name>NetExam_Course_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percentage Completion --></label>
+        <name>Percentage_Completion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>Price__c</name>
+    </fields>
+    <layouts>
+        <layout>Partner Course Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

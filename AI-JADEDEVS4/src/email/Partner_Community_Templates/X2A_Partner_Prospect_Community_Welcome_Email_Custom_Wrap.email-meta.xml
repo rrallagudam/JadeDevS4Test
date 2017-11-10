@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Adaptive Insights Partner Community (this is for Partner prospects who are approved to be partners and gain access</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>2A. Partner Prospect Community Welcome Email - Custom Wrap</name>
+    <style>none</style>
+    <subject>Adaptive Insights Partner Community Registration</subject>
+    <textOnly>Hi {!Receiving_User.FirstName},
+
+Welcome to the Adaptive Insights Partner Community!
+
+Here are your next steps:
+1. Your user name is {!Receiving_User.Username} and please click here to set your password {!Community_Url}
+2. Please review the Partner Program Guides and Terms and Conditions.
+3. You will receive a DocuSign notification shortly to review and sign the partnership agreement.
+4. Don’t forget to bookmark the Community: https://partnerbox-partners.cs61.force.com
+
+If need any assistance, please connect with us at partners@adaptiveinsights.com
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

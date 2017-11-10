@@ -1,0 +1,9 @@
+<h2  style="font-family: helvetica, Arial, sans-serif; color:#006098; font-size:20px; line-height:16px;">Adaptive Live Registration Notice</h2>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">{!CampaignMember.FirstName} {!CampaignMember.LastName} from {!CampaignMember.CompanyOrAccount} has registered for Adaptive Live.</p.
+
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">Tier 1 customers will receive a personal welcome email from the CSM. All other customers, including NetSuite will receive an automated welcome email from the CSM. For any customers with an open upsell/cross sell opportunity the account manager will send personal email to the customer to invite them to meet in person at the conference. “Eloqua Engaged will have Adaptive Live templates for AM’s to send ("Adaptive Live 2017 Registration Welcome").</p>
+<p style="font-family: helvetica, Arial, sans-serif; font-size:12px; line-height:16px;">{!CampaignMember.Link} </p>
+<p style="font-family: helvetica, Arial, sans-serif;  font-size:12px; line-height:16px;">Thank You<br>
+Sonia Torres<br>
+storres@adaptiveinsights.com<br>
+650-422-7335</p>

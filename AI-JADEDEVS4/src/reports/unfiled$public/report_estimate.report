@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SHORT_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>CREATEDDATE</field>
+    </columns>
+    <columns>
+        <field>LASTRUNDATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>LASTRUNDATE</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FOLDER</column>
+            <operator>contains</operator>
+            <value>accounting,admin reports,ai configurations,bogan,channels,commissions,customer success,dashboards (general),fp&amp;a,still automated,partner community,pre-sales,sales &amp; marketing dashboards,sd dashboards,unfiled public</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FOLDER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>report estimate</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ReportList</reportType>
+    <showDetails>false</showDetails>
+    <sortColumn>LASTRUNDATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATEDDATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

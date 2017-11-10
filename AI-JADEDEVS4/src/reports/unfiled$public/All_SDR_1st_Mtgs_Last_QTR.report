@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_77725534</developerName>
+        <masterLabel>AVP</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_ROLE</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 10</sourceValue>
+            </sourceValues>
+            <value>Jason Sturgess</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 2</sourceValue>
+            </sourceValues>
+            <value>Robert S Hull</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 3</sourceValue>
+            </sourceValues>
+            <value>Robert Douglas</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 4</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Account Manager 6</sourceValue>
+            </sourceValues>
+            <value>Michael Erickson</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 5</sourceValue>
+            </sourceValues>
+            <value>Charlie Janes</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 7</sourceValue>
+            </sourceValues>
+            <value>Chris Shea</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager 8</sourceValue>
+            </sourceValues>
+            <value>Brian Flaherty</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>ASSIGNED</field>
+    </columns>
+    <columns>
+        <field>CREATED_BY</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT</field>
+    </columns>
+    <columns>
+        <field>CONTACT</field>
+    </columns>
+    <columns>
+        <field>LEAD</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>TASK_TYPE</column>
+            <operator>equals</operator>
+            <value>First Meeting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ROLE</column>
+            <operator>contains</operator>
+            <value>Account Manager</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_77725534</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>START_DATE_TIME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>All SDR 1st Mtgs Last QTR</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>ACCOUNT</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>START_DATE_TIME</dateColumn>
+        <interval>INTERVAL_PREV1</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND (6 OR 7)</booleanFilter>
+        <criteriaItems>
+            <column>OWNER</column>
+            <operator>equals</operator>
+            <value>Edison Tran,Jeff Bechtel,Carl Lai,Ryan Everett,Rigoberto Simental,Joseph Teixeira,Ji Chong,Keith Barreras,Shaun Roberts,Ryan Lowe,Kyle Miller,Tom McDermott</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <operator>equals</operator>
+            <value>Andrew Kathan,Alex Joseph,Thomas Carmichael,Brian Marrama,Thomas Marian,Stephen Eddinger,Kevin Balben,William Pescosolido,Kyle Miller,Andrew Di Manno</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Type__c</column>
+            <operator>notEqual</operator>
+            <value>Partner Prospect,Partner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONVERTED</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.ChristianLeeId__c</column>
+            <operator>notEqual</operator>
+            <value>Reassign v1 DP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Lead_Created_Date__c</column>
+            <operator>greaterOrEqual</operator>
+            <value>2/15/2015 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Lead_Created_Date__c</column>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>Phase 2 - Lead Reassignment</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Lead.Lead_Created_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

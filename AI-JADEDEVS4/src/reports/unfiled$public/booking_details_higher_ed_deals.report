@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Oppy_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Type</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity$Total_New_ARR__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>Closed Won,Closed Won - Installments</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Account.Industry</column>
+            <operator>contains</operator>
+            <value>Education</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Booking_Details__r$Booking_Year__c</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Classification__c</column>
+            <operator>notEqual</operator>
+            <value>OEM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Total_New_ARR__c</column>
+            <operator>notEqual</operator>
+            <value>USD 0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Account.BillingCountry</column>
+            <operator>equals</operator>
+            <value>United States,US,CA,Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Name</column>
+            <operator>notContain</operator>
+            <value>San Diego State,Global Fund,Build.org,meals,lifesouth</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>booking details higher ed deals</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Booking_Details__c</reportType>
+    <roleHierarchyFilter>CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_PREV1</interval>
+    </timeFrameFilter>
+</Report>

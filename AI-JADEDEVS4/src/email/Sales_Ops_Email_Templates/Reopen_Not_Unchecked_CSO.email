@@ -1,0 +1,7 @@
+Dear Frank,
+
+The following contact has had Reopen checked for 5 days:
+{!Contact.Link}
+
+It is owned by {!Contact.OwnerFullName}. For a full list of contacts which have not had the Reopen flag unchecked for 5 days, please see the following report: 
+https://cs59.salesforce.com/00O2C000000O54f

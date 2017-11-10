@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Adaptive_Insight</letterhead>
+    <name>New Trial Notification For Contact</name>
+    <style>freeForm</style>
+    <subject>Adaptive Insights Blank Trial</subject>
+    <textOnly>Adaptive Insights Blank Trial
+
+Dear {!Contact.Name},
+
+Thank you for registering for a free 30-day blank trial of the Adaptive Suite.
+
+You&apos;re ready to start! Go to our Adaptive Insights Blank Trial forum and login with the credentials below. 
+
+Please start by downloading the forum files and following the instructions in the “Adaptive Insights Blank Trial.pdf” file.
+
+https://support.adaptiveplanning.com/entries/24460287-Getting-Started-Building-a-Model-using-Trial-Software-Guide
+
+Username: {!Contact.Trial_Username__c}
+Password: {!Contact.Trial_Password__c}
+
+If you would like to work with a populated sample company instead of the blank model, please contact your account manager or email trialrequest@adaptiveinsights.com.
+
+Best Regards,
+Trial Support, Adaptive Insights
+(650) 810-2293
+trialsupport@adaptiveinsights.com</textOnly>
+    <type>html</type>
+</EmailTemplate>

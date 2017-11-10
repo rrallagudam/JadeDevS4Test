@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Contact owner and partner contact should receive a notification one week before it expires and then again on the day that it expires.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>6B. Partner Contact Expiration Confirmation</name>
+    <style>none</style>
+    <subject>Adaptive Insights Lead Registration has Expired</subject>
+    <textOnly>Hi {!Contact.Partner_Contact__c},
+
+Your lead registration for {!Contact.Name} has expired due to lack of activity updates.
+
+If you are continuing to pursue this prospect, please register an opportunity.
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

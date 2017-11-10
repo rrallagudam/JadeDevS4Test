@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Welcome Email</name>
+    <style>none</style>
+    <subject>Welcome to Adaptive Insights!</subject>
+    <textOnly>Welcome to Adaptive Insights!
+
+I am excited to have you as a new customer and to continue together on a journey of elevating the impact of finance within your organization. We are here to help capture your vision and to support you in bringing your vision to life. We look forward to helping you take your business performance to new heights.
+
+To get started, be sure and check out our Welcome page. Here you will find everything you need to begin your journey with Adaptive Insights including links to recommended videos for new customers.
+
+If you have any questions or concerns, don’t hesitate to contact us at customersuccess@adaptiveinsights.com. Your Customer Success Manager will be reaching out to you shortly.
+
+Thank you for joining the Adaptive Insights community!
+
+Best Regards,
+&lt;img src = &quot;https://c.na34.content.force.com/servlet/servlet.ImageServer?id=01561000001PO5I&amp;oid=00D61000000eCXi&amp;lastMod=1489725037000&quot;/&gt;
+Carolee Gearhart
+Senior Vice President
+Customer Success &amp; Global Channels
+cgearhart@adaptiveinsights.com
+P 650-810-2498
+
+Follow us!</textOnly>
+    <type>custom</type>
+</EmailTemplate>

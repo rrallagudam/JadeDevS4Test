@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 and 2 and (3 or 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <column>STATE</column>
+            <operator>equals</operator>
+            <value>in,oh,ky,wi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ANNUAL_REVENUE</column>
+            <operator>greaterOrEqual</operator>
+            <value>USD 100000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <operator>equals</operator>
+            <value>&quot;Manufacturing, Parts, Electronics&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.NAICS_Code__c</column>
+            <operator>startsWith</operator>
+            <value>311,312,313,314,315,316,321,322,323,324,325,326,327,331,332,333,334,335,336,337</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ANNUAL_REVENUE</column>
+            <operator>lessThan</operator>
+            <value>USD 1000000000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Manufacturing Anne and Thomas</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

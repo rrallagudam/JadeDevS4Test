@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Reference Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reference Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account CSM --></label>
+        <name>Account_CSM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Adaptive Product Preferences --></label>
+        <name>Adaptive_Product_Preferences__c</name>
+        <picklistValues>
+            <masterLabel>Consolidation</masterLabel>
+            <translation><!-- Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discovery Enterprise</masterLabel>
+            <translation><!-- Discovery Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discovery Pro</masterLabel>
+            <translation><!-- Discovery Pro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integration</masterLabel>
+            <translation><!-- Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OfficeConnect</masterLabel>
+            <translation><!-- OfficeConnect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planning</masterLabel>
+            <translation><!-- Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Revenue --></label>
+        <name>Company_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitors --></label>
+        <name>Competitor__c</name>
+        <picklistValues>
+            <masterLabel>3ESI</masterLabel>
+            <translation><!-- 3ESI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9Dots proCube</masterLabel>
+            <translation><!-- 9Dots proCube --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A3 Solutions</masterLabel>
+            <translation><!-- A3 Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ABS Financial Planning</masterLabel>
+            <translation><!-- ABS Financial Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARGUS Software</masterLabel>
+            <translation><!-- ARGUS Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account-Ability</masterLabel>
+            <translation><!-- Account-Ability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acorn Systems</masterLabel>
+            <translation><!-- Acorn Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced Computer Solutions</masterLabel>
+            <translation><!-- Advanced Computer Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alight Planning</masterLabel>
+            <translation><!-- Alight Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anaplan</masterLabel>
+            <translation><!-- Anaplan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Axiom Software</masterLabel>
+            <translation><!-- Axiom Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BI360/Solver</masterLabel>
+            <translation><!-- BI360/Solver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Birst</masterLabel>
+            <translation><!-- Birst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blackbaud ABM (Powerplan)</masterLabel>
+            <translation><!-- Blackbaud ABM (Powerplan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Board</masterLabel>
+            <translation><!-- Board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget Maestro</masterLabel>
+            <translation><!-- Budget Maestro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BudgetPak/XLerant</masterLabel>
+            <translation><!-- BudgetPak/XLerant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPSI Rycan</masterLabel>
+            <translation><!-- CPSI Rycan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Castaway</masterLabel>
+            <translation><!-- Castaway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computron</masterLabel>
+            <translation><!-- Computron --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFTech Intellistat</masterLabel>
+            <translation><!-- DFTech Intellistat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Decimal</masterLabel>
+            <translation><!-- Decimal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deltek Costpoint</masterLabel>
+            <translation><!-- Deltek Costpoint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domo</masterLabel>
+            <translation><!-- Domo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edgewater Ranzal (M2 Dynamics)</masterLabel>
+            <translation><!-- Edgewater Ranzal (M2 Dynamics) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Epicor EPM</masterLabel>
+            <translation><!-- Epicor EPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance One</masterLabel>
+            <translation><!-- Finance One --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fiserv Vantage</masterLabel>
+            <translation><!-- Fiserv Vantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gooddata</masterLabel>
+            <translation><!-- Gooddata --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Host Analytics</masterLabel>
+            <translation><!-- Host Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos C7</masterLabel>
+            <translation><!-- IBM Cognos C7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos Express</masterLabel>
+            <translation><!-- IBM Cognos Express --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos Planning</masterLabel>
+            <translation><!-- IBM Cognos Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos TM1</masterLabel>
+            <translation><!-- IBM Cognos TM1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inca Software</masterLabel>
+            <translation><!-- Inca Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infor d/EPM</masterLabel>
+            <translation><!-- Infor d/EPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insight Software</masterLabel>
+            <translation><!-- Insight Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JD Edwards World</masterLabel>
+            <translation><!-- JD Edwards World --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jedox</masterLabel>
+            <translation><!-- Jedox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KCI Control</masterLabel>
+            <translation><!-- KCI Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kepion Solution</masterLabel>
+            <translation><!-- Kepion Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logi Analytics</masterLabel>
+            <translation><!-- Logi Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Longview Solutions (Khalix)</masterLabel>
+            <translation><!-- Longview Solutions (Khalix) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Looker</masterLabel>
+            <translation><!-- Looker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Dynamics NAV</masterLabel>
+            <translation><!-- Microsoft Dynamics NAV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Management Reporter</masterLabel>
+            <translation><!-- Microsoft Management Reporter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Power BI</masterLabel>
+            <translation><!-- Microsoft Power BI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft ZAP</masterLabel>
+            <translation><!-- Microsoft ZAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Millenium FAST</masterLabel>
+            <translation><!-- Millenium FAST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiview Budgeting</masterLabel>
+            <translation><!-- Multiview Budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneStream Software</masterLabel>
+            <translation><!-- OneStream Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Hyperion Enterprise</masterLabel>
+            <translation><!-- Oracle Hyperion Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Hyperion Planning</masterLabel>
+            <translation><!-- Oracle Hyperion Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Hyperion Strategic Finance</masterLabel>
+            <translation><!-- Oracle Hyperion Strategic Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Other</masterLabel>
+            <translation><!-- Oracle Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle PBCS</masterLabel>
+            <translation><!-- Oracle PBCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Perceptive Technologies</masterLabel>
+            <translation><!-- Perceptive Technologies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PlanGuru</masterLabel>
+            <translation><!-- PlanGuru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PowerPlan</masterLabel>
+            <translation><!-- PowerPlan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prophix</masterLabel>
+            <translation><!-- Prophix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qlikview</masterLabel>
+            <translation><!-- Qlikview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Questica</masterLabel>
+            <translation><!-- Questica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickBase</masterLabel>
+            <translation><!-- QuickBase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R&amp;D Logic</masterLabel>
+            <translation><!-- R&amp;D Logic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reynolds &amp; Reynolds Advanced Reporting</masterLabel>
+            <translation><!-- Reynolds &amp; Reynolds Advanced Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP BPC</masterLabel>
+            <translation><!-- SAP BPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Other</masterLabel>
+            <translation><!-- SAP Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAS</masterLabel>
+            <translation><!-- SAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SRC Software</masterLabel>
+            <translation><!-- SRC Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sage</masterLabel>
+            <translation><!-- Sage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Wave Analytics</masterLabel>
+            <translation><!-- Salesforce Wave Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Six Degrees Planning</masterLabel>
+            <translation><!-- Six Degrees Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stratajazz</masterLabel>
+            <translation><!-- Stratajazz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Syteline</masterLabel>
+            <translation><!-- Syteline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TCM InfoSys</masterLabel>
+            <translation><!-- TCM InfoSys --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIBCO/Spotfire</masterLabel>
+            <translation><!-- TIBCO/Spotfire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tableau</masterLabel>
+            <translation><!-- Tableau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagetik</masterLabel>
+            <translation><!-- Tagetik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Talentia</masterLabel>
+            <translation><!-- Talentia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tidemark</masterLabel>
+            <translation><!-- Tidemark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unit4</masterLabel>
+            <translation><!-- Unit4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vantage</masterLabel>
+            <translation><!-- Vantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vena Solutions</masterLabel>
+            <translation><!-- Vena Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Whitebirch Software</masterLabel>
+            <translation><!-- Whitebirch Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XLerant</masterLabel>
+            <translation><!-- XLerant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yardi</masterLabel>
+            <translation><!-- Yardi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zoho</masterLabel>
+            <translation><!-- Zoho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>deFacto Performance Management</masterLabel>
+            <translation><!-- deFacto Performance Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>o9 Solutions</masterLabel>
+            <translation><!-- o9 Solutions --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ERP System --></label>
+        <name>ERP_System__c</name>
+        <picklistValues>
+            <masterLabel>ACCPAC</masterLabel>
+            <translation><!-- ACCPAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Abila</masterLabel>
+            <translation><!-- Abila --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AccountMate</masterLabel>
+            <translation><!-- AccountMate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Axapta</masterLabel>
+            <translation><!-- Axapta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blackbaud</masterLabel>
+            <translation><!-- Blackbaud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deltek</masterLabel>
+            <translation><!-- Deltek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deltek Costpoint</masterLabel>
+            <translation><!-- Deltek Costpoint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deltek Vision</masterLabel>
+            <translation><!-- Deltek Vision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Epicor</masterLabel>
+            <translation><!-- Epicor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Famous Software</masterLabel>
+            <translation><!-- Famous Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fathom</masterLabel>
+            <translation><!-- Fathom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FinancialForce.com</masterLabel>
+            <translation><!-- FinancialForce.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Great Plains</masterLabel>
+            <translation><!-- Great Plains --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Grown</masterLabel>
+            <translation><!-- Home Grown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intacct</masterLabel>
+            <translation><!-- Intacct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JD Edwards</masterLabel>
+            <translation><!-- JD Edwards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kuali</masterLabel>
+            <translation><!-- Kuali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lawson</masterLabel>
+            <translation><!-- Lawson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIP</masterLabel>
+            <translation><!-- MIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maconomy</masterLabel>
+            <translation><!-- Maconomy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mas (90,200,500)</masterLabel>
+            <translation><!-- Mas (90,200,500) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Dynamics AX</masterLabel>
+            <translation><!-- Microsoft Dynamics AX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Dynamics GP</masterLabel>
+            <translation><!-- Microsoft Dynamics GP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Dynamics NAV</masterLabel>
+            <translation><!-- Microsoft Dynamics NAV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Dynamics SL</masterLabel>
+            <translation><!-- Microsoft Dynamics SL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft FRx</masterLabel>
+            <translation><!-- Microsoft FRx --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiview</masterLabel>
+            <translation><!-- Multiview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Navision</masterLabel>
+            <translation><!-- Navision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetSuite</masterLabel>
+            <translation><!-- NetSuite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle</masterLabel>
+            <translation><!-- Oracle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peachtree</masterLabel>
+            <translation><!-- Peachtree --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PeopleSoft</masterLabel>
+            <translation><!-- PeopleSoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plex</masterLabel>
+            <translation><!-- Plex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QAD</masterLabel>
+            <translation><!-- QAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickBooks</masterLabel>
+            <translation><!-- QuickBooks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP</masterLabel>
+            <translation><!-- SAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP All-In-One</masterLabel>
+            <translation><!-- SAP All-In-One --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Business ByDesign</masterLabel>
+            <translation><!-- SAP Business ByDesign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Business One</masterLabel>
+            <translation><!-- SAP Business One --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP ERP</masterLabel>
+            <translation><!-- SAP ERP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP R/3</masterLabel>
+            <translation><!-- SAP R/3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sage</masterLabel>
+            <translation><!-- Sage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Softline</masterLabel>
+            <translation><!-- Softline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Softrax</masterLabel>
+            <translation><!-- Softrax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solomon</masterLabel>
+            <translation><!-- Solomon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SysPro</masterLabel>
+            <translation><!-- SysPro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workday</masterLabel>
+            <translation><!-- Workday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xero</masterLabel>
+            <translation><!-- Xero --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mySAP</masterLabel>
+            <translation><!-- mySAP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Industry__c</name>
+        <picklistValues>
+            <masterLabel>Aerospace &amp; Defense</masterLabel>
+            <translation><!-- Aerospace &amp; Defense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture, Forestry, Fishing</masterLabel>
+            <translation><!-- Agriculture, Forestry, Fishing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking, Financial Services</masterLabel>
+            <translation><!-- Banking, Financial Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business, Professional, &amp; Technical Services</masterLabel>
+            <translation><!-- Business, Professional, &amp; Technical Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction, Architecture &amp; Engineering</masterLabel>
+            <translation><!-- Construction, Architecture &amp; Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy &amp; Utilities</masterLabel>
+            <translation><!-- Energy &amp; Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare &amp; Social Assistance</masterLabel>
+            <translation><!-- Healthcare &amp; Social Assistance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality, Gaming, Hotel, Restaurants</masterLabel>
+            <translation><!-- Hospitality, Gaming, Hotel, Restaurants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mining</masterLabel>
+            <translation><!-- Mining --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nonprofits, Charities, Foundations</masterLabel>
+            <translation><!-- Nonprofits, Charities, Foundations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pharmaceuticals, Biotech, Chemicals</masterLabel>
+            <translation><!-- Pharmaceuticals, Biotech, Chemicals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Publishing, Media, Advertising</masterLabel>
+            <translation><!-- Publishing, Media, Advertising --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Leasing &amp; Rental</masterLabel>
+            <translation><!-- Real Estate, Leasing &amp; Rental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software &amp; Technology</masterLabel>
+            <translation><!-- Software &amp; Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation &amp; Shipping</masterLabel>
+            <translation><!-- Transportation &amp; Shipping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waste Management, Recycling, Environment</masterLabel>
+            <translation><!-- Waste Management, Recycling, Environment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wholesale</masterLabel>
+            <translation><!-- Wholesale --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Integration Requirements --></label>
+        <name>Integration_Requirements__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- No of Employees --></label>
+        <name>No_of_Employees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Seats Preference --></label>
+        <name>Number_of_Seats_Preference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of references needed? --></label>
+        <name>Number_of_references_needed__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation><!-- 14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Stage --></label>
+        <name>Opportunity_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Reference Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- References needed by what date? --></label>
+        <name>References_needed_by_what_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivered</masterLabel>
+            <translation><!-- Delivered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Researching</masterLabel>
+            <translation><!-- Researching --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- To which system(s)? --></label>
+        <name>To_which_system__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top 3-5 takeaways from reference call? --></label>
+        <name>Top_3_5_takeaways_from_reference_call__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Peer to Peer</masterLabel>
+            <translation><!-- Peer to Peer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFP</masterLabel>
+            <translation><!-- RFP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- What kind of use case required? --></label>
+        <name>Use_Case_Requested__c</name>
+    </fields>
+    <layouts>
+        <layout>Reference Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Comments field is required --></errorMessage>
+        <name>Comments_field_is_required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- New_Reference_Request --></label>
+        <name>New_Reference_Request</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Contact.Contact_Status__c</column>
+            <operator>equals</operator>
+            <value>Re-Open Contact</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.ADDRESS1_COUNTRY</column>
+            <operator>equals</operator>
+            <value>USA,United States.,Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.ADDRESS1_STATE</column>
+            <operator>notContain</operator>
+            <value>outside,other</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <operator>notContain</operator>
+            <value>Partners,Wave,Customer</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Reopen Pursuing Contacts By Owner</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>my</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

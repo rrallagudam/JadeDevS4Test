@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>STATE</field>
+    </columns>
+    <columns>
+        <field>PHONE</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Lead.Industry_Focus__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <column>PHONE</column>
+            <operator>startsWith</operator>
+            <value>209,(209,+1.209,+1 209,1.209</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.NAICS_Code__c</column>
+            <operator>startsWith</operator>
+            <value>11</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <operator>equals</operator>
+            <value>&quot;Agriculture, Forestry, Fishing&quot;,&quot;Agriculture, Forestry, Fishing &amp; Hunting&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Adaptive_Industry__c</column>
+            <operator>contains</operator>
+            <value>Agriculture,Farming</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>COMPANY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Ag &amp; Farm Leads - Barreras</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

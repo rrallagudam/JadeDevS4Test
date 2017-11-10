@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Knowledge Article Submitted for Review - Custom</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>8A. Knowledge Article Submitted for Review</name>
+    <style>none</style>
+    <subject>Please Review this Knowledge Article</subject>
+    <textOnly>Hi Knowledge Manager,
+
+There is a new knowledge article ready for you to review.
+
+Please review the article and edit as needed.  Once complete, please either approve or reject the article. 
+
+Link to article: {!Knowledge__kav.Link}
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

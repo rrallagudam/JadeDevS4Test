@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Skip Automation Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Skip Automation Setting</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Automation --></label>
+        <name>Account_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- All --></label>
+        <name>All__c</name>
+    </fields>
+    <fields>
+        <label><!-- Booking Detail Automation --></label>
+        <name>Booking_Detail_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- CampaignMember Automation --></label>
+        <name>CampaignMember_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Automation --></label>
+        <name>Campaign_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Automation --></label>
+        <name>Contact_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Automation --></label>
+        <name>Contract_Automation__c</name>
+    </fields>
+    <fields>
+        <help><!-- User Id to whome Exception Handling email are sent --></help>
+        <label><!-- ExceptionHandlingUsers --></label>
+        <name>ExceptionHandlingUsers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Automation --></label>
+        <name>Lead_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpportunityLineItem Automation --></label>
+        <name>OpportunityLineItem_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Automation --></label>
+        <name>Opportunity_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Automation --></label>
+        <name>Order_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Automation --></label>
+        <name>Quote_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Document Automation --></label>
+        <name>Quote_Document_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Task Automation --></label>
+        <name>Task_Automation__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Automation --></label>
+        <name>User_Automation__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

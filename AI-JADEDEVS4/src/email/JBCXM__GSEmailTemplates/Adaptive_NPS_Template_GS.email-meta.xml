@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Adaptive NPS Template GS</name>
+    <style>none</style>
+    <subject>Please provide your feedback!</subject>
+    <textOnly>Dear {!JBCXM__SurveyParticipant__c.JBCXM__FirstName__c}:
+
+Your Opinion is Very Important to Us!
+
+You are a valued Adaptive Insights customer, and we are very interested in getting your candid feedback on how we&apos;re doing. We would appreciate it greatly if you could spend three minutes to take our survey. Your input will be instrumental in helping us improve Adaptive Insights and your overall customer experience!
+
+Please click the link to take the survey.  (If you have problems loading this survey, you may also copy the entire link into your web browser.)
+{!JBCXM__SurveyParticipant__c.JBCXM__SurveyURL__c}?surveyId={!JBCXM__SurveyParticipant__c.JBCXM__SurveyId__c}∂icipantId={!JBCXM__SurveyParticipant__c.JBCXM__Token__c}
+
+Best Regards,
+
+Adaptive Insights Customer Success Team
+
+3,000+ Customers in 85 countries worldwide
+www.adaptiveinsights.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

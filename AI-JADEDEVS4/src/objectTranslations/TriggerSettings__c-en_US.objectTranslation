@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Trigger Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Trigger Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Trigger_Enabled --></label>
+        <name>Account_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- BookingDetail Trigger Enabled --></label>
+        <name>BookingDetail_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- CampaignTrigger Enabled --></label>
+        <name>CampaignTrigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Trigger Enabled --></label>
+        <name>Contact_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Trigger Enabled --></label>
+        <name>Contract_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Trigger Enabled --></label>
+        <name>Event_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Trigger Enabled --></label>
+        <name>Lead_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Line Item Trigger Enabled --></label>
+        <name>Opportunity_Line_Item_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Trigger Enabled --></label>
+        <name>Opportunity_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Document Trigger Enabled --></label>
+        <name>Quote_Document_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Trigger Enabled --></label>
+        <name>Quote_Line_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Trigger Enabled --></label>
+        <name>Quote_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Trigger Enabled --></label>
+        <name>Subscription_Trigger_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Task Trigger Enabled --></label>
+        <name>Task_Trigger_Enabled__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

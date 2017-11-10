@@ -1,0 +1,40 @@
+<apex:component >
+	<button id="territory-remove-button" class="slds-button slds-button--neutral">Remove Selected</button>
+    <span id="territory-message"></span>
+    <table class="slds-table slds-table--bordered">
+        <thead>
+            <tr class="slds-text-heading--label">
+                <th class="slds-cell-shrink">
+                    <label class="slds-checkbox">
+                        <input id="territory-select-all" type="checkbox" name="options" />
+                        <span class="slds-checkbox--faux"></span>
+                        <span class="slds-assistive-text">Select All</span>
+                    </label>
+                </th>
+                <th class="slds-is-sortable" scope="col">
+                    <div class="slds-truncate">Country</div>
+                </th>
+                <th class="slds-is-sortable" scope="col">
+                    <div class="slds-truncate">State</div>
+                </th>
+                <th class="slds-is-sortable" scope="col">
+                    <div class="slds-truncate">County</div>
+                </th>
+                <th class="slds-is-sortable" scope="col">
+                    <div class="slds-truncate">ZipCode</div>
+                </th>
+                <th class="slds-is-sortable" scope="col">
+                    <div class="slds-truncate">AreaCode</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="territory-table-body">
+        </tbody>
+    </table>
+    <script>
+    $( document ).ready(function() {
+        $("#territory-select-all").click( onTerritorySelectAll );
+        $("#territory-remove-button").click( onTerritoryRemoveSelected );
+	});
+    </script>
+</apex:component>

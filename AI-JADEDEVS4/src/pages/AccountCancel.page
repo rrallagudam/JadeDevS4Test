@@ -1,0 +1,15 @@
+<apex:page standardController="Account" extensions="AccountCancelController">
+    <apex:form >
+        <apex:sectionHeader title="Cancel Account {!currentAccount.Name}" subtitle="Account subscription cancel confirmation"/>
+        <apex:pageMessage severity="info" summary="Click 'Cancel Subscription' to confirm you wish to cancel the subscription for this Account."/>
+        <br/><br/>
+        <apex:commandButton value="Cancel Subscription" action="{!cancelAccount}"/>
+        <apex:commandButton value="Return to Account" action="{!cancel}"/>
+        <br/><br/><br/>
+        <apex:pageMessage severity="info" summary="Note: The following actions will be taken upon cancellation:"/>        
+        <ol>
+            <li>Any open opportunities will be converted to 'Closed-Lost'.</li>
+            <li>The Account status will be changed to 'Cancelled'.</li>
+        </ol>
+    </apex:form>
+</apex:page>

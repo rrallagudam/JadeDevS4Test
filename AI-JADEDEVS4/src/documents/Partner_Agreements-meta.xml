@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocumentFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessType>Shared</accessType>
+    <name>Partner Agreements</name>
+    <publicFolderAccess>ReadWrite</publicFolderAccess>
+    <sharedTo>
+        <allPartnerUsers></allPartnerUsers>
+        <group>Partner_and_Channels_Team</group>
+        <role>Director_Channel_Marketing</role>
+        <role>VP_Sales_UKI</role>
+    </sharedTo>
+</DocumentFolder>

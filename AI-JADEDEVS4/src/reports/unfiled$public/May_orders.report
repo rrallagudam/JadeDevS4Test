@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ORDER_NUMBER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>ORDER_STATUS</field>
+    </columns>
+    <columns>
+        <field>ORDER_EFFECTIVE_DATE</field>
+    </columns>
+    <columns>
+        <field>ORDER_TYPE</field>
+    </columns>
+    <columns>
+        <field>Order.NetSuite_Order_Number__c</field>
+    </columns>
+    <columns>
+        <field>ORDER_TOTAL_AMOUNT</field>
+    </columns>
+    <currency>USD</currency>
+    <description>orders that need to sync to NetSuite with new pricing</description>
+    <filter>
+        <criteriaItems>
+            <column>Order.Dont_Sync_with_NetSuite__c</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order.NetSuite_Order_Number__c</column>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <operator>notEqual</operator>
+            <value>Fake for System Admin2,Ravi New Pricing test</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY.NAME</column>
+            <operator>notContain</operator>
+            <value>Debooking</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>May orders</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OrderList</reportType>
+    <showDetails>true</showDetails>
+    <sortColumn>ORDER_TOTAL_AMOUNT</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>ORDER_ACTIVATED_DATE</dateColumn>
+        <interval>INTERVAL_THISMONTH</interval>
+    </timeFrameFilter>
+</Report>

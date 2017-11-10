@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Adaptive_Insight</letterhead>
+    <name>Partner Docusign Email Template</name>
+    <style>freeForm</style>
+    <subject>Partner Account Docusign Template</subject>
+    <textOnly>Hello,
+
+
+A new agreement has been executed with a Partner.
+
+
+Please store this agreement on Coldfront and update Partner commission worksheets as required.
+
+
+Regards,
+
+
+Channel Team</textOnly>
+    <type>html</type>
+</EmailTemplate>

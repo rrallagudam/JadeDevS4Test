@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Partner_Certification__c.NECertification__c</field>
+    </columns>
+    <columns>
+        <field>Partner_Certification__c.Certification_ID__c</field>
+    </columns>
+    <columns>
+        <field>Partner_Certification__c.Certification_Status__c</field>
+    </columns>
+    <columns>
+        <field>Partner_Certification__c.Enrolled_Date__c</field>
+    </columns>
+    <columns>
+        <field>Partner_Certification__c.Completion_Date__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <description>Partner Certifications with Accounts</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Partner Certifications with Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountCustomEntity$Partner_Certification__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

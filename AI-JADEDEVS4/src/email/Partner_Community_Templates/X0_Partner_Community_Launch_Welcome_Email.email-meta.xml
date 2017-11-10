@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Adaptive Insights Partner Community Welcome Email Launch at Partner Summit</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>0. Partner Community Launch Welcome Email</name>
+    <style>none</style>
+    <subject>Welcome to the Adaptive Insights Partner Community</subject>
+    <textOnly>Hi {!Receiving_User.FirstName},
+
+I’m excited to share with you that we have replaced our existing Partner portal technology and have launched SFDC Communities effective Monday, January 9th.
+
+The Adaptive Insights Partner Community was designed to improve your partnering experience and will allow you to leverage the same CRM system that our sales team does.
+
+Here are your next steps to gain access:
+1. Your user name is {!Receiving_User.Username} and please click here to set your password for the new Partner Community.
+2. Login, check it out and let us know if you have any feedback or suggestions for improvement.
+3. Register for our Webinar on January 25, 2017 to learn more!
+
+Don’t forget to bookmark the Adaptive Insights Partner Community.
+
+If need any assistance, please connect with us
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

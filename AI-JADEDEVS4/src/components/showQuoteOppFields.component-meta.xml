@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>39.0</apiVersion>
+    <description>Displaying Quote(CPQ Manged Package) &amp; its related opportunity fields.</description>
+    <label>showQuoteOppFields</label>
+    <packageVersions>
+        <majorNumber>25</majorNumber>
+        <minorNumber>0</minorNumber>
+        <namespace>SBQQ</namespace>
+    </packageVersions>
+</ApexComponent>

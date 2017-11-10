@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contract$Account.Owner</field>
+    </columns>
+    <columns>
+        <field>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</field>
+    </columns>
+    <columns>
+        <field>Contract$Account.BillingState</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(((1 AND 2 AND 3 AND (4 OR 5)) AND 6) AND 7) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>Contract$Account.Type</column>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$Account.Status__c</column>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$Status</column>
+            <operator>equals</operator>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$Account.NaicsCode</column>
+            <operator>startsWith</operator>
+            <value>5112,541512,518,51913,541511</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$Account.Owner</column>
+            <operator>equals</operator>
+            <value>Todd Melrdum,Jeremy Garding,Anne Yates</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract.SBQQ__Subscriptions__r$SBQQ__Product__c</column>
+            <operator>contains</operator>
+            <value>Integration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract.SBQQ__Subscriptions__r$SBQQ__EndDate__c</column>
+            <operator>greaterOrEqual</operator>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contract$Account</column>
+            <operator>notEqual</operator>
+            <value>CareStar Holdings,HBD Industries</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contract$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Integration Customers</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AI_Configurations_with_Subscriptions__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Contract$Account.BillingState</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Contract$ActivatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

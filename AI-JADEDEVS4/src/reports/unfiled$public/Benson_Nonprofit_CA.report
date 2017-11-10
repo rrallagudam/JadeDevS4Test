@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>Account.Current_ARR__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 or 4) AND 5 AND (6 or 7)</booleanFilter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Non_Profit__c</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>NAICS_CODE</column>
+            <operator>startsWith</operator>
+            <value>813,711,712,623,624</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>Ca,california</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>408,(408,+1.408,+1 408,1.408,650,(650,+1.650,+1 650,1.650,415,(415,+1.415,+1 415,1.415,341,(341,+1.341,+1 341,1.341,369,(369,+1.369,+1 369,1.369,510,(510,+1.510,+1 510,1.510,530,(530,+1.530,+1 530,1.530,707,(707,+1.707,+1 707,1.707,916,(916,+1.916,+1 916</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>925,(925,+1.925,+1 925,1.925,559,(559,+1.559,+1 559,1.559,669,(669,+1.669,+1 669,1.669,831,(831,+1.831,+1 831,1.831,209,(209,+1.209,+1 209,1.209</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Benson - Nonprofit CA</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

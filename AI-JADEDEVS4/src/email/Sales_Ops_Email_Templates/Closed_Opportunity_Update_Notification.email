@@ -1,0 +1,3 @@
+Hi Sales Ops Team,
+
+The Closed Won opportunity {!Opportunity.Link} owned by {!Opportunity.OwnerFullName} has been edited by someone other than the Sales Ops team. Please review the opportunity details in Salesforce.

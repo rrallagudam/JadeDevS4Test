@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>SALES</field>
+    </columns>
+    <columns>
+        <field>NAICS_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND ((6 AND 7) OR (8 AND (9 AND 10)))</booleanFilter>
+        <criteriaItems>
+            <column>ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>AR,LA,TN,GA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <operator>notEqual</operator>
+            <value>Anne Yates,Melissa Keilen,Brian Willette,Andrew McDonnell</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Vertical_Market__c</column>
+            <operator>notEqual</operator>
+            <value>Software,NFP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_COUNTRY</column>
+            <operator>equals</operator>
+            <value>US,United States</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Customer Prospect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>greaterThan</operator>
+            <value>250</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>lessOrEqual</operator>
+            <value>2000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>equals</operator>
+            <value>,1,2,3,4,5,6,7,8,9</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SALES</column>
+            <operator>greaterThan</operator>
+            <value>USD 50000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SALES</column>
+            <operator>lessOrEqual</operator>
+            <value>USD 400000000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Bender - Prospects</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>USERS.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

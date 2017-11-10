@@ -1,0 +1,311 @@
+<!--
+#Visualforce Page      :    findMatches 
+#DESCRIPTION           :    This visualforce page is used for Quick Lead Conversion, Find duplicate Leads, Accounts and Contats
+#User Story Number     :    SOZO-400
+-->
+<apex:page standardController="Lead" extensions="FindMatchesExtension" >
+    <apex:form >
+        <apex:sectionHeader subtitle="{!objLead.Name} - Find Matches" title="Lead"/>
+        
+        <apex:pagemessages ></apex:pagemessages>
+        <apex:outputLabel style="color:red;" rendered="{!displayValidationMsg}" value="{!strValidationMsg}">
+            <br/><br/>
+        </apex:outputLabel>
+        
+
+        <!--  Lead Details Section -- START -->
+        <apex:pageBlock mode="maindetail">
+            <apex:pageblockButtons location="bottom">
+                <apex:commandButton value="Search" action="{!loadMatchingRecords}"/>
+                <apex:commandButton value="Cancel" action="{!redirectToLead}"/>
+                
+            </apex:pageblockButtons>
+            <apex:pageblockSection columns="1">                
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="First Name"/>
+                    <apex:outputPanel >
+                        <apex:inputCheckbox value="{!isLeadFullNameSelected }"/>
+                        <apex:inputText value="{!strLeadFirstName}"/>
+                        
+                        <apex:outputLabel styleClass="labelCol vfLabelColTextWrap  first" value="Last Name"/>
+                        <apex:inputText value="{!strLeadLastName}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem> 
+                          
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Company"/>
+                    <apex:outputPanel >
+                        <apex:inputCheckbox value="{!isLeadCompanySelected}"/>
+                        <apex:inputText value="{!strLeadCompanyName}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Email Domain"/>
+                    <apex:outputPanel >
+                        <apex:inputCheckbox value="{!isLeadEmailSelected}"/>
+                        <apex:outputText value="{!strLeadEmail}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>
+                <!--<apex:pageblockSectionItem >
+                    <apex:outputLabel value="Phone"/>
+                    <apex:outputPanel >
+                        <apex:inputCheckbox value="{!isLeadPhoneSelected}"/>
+                        <apex:outputText value="{!strLeadPhone}"/>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>-->
+                
+            </apex:pageblockSection>
+        </apex:pageBlock>
+        <!--  Lead Details Section -- END -->
+        
+        <!--  Matching Leads Section -- START -->
+        <apex:pageblock title="Matching Leads">
+            <apex:pageblockButtons location="top">
+                <apex:commandButton value="Merge Leads" action="{!mergeLeads}"/>
+            </apex:pageblockButtons>
+            <apex:pageblockTable value="{!matchingLeads}" var="ld">
+                <apex:column >
+                    <apex:inputcheckbox value="{!ld.isLeadSelected}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="/{!ld.objLead.id}">{!ld.objLead.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Title">
+                    <apex:outputField value="{!ld.objLead.Title}"/>
+                </apex:column>
+                <apex:column headerValue="Company">
+                    <apex:outputField value="{!ld.objLead.Company}"/>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:outputField value="{!ld.objLead.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:outputField value="{!ld.objLead.Email}"/>
+                </apex:column>
+                <apex:column headerValue="Lead Source - Most Recent">
+                    <apex:outputField value="{!ld.objLead.Leadsource}"/>
+                </apex:column>
+                <apex:column headerValue="Owner Name">
+                    <apex:outputLink value="/{!ld.objLead.OwnerId}">{!ld.objLead.Owner.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Lead Score">
+                     <apex:outputField value="{!ld.objLead.Lead_Score__c}"/>
+                </apex:column>
+                <apex:column headerValue="State/Province">
+                    <apex:outputField value="{!ld.objLead.State}"/>
+                </apex:column>  
+                <apex:column headerValue="Last Activity">
+                    <apex:outputField value="{!ld.objLead.Last_Activity_Date__c}"/>
+                </apex:column>
+                <apex:column headerValue="Partner Account">
+                    <apex:outputLink value="/{!ld.objLead.PartnerAccountId}">{!ld.objLead.PartnerAccount.Name}</apex:outputLink>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageblock>
+        <!--  Matching Leads Section -- END -->
+        
+        <!--  Matching Contacts Section -- START -->
+        <apex:pageblock title="Matching Contacts">
+            <apex:pageblockButtons location="top">
+                <apex:commandButton value="Merge Lead with Contact" action="{!mergeWithContacts}"/>
+            </apex:pageblockButtons>
+            <apex:pageblockTable value="{!matchingContacts}" var="con">
+                <apex:column >
+                    <apex:inputcheckbox value="{!con.isContactSelected}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="/{!con.objContact.Id}">{!con.objContact.Name}</apex:outputLink>
+                </apex:column>    
+                <apex:column headerValue="Title">
+                    <apex:outputField value="{!con.objContact.Title}"/>
+                </apex:column>
+                <apex:column headerValue="Role">
+                    <apex:outputField value="{!con.objContact.Role__c}"/>
+                </apex:column>
+                <apex:column headerValue="Account Name">
+                    <apex:outputLink value="/{!con.objContact.AccountId}">{!con.objContact.Account.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Phone">
+                    <apex:outputField value="{!con.objContact.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="Email">
+                    <apex:outputField value="{!con.objContact.Email}"/>
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:outputField value="{!con.objContact.Status__c}"/>
+                </apex:column>    
+                <apex:column headerValue="Owner">
+                    <apex:outputLink value="/{!con.objContact.OwnerId}">{!con.objContact.Owner.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Lead Score">
+                    <apex:outputField value="{!con.objContact.Calculated_Score__c}"/>
+                </apex:column>
+                <apex:column headerValue="Partner Account">
+                    <apex:outputLink value="/{!con.objContact.Partner__c}">{!con.objContact.Partner__r.Name}</apex:outputLink>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageblock>
+        <!--  Matching Contacts Section -- END -->
+        
+        <!--  Matching Accounts Section -- START -->
+        <apex:pageblock title="Matching Accounts">
+            <apex:pageblockButtons location="top">
+                <apex:commandButton value="Convert" action="{!convertLead}"/>
+            </apex:pageblockButtons>
+            
+            <table class="list" cellpadding="0" cellspacing="0">
+                <apex:repeat value="{!matchingAccounts}" var="acc">
+                <tr class="headerRow">
+                    <th class="headerRow">  
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Account Name"></apex:outputLabel>
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Type"></apex:outputLabel>
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Status"></apex:outputLabel>
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Owner"></apex:outputLabel>
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Partner Account"></apex:outputLabel>
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Billing State"></apex:outputLabel>
+                    </th>                    
+                    <th class="headerRow">
+                        <apex:outputLabel value="Billing Country"></apex:outputLabel>
+                    </th>
+                </tr>
+                
+                    <tr class="dataRow">
+                        <td class="dataCell">
+                            <apex:inputcheckbox value="{!acc.isAccountSelected}"/>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputLink value="/{!acc.objAccount.Id}">{!acc.objAccount.Name}</apex:outputLink>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputField value="{!acc.objAccount.Type}"/>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputField value="{!acc.objAccount.Status__c}"/>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputLink value="/{!acc.objAccount.OwnerId}">{!acc.objAccount.Owner.Name}</apex:outputLink>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputLink value="/{!acc.objAccount.Partner_Account__c}">{!acc.objAccount.Partner_Account__r.Name}</apex:outputLink>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputField value="{!acc.objAccount.BillingState}"/>
+                        </td>
+                        <td class="dataCell"> 
+                            <apex:outputField value="{!acc.objAccount.BillingCountry}"/>
+                        </td>
+                    </tr>
+                    <tr class="headerRow" style="visibility:{!If(acc.objAccount.Opportunities.size > 0, 'visible', 'hidden')}">
+                        <th class="headerRow"> 
+                            
+                        </th>
+                        <th class="headerRow"> 
+                            <apex:outputLabel value="Opportunity Name"></apex:outputLabel>
+                        </th>
+                        <th class="headerRow"> 
+                            <apex:outputLabel value="Type"></apex:outputLabel>
+                        </th>
+                        <th class="headerRow" colspan="2"> 
+                            <apex:outputLabel value="Stage"></apex:outputLabel>
+                        </th>
+                        <th class="headerRow"> 
+                            <apex:outputLabel value="Owner"></apex:outputLabel>
+                        </th>
+                        <th class="headerRow" colspan="2"> 
+                            <apex:outputLabel value="Close Date"></apex:outputLabel>
+                        </th>                        
+                    </tr>
+                    <apex:repeat value="{!acc.objAccount.Opportunities}" var="opp">
+                        <tr class="dataRow">
+                            <td class="dataCell">
+                            </td>
+                            <td class="dataCell">
+                                <apex:outputLink value="/{!opp.Id}">{!opp.Name}</apex:outputLink>
+                            </td>
+                            <td class="dataCell">
+                                <apex:outputField value="{!opp.Type}"/>
+                            </td>
+                            <td class="dataCell" colspan="2">
+                                <apex:outputField value="{!opp.StageName}"/>
+                            </td>
+                            <td class="dataCell">
+                                <apex:outputLink value="/{!opp.OwnerId}">{!opp.Owner.Name}</apex:outputLink>
+                            </td>
+                            <td class="dataCell" colspan="2">
+                                <apex:outputText value="{0, date, MM/dd/yyyy}">
+                                    <apex:param value="{!opp.Closedate}" />
+                                </apex:outputText>
+                            </td>                            
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+            
+            <!--<apex:pageblockTable value="{!matchingAccounts}" var="acc">
+                <apex:column >
+                    <apex:inputcheckbox value="{!acc.isAccountSelected}"/>
+                </apex:column>
+                <apex:column headerValue="Account Name">
+                    <apex:outputLink value="/{!acc.objAccount.Id}">{!acc.objAccount.Name}</apex:outputLink>
+                </apex:column>  
+                <apex:column headerValue="Type">
+                    <apex:outputField value="{!acc.objAccount.Type}"/>
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:outputField value="{!acc.objAccount.Status__c}"/>
+                </apex:column>
+                <apex:column headerValue="Owner">
+                    <apex:outputLink value="/{!acc.objAccount.OwnerId}">{!acc.objAccount.Owner.Name}</apex:outputLink>
+                </apex:column>  
+                <apex:column headerValue="Partner Account">
+                    <apex:outputLink value="/{!acc.objAccount.Partner_Account__c}">{!acc.objAccount.Partner_Account__r.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Billing State">
+                    <apex:outputField value="{!acc.objAccount.BillingState}"/>
+                </apex:column>  
+                <apex:column headerValue="Billing Country">
+                    <apex:outputField value="{!acc.objAccount.BillingCountry}"/>
+                </apex:column>                
+                  
+            </apex:pageblockTable>-->
+        </apex:pageblock>
+        <!--  Matching Accounts Section -- END -->
+        
+        
+        <!--  Matching Opportunities Section -- START -->
+        <!--<apex:pageblock title="Matching Opportunities">    
+            <apex:pageblockTable value="{!matchingOpportunities}" var="opp">
+                <apex:column headerValue="Opportunity Name">
+                    <apex:outputLink value="/{!opp.Id}">{!opp.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Type">
+                    <apex:outputField value="{!opp.Type}"/>
+                </apex:column>
+                <apex:column headerValue="Stage">
+                    <apex:outputField value="{!opp.StageName}"/>
+                </apex:column>
+                <apex:column headerValue="Owner">
+                    <apex:outputLink value="/{!opp.OwnerId}">{!opp.Owner.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Close Date">
+                    <apex:outputText value="{0, date, MM/dd/yyyy}">
+                        <apex:param value="{!opp.Closedate}" />
+                    </apex:outputText>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageblock>-->
+        <!--  Matching Opportunities Section -- END -->
+    </apex:form>
+</apex:page>

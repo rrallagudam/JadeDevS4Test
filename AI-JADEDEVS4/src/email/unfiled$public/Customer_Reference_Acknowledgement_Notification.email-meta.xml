@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Customer Reference Acknowledgement Notification</name>
+    <style>none</style>
+    <subject>Your reference request is being processed!</subject>
+    <textOnly>Your request for a customer reference for {!Reference_Request__c.Opportunity__c} has been received and is being processed.
+
+
+If you need to update any of the requirements.
+
+please click {!Reference_Request__c.Link}
+
+
+
+We will be in touch with you if there are any questions.
+
+
+Thanks,
+
+
+Reference Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

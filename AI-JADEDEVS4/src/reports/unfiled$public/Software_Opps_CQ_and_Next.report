@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_99502056</developerName>
+        <masterLabel>Pipeline</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>SAO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Prospect</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SQO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SDR Nurture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Field Nurture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Need Analysis</sourceValue>
+            </sourceValues>
+            <value>Early Stage</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Solution Exploration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Proposal Presentation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Commitment &amp; Negotiation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Prepare for Signature</sourceValue>
+            </sourceValues>
+            <value>Late Stage</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Oppy_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Classification__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Partner_Account__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Forecast_ARR__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <operator>equals</operator>
+            <value>Anne Yates,Sean Murphy,Jeremy Garding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>equals</operator>
+            <value>Prospect,SAO,SQO,Solution Exploration,Proposal Presentation,Need Analysis,Commitment &amp; Negotiation,Prepare for Signature,SDR Nurture,Field Nurture</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FISCAL_QUARTER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_99502056</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Software Opps (CQ and Next)</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2017-07-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-02-01</startDate>
+    </timeFrameFilter>
+</Report>

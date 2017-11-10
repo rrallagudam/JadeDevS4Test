@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Contact owner and partner contact should receive a notification one week before it expires and then again on the day that it expires</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>7A. Partner Opportunity Expiration Notification</name>
+    <style>none</style>
+    <subject>Adaptive Insights Opportunity Registration</subject>
+    <textOnly>Hi {!Opportunity.Partner_Contact__c},
+Your opportunity registration for {!Opportunity.Primary_Contact__c} and {!Opportunity.Account} is about to expire, as we have not received any activity updates from you.
+If you are continuing to pursue this prospect, please document your activities on the opportunity as a task through the Partner Community, within the next week.
+You can log a task by clicking on the opportunity name, click on Related tab and click new task.
+To view the Opportunity, click here: {!Opportunity.Link}
+The Adaptive Insights Channel Team
+
+Follow us!</textOnly>
+    <type>custom</type>
+</EmailTemplate>

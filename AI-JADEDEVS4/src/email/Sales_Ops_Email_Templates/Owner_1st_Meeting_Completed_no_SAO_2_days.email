@@ -1,0 +1,5 @@
+Dear {!Opportunity.OwnerFirstName}, 
+
+It looks like you had a first meeting! The SLA for moving out of prospect stage after a 1st meeting is completed is 2 business days after the 1st meeting date. Please review and update the stage field for this opportunity today. 
+
+{!Opportunity.Link}

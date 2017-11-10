@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Usage Scorecard</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Usage Scorecards</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account CSM --></label>
+        <name>Account_CSM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account License Total --></label>
+        <name>Account_License_Total__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Logins Total --></label>
+        <name>Account_Logins_Total__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+        <relationshipLabel><!-- Account Usage Scorecards --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Rating 12 Month --></label>
+        <name>Account_Rating_12_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Rating --></label>
+        <name>Account_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is from the Account record.  This is rolled up from the opportunities level, based on the latest renewal date. --></help>
+        <label><!-- Account Renewal Date --></label>
+        <name>Account_Renewal_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Status --></label>
+        <name>Account_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Usage Scorecard Name --></label>
+        <name>Account_Usage_Scorecard_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This address is what we have from AP IT --></help>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <help><!-- Admin Seats from Adaptive Database --></help>
+        <label><!-- Admin Seats --></label>
+        <name>Admin_Seats__c</name>
+    </fields>
+    <fields>
+        <help><!-- Analysis Seats from Adaptive Database --></help>
+        <label><!-- Analysis Seats --></label>
+        <name>Analysis_Seats__c</name>
+    </fields>
+    <fields>
+        <label><!-- April Licenses --></label>
+        <name>April_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- April Logins --></label>
+        <name>April_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- April Rating --></label>
+        <name>April_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- August Licenses --></label>
+        <name>August_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- August Logins --></label>
+        <name>August_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- August Rating --></label>
+        <name>August_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- Company Created From is from AP IT --></help>
+        <label><!-- Company Created From --></label>
+        <name>Company_Created_From__c</name>
+    </fields>
+    <fields>
+        <label><!-- December Licenses --></label>
+        <name>December_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- December Logins --></label>
+        <name>December_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- December Rating --></label>
+        <name>December_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- Discovery Enabled Info from Adaptive Database --></help>
+        <label><!-- Discovery Enabled --></label>
+        <name>Discovery_Enabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- Discovery enabled seats monthly hits --></help>
+        <label><!-- Discovery Last Month Hits --></label>
+        <name>Discovery_Last_Month_Hits__c</name>
+    </fields>
+    <fields>
+        <help><!-- Discovery Subscription Info from Adaptive Database --></help>
+        <label><!-- Discovery Subscription --></label>
+        <name>Discovery_Subscription__c</name>
+    </fields>
+    <fields>
+        <help><!-- Email Enabled Info from Adaptive Database --></help>
+        <label><!-- Email Enabled --></label>
+        <name>Email_Enabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enabled Products Info from Adaptive Database --></help>
+        <label><!-- Enabled Products --></label>
+        <name>Enabled_Products__c</name>
+    </fields>
+    <fields>
+        <help><!-- This date is from AP IT --></help>
+        <label><!-- Expire Date --></label>
+        <name>Expire_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- February Licenses --></label>
+        <name>February_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- February Logins --></label>
+        <name>February_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- February Rating --></label>
+        <name>February_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Fiscal Year Start --></label>
+        <name>Fiscal_Year_Start__c</name>
+    </fields>
+    <fields>
+        <help><!-- IP Restriction Enabled Info from Adaptive Database --></help>
+        <label><!-- IP Restriction Enabled --></label>
+        <name>IP_Restriction_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Instances: Type --></label>
+        <name>Instances_Type__c</name>
+        <picklistValues>
+            <masterLabel>Archive</masterLabel>
+            <translation><!-- Archive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discovery</masterLabel>
+            <translation><!-- Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation><!-- Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sandbox</masterLabel>
+            <translation><!-- Sandbox --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- January Licenses --></label>
+        <name>January_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- January Logins --></label>
+        <name>January_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- January Rating --></label>
+        <name>January_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- July Licenses --></label>
+        <name>July_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- July Logins --></label>
+        <name>July_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- July Rating --></label>
+        <name>July_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- June Licenses --></label>
+        <name>June_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- June Logins --></label>
+        <name>June_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- June Rating --></label>
+        <name>June_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- This date is from AP IT --></help>
+        <label><!-- Last Backed Up --></label>
+        <name>Last_Backed_Up__c</name>
+    </fields>
+    <fields>
+        <help><!-- This date is from AP IT --></help>
+        <label><!-- Last Restored --></label>
+        <name>Last_Restored__c</name>
+    </fields>
+    <fields>
+        <label><!-- March Licenses --></label>
+        <name>March_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- March Logins --></label>
+        <name>March_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- March Rating --></label>
+        <name>March_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- May Licenses --></label>
+        <name>May_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- May Logins --></label>
+        <name>May_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- May Rating --></label>
+        <name>May_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- Multi-Currency Info from Adaptive Database --></help>
+        <label><!-- Multi-Currency --></label>
+        <name>Multi_Currency__c</name>
+    </fields>
+    <fields>
+        <help><!-- Multiple Dashboards Enabled Info from Adaptive Database --></help>
+        <label><!-- Multiple Dashboards Enabled --></label>
+        <name>Multiple_Dashboards_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name for External Id Import --></label>
+        <name>Name_for_External_Id_Import__c</name>
+    </fields>
+    <fields>
+        <label><!-- November Licenses --></label>
+        <name>November_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- November Logins --></label>
+        <name>November_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- November Rating --></label>
+        <name>November_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Accounts --></label>
+        <name>Number_of_Accounts__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of DIM Values --></label>
+        <name>Number_of_DIM_Values__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Dimensions --></label>
+        <name>Number_of_Dimensions__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Levels --></label>
+        <name>Number_of_Levels__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Reports --></label>
+        <name>Number_of_Reports__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Snapshot Reports --></label>
+        <name>Number_of_Snapshot_Reports__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Static Reports Uploads --></label>
+        <name>Number_of_Static_Reports_Uploads__c</name>
+    </fields>
+    <fields>
+        <help><!-- This data is from AP IT --></help>
+        <label><!-- Number of Versions --></label>
+        <name>Number_of_Versions__c</name>
+    </fields>
+    <fields>
+        <label><!-- October Licenses --></label>
+        <name>October_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- October Logins --></label>
+        <name>October_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- October Rating --></label>
+        <name>October_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old ID --></label>
+        <name>Old_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Old-Style Dashboards Still Enabled Info from Adaptive Database --></help>
+        <label><!-- Old-style Dashboards Still Enabled --></label>
+        <name>Old_style_Dashboards_Still_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Month Login --></label>
+        <name>One_Month_Login__c</name>
+    </fields>
+    <fields>
+        <help><!-- Parent Code from AP IT --></help>
+        <label><!-- Parent Code --></label>
+        <name>Parent_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Report Only Seats from Adaptive Database --></help>
+        <label><!-- Report Only Seats --></label>
+        <name>Report_Only_Seats__c</name>
+    </fields>
+    <fields>
+        <help><!-- SAAS GL Integration Type Info from Adaptive Database --></help>
+        <label><!-- SAAS GL Integration Type --></label>
+        <name>SAAS_GL_Integration_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is based on current Seats count versus current Logins.  Look for negative values (ex. -2 or -141) which represents customers not using all of their purchased licenses. --></help>
+        <label><!-- Seats Over The Limit (Actual) --></label>
+        <name>Seats_Over_The_Limit_Actual__c</name>
+    </fields>
+    <fields>
+        <help><!-- This info is from original purchased and is from AP IT --></help>
+        <label><!-- Seats Over The Limit --></label>
+        <name>Seats_Over_The_Limit__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is seats info from original purchased and is from AP IT --></help>
+        <label><!-- Seats Purchased --></label>
+        <name>Seats_Purchased__c</name>
+    </fields>
+    <fields>
+        <label><!-- September Licenses --></label>
+        <name>September_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- September Logins --></label>
+        <name>September_Logins__c</name>
+    </fields>
+    <fields>
+        <label><!-- September Rating --></label>
+        <name>September_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- Standard Seats from Adaptive Database --></help>
+        <label><!-- Standard Seats --></label>
+        <name>Standard_Seats__c</name>
+    </fields>
+    <fields>
+        <help><!-- Static Reports (Uploads) Enabled Info from Adaptive Database --></help>
+        <label><!-- Static Reports (Uploads) Enabled --></label>
+        <name>Static_Reports_Uploads_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Three Months Logins --></label>
+        <name>Three_Months_Logins__c</name>
+    </fields>
+    <fields>
+        <help><!-- Data from connector (monthly) --></help>
+        <label><!-- Total Configured Seats --></label>
+        <name>Total_Configured_Seats__c</name>
+    </fields>
+    <fields>
+        <help><!-- Summary of View Only, Report Only, Analysis, Standard, and Admin Seats from Adaptive Database --></help>
+        <label><!-- Total Configured Seats(old) --></label>
+        <name>Total_Configured_Seats_old__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Licenses --></label>
+        <name>Total_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Logins --></label>
+        <name>Total_Logins__c</name>
+    </fields>
+    <fields>
+        <help><!-- Transactions Enabled Info from Adaptive Database --></help>
+        <label><!-- Transactions Enabled --></label>
+        <name>Transactions_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Two Months Logins --></label>
+        <name>Two_Months_Logins__c</name>
+    </fields>
+    <fields>
+        <help><!-- View Only Seats from Adaptive Database --></help>
+        <label><!-- View Only Seats --></label>
+        <name>View_Only_Seats__c</name>
+    </fields>
+    <fields>
+        <help><!-- Workflow Enabled Info from Adaptive Database --></help>
+        <label><!-- Workflow Enabled --></label>
+        <name>Workflow_Enabled__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Ratings --></label>
+        <name>Ratings</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

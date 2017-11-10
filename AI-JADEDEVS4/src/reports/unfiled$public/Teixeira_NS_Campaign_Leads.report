@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>equals</operator>
+            <value>,Solid Landings Behavioral Health,Golden Entertainment,Inc.,NCSA Atheletic Recruiting,Williams-Sonoma,Santa Barbara City College,New Regency productions,Navigant Solutions,Mumba Technologies,Marz Systems,Mattel,FPA Technology Services,eMolecules,Knowledge Universe,Pandora,Guitar Center Pro,Circle of Friends,Cequal Products Inc.,Bloom &amp; Grow,ASICS,Bagmasters,Apria Healthcare,AgreeYa,Epicuren,EnergyFirst,Cord Blood America,FrontRange Solutions Inc.,Avistar Communications Corporation,Adchemy (aq&apos;d by Zeta Interactive),BookRenter.com,VHA Prepaid Wireless (Concentrus),Earthsmart Products,TRADESUR INC,MerchSource,Case Central,PSS Systems Inc.,Shop.com,Parsons Corporation,Rearden Commerce,Twitch Interactive,Digital Domain 3.0,Inc,Ticketfly,Financial Engines – Production,SolarMax Technologies,Canyon Ranch,Matrix Medical Network,Building Materials Holding Corporation,Sentient Energy Inc,Booth Creek Resort Properties LLC,Baltic</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COMPANY</column>
+            <operator>equals</operator>
+            <value>,Latvian Universal Electronics,LLC,GoVino,Newport Group,Inc.,Vuclip,J5 Infrastructure Partners,Jeff Burgess &amp; Associates,Arthur Dogswell LLC,Savage River Inc.,AdRoll,LogicMonitor,Wasserman Media Group,Aeris Communications,WCCT Global,Kodiak Sciences,Wrike,BlueJeans Network Inc,BoardVantage,Savers Inc,Udacity,LUZ,Applied Weather Technology,FLX Bio,Future Simple Inc,Medium.com,Capital Brands,Edtec Inc.,Vinculums Services,Cali Bamboo,Bently Enterprises,Tireco Inc.,Shareholder Representative Services LLC,Renova Solar,Club W,Adara,Inc,Product Support Solutions,Con-way Inc.,Xerox DocuShare</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Teixeira NS Campaign Leads</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Booking Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Booking Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- ACV --></label>
+        <name>ACV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Add-On ARR --></label>
+        <name>Add_On_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annual Months Accrued --></label>
+        <name>Annual_Months_Accrued__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total subscription revenue amortized the term annually. --></help>
+        <label><!-- Annualized Subscription Revenue --></label>
+        <name>Annualized_Subscription_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Base ARR --></label>
+        <name>Base_ARR__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end date of the annualized booking detail. --></help>
+        <label><!-- Booking End Date --></label>
+        <name>Booking_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The start date of the annualized booking detail. --></help>
+        <label><!-- Booking Start Date --></label>
+        <name>Booking_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Booking Touch --></label>
+        <name>Booking_Touch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Booking Year --></label>
+        <name>Booking_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contracted Renewal --></label>
+        <name>Contracted_Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Installment --></label>
+        <name>First_Installment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Free Months on the related quote --></help>
+        <label><!-- Free Months --></label>
+        <name>Free_Months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Add-On Booking? --></label>
+        <name>Is_Add_On_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is First Year? --></label>
+        <name>Is_First_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Installment? --></label>
+        <name>Is_Installment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Last Year? --></label>
+        <name>Is_Last_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is New Booking? --></label>
+        <name>Is_New_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Partner Fee? --></label>
+        <name>Is_Partner_Fee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Renewal Booking? --></label>
+        <name>Is_Renewal_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- MYR Term --></label>
+        <name>MYR_Term__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Logo ARR --></label>
+        <name>New_ARR__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the New (which comes from Add-on and New logo) MYR --></help>
+        <label><!-- New MYR --></label>
+        <name>New_MYR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Close Date --></label>
+        <name>Opportunity_Close_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Booking Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Order Total Amount --></label>
+        <name>Order_Total_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Order__c</name>
+        <relationshipLabel><!-- Booking Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PB Renewal ARR --></label>
+        <name>PB_Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prorated Annual Subscription Revenue --></label>
+        <name>Prorated_Annual_Subscription_Revenue__c</name>
+    </fields>
+    <fields>
+        <help><!-- The primary quote from which this booking detail was generated. --></help>
+        <label><!-- Quote --></label>
+        <name>Quote__c</name>
+        <relationshipLabel><!-- Booking Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Renewal ARR --></label>
+        <name>Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal MYR --></label>
+        <name>Renewal_MYR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Renewal Term length minus free months --></help>
+        <label><!-- Renewal Term --></label>
+        <name>Renewal_Term__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduled Renewal ARR --></label>
+        <name>Scheduled_Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Bookings --></label>
+        <name>Service_Bookings__c</name>
+    </fields>
+    <fields>
+        <help><!-- End date of the activated Order minus any free months. --></help>
+        <label><!-- Subscription End Date --></label>
+        <name>Subscription_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Monthly Amount --></label>
+        <name>Subscription_Monthly_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start date of the activated Order. --></help>
+        <label><!-- Subscription Start Date --></label>
+        <name>Subscription_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total subscription term length including free months. --></help>
+        <label><!-- Subscription Term Months --></label>
+        <name>Subscription_Term_Months__c</name>
+    </fields>
+    <fields>
+        <label><!-- TCV Bookings --></label>
+        <name>TCV_Bookings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Renewal ARR --></label>
+        <name>Target_Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temp Add-on ARR --></label>
+        <name>Temp_AddOn_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temp Annualized Subscription Revenue --></label>
+        <name>Temp_Annualized_Subscription_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temp Fields Updated --></label>
+        <name>Temp_Fields_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temp Renewal ARR --></label>
+        <name>Temp_Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used to store the calculated Total Bookings driven by a workflow --></help>
+        <label><!-- Temp Total Bookings --></label>
+        <name>Temp_Total_Bookings__c</name>
+    </fields>
+    <fields>
+        <help><!-- New Logo ARR + Service Bookings + MYR + Add-on ARR + Renewal ARR --></help>
+        <label><!-- Total Bookings --></label>
+        <name>Total_Bookings__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total MYR = Renewal MYR + New MYR --></help>
+        <label><!-- Total MYR --></label>
+        <name>Total_MYR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total New ARR --></label>
+        <name>Total_New_ARR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total New ARR + New MYR + Service Bookings --></help>
+        <label><!-- Total New Booking --></label>
+        <name>Total_New_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Non-T&amp;M Booking --></label>
+        <name>Total_Non_T_M_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Renewal ARR --></label>
+        <name>Total_Renewal_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Renewal Booking --></label>
+        <name>Total_Renewal_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Commissionable Service Bookings --></label>
+        <name>Total_Service_Revenue__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Subscription Booking amount on the Order --></help>
+        <label><!-- Total Subscription Booking --></label>
+        <name>Total_Subscription_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total T&amp;M Booking --></label>
+        <name>Total_T_M_Booking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is filled in with the installment amount, not including the first installment --></help>
+        <label><!-- Unbilled --></label>
+        <name>Unbilled__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique external ID to prevent dupes. --></help>
+        <label><!-- Unique Key --></label>
+        <name>Unique_Key__c</name>
+    </fields>
+    <layouts>
+        <layout>Booking Detail Layout</layout>
+        <sections>
+            <label><!-- Base Calculations --></label>
+            <section>Base Calculations</section>
+        </sections>
+        <sections>
+            <label><!-- Base Values --></label>
+            <section>Base Values</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

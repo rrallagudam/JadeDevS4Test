@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.NAICS_Description__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Account.Tier1__c</field>
+    </columns>
+    <columns>
+        <field>Account.Account_CSM__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Adaptive_Industry__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>NetSuite customers at  Adaptive Live 2017</description>
+    <format>Tabular</format>
+    <name>Adaptive Live 2017 CUST Better Together</name>
+    <params>
+        <name>scopeid</name>
+        <value>70161000000Sl9F</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignContact</reportType>
+    <scope>one</scope>
+    <showDetails>true</showDetails>
+</Report>

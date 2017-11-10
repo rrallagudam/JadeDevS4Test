@@ -1,0 +1,21 @@
+<messaging:emailTemplate subject="Terms Approval Process ASAP : {!relatedTo.Quote__r.SBQQ__Account__r.Name} " recipientType="User" relatedToType="sbaa__Approval__c">
+<messaging:plainTextEmailBody >
+Quote Number               : {!relatedTo.Quote__r.Name}
+Sales Rep                  : {!relatedTo.Quote__r.SalesRepName__c}
+Account                    : {!relatedTo.Quote__r.SBQQ__Account__r.Name}
+Opportunity                : {!relatedTo.Quote__r.SBQQ__Opportunity2__r.Name}
+Industry                   : {!relatedTo.Quote__r.SalesRepName__c}
+Subscription Avg. Discount : {!relatedTo.Quote__r.Subscription_Avg_Discount__c}
+Service Avg. Discount      : {!relatedTo.Quote__r.Service_Avg_Discount__c}
+Subscription Net Amount    : {!relatedTo.Quote__r.Subscription_Net_Amount__c}
+Service Net Amount         : {!relatedTo.Quote__r.Service_Net_Amount__c}
+Term Length                : {!relatedTo.Quote__r.SBQQ__SubscriptionTerm__c}
+Total                      : {!relatedTo.Quote__r.SBQQ__NetAmount__c}
+Special Terms              : {!relatedTo.Quote__r.Special_Terms__c}
+Free Months                : {!relatedTo.Quote__r.Free_Months__c}
+Renewal Terms              : {!relatedTo.Quote__r.RenewalTerm__c}
+Payment Terms              : {!relatedTo.Quote__r.SBQQ__PaymentTerms__c}
+Year 2 Discount            : {!relatedTo.Quote__r.Year_2_Discount__c}
+Year 3 Discount            : {!relatedTo.Quote__r.Year_3_Discount__c}
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

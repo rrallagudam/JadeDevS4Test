@@ -1,0 +1,11 @@
+<apex:page controller="InternalHelpDeskController">
+  <apex:outputtext id="pageContent" value="{!pageContent}" escape="false"></apex:outputtext>
+<ul>
+<li>FAQ using KB articles?</li>
+<li>Rich text editor for main content (links to WalkMe exercises, etc...)</li>
+<li>Submit form based on Internal Case record type (need to migrate fields)</li>
+</ul>
+  
+Starter input fields: Subject, Description.
+
+</apex:page>

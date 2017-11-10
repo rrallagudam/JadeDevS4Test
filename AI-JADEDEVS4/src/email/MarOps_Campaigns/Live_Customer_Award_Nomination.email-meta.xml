@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email notice to object owner for 2016 Live Award Nomination</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Live Customer Award Nomination</name>
+    <style>none</style>
+    <subject>Adaptive Live Customer Award Nomination Submitted!</subject>
+    <textOnly>Adaptive Live Customer Award Nomination Notice
+
+Your Customer {!CampaignMember.FirstName} {!CampaignMember.LastName} from {!CampaignMember.CompanyOrAccount} has been nominated for an Adaptive Live Customer Award. No action is needed at this time, this is just an FYI.
+
+{!CampaignMember.Link}
+
+Thank You
+Sonia Torres
+storres@adaptiveinsights.com
+650-422-7335</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Current_GL__c</field>
+    </columns>
+    <columns>
+        <field>Account.Current_GL_Other__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5)</booleanFilter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.ERP1__c</column>
+            <operator>contains</operator>
+            <value>SAP ERP,SAP,SAP All-In-One,SAP R/3,Microsoft Dynamics GP; SAP,Axapta; SAP ERP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Current_GL__c</column>
+            <operator>includes</operator>
+            <value>SAP ERP,SAP,SAP All-In-One,SAP R/3,Microsoft Dynamics GP;SAP,Axapta;SAP ERP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Current_GL_Other__c</column>
+            <operator>contains</operator>
+            <value>SAP ERP,SAP,SAP All-In-One,SAP R/3,Microsoft Dynamics GP; SAP,Axapta; SAP ERP</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>SAP Customer Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

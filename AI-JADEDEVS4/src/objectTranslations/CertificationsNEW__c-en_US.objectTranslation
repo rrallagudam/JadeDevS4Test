@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Certification</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Certifications</value>
+    </caseValues>
+    <fields>
+        <label><!-- Certification to be Renewed --></label>
+        <name>Certification_to_be_Renewed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certified Product --></label>
+        <name>Certified_Product__c</name>
+        <picklistValues>
+            <masterLabel>Consolidation</masterLabel>
+            <translation><!-- Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demo</masterLabel>
+            <translation><!-- Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discovery Professional</masterLabel>
+            <translation><!-- Discovery Professional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OfficeConnect</masterLabel>
+            <translation><!-- OfficeConnect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planning</masterLabel>
+            <translation><!-- Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planning &amp; Reporting</masterLabel>
+            <translation><!-- Planning &amp; Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales &amp; Marketing</masterLabel>
+            <translation><!-- Sales &amp; Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Certification Completed --></label>
+        <name>Date_of_Certification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Implementer --></label>
+        <name>Implementer__c</name>
+        <relationshipLabel><!-- Certifications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old ID --></label>
+        <name>Old_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- RelaywareId --></label>
+        <name>RelaywareId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

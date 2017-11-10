@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Tier 2 - NA 1</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision10</name>
+        <label>myDecision10</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision12</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_11</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_A1</targetReference>
+            </connector>
+            <label>Tier 2 - JP</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>6.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision12</name>
+        <label>myDecision12</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision14</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_13</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_13</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_13_A1</targetReference>
+            </connector>
+            <label>Tier 2 - All</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision14</name>
+        <label>myDecision14</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_15</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_15</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_15_A1</targetReference>
+            </connector>
+            <label>NS Tier 2 - All</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Tier 2 - NA 1</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>Tier 2 - EMEA</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision8</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Partner Tier 2 - EMEA</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision8</name>
+        <label>myDecision8</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision10</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <label>Tier 2 - ANZ</label>
+        </rules>
+    </decisions>
+    <description>Update Account CSM T2</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Account.BillingCountry = &apos;US&apos;  || 
+[Opportunity].Account.BillingCountry = &apos;CA&apos; &amp;&amp;
+
+[Opportunity].Partner_Account__c !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+CONTAINS(&apos;AL:AR:CT:DC:DE:FL:GA:IL:IN:IA:KS:KY:LA:ME:MD:MA:MI:MN:MS:MO:NE:NH:NJ:NY:NC:ND:OH:OK:PA:RI:SC:SD:TN:TX:VT:VA:WV:WI&apos;, [Opportunity].Account.BillingState)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Account.BillingCountry} = &apos;US&apos;  || 
+{!myVariable_current.Account.BillingCountry} = &apos;CA&apos; &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+CONTAINS(&apos;AL:AR:CT:DC:DE:FL:GA:IL:IN:IA:KS:KY:LA:ME:MD:MA:MI:MN:MS:MO:NE:NH:NJ:NY:NC:ND:OH:OK:PA:RI:SC:SD:TN:TX:VT:VA:WV:WI&apos;, {!myVariable_current.Account.BillingState})</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Account.BillingCountry = &apos;JP&apos; &amp;&amp;
+
+[Opportunity].Partner_Account__c !=  &apos;0016100000VBDj8AAH&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_11</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Account.BillingCountry} = &apos;JP&apos; &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} !=  &apos;0016100000VBDj8AAH&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Partner_Account__c =  &apos;0016100000VBDj8AAH&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_13</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} =  &apos;0016100000VBDj8AAH&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;NS T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Partner_Account__c =  &apos;0016100000VBDj8AAH&apos; </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_15</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;NS T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} =  &apos;0016100000VBDj8AAH&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Account.BillingCountry = &apos;US&apos; &amp;&amp;
+
+[Opportunity].Partner_Account__c !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+CONTAINS(&apos;AK:AZ:CA:CO:HI:ID:MT:NV:NM:OR:UT:WA:WY&apos;,[Opportunity].Account.BillingState)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Account.BillingCountry} = &apos;US&apos; &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+CONTAINS(&apos;AK:AZ:CA:CO:HI:ID:MT:NV:NM:OR:UT:WA:WY&apos;,{!myVariable_current.Account.BillingState})</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+ISNULL([Opportunity].Partner_Account__c )  &amp;&amp;
+
+[Opportunity].Account.BillingCountry = &apos;UK&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+ISNULL({!myVariable_current.Partner_Account__c} )  &amp;&amp;
+
+{!myVariable_current.Account.BillingCountry} = &apos;UK&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;P T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Partner_Account__c !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+[Opportunity].Account.BillingCountry = &apos;UK&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;P T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+{!myVariable_current.Account.BillingCountry} = &apos;UK&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Opportunity].Account.Bypass_CSM_Rules__c = FALSE &amp;&amp; 
+
+TEXT([Opportunity].StageName) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT([Opportunity].Account.Tier1__c) = &apos;T2&apos; &amp;&amp;
+
+([Opportunity].ARR__c &gt;=  65000  &amp;&amp; [Opportunity].ARR__c &lt;  100000) &amp;&amp;
+
+[Opportunity].Partner_Account__c !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+CONTAINS(&apos;AU:NZ&apos;,[Opportunity].Account.BillingCountry)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Account.Bypass_CSM_Rules__c} = FALSE &amp;&amp; 
+
+TEXT({!myVariable_current.StageName}) = &apos;Closed Won&apos;  &amp;&amp;
+
+TEXT({!myVariable_current.Account.Tier1__c}) = &apos;T2&apos; &amp;&amp;
+
+({!myVariable_current.ARR__c} &gt;=  65000  &amp;&amp; {!myVariable_current.ARR__c} &lt;  100000) &amp;&amp;
+
+{!myVariable_current.Partner_Account__c} !=  &apos;0016100000VBDj8AAH&apos; &amp;&amp;
+
+CONTAINS(&apos;AU:NZ&apos;,{!myVariable_current.Account.BillingCountry})</expression>
+    </formulas>
+    <interviewLabel>Update_Account_CSM_T2-1_Opportunity</interviewLabel>
+    <label>Update Account CSM T2</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Opportunity</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_11_A1</name>
+        <label>Chikanobu Shinohara</label>
+        <locationX>1100</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001Y3bBAAS</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_13_A1</name>
+        <label>Caroline Gutierrez</label>
+        <locationX>1300</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001Y3doAAC</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_15_A1</name>
+        <label>Caroline Gutierrez</label>
+        <locationX>1500</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001Y3doAAC</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Andrea Hanlon</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001Y3eoAAC</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Nicole Hrabosky</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001XyLqAAK</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_5_A1</name>
+        <label>Stuart Lavin</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001Y3cWAAS</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>Angelique Howell</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001XyL5AAK</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Opportunity].Account ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Mike Nicholson</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Account CSM</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Account_CSM__c</field>
+            <value>
+                <stringValue>00561000001Y3cJAAS</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+</Flow>

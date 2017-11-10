@@ -1,0 +1,28 @@
+<apex:page standardController="SBQQ__Quote__c" tabStyle="SBQQ__Quote__c" extensions="CloneQuotesController">
+   <apex:sectionHeader title="Quote Edit" subtitle="New Quote"/>
+  <apex:form >
+  
+      <apex:pageblock title="Quote Clone">
+         <apex:pageBlockSection >                 
+          <apex:repeat value="{!$ObjectType.SBQQ__Quote__c.FieldSets.SBQQ_QuoteFieldSet}" var="f">
+          <apex:pageblockSectionItem >
+              <apex:outputLabel value="{!f.label}" />
+              <apex:inputField value="{!objClonedQuote[f]}"/>
+              </apex:pageblockSectionItem>
+          </apex:repeat>
+          
+         </apex:pageBlockSection>
+         <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!Save}"/>
+            <apex:commandButton value="Cancel" action="{!Cancel}"/>
+         </apex:pageBlockButtons>
+      </apex:pageblock>
+      <input id="hiddenElementId" type="hidden" />
+        <script type="text/javascript">
+            window.onload = setFocus
+            function setFocus() {
+                          document.getElementById("hiddenElementId").focus();
+            }
+        </script>
+  </apex:form>
+</apex:page>

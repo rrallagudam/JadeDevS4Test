@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email notice to object owner for Live Registration Notice</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Live Prospect Registration Notice</name>
+    <style>none</style>
+    <subject>New Registration Notice! Your Path to Active Planning at Adaptive Live</subject>
+    <textOnly>Adaptive Live Prospect Registration Notice
+
+{!CampaignMember.FirstName} {!CampaignMember.LastName} from {!CampaignMember.CompanyOrAccount} has registered for Your Path to Active Planning.
+
+Take the opportunity to reach out and make a connection.  Thank him/her for registering and provide your contact details so you can connect on site and provide any assistance.
+
+{!CampaignMember.Link}
+
+Thank You
+Sonia Torres
+storres@adaptiveinsights.com
+650-422-7335</textOnly>
+    <type>custom</type>
+</EmailTemplate>

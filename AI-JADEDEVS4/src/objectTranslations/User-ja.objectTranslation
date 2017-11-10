@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Approvals Role --></label>
+        <name>Approvals_Role__c</name>
+        <picklistValues>
+            <masterLabel>Canada_NE_MM</masterLabel>
+            <translation><!-- Canada_NE_MM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central SE/MM</masterLabel>
+            <translation><!-- Central SE/MM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central SMB</masterLabel>
+            <translation><!-- Central SMB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>East SMB</masterLabel>
+            <translation><!-- East SMB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise/HiEd</masterLabel>
+            <translation><!-- Enterprise/HiEd --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROW</masterLabel>
+            <translation><!-- ROW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UKI</masterLabel>
+            <translation><!-- UKI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West MM</masterLabel>
+            <translation><!-- West MM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West SMB</masterLabel>
+            <translation><!-- West SMB --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>Full_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old ID --></label>
+        <name>Old_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile (Formula Text) --></label>
+        <name>Profile_Formula_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Contact&apos;s AccountID --></label>
+        <name>Related_Contacts_AccountID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory Role --></label>
+        <name>Role__c</name>
+        <picklistValues>
+            <masterLabel>Account Manager</masterLabel>
+            <translation><!-- Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel</masterLabel>
+            <translation><!-- Channel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDR</masterLabel>
+            <translation><!-- SDR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Password --></label>
+        <name>SBQQDS__Password__c</name>
+    </fields>
+    <fields>
+        <label><!-- Username --></label>
+        <name>SBQQDS__Username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customize default tab in Product Lookup page. --></help>
+        <label><!-- Default Product Lookup Tab --></label>
+        <name>SBQQ__DefaultProductLookupTab__c</name>
+        <picklistValues>
+            <masterLabel>Guided Selling</masterLabel>
+            <translation><!-- Guided Selling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search Filters</masterLabel>
+            <translation><!-- Search Filters --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Check to allow this user to change output format of quote documents. --></help>
+        <label><!-- Allow Output Format Change --></label>
+        <name>SBQQ__OutputFormatChangeAllowed__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select &quot;Followed&quot; to display products you follow in Chatter before others when adding to quote. --></help>
+        <label><!-- Product Sort Preference --></label>
+        <name>SBQQ__ProductSortPreference__c</name>
+        <picklistValues>
+            <masterLabel>Followed</masterLabel>
+            <translation><!-- Followed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Check to clear search filters and results every time you add products to your quotes. Otherwise, your previous selections are kept. --></help>
+        <label><!-- Reset Product Lookup --></label>
+        <name>SBQQ__ResetProductLookup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Theme --></label>
+        <name>SBQQ__Theme__c</name>
+    </fields>
+    <fields>
+        <label><!-- 18 Digit ID --></label>
+        <name>User_18_Digit_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- DSProSFMembershipStatus --></label>
+        <name>dsfs__DSProSFMembershipStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- DSProSFPassword --></label>
+        <name>dsfs__DSProSFPassword__c</name>
+    </fields>
+    <fields>
+        <label><!-- DSProSFUsername --></label>
+        <name>dsfs__DSProSFUsername__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideSales Admin --></label>
+        <name>qbdialer__InsideSales_Admin__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideSales Subdomain --></label>
+        <name>qbdialer__is_subdomain__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideSales Authorization Token --></label>
+        <name>qbdialer__is_token__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideSales Password --></label>
+        <name>qbdialer__password__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideSales Permissions --></label>
+        <name>qbdialer__permissions__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideSales Username --></label>
+        <name>qbdialer__username__c</name>
+    </fields>
+    <layouts>
+        <layout>User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>User Profile - Partner Community</layout>
+        <layoutType>UserAlt</layoutType>
+        <sections>
+            <label><!-- About --></label>
+            <section>About</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>User Profile Layout</layout>
+        <layoutType>UserAlt</layoutType>
+        <sections>
+            <label><!-- About --></label>
+            <section>About</section>
+        </sections>
+        <sections>
+            <label><!-- Contact --></label>
+            <section>Contact</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- DocuSign_for_SteelBrick_CPQ_Setup --></label>
+        <name>SBQQDS__DocuSign_for_SteelBrick_CPQ_Setup</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Select_Theme --></label>
+        <name>SBQQ__Select_Theme</name>
+    </webLinks>
+</CustomObjectTranslation>

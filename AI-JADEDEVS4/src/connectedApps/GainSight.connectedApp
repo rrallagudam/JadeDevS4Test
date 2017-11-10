@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>tphillips@adaptiveinsights.com</contactEmail>
+    <contactPhone>6504227350</contactPhone>
+    <label>GainSight</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost</callbackUrl>
+        <consumerKey>3MVG967gVD5fuTmL1omVvIWrWPkKsu0hwp1qQY5Qd1kngmnQW1lMtb4Zh0HzDpzMltFrrwmQJRj5Tt2uAIzEw</consumerKey>
+        <scopes>Api</scopes>
+    </oauthConfig>
+</ConnectedApp>

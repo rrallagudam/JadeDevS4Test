@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>NPS Detractor Survey</name>
+    <style>none</style>
+    <subject>Test Subject</subject>
+    <textOnly>Dear {!JBCXM__SurveyParticipant__c.JBCXM__FirstName__c}:
+
+At Adaptive Insights, your input is very important to us, and we wanted to follow up with you based on your feedback from our January 2016 survey.
+
+As a valued Adaptive customer, we wanted to make sure you were aware of some updates / offerings that relate to feedback we received from our customers in the survey:
+
+Adaptive is now Java applet Free! We are excited to announce that with our latest release (2016.3 Release in August 2016), we have eliminated Java applet dependency from the Adaptive Suite. This means that we now fully support Chrome as a browser.  In addition, users on a mac are able to use drag and drop in our Report &amp; Sheet Builders.  Additional features from our recent releases are available here. (You will need to log into Adaptive to view the content)
+
+Our  Customer Success Journey Library (You will need to log into Adaptive to view the content) is a collection of videos for various topics like expense planning, workforce planning, capital planning, etc…. Content in the Journey Library  provides information about use cases; for example, there are demos, best practices, and ideas about how you might want to use the product.
+
+
+Adaptive’s  training curriculum provides foundational information/tactical training, i.e. How do you make updates? How do you interact in different areas of the applications? New users should take training to understand foundational elements of the application. There are live  classroom training sessions, virtual sessions delivered over the web, self-paced/self-study training as well as eLearning content. You can browse the Training Catalog for our offerings and dates. We also offer eLearning, which provides 24/7 access to short video collections by product with specific learning paths and a yearly subscription for as many users as you need. With fresh content always added, it’s the most convenient way to stay on top of features and learn how to incorporate them into your model design. Please contact your CSM if you’d like to learn more about the training options!
+
+
+
+We would also appreciate it if you could take a few minutes to give us your candid feedback via this link: (If you have problems loading this survey, you may also copy the entire link into your web browser.)
+{!JBCXM__SurveyParticipant__c.JBCXM__SurveyURL__c}?surveyId={!JBCXM__SurveyParticipant__c.JBCXM__SurveyId__c}∂icipantId={!JBCXM__SurveyParticipant__c.JBCXM__Token__c}
+
+Thank you so much for your time and for being an Adaptive customer!
+
+Adaptive Insights Customer Success Team
+
+3,000+ Customers in 85 countries worldwide
+www.adaptiveinsights.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

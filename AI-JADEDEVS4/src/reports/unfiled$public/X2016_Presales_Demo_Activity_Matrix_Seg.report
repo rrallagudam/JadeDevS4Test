@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_96110110</developerName>
+        <masterLabel>Activity Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Activity.Pre_Sales_Activity__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>1st demo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>2nd demo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>3rd+ Demo</sourceValue>
+            </sourceValues>
+            <value>Demo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Discovery Call</sourceValue>
+            </sourceValues>
+            <value>Discovery</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Workshop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Seminar</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tradeshow</sourceValue>
+            </sourceValues>
+            <value>Events</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Demo Prep</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Group Demo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategy Meeting</sourceValue>
+            </sourceValues>
+            <value>Prep</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Webinar</sourceValue>
+            </sourceValues>
+            <value>Webinars</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Trial Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Trial Support Email</sourceValue>
+            </sourceValues>
+            <value>Trials</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_92022483</developerName>
+        <masterLabel>Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ASSIGNED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Linda Hull</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>John Sindel</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tony Wright</sourceValue>
+            </sourceValues>
+            <value>MM&amp;E N/E &amp; Canada</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eric Zimmerman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Todd Massey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deborah Ford</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Laaya Khamsi</sourceValue>
+            </sourceValues>
+            <value>MM&amp;E West</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam Rakich</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ronald Owen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Andrew Ho</sourceValue>
+            </sourceValues>
+            <value>Int&apos;l</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Javier Florez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bryce Hermiston</sourceValue>
+            </sourceValues>
+            <value>POC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Dave Brasnick</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Diane Drake</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Brian Cauley</sourceValue>
+            </sourceValues>
+            <value>Mgmt</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Greg Volpe</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Randy Slomian</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Joe Dahl</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rick Ambre</sourceValue>
+            </sourceValues>
+            <value>SMB</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Steve Graessle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Brad Steelman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mark Lane</sourceValue>
+            </sourceValues>
+            <value>MM&amp;E S/E Central</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>ASSIGNED</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Activity.Pre_Sales_Activity__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Huge</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>TASK</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT</field>
+    </columns>
+    <columns>
+        <field>CONTACT</field>
+    </columns>
+    <columns>
+        <field>LEAD</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>ASSIGNED</column>
+            <operator>equals</operator>
+            <value>Adam Rakich,Andrew Ho,Brad Steelman,Bryce Hermiston,Deborah Ford,Eric Zimmerman,Greg Volpe,Jason Mitchell,Javier Florez,Joe Dahl,John Sindel,Laaya Khamsi,Linda Hull,Mark Lane,Michelle Hedstrom,Randy Slomian,Rick Ambre,Ronald Owen,Steve Graessle,Todd Massey,Tony Wright,Diane Drake,Dave Brasnick,Brian Cauley</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_96110110</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Activity.Pre_Sales_Activity__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_92022483</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2016: Presales Demo Activity Matrix(Seg)</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activity</reportType>
+    <roleHierarchyFilter>CEO</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_LASTWEEK</interval>
+    </timeFrameFilter>
+</Report>

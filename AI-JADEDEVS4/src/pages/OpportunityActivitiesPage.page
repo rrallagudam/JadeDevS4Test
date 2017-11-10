@@ -1,0 +1,17 @@
+<apex:page controller="OpportunityActivities" readOnly="true">
+    <apex:form id="frmId">
+        <apex:pageblock >
+        <center><apex:commandButton value="Export" action="{!ExportToExcel}" /></center><br/>
+            <apex:pageblocktable value="{!lstOpp}" var="opp">
+                <apex:column headerValue="Opportunity Name">
+                    <apex:outputLink value="/{!opp.Id}" target="_blank">{!opp.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!opp.Owner.Name}" headerValue="Opportunity Owner"/>
+                <apex:column value="{!opp.Account.Name}"/>
+                <apex:column value="{!opp.StageName}"/>
+                <apex:column value="{!opp.Solutions_Exploration_Stage_Start_Date__c}"/>
+                <apex:column value="{!opp.CloseDate}"/>
+            </apex:pageblocktable>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

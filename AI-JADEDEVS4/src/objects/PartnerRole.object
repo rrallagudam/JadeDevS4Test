@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ReverseRole</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <reverseRole>Client</reverseRole>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Integrator</fullName>
+                <default>false</default>
+                <reverseRole>System Integrator</reverseRole>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Influencer</fullName>
+                <default>false</default>
+                <reverseRole>Influencer</reverseRole>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Implementer</fullName>
+                <default>false</default>
+                <reverseRole>Implementer</reverseRole>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solution Provider</fullName>
+                <default>false</default>
+                <reverseRole>Solution Provider</reverseRole>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+</CustomObject>

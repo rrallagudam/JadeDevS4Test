@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Old ID --></label>
+        <name>Old_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created At --></label>
+        <name>Zendesk__Created_At__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initially Assigned At --></label>
+        <name>Zendesk__Initially_Assigned_At__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution Time --></label>
+        <name>Zendesk__Resolution_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solved At --></label>
+        <name>Zendesk__Solved_At__c</name>
+    </fields>
+    <fields>
+        <label><!-- Updated At --></label>
+        <name>Zendesk__Updated_At__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zendesk Ticket ID --></label>
+        <name>Zendesk__Zendesk_Ticket_ID__c</name>
+    </fields>
+    <quickActions>
+        <label><!-- NewChildCase --></label>
+        <name>NewChildCase</name>
+    </quickActions>
+    <webLinks>
+        <label><!-- Assign --></label>
+        <name>DecsOnD__Assign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Zendesk_Ticket_View_Link --></label>
+        <name>Zendesk__Zendesk_Ticket_View_Link</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_with_DocuSign --></label>
+        <name>dsfs__Send_with_DocuSign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_List --></label>
+        <name>qbdialer__Create_List</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Launch_Click_to_Call --></label>
+        <name>qbdialer__Launch_Click_to_Call</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Lists --></label>
+        <name>qbdialer__Manage_Lists</name>
+    </webLinks>
+</CustomObjectTranslation>

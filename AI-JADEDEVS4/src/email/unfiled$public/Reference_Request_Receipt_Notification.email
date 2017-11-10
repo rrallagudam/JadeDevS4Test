@@ -1,0 +1,8 @@
+<p style="font-family:Tahoma;"> A reference has been requested by {!Reference_Request__c.OwnerFullName}  for {!Reference_Request__c.Opportunity__c}
+
+<p>
+
+<p style="font-family:Tahoma;"> The deadline is: {!Reference_Request__c.References_needed_by_what_date__c}
+<p>
+<p style="font-family:Tahoma;">Access the request here: {!Reference_Request__c.Link}
+<p>

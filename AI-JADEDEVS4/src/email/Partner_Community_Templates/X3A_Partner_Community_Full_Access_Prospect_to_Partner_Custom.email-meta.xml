@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template to partners that transitioned from partner prospect</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>3A. Partner Community Full Access (Prospect to Partner) - Custom</name>
+    <style>none</style>
+    <subject>Welcome to Adaptive Insights Partner Community</subject>
+    <textOnly>Welcome to the Adaptive Insights Partner Community – your central source of information for Sales, Marketing, Product &amp; Solutions and more!
+
+Here are your next steps:
+1. Get started with your Partnership
+2. Register your qualified leads and opportunities
+3. Bookmark the Community
+
+If need any assistance, please connect with us at partners@adaptiveinsights.com
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

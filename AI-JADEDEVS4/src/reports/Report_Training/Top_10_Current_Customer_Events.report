@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>START_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <aggregateTypes>Average</aggregateTypes>
+        <aggregateTypes>Maximum</aggregateTypes>
+        <aggregateTypes>Minimum</aggregateTypes>
+        <field>NUM_LEADS</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Shows how to limit a tabular report</description>
+    <filter>
+        <criteriaItems>
+            <column>CAMPAIGN_TYPE</column>
+            <operator>equals</operator>
+            <value>Customer Event</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACTIVE</column>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Top 10 Current Customer Events</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignList</reportType>
+    <rowLimit>10</rowLimit>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>NUM_LEADS</sortColumn>
+    <sortOrder>Desc</sortOrder>
+</Report>

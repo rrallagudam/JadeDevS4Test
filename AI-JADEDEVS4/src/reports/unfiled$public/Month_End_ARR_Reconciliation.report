@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_16573672</developerName>
+        <masterLabel>New vs Add-On</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$Order_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Existing: Add-On</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal</sourceValue>
+            </sourceValues>
+            <value>Add-On ARR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>New Customer</sourceValue>
+            </sourceValues>
+            <value>New Logo ARR</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.UserRole</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Channel_Classification__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$StageName</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Total_New_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CloseDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Order_Type__c</column>
+            <operator>equals</operator>
+            <value>New Customer,Renewal,Existing: Add-On</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>Sent to Orders,Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Id</column>
+            <operator>notEqual</operator>
+            <value>0066000001mUIFl</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Name</column>
+            <operator>notContain</operator>
+            <value>debooking,rebooking</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Booking_Details__r$Total_New_ARR__c</column>
+            <operator>notEqual</operator>
+            <value>USD 0</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_16573672</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Month End ARR Reconciliation</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Booking_Details__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity.Booking_Details__r$Total_New_ARR__c.CONVERT</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_LASTMONTH</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,4 @@
+Dear {!Contact.OwnerFirstName},
+
+The following contact has had a Contact Status of Accepted for 2 days. Please review the contact and update it today.
+{!Contact.Link}

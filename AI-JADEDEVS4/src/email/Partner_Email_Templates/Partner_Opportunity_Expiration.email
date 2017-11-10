@@ -1,0 +1,9 @@
+Dear {!Opportunity.Partner_Contact__c}, 
+
+The opportunity with {!Opportunity.Account}  registered to you on {!Opportunity.CreatedDate}  has now expired due to lack of Sales activity update.
+
+Please register this opportunity again when and if the sales cycle progresses.
+
+Thanks, and we appreciate your partnership!
+ 
+Adaptive Insights Channel Team

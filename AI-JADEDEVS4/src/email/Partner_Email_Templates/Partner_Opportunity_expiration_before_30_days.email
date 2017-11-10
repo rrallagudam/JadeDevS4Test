@@ -1,0 +1,11 @@
+Dear {!Opportunity.Partner_Contact__c}, 
+
+The opportunity with {!Opportunity.Account}  registered to you on {!Opportunity.CreatedDate} will expire in 30 days.
+
+Please remember to add a Sales activity update in the Partner portal outlining your next steps in the sales cycle to prevent this opportunity from expiring.
+ 
+If you do not provide a Sales Activity update in the next 30 days, this opportunity will be expired.
+
+Thanks, and we appreciate your partnership!
+ 
+Adaptive Insights Channel Team

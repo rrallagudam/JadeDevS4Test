@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Web-to-Lead Auto Response</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <formula>(ISBLANK(CreatedDate ))</formula>
+            <senderEmail>partners@adaptiveinsights.com</senderEmail>
+            <senderName>The Adaptive Insights Channel Team</senderName>
+            <template>Partner_Community_Templates/X1A_Partner_Community_Registration_Template_Failed</template>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>NOT( ISBLANK( CreatedDate ) )</formula>
+            <senderEmail>partners@adaptiveinsights.com</senderEmail>
+            <senderName>The Adaptive Insights Channel Team</senderName>
+            <template>Partner_Community_Templates/X1B_Partner_Community_Registration_Template_Custom</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

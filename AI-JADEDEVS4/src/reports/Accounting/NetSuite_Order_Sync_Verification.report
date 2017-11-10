@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ORDER_NUMBER</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>ORDER_TYPE</field>
+    </columns>
+    <columns>
+        <field>ORDER_TOTAL_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Order.NetSuite_Id__c</field>
+    </columns>
+    <columns>
+        <field>Order.Integration_Sync__c</field>
+    </columns>
+    <columns>
+        <field>Order.NetSuite_Order_Number__c</field>
+    </columns>
+    <columns>
+        <field>Order.Opportunity_Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Is_Installment_Opportunity__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>NetSuite Order Sync Verification - do not use</description>
+    <format>Tabular</format>
+    <name>NetSuite Order Sync Verif_do not use</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OrderCustomEntity$Booking_Detail__c@Booking_Detail__c.Opportunity__c</reportType>
+    <showDetails>true</showDetails>
+    <sortColumn>Order.Opportunity_Close_Date__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Order.Opportunity_Close_Date__c</dateColumn>
+        <endDate>2016-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-08-01</startDate>
+    </timeFrameFilter>
+</Report>

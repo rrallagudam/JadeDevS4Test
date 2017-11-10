@@ -1,0 +1,4592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Archived Create Date of lead --></help>
+        <label><!-- CreatedDate (Archive) --></label>
+        <name>ARCHIVE_First_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Adaptive Industry --></label>
+        <name>Adaptive_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Aerospace &amp; Defense</masterLabel>
+            <translation><!-- Aerospace &amp; Defense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture, Forestry, Fishing</masterLabel>
+            <translation><!-- Agriculture, Forestry, Fishing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking, Financial Services</masterLabel>
+            <translation><!-- Banking, Financial Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business, Professional, &amp; Technical Services</masterLabel>
+            <translation><!-- Business, Professional, &amp; Technical Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction, Architecture &amp; Engineering</masterLabel>
+            <translation><!-- Construction, Architecture &amp; Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy &amp; Utilities</masterLabel>
+            <translation><!-- Energy &amp; Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare &amp; Social Assistance</masterLabel>
+            <translation><!-- Healthcare &amp; Social Assistance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality, Gaming, Hotel, Restaurants</masterLabel>
+            <translation><!-- Hospitality, Gaming, Hotel, Restaurants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mining, Oil &amp; Gas Extraction</masterLabel>
+            <translation><!-- Mining, Oil &amp; Gas Extraction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nonprofits, Charities, Foundations</masterLabel>
+            <translation><!-- Nonprofits, Charities, Foundations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pharmaceuticals, Biotech, Chemicals</masterLabel>
+            <translation><!-- Pharmaceuticals, Biotech, Chemicals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Publishing, Media, Advertising</masterLabel>
+            <translation><!-- Publishing, Media, Advertising --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Leasing &amp; Rental</masterLabel>
+            <translation><!-- Real Estate, Leasing &amp; Rental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software</masterLabel>
+            <translation><!-- Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation &amp; Shipping</masterLabel>
+            <translation><!-- Transportation &amp; Shipping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waste Management, Recycling, Environment</masterLabel>
+            <translation><!-- Waste Management, Recycling, Environment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wholesale</masterLabel>
+            <translation><!-- Wholesale --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Alternate Email --></label>
+        <name>Alternate_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attended --></label>
+        <name>Attended__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budgeted Project --></label>
+        <name>Budget__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requires Justification</masterLabel>
+            <translation><!-- Requires Justification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is the project budgeted? --></help>
+        <label><!-- Budgeted Project --></label>
+        <name>Budgeted_Project__c</name>
+        <picklistValues>
+            <masterLabel>Needs Justification</masterLabel>
+            <translation><!-- Needs Justification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Business Development --></label>
+        <name>Business_Development__c</name>
+    </fields>
+    <fields>
+        <label><!-- By Pass Assignment Rule --></label>
+        <name>By_Pass_Assignment_Rule__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPE Credit --></label>
+        <name>CPE_Credit__c</name>
+    </fields>
+    <fields>
+        <help><!-- Add any CRM system not on main list. --></help>
+        <label><!-- Other CRM --></label>
+        <name>CRM_Other__c</name>
+    </fields>
+    <fields>
+        <help><!-- Choice the prospects current CRM system, can select several. --></help>
+        <label><!-- CRM --></label>
+        <name>CRM_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Last Associated Age --></label>
+        <name>Campaign_Last_Associated_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Last Associated date --></label>
+        <name>Campaign_Last_Associated_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Capital Planning Needs? --></label>
+        <name>Capital_Planning_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cash Flow/Balance Sheet? --></label>
+        <name>Cash_Flow_Balance_Sheet__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Check --></label>
+        <name>Check__c</name>
+    </fields>
+    <fields>
+        <help><!-- For Christian ONLY.  This is for his reporting purposes --></help>
+        <label><!-- ChristianLeeId --></label>
+        <name>ChristianLeeId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Description --></label>
+        <name>Company_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Phone --></label>
+        <name>Company_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for change --></label>
+        <name>Compelling_Requirement_for_Change__c</name>
+        <picklistValues>
+            <masterLabel>CXO sponsored initiative</masterLabel>
+            <translation><!-- CXO sponsored initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Existing NetSuite Customer</masterLabel>
+            <translation><!-- Existing NetSuite Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Improve collaboration in process</masterLabel>
+            <translation><!-- Improve collaboration in process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Improve quality of information</masterLabel>
+            <translation><!-- Improve quality of information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Improve reporting and analysis</masterLabel>
+            <translation><!-- Improve reporting and analysis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of control</masterLabel>
+            <translation><!-- Lack of control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Many users to manage</masterLabel>
+            <translation><!-- Many users to manage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Need to forecast more frequently</masterLabel>
+            <translation><!-- Need to forecast more frequently --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New NetSuite Customer</masterLabel>
+            <translation><!-- New NetSuite Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not scalable</masterLabel>
+            <translation><!-- Not scalable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Process taking too long</masterLabel>
+            <translation><!-- Process taking too long --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too many spreadsheets to manage</masterLabel>
+            <translation><!-- Too many spreadsheets to manage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Version management</masterLabel>
+            <translation><!-- Version management --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Competition --></label>
+        <name>Competition__c</name>
+        <picklistValues>
+            <masterLabel>A3 Solutions</masterLabel>
+            <translation><!-- A3 Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Active Planner</masterLabel>
+            <translation><!-- Active Planner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anaplan</masterLabel>
+            <translation><!-- Anaplan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Argus Software</masterLabel>
+            <translation><!-- Argus Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Axiom EPM</masterLabel>
+            <translation><!-- Axiom EPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blackbaud ABM</masterLabel>
+            <translation><!-- Blackbaud ABM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Board</masterLabel>
+            <translation><!-- Board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget Maestro</masterLabel>
+            <translation><!-- Budget Maestro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Don&apos;t Know</masterLabel>
+            <translation><!-- Don&apos;t Know --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERP Module</masterLabel>
+            <translation><!-- ERP Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Excel</masterLabel>
+            <translation><!-- Excel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FISERV Vantage</masterLabel>
+            <translation><!-- FISERV Vantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Host Analytics</masterLabel>
+            <translation><!-- Host Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos Planning</masterLabel>
+            <translation><!-- IBM Cognos Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos TM1</masterLabel>
+            <translation><!-- IBM Cognos TM1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INFOR CPM</masterLabel>
+            <translation><!-- INFOR CPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jedox</masterLabel>
+            <translation><!-- Jedox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KCI Control</masterLabel>
+            <translation><!-- KCI Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Longview</masterLabel>
+            <translation><!-- Longview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft FRx</masterLabel>
+            <translation><!-- Microsoft FRx --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Forecaster</masterLabel>
+            <translation><!-- Microsoft Forecaster --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Management Reporter</masterLabel>
+            <translation><!-- Microsoft Management Reporter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Other</masterLabel>
+            <translation><!-- Microsoft Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneStream</masterLabel>
+            <translation><!-- OneStream --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle HFM</masterLabel>
+            <translation><!-- Oracle HFM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Hyperion Planning</masterLabel>
+            <translation><!-- Oracle Hyperion Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle PBCS</masterLabel>
+            <translation><!-- Oracle PBCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PowerPlan</masterLabel>
+            <translation><!-- PowerPlan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prophix</masterLabel>
+            <translation><!-- Prophix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Questica</masterLabel>
+            <translation><!-- Questica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R&amp;D Logic</masterLabel>
+            <translation><!-- R&amp;D Logic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP BPC</masterLabel>
+            <translation><!-- SAP BPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Cloud for Analytics</masterLabel>
+            <translation><!-- SAP Cloud for Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Other</masterLabel>
+            <translation><!-- SAP Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solver BI360</masterLabel>
+            <translation><!-- Solver BI360 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stratajazz</masterLabel>
+            <translation><!-- Stratajazz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagetik</masterLabel>
+            <translation><!-- Tagetik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tidemark</masterLabel>
+            <translation><!-- Tidemark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vena Solutions</masterLabel>
+            <translation><!-- Vena Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Whitebirch Projected Financials</masterLabel>
+            <translation><!-- Whitebirch Projected Financials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>o9 Solutions</masterLabel>
+            <translation><!-- o9 Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>proCube</masterLabel>
+            <translation><!-- proCube --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Consolidation --></label>
+        <name>Consolidation_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Consulting --></label>
+        <name>Consulting__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Dials --></label>
+        <name>Current_Dials__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current International Dials --></label>
+        <name>Current_International_Dials__c</name>
+    </fields>
+    <fields>
+        <label><!-- DUNS Number --></label>
+        <name>DUNS_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dashboard --></label>
+        <name>Dashboard__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data.com Enriched --></label>
+        <name>Data_com_Enriched__c</name>
+    </fields>
+    <fields>
+        <help><!-- Direct phone number, if different than main phone number --></help>
+        <label><!-- Direct Phone --></label>
+        <name>Direct_Phone__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked this lead will not sync with Eloqua database --></help>
+        <label><!-- Do Not Sync With Eloqua --></label>
+        <name>Do_Not_Sync_With_Eloqua__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eloqua Create Date --></label>
+        <name>Eloqua_Create_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field used for Eloqua score &amp; its alpha numeric value( Example : A1,B1,C2) --></help>
+        <label><!-- Eloqua Lead Score --></label>
+        <name>Eloqua_Lead_Score__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field mapped from partner prospect referral form registration --></help>
+        <label><!-- Eloqua Partner --></label>
+        <name>Eloqua_Partner__c</name>
+    </fields>
+    <fields>
+        <help><!-- Instead of storing the bounce record in Activity (we passed 30k records), I&apos;m storing it in this field instead to give us storage room. --></help>
+        <label><!-- Email Bounced Date --></label>
+        <name>Email_Bounced_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Higher Ed Email Contains --></label>
+        <name>Email_Contains__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enriched After HubSpot --></label>
+        <name>Enriched_After_HubSpot__c</name>
+    </fields>
+    <fields>
+        <help><!-- Login Info --></help>
+        <label><!-- Enterprise Trial Info --></label>
+        <name>Enterprise_Trial_Info__c</name>
+    </fields>
+    <fields>
+        <help><!-- requested for the Enterprise Trial on our website and or doing custome Trial from other means (like from pre-sales) --></help>
+        <label><!-- Enterprise Trial --></label>
+        <name>Enterprise_Trial__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense Planning --></label>
+        <name>Expense_Planning_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- First Created Date --></label>
+        <name>First_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fiscal Year End --></label>
+        <name>Fiscal_Year_End__c</name>
+        <picklistValues>
+            <masterLabel>Apr</masterLabel>
+            <translation><!-- Apr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aug</masterLabel>
+            <translation><!-- Aug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dec</masterLabel>
+            <translation><!-- Dec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feb</masterLabel>
+            <translation><!-- Feb --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jan</masterLabel>
+            <translation><!-- Jan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jul</masterLabel>
+            <translation><!-- Jul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jun</masterLabel>
+            <translation><!-- Jun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mar</masterLabel>
+            <translation><!-- Mar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>May</masterLabel>
+            <translation><!-- May --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nov</masterLabel>
+            <translation><!-- Nov --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oct</masterLabel>
+            <translation><!-- Oct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sep</masterLabel>
+            <translation><!-- Sep --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Forecasting --></label>
+        <name>Forecasting_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Founded --></label>
+        <name>Founded__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Marketing --></help>
+        <label><!-- GA Adwords ID --></label>
+        <name>GA_Adwords_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Marketing --></help>
+        <label><!-- GA Campaign Content --></label>
+        <name>GA_Campaign_Content__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Marketing --></help>
+        <label><!-- GA Campaign Keyword --></label>
+        <name>GA_Campaign_Keyword__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Marketing --></help>
+        <label><!-- GA Campaign Medium --></label>
+        <name>GA_Campaign_Medium__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Marketing --></help>
+        <label><!-- GA Campaign Name --></label>
+        <name>GA_Campaign_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Marketing --></help>
+        <label><!-- GA Landing Page --></label>
+        <name>GA_Landing_Page__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by marketing --></help>
+        <label><!-- GA Source --></label>
+        <name>GA_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other ERP --></label>
+        <name>General_Ledger_Other__c</name>
+    </fields>
+    <fields>
+        <help><!-- Prospects GL, can select several. --></help>
+        <label><!-- ERP --></label>
+        <name>General_Ledger__c</name>
+    </fields>
+    <fields>
+        <help><!-- Marketing Accepted and Qualified Lead (MAL/MQL)
+Sales Accepted and Qualified Lead (SAL/SQL) --></help>
+        <label><!-- Lifecycle Stage --></label>
+        <name>Global_Lifecycle_Stage__c</name>
+    </fields>
+    <fields>
+        <help><!-- The global company&apos;s DUNs Number --></help>
+        <label><!-- Global Ultimate DUNs Number --></label>
+        <name>Global_Ultimate_DUNs_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- HQ Annual Revenue (Range) --></label>
+        <name>HQ_Annual_Revenue_Range__c</name>
+    </fields>
+    <fields>
+        <label><!-- HQ Annual Revenue --></label>
+        <name>HQ_Annual_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- HR New --></label>
+        <name>HR_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other HR --></label>
+        <name>HR_System_Ot__c</name>
+    </fields>
+    <fields>
+        <help><!-- HR System --></help>
+        <label><!-- HR --></label>
+        <name>HR_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Higher Education --></label>
+        <name>Higher_Education__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hot Lead --></label>
+        <name>Hot_Lead__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lead Score from HubSpot --></help>
+        <label><!-- HubSpot Lead Score --></label>
+        <name>HubSpot_Lead_Score__c</name>
+    </fields>
+    <fields>
+        <help><!-- Highest Lead Score from HubSpot --></help>
+        <label><!-- Hubspot Highest Score --></label>
+        <name>Hubspot_Highest_Score__c</name>
+    </fields>
+    <fields>
+        <help><!-- When checked, all Lead assignment , territory, field update, and conversion rules are ignored. --></help>
+        <label><!-- Ignore All Processing Rules --></label>
+        <name>Ignore_All_Processing_Rules__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incumbent Budgeting Tool --></label>
+        <name>Incumbent_Budgeting_Tool__c</name>
+        <picklistValues>
+            <masterLabel>3ESI</masterLabel>
+            <translation><!-- 3ESI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A3 Solutions</masterLabel>
+            <translation><!-- A3 Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acorn Systems</masterLabel>
+            <translation><!-- Acorn Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alight Planning</masterLabel>
+            <translation><!-- Alight Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anaplan</masterLabel>
+            <translation><!-- Anaplan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applix/TM1</masterLabel>
+            <translation><!-- Applix/TM1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Argus Software</masterLabel>
+            <translation><!-- Argus Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Axiom</masterLabel>
+            <translation><!-- Axiom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BI360/Solver</masterLabel>
+            <translation><!-- BI360/Solver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blackbaud AMB (Powerplan)</masterLabel>
+            <translation><!-- Blackbaud AMB (Powerplan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Board</masterLabel>
+            <translation><!-- Board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget Maestro</masterLabel>
+            <translation><!-- Budget Maestro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BudgetPak/XLerant</masterLabel>
+            <translation><!-- BudgetPak/XLerant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPSI</masterLabel>
+            <translation><!-- CPSI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clarity Systems</masterLabel>
+            <translation><!-- Clarity Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domo</masterLabel>
+            <translation><!-- Domo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Excel</masterLabel>
+            <translation><!-- Excel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FISERV/Vantage</masterLabel>
+            <translation><!-- FISERV/Vantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FRX Forecaster</masterLabel>
+            <translation><!-- FRX Forecaster --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Host Analytics</masterLabel>
+            <translation><!-- Host Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyperion Enterprise</masterLabel>
+            <translation><!-- Hyperion Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyperion Pillar</masterLabel>
+            <translation><!-- Hyperion Pillar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM - Applix/TM1</masterLabel>
+            <translation><!-- IBM - Applix/TM1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Clarity</masterLabel>
+            <translation><!-- IBM Clarity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos Planning</masterLabel>
+            <translation><!-- IBM Cognos Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INFOR CPM</masterLabel>
+            <translation><!-- INFOR CPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inca</masterLabel>
+            <translation><!-- Inca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jedox</masterLabel>
+            <translation><!-- Jedox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KCI/Control</masterLabel>
+            <translation><!-- KCI/Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khalix Longview</masterLabel>
+            <translation><!-- Khalix Longview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KlicPlan</masterLabel>
+            <translation><!-- KlicPlan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LogiXML</masterLabel>
+            <translation><!-- LogiXML --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft - FRX</masterLabel>
+            <translation><!-- Microsoft - FRX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft - Forecaster</masterLabel>
+            <translation><!-- Microsoft - Forecaster --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft - Management Reporter</masterLabel>
+            <translation><!-- Microsoft - Management Reporter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft - Performance Point</masterLabel>
+            <translation><!-- Microsoft - Performance Point --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneStream</masterLabel>
+            <translation><!-- OneStream --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Essbase</masterLabel>
+            <translation><!-- Oracle Essbase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Financials</masterLabel>
+            <translation><!-- Oracle Financials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Hyperion Planning</masterLabel>
+            <translation><!-- Oracle Hyperion Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle Other</masterLabel>
+            <translation><!-- Oracle Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power Plan</masterLabel>
+            <translation><!-- Power Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Projected Financials</masterLabel>
+            <translation><!-- Projected Financials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prophix</masterLabel>
+            <translation><!-- Prophix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qliktech</masterLabel>
+            <translation><!-- Qliktech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qlikview</masterLabel>
+            <translation><!-- Qlikview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Questica</masterLabel>
+            <translation><!-- Questica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickBase</masterLabel>
+            <translation><!-- QuickBase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP - BPC/SRC</masterLabel>
+            <translation><!-- SAP - BPC/SRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP - Business Objects</masterLabel>
+            <translation><!-- SAP - Business Objects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP - Outlook Soft/OTHER</masterLabel>
+            <translation><!-- SAP - Outlook Soft/OTHER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Other</masterLabel>
+            <translation><!-- SAP Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SRC</masterLabel>
+            <translation><!-- SRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sage Active Planner</masterLabel>
+            <translation><!-- Sage Active Planner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Satori Group/Procube</masterLabel>
+            <translation><!-- Satori Group/Procube --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smartest</masterLabel>
+            <translation><!-- Smartest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solver</masterLabel>
+            <translation><!-- Solver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stratajazz</masterLabel>
+            <translation><!-- Stratajazz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIBCO/Spotfire</masterLabel>
+            <translation><!-- TIBCO/Spotfire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tableau</masterLabel>
+            <translation><!-- Tableau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagetik</masterLabel>
+            <translation><!-- Tagetik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tidemark</masterLabel>
+            <translation><!-- Tidemark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vantage</masterLabel>
+            <translation><!-- Vantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vena Solutions</masterLabel>
+            <translation><!-- Vena Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>What-if Solutions</masterLabel>
+            <translation><!-- What-if Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Whitebirch</masterLabel>
+            <translation><!-- Whitebirch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>o9 Solutions</masterLabel>
+            <translation><!-- o9 Solutions --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Industry Focus --></label>
+        <name>Industry_Focus__c</name>
+        <picklistValues>
+            <masterLabel>Aerospace &amp; Defense</masterLabel>
+            <translation><!-- Aerospace &amp; Defense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture, Forestry, Fishing</masterLabel>
+            <translation><!-- Agriculture, Forestry, Fishing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture, Forestry, Fishing &amp; Hunting</masterLabel>
+            <translation><!-- Agriculture, Forestry, Fishing &amp; Hunting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Associations, Memberships</masterLabel>
+            <translation><!-- Associations, Memberships --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto Repair, Services, Dealers, Rental</masterLabel>
+            <translation><!-- Auto Repair, Services, Dealers, Rental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking, Accounting, Financial Services</masterLabel>
+            <translation><!-- Banking, Accounting, Financial Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beverages, Distillers, Wineries</masterLabel>
+            <translation><!-- Beverages, Distillers, Wineries --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Building Maintenance, Plumbing, HVAC</masterLabel>
+            <translation><!-- Building Maintenance, Plumbing, HVAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Service &amp; Consulting</masterLabel>
+            <translation><!-- Business Service &amp; Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Charities, Foundations, Nonprofits</masterLabel>
+            <translation><!-- Charities, Foundations, Nonprofits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer Hardware, Networking, Security</masterLabel>
+            <translation><!-- Computer Hardware, Networking, Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer Software &amp; Services</masterLabel>
+            <translation><!-- Computer Software &amp; Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction, Architecture &amp; Engineering</masterLabel>
+            <translation><!-- Construction, Architecture &amp; Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Packaged Goods</masterLabel>
+            <translation><!-- Consumer Packaged Goods --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Warehousing, Services</masterLabel>
+            <translation><!-- Data Warehousing, Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-commerce, Financial Software</masterLabel>
+            <translation><!-- E-commerce, Financial Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Educational Services, Colleges</masterLabel>
+            <translation><!-- Educational Services, Colleges --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment, Sports, Movies, TV</masterLabel>
+            <translation><!-- Entertainment, Sports, Movies, TV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Farming, Livestock, Dairy</masterLabel>
+            <translation><!-- Farming, Livestock, Dairy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Game Software</masterLabel>
+            <translation><!-- Game Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare, Hospitals, Facilities</masterLabel>
+            <translation><!-- Healthcare, Hospitals, Facilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality, Gaming, Hotel, Restaurants</masterLabel>
+            <translation><!-- Hospitality, Gaming, Hotel, Restaurants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Services &amp; Consulting</masterLabel>
+            <translation><!-- IT Services &amp; Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Equipment, Supplies, Services</masterLabel>
+            <translation><!-- Industrial Equipment, Supplies, Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet &amp; Online Services Providers</masterLabel>
+            <translation><!-- Internet &amp; Online Services Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal Services</masterLabel>
+            <translation><!-- Legal Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing, Parts, Electronics</masterLabel>
+            <translation><!-- Manufacturing, Parts, Electronics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media, Publishing, Advertising</masterLabel>
+            <translation><!-- Media, Publishing, Advertising --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical Equipment, Supplies, Services</masterLabel>
+            <translation><!-- Medical Equipment, Supplies, Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mining &amp; Metals</masterLabel>
+            <translation><!-- Mining &amp; Metals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mining, Quarrying, Oil &amp; Gas Extraction</masterLabel>
+            <translation><!-- Mining, Quarrying, Oil &amp; Gas Extraction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Museums, Art Galleries, Zoological</masterLabel>
+            <translation><!-- Museums, Art Galleries, Zoological --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal Services</masterLabel>
+            <translation><!-- Personal Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pharmaceuticals, Biotech, Chemicals</masterLabel>
+            <translation><!-- Pharmaceuticals, Biotech, Chemicals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Sector &amp; Government</masterLabel>
+            <translation><!-- Public Sector &amp; Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Property Management</masterLabel>
+            <translation><!-- Real Estate, Property Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recreation, Parks, Travel</masterLabel>
+            <translation><!-- Recreation, Parks, Travel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Religious Organizations</masterLabel>
+            <translation><!-- Religious Organizations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail, Wholesale, Apparel</masterLabel>
+            <translation><!-- Retail, Wholesale, Apparel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scientific Research, Labs</masterLabel>
+            <translation><!-- Scientific Research, Labs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Semiconductor Equipment &amp; Testing</masterLabel>
+            <translation><!-- Semiconductor Equipment &amp; Testing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation, Logistics</masterLabel>
+            <translation><!-- Transportation, Logistics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utilities, Energy, Oil, Gas</masterLabel>
+            <translation><!-- Utilities, Energy, Oil, Gas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Veterinary Care</masterLabel>
+            <translation><!-- Veterinary Care --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waste Management, Recycling, Environment</masterLabel>
+            <translation><!-- Waste Management, Recycling, Environment --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Lead ? --></label>
+        <name>Is_Lead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Partner Lead --></label>
+        <name>Is_Partner_Lead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is eloqua inserted / Updated --></label>
+        <name>Is_eloqua_inserted_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is logged in user --></label>
+        <name>Is_logged_in_user__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Features Needed --></label>
+        <name>Key_Features_Needed__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Touch --></label>
+        <name>LastActivityDate_MinusEloqua__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Activity Date --></label>
+        <name>Last_Activity_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date of last email the name clicked on in Eloqua. --></help>
+        <label><!-- Last Eloqua Email Clicked-Through Date --></label>
+        <name>Last_Eloqua_Email_Clicked_Through_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last link that was clicked-through from a name in an Eloqua Email. --></help>
+        <label><!-- Last Eloqua Email Clicked-Through (URL) --></label>
+        <name>Last_Eloqua_Email_Clicked_Through_URL__c</name>
+    </fields>
+    <fields>
+        <help><!-- The last email that the name clicked through in Eloqua. --></help>
+        <label><!-- Last Eloqua Email Clicked-Through --></label>
+        <name>Last_Eloqua_Email_Clicked_Through__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date of the last email that was sent to a name from Eloqua --></help>
+        <label><!-- Last Eloqua Email Sent Date --></label>
+        <name>Last_Eloqua_Email_Sent_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last email that was sent to the name in Eloqua. --></help>
+        <label><!-- Last Eloqua Email Sent --></label>
+        <name>Last_Eloqua_Email_Sent__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date and Time the last email sent from Eloqua was opened by the name. --></help>
+        <label><!-- Last Eloqua Email Open Date --></label>
+        <name>Last_Email_Open_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last email that the name opened that was sent out of Eloqua. --></help>
+        <label><!-- Last Eloqua Email Opened --></label>
+        <name>Last_Email_Opened__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead 18 Digit --></label>
+        <name>Lead_18_Digit__c</name>
+    </fields>
+    <fields>
+        <help><!-- The legacy created date if it exists, otherwise the native created date field --></help>
+        <label><!-- Lead Created Date --></label>
+        <name>Lead_Created_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Get Lead Email Domain for Round Robin --></help>
+        <label><!-- Lead Email Domain --></label>
+        <name>Lead_Email_Domain__c</name>
+    </fields>
+    <fields>
+        <help><!-- this value should change over time given that the person keeps getting new material --></help>
+        <label><!-- Lead Offer - Most Recent --></label>
+        <name>Lead_Offer_Most_Recent__c</name>
+        <picklistValues>
+            <masterLabel>AP BPK Video</masterLabel>
+            <translation><!-- AP BPK Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP CPM Brochure</masterLabel>
+            <translation><!-- AP CPM Brochure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Customer Video</masterLabel>
+            <translation><!-- AP Customer Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Discovery Free Trial</masterLabel>
+            <translation><!-- AP Discovery Free Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Enterprise Trial</masterLabel>
+            <translation><!-- AP Enterprise Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Express - Downloaded</masterLabel>
+            <translation><!-- AP Express - Downloaded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Express - Hosted Online</masterLabel>
+            <translation><!-- AP Express - Hosted Online --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Group Demo</masterLabel>
+            <translation><!-- AP Group Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Live Demo Request</masterLabel>
+            <translation><!-- AP Live Demo Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Partner Application</masterLabel>
+            <translation><!-- AP Partner Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Consolidation Webinar</masterLabel>
+            <translation><!-- AP Pre-Recorded Consolidation Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Discovery Webinar</masterLabel>
+            <translation><!-- AP Pre-Recorded Discovery Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Online Demo</masterLabel>
+            <translation><!-- AP Pre-Recorded Online Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Prospect Webinar</masterLabel>
+            <translation><!-- AP Pre-Recorded Prospect Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Resource Center</masterLabel>
+            <translation><!-- AP Resource Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Survival Kit Demo</masterLabel>
+            <translation><!-- AP Survival Kit Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Live 2017</masterLabel>
+            <translation><!-- Adaptive Live 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Roadshow</masterLabel>
+            <translation><!-- Adaptive Roadshow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Contact Me Form - General</masterLabel>
+            <translation><!-- Adaptive myDials Contact Me Form - General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Contact Me Form - NetSuite Module</masterLabel>
+            <translation><!-- Adaptive myDials Contact Me Form - NetSuite Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Demo Registration</masterLabel>
+            <translation><!-- Adaptive myDials Demo Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials NetSuite Module Trial</masterLabel>
+            <translation><!-- Adaptive myDials NetSuite Module Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Online Module Trial Form</masterLabel>
+            <translation><!-- Adaptive myDials Online Module Trial Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Webinar Registration</masterLabel>
+            <translation><!-- Adaptive myDials Webinar Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrator Training</masterLabel>
+            <translation><!-- Administrator Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Archived Webinar</masterLabel>
+            <translation><!-- Archived Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beta Program</masterLabel>
+            <translation><!-- Beta Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Software WP - Top 10 Financial Management Vendors</masterLabel>
+            <translation><!-- Business Software WP - Top 10 Financial Management Vendors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Software WP - Top 15 Accounting Software Vendors</masterLabel>
+            <translation><!-- Business Software WP - Top 15 Accounting Software Vendors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study -  RootMetrics</masterLabel>
+            <translation><!-- Case Study -  RootMetrics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - DHL Global Forwarding Ireland automates budgeting</masterLabel>
+            <translation><!-- Case Study - DHL Global Forwarding Ireland automates budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - Red Cross</masterLabel>
+            <translation><!-- Case Study - Red Cross --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - Thiess Mining</masterLabel>
+            <translation><!-- Case Study - Thiess Mining --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - University of Central Florida&apos;s Leap to the Cloud</masterLabel>
+            <translation><!-- Case Study - University of Central Florida&apos;s Leap to the Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study Kit - 2007</masterLabel>
+            <translation><!-- Case Study Kit - 2007 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study – Papyrus</masterLabel>
+            <translation><!-- Case Study – Papyrus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study – The Doe Run Company</masterLabel>
+            <translation><!-- Case Study – The Doe Run Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study</masterLabel>
+            <translation><!-- Case study --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study - Goodwill</masterLabel>
+            <translation><!-- Case study - Goodwill --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study – Goodwill</masterLabel>
+            <translation><!-- Case study – Goodwill --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study – Westerra Credit Union</masterLabel>
+            <translation><!-- Case study – Westerra Credit Union --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consolidation Pre-Recorded Online Demo</masterLabel>
+            <translation><!-- Consolidation Pre-Recorded Online Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Clicked Thru Activity</masterLabel>
+            <translation><!-- Email Clicked Thru Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Open Activity</masterLabel>
+            <translation><!-- Email Open Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infographic - Consolidation &amp; Financial Reporting</masterLabel>
+            <translation><!-- Infographic - Consolidation &amp; Financial Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infographic – Adaptive Planning is helping CFOs Achieve Success</masterLabel>
+            <translation><!-- Infographic – Adaptive Planning is helping CFOs Achieve Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ipad Drawing</masterLabel>
+            <translation><!-- Ipad Drawing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Nurturing</masterLabel>
+            <translation><!-- Lead Nurturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEM - Google</masterLabel>
+            <translation><!-- SEM - Google --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seminar</masterLabel>
+            <translation><!-- Seminar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Survey</masterLabel>
+            <translation><!-- Survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tradeshow (Lead Gen)</masterLabel>
+            <translation><!-- Tradeshow (Lead Gen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Group</masterLabel>
+            <translation><!-- User Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video - Thiess Mining</masterLabel>
+            <translation><!-- Video - Thiess Mining --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - 3rd Party Vendor (not AP&apos;s)</masterLabel>
+            <translation><!-- WP - 3rd Party Vendor (not AP&apos;s) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - AD Discovery - Aberdeen: Visual Business Intelligence</masterLabel>
+            <translation><!-- WP - AD Discovery - Aberdeen: Visual Business Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - AD Discovery - TDWI BP Report Data Visualization For Better Business Decisions</masterLabel>
+            <translation><!-- WP - AD Discovery - TDWI BP Report Data Visualization For Better Business Decisions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive Consolidation eBook</masterLabel>
+            <translation><!-- WP - Adaptive Consolidation eBook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - An Overview of myDIALS</masterLabel>
+            <translation><!-- WP - Adaptive myDials - An Overview of myDIALS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Best Practices for Online Marketing Effectiveness</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Best Practices for Online Marketing Effectiveness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Delivering Business Value through Operational Intelligence</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Delivering Business Value through Operational Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Enterprise Approach to Operational Performance Management</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Enterprise Approach to Operational Performance Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Identifying, Visualizing, and Analyzing Key Performance Drivers</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Identifying, Visualizing, and Analyzing Key Performance Drivers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Improve Business Results by Interactively Analyzing Business Drivers</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Improve Business Results by Interactively Analyzing Business Drivers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Improve Online Marketing Effectiveness</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Improve Online Marketing Effectiveness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Improving Operational Performance</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Improving Operational Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Making Business Intelligence Relevant for Mid-Size Companies</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Making Business Intelligence Relevant for Mid-Size Companies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Optimizing Operational Performance from a Financial Management Perspective</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Optimizing Operational Performance from a Financial Management Perspective --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Using Performance Drivers and Interactive Analysis to Enhance Business Success</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Using Performance Drivers and Interactive Analysis to Enhance Business Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Using Performance Drivers to Enhance Business Success</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Using Performance Drivers to Enhance Business Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Art of Quantation (Randall Bolton)</masterLabel>
+            <translation><!-- WP - Art of Quantation (Randall Bolton) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - BPK</masterLabel>
+            <translation><!-- WP - BPK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - BPM 10 Steps</masterLabel>
+            <translation><!-- WP - BPM 10 Steps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - BPM Top Three Costly Reporting Mistakes</masterLabel>
+            <translation><!-- WP - BPM Top Three Costly Reporting Mistakes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Bundle</masterLabel>
+            <translation><!-- WP - Bundle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Analytics for CFOs</masterLabel>
+            <translation><!-- WP - CFO Analytics for CFOs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Article: Let it Roll</masterLabel>
+            <translation><!-- WP - CFO Article: Let it Roll --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Ebook - Banishing The Budget</masterLabel>
+            <translation><!-- WP - CFO Ebook - Banishing The Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Freed from the Budget</masterLabel>
+            <translation><!-- WP - CFO Freed from the Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Get IT Right Or Get Left Behind</masterLabel>
+            <translation><!-- WP - CFO Get IT Right Or Get Left Behind --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - DEEP Insight:  Integrated reporting in the cloud</masterLabel>
+            <translation><!-- WP - DEEP Insight:  Integrated reporting in the cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Decision-Making at the Speed of Business</masterLabel>
+            <translation><!-- WP - Decision-Making at the Speed of Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Deep Insight - Stepping Out of the Confines of Finance</masterLabel>
+            <translation><!-- WP - Deep Insight - Stepping Out of the Confines of Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FP&amp;A in the New Economy</masterLabel>
+            <translation><!-- WP - FP&amp;A in the New Economy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Are you using a dashboard yet</masterLabel>
+            <translation><!-- WP - FSN - Are you using a dashboard yet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Best Practice Forecasting</masterLabel>
+            <translation><!-- WP - FSN - Best Practice Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Budgeting - Could it be a thing of the past</masterLabel>
+            <translation><!-- WP - FSN - Budgeting - Could it be a thing of the past --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Integration Across Enterprise Functions</masterLabel>
+            <translation><!-- WP - FSN - Integration Across Enterprise Functions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Slash your budget timescales by up to 50 percent</masterLabel>
+            <translation><!-- WP - FSN - Slash your budget timescales by up to 50 percent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Financial Intel Kit</masterLabel>
+            <translation><!-- WP - Financial Intel Kit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Gartner: CostCuttingRequiresCPM</masterLabel>
+            <translation><!-- WP - Gartner: CostCuttingRequiresCPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Analyst and Advisor</masterLabel>
+            <translation><!-- WP - HBR Analyst and Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Balanced Scorecard</masterLabel>
+            <translation><!-- WP - HBR Balanced Scorecard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Cisco’s Virtual Close</masterLabel>
+            <translation><!-- WP - HBR Cisco’s Virtual Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Competing on Analytics</masterLabel>
+            <translation><!-- WP - HBR Competing on Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Corp Budgeting is Broken</masterLabel>
+            <translation><!-- WP - HBR Corp Budgeting is Broken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Dynamic Forecasting</masterLabel>
+            <translation><!-- WP - HBR Dynamic Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR How to Choose the Right Forecasting Technique</masterLabel>
+            <translation><!-- WP - HBR How to Choose the Right Forecasting Technique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR How CFOs Can Optimize Performance</masterLabel>
+            <translation><!-- WP - HBR How CFOs Can Optimize Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Making Better Decisions Leveraging Your Organization’s Data and Information</masterLabel>
+            <translation><!-- WP - HBR Making Better Decisions Leveraging Your Organization’s Data and Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Reinventing the CFO</masterLabel>
+            <translation><!-- WP - HBR Reinventing the CFO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Seeing the Future</masterLabel>
+            <translation><!-- WP - HBR Seeing the Future --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Six Rules for Effective Forecasting</masterLabel>
+            <translation><!-- WP - HBR Six Rules for Effective Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR What-If Analysis and Activity-Based Budgeting</masterLabel>
+            <translation><!-- WP - HBR What-If Analysis and Activity-Based Budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR WhatIf Analysis</masterLabel>
+            <translation><!-- WP - HBR WhatIf Analysis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Why Budgeting Fails</masterLabel>
+            <translation><!-- WP - HBR Why Budgeting Fails --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Why Forecasting Fails What to do Instead</masterLabel>
+            <translation><!-- WP - HBR Why Forecasting Fails What to do Instead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - How CFOs Can Optimize Performance and Create New Strategic Value</masterLabel>
+            <translation><!-- WP - How CFOs Can Optimize Performance and Create New Strategic Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Nine Circles of Excel Hell</masterLabel>
+            <translation><!-- WP - Nine Circles of Excel Hell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Placed Article</masterLabel>
+            <translation><!-- WP - Placed Article --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Tableau Product Report</masterLabel>
+            <translation><!-- WP - Tableau Product Report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - The CFO as Analyst and Advisor</masterLabel>
+            <translation><!-- WP - The CFO as Analyst and Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - The CFO as the Architect</masterLabel>
+            <translation><!-- WP - The CFO as the Architect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - The TCO Advantage of SaaS</masterLabel>
+            <translation><!-- WP - The TCO Advantage of SaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Vendor Landscape Matrix for 2012</masterLabel>
+            <translation><!-- WP - Vendor Landscape Matrix for 2012 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Ventana Planning and Budgeting</masterLabel>
+            <translation><!-- WP - Ventana Planning and Budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Ventana Recession Planning</masterLabel>
+            <translation><!-- WP - Ventana Recession Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Ventana Spreadsheets in Today&apos;s Enterprise</masterLabel>
+            <translation><!-- WP - Ventana Spreadsheets in Today&apos;s Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - myDIALS Aberdeen: Self-Service BI through Visualization</masterLabel>
+            <translation><!-- WP - myDIALS Aberdeen: Self-Service BI through Visualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – AC Paper - Powerful Financial Consolidation and reporting</masterLabel>
+            <translation><!-- WP – AC Paper - Powerful Financial Consolidation and reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Adaptive Planning eBook</masterLabel>
+            <translation><!-- WP – Adaptive Planning eBook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Alinean Sample ROI report</masterLabel>
+            <translation><!-- WP – Alinean Sample ROI report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – CFO Fixing Finance</masterLabel>
+            <translation><!-- WP – CFO Fixing Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – CFO May the Field Be With You</masterLabel>
+            <translation><!-- WP – CFO May the Field Be With You --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Forrester Planning, Analysis and Reporting Solutions</masterLabel>
+            <translation><!-- WP – Forrester Planning, Analysis and Reporting Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR CFO as Analyst and Advisor</masterLabel>
+            <translation><!-- WP – HBR CFO as Analyst and Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR CFO as a Champion of Change</masterLabel>
+            <translation><!-- WP – HBR CFO as a Champion of Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR Financial Performance Measurement for the 21st Century</masterLabel>
+            <translation><!-- WP – HBR Financial Performance Measurement for the 21st Century --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR Using Dashboards to Revolutionize Your Performance Management System</masterLabel>
+            <translation><!-- WP – HBR Using Dashboards to Revolutionize Your Performance Management System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Infusionsoft</masterLabel>
+            <translation><!-- WP – Infusionsoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Mint Jutras: Changing Manufacturing Landscape (long)</masterLabel>
+            <translation><!-- WP – Mint Jutras: Changing Manufacturing Landscape (long) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Mint Jutras: Changing Manufacturing Landscape (short)</masterLabel>
+            <translation><!-- WP – Mint Jutras: Changing Manufacturing Landscape (short) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – OPEXEngine 2014 Benchmark Report</masterLabel>
+            <translation><!-- WP – OPEXEngine 2014 Benchmark Report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – University of Central Florida</masterLabel>
+            <translation><!-- WP – University of Central Florida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Ventana  Self-Assessment:  Shortening the Close</masterLabel>
+            <translation><!-- WP – Ventana  Self-Assessment:  Shortening the Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Ventana Fast Tracking the Financial Close</masterLabel>
+            <translation><!-- WP – Ventana Fast Tracking the Financial Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web - Contact Us</masterLabel>
+            <translation><!-- Web - Contact Us --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar</masterLabel>
+            <translation><!-- Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Consolidation</masterLabel>
+            <translation><!-- Webinar - Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Discovery</masterLabel>
+            <translation><!-- Webinar - Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Partner</masterLabel>
+            <translation><!-- Webinar - Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website Visit Activity</masterLabel>
+            <translation><!-- Website Visit Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workshop</masterLabel>
+            <translation><!-- Workshop --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- originally lead source, now we&apos;re breaking it out to the channel, and the offer.  this is the offer. --></help>
+        <label><!-- Lead Offer Original --></label>
+        <name>Lead_Offer_Original__c</name>
+        <picklistValues>
+            <masterLabel>AP BPK Video</masterLabel>
+            <translation><!-- AP BPK Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Customer Video</masterLabel>
+            <translation><!-- AP Customer Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Discovery Free Trial</masterLabel>
+            <translation><!-- AP Discovery Free Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Enterprise Trial</masterLabel>
+            <translation><!-- AP Enterprise Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Express - Downloaded</masterLabel>
+            <translation><!-- AP Express - Downloaded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Express - Hosted Online</masterLabel>
+            <translation><!-- AP Express - Hosted Online --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Group Demo</masterLabel>
+            <translation><!-- AP Group Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Live Demo Request</masterLabel>
+            <translation><!-- AP Live Demo Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Consolidation Webinar</masterLabel>
+            <translation><!-- AP Pre-Recorded Consolidation Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Discovery Webinar</masterLabel>
+            <translation><!-- AP Pre-Recorded Discovery Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Online Demo</masterLabel>
+            <translation><!-- AP Pre-Recorded Online Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Pre-Recorded Prospect Webinar</masterLabel>
+            <translation><!-- AP Pre-Recorded Prospect Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Resource Center</masterLabel>
+            <translation><!-- AP Resource Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AP Survival Kit Demo</masterLabel>
+            <translation><!-- AP Survival Kit Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Live 2017</masterLabel>
+            <translation><!-- Adaptive Live 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Roadshow</masterLabel>
+            <translation><!-- Adaptive Roadshow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Contact Me Form - General</masterLabel>
+            <translation><!-- Adaptive myDials Contact Me Form - General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Contact Me Form - NetSuite Module</masterLabel>
+            <translation><!-- Adaptive myDials Contact Me Form - NetSuite Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Demo Registration</masterLabel>
+            <translation><!-- Adaptive myDials Demo Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials NetSuite Module Trial</masterLabel>
+            <translation><!-- Adaptive myDials NetSuite Module Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Online Module Trial Form</masterLabel>
+            <translation><!-- Adaptive myDials Online Module Trial Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive myDials Webinar Registration</masterLabel>
+            <translation><!-- Adaptive myDials Webinar Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrator Training</masterLabel>
+            <translation><!-- Administrator Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Archived Webinar</masterLabel>
+            <translation><!-- Archived Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Article – CFO Get IT Right Or Get Left Behind</masterLabel>
+            <translation><!-- Article – CFO Get IT Right Or Get Left Behind --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beta Program</masterLabel>
+            <translation><!-- Beta Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study -  RootMetrics</masterLabel>
+            <translation><!-- Case Study -  RootMetrics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - DHL Global Forwarding Ireland automates budgeting</masterLabel>
+            <translation><!-- Case Study - DHL Global Forwarding Ireland automates budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - Red Cross</masterLabel>
+            <translation><!-- Case Study - Red Cross --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - Thiess Mining</masterLabel>
+            <translation><!-- Case Study - Thiess Mining --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study - University of Central Florida&apos;s Leap to the Cloud</masterLabel>
+            <translation><!-- Case Study - University of Central Florida&apos;s Leap to the Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study Kit - 2007</masterLabel>
+            <translation><!-- Case Study Kit - 2007 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study – Papyrus</masterLabel>
+            <translation><!-- Case Study – Papyrus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study – The Doe Run Company</masterLabel>
+            <translation><!-- Case Study – The Doe Run Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study</masterLabel>
+            <translation><!-- Case study --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study – Goodwill</masterLabel>
+            <translation><!-- Case study – Goodwill --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case study – Westerra Credit Union</masterLabel>
+            <translation><!-- Case study – Westerra Credit Union --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consolidation Pre-Recorded Online Demo</masterLabel>
+            <translation><!-- Consolidation Pre-Recorded Online Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Clicked Thru Activity</masterLabel>
+            <translation><!-- Email Clicked Thru Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Open Activity</masterLabel>
+            <translation><!-- Email Open Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infographic - Consolidation &amp; Financial Reporting</masterLabel>
+            <translation><!-- Infographic - Consolidation &amp; Financial Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infographic – Adaptive Planning is helping CFOs Achieve Success</masterLabel>
+            <translation><!-- Infographic – Adaptive Planning is helping CFOs Achieve Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ipad Drawing</masterLabel>
+            <translation><!-- Ipad Drawing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Nurturing</masterLabel>
+            <translation><!-- Lead Nurturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEM - Google</masterLabel>
+            <translation><!-- SEM - Google --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seminars</masterLabel>
+            <translation><!-- Seminars --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Survey</masterLabel>
+            <translation><!-- Survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tradeshow (Lead Gen)</masterLabel>
+            <translation><!-- Tradeshow (Lead Gen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Group</masterLabel>
+            <translation><!-- User Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video - Thiess Mining</masterLabel>
+            <translation><!-- Video - Thiess Mining --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - 3rd Party Vendor (not AP&apos;s)</masterLabel>
+            <translation><!-- WP - 3rd Party Vendor (not AP&apos;s) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - AD Discovery - TDWI  BP Report Data Visualization For Better Business Decisions</masterLabel>
+            <translation><!-- WP - AD Discovery - TDWI  BP Report Data Visualization For Better Business Decisions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive Consolidation eBook</masterLabel>
+            <translation><!-- WP - Adaptive Consolidation eBook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - An Overview of myDIALS</masterLabel>
+            <translation><!-- WP - Adaptive myDials - An Overview of myDIALS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Best Practices for Online Marketing Effectiveness</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Best Practices for Online Marketing Effectiveness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Delivering Business Value through Operational Intelligence</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Delivering Business Value through Operational Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Enterprise Approach to Operational Performance Management</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Enterprise Approach to Operational Performance Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Identifying, Visualizing, and Analyzing Key Performance Drivers</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Identifying, Visualizing, and Analyzing Key Performance Drivers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Improve Business Results by Interactively Analyzing Business Drivers</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Improve Business Results by Interactively Analyzing Business Drivers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Improve Online Marketing Effectiveness</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Improve Online Marketing Effectiveness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Improving Operational Performance</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Improving Operational Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Making Business Intelligence Relevant for Mid-Size Companies</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Making Business Intelligence Relevant for Mid-Size Companies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Optimizing Operational Performance from a Financial Management Perspective</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Optimizing Operational Performance from a Financial Management Perspective --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Using Performance Drivers and Interactive Analysis to Enhance Business Success</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Using Performance Drivers and Interactive Analysis to Enhance Business Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Adaptive myDials - Using Performance Drivers to Enhance Business Success</masterLabel>
+            <translation><!-- WP - Adaptive myDials - Using Performance Drivers to Enhance Business Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Art of Quantation (Randall Bolton)</masterLabel>
+            <translation><!-- WP - Art of Quantation (Randall Bolton) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - BPK</masterLabel>
+            <translation><!-- WP - BPK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - BPM 10 Steps</masterLabel>
+            <translation><!-- WP - BPM 10 Steps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - BPM Top Three Costly Reporting Mistakes</masterLabel>
+            <translation><!-- WP - BPM Top Three Costly Reporting Mistakes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Bundle</masterLabel>
+            <translation><!-- WP - Bundle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Analytics for CFOs</masterLabel>
+            <translation><!-- WP - CFO Analytics for CFOs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Article: Let it Roll</masterLabel>
+            <translation><!-- WP - CFO Article: Let it Roll --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - CFO Ebook - Banishing The Budget</masterLabel>
+            <translation><!-- WP - CFO Ebook - Banishing The Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - DEEP Insight:  Integrated reporting in the cloud</masterLabel>
+            <translation><!-- WP - DEEP Insight:  Integrated reporting in the cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Decision-Making at the Speed of Business</masterLabel>
+            <translation><!-- WP - Decision-Making at the Speed of Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Deep Insight - Stepping Out of the Confines of Finance</masterLabel>
+            <translation><!-- WP - Deep Insight - Stepping Out of the Confines of Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FP&amp;A in the New Economy</masterLabel>
+            <translation><!-- WP - FP&amp;A in the New Economy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Are you using a dashboard yet</masterLabel>
+            <translation><!-- WP - FSN - Are you using a dashboard yet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Best Practice Forecasting</masterLabel>
+            <translation><!-- WP - FSN - Best Practice Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Budgeting - Could it be a thing of the past</masterLabel>
+            <translation><!-- WP - FSN - Budgeting - Could it be a thing of the past --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Integration Across Enterprise Functions</masterLabel>
+            <translation><!-- WP - FSN - Integration Across Enterprise Functions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - FSN - Slash your budget timescales by up to 50 percent</masterLabel>
+            <translation><!-- WP - FSN - Slash your budget timescales by up to 50 percent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Financial Intel Kit</masterLabel>
+            <translation><!-- WP - Financial Intel Kit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Gartner: CostCuttingRequiresCPM</masterLabel>
+            <translation><!-- WP - Gartner: CostCuttingRequiresCPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Analyst and Advisor</masterLabel>
+            <translation><!-- WP - HBR Analyst and Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Balanced Scorecard</masterLabel>
+            <translation><!-- WP - HBR Balanced Scorecard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Cisco’s Virtual Close</masterLabel>
+            <translation><!-- WP - HBR Cisco’s Virtual Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Competing on Analytics</masterLabel>
+            <translation><!-- WP - HBR Competing on Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Corp Budgeting is Broken</masterLabel>
+            <translation><!-- WP - HBR Corp Budgeting is Broken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Dynamic Forecasting</masterLabel>
+            <translation><!-- WP - HBR Dynamic Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR How CFOs Can Optimize Performance</masterLabel>
+            <translation><!-- WP - HBR How CFOs Can Optimize Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Making Better Decisions Leveraging Your Organization’s Data and Information</masterLabel>
+            <translation><!-- WP - HBR Making Better Decisions Leveraging Your Organization’s Data and Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Reinventing the CFO</masterLabel>
+            <translation><!-- WP - HBR Reinventing the CFO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Seeing the Future</masterLabel>
+            <translation><!-- WP - HBR Seeing the Future --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Six Rules for Effective Forecasting</masterLabel>
+            <translation><!-- WP - HBR Six Rules for Effective Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR What If Analysis</masterLabel>
+            <translation><!-- WP - HBR What If Analysis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR What-If Analysis and Activity-Based Budgeting</masterLabel>
+            <translation><!-- WP - HBR What-If Analysis and Activity-Based Budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Why Budgeting Fails</masterLabel>
+            <translation><!-- WP - HBR Why Budgeting Fails --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - HBR Why Forecasting Fails What to do Instead</masterLabel>
+            <translation><!-- WP - HBR Why Forecasting Fails What to do Instead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - How CFOs Can Optimize Performance and Create New Strategic Value</masterLabel>
+            <translation><!-- WP - How CFOs Can Optimize Performance and Create New Strategic Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Nine Circles of Excel Hell</masterLabel>
+            <translation><!-- WP - Nine Circles of Excel Hell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Placed Article</masterLabel>
+            <translation><!-- WP - Placed Article --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Tableau Product Report</masterLabel>
+            <translation><!-- WP - Tableau Product Report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - The CFO as Analyst and Advisor</masterLabel>
+            <translation><!-- WP - The CFO as Analyst and Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - The CFO as the Architect</masterLabel>
+            <translation><!-- WP - The CFO as the Architect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - The TCO Advantage of SaaS</masterLabel>
+            <translation><!-- WP - The TCO Advantage of SaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Vendor Landscape Matrix for 2012</masterLabel>
+            <translation><!-- WP - Vendor Landscape Matrix for 2012 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Ventana Planning and Budgeting</masterLabel>
+            <translation><!-- WP - Ventana Planning and Budgeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Ventana Recession Planning</masterLabel>
+            <translation><!-- WP - Ventana Recession Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - Ventana Spreadsheets in Today&apos;s Enterprise</masterLabel>
+            <translation><!-- WP - Ventana Spreadsheets in Today&apos;s Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP - myDIALS Aberdeen: Self-Service BI through Visualization</masterLabel>
+            <translation><!-- WP - myDIALS Aberdeen: Self-Service BI through Visualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – AC Paper - Powerful Financial Consolidation and reporting</masterLabel>
+            <translation><!-- WP – AC Paper - Powerful Financial Consolidation and reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Adaptive Planning eBook</masterLabel>
+            <translation><!-- WP – Adaptive Planning eBook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Alinean Sample ROI report</masterLabel>
+            <translation><!-- WP – Alinean Sample ROI report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – CFO Fixing Finance</masterLabel>
+            <translation><!-- WP – CFO Fixing Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – CFO May the Field Be With You</masterLabel>
+            <translation><!-- WP – CFO May the Field Be With You --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Forrester Planning, Analysis and Reporting Solutions</masterLabel>
+            <translation><!-- WP – Forrester Planning, Analysis and Reporting Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR CFO as Analyst and Advisor</masterLabel>
+            <translation><!-- WP – HBR CFO as Analyst and Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR CFO as a Champion of Change</masterLabel>
+            <translation><!-- WP – HBR CFO as a Champion of Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR Financial Performance Measurement for the 21st Century</masterLabel>
+            <translation><!-- WP – HBR Financial Performance Measurement for the 21st Century --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – HBR Using Dashboards to Revolutionize Your Performance Management System</masterLabel>
+            <translation><!-- WP – HBR Using Dashboards to Revolutionize Your Performance Management System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Infusionsoft</masterLabel>
+            <translation><!-- WP – Infusionsoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Mint Jutras: Changing Manufacturing Landscape (long)</masterLabel>
+            <translation><!-- WP – Mint Jutras: Changing Manufacturing Landscape (long) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Mint Jutras: Changing Manufacturing Landscape (short)</masterLabel>
+            <translation><!-- WP – Mint Jutras: Changing Manufacturing Landscape (short) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – OPEXEngine 2014 Benchmark Report</masterLabel>
+            <translation><!-- WP – OPEXEngine 2014 Benchmark Report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – University of Central Florida</masterLabel>
+            <translation><!-- WP – University of Central Florida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Ventana  Self-Assessment:  Shortening the Close</masterLabel>
+            <translation><!-- WP – Ventana  Self-Assessment:  Shortening the Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WP – Ventana Fast Tracking the Financial Close</masterLabel>
+            <translation><!-- WP – Ventana Fast Tracking the Financial Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web - Contact Us</masterLabel>
+            <translation><!-- Web - Contact Us --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar</masterLabel>
+            <translation><!-- Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Consolidation</masterLabel>
+            <translation><!-- Webinar - Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Discovery</masterLabel>
+            <translation><!-- Webinar - Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website Visit Activity</masterLabel>
+            <translation><!-- Website Visit Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workshop</masterLabel>
+            <translation><!-- Workshop --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead Owner --></label>
+        <name>Lead_Owner__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date/Time stamp when Lead Score Historical High field changes --></help>
+        <label><!-- Lead Score Historical High Date --></label>
+        <name>Lead_Score_Historical_High_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The historical high lead score. Highest ever achieved --></help>
+        <label><!-- Lead Score Historical High --></label>
+        <name>Lead_Score_Historical_High__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field score is calculated based on Eloqua lead score ( Example : A1-88,A2-68,B2-65) --></help>
+        <label><!-- Lead Score --></label>
+        <name>Lead_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Source - Most Recent --></label>
+        <name>Lead_Source_Most_Recent__c</name>
+        <picklistValues>
+            <masterLabel>3rd Party Mailing</masterLabel>
+            <translation><!-- 3rd Party Mailing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Live 2017</masterLabel>
+            <translation><!-- Adaptive Live 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advertising</masterLabel>
+            <translation><!-- Advertising --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Caperra</masterLabel>
+            <translation><!-- Caperra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Referral</masterLabel>
+            <translation><!-- Customer Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Success</masterLabel>
+            <translation><!-- Customer Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eloqua Engagement Activity</masterLabel>
+            <translation><!-- Eloqua Engagement Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee Customer Referral</masterLabel>
+            <translation><!-- Employee Customer Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Find Accounting Software</masterLabel>
+            <translation><!-- Find Accounting Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>House List</masterLabel>
+            <translation><!-- House List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound Call</masterLabel>
+            <translation><!-- Inbound Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Generated List</masterLabel>
+            <translation><!-- Marketing Generated List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Industry List</masterLabel>
+            <translation><!-- Marketing Industry List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner - Prospect Referral Form</masterLabel>
+            <translation><!-- Partner - Prospect Referral Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Community</masterLabel>
+            <translation><!-- Partner Community --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Purchased List</masterLabel>
+            <translation><!-- Purchased List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rep Prospecting</masterLabel>
+            <translation><!-- Rep Prospecting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEM Google</masterLabel>
+            <translation><!-- SEM Google --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFDC-DM|Adaptive Insights</masterLabel>
+            <translation><!-- SFDC-DM|Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFDC-IN|Adaptive Insights</masterLabel>
+            <translation><!-- SFDC-IN|Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFDC-LM|Adaptive Insights</masterLabel>
+            <translation><!-- SFDC-LM|Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFDC-TD|Adaptive Insights</masterLabel>
+            <translation><!-- SFDC-TD|Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFDC-TS|Adaptive Insights</masterLabel>
+            <translation><!-- SFDC-TS|Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seminar</masterLabel>
+            <translation><!-- Seminar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tradeshow</masterLabel>
+            <translation><!-- Tradeshow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - House</masterLabel>
+            <translation><!-- Webinar - House --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Partner</masterLabel>
+            <translation><!-- Webinar - Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website</masterLabel>
+            <translation><!-- Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Whitepaper Library</masterLabel>
+            <translation><!-- Whitepaper Library --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workshop</masterLabel>
+            <translation><!-- Workshop --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead Status Change Date --></label>
+        <name>Lead_Status_Change_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is used by SDRs to track the SDR lifecycle --></help>
+        <label><!-- SDR Conversion Status --></label>
+        <name>Lead_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Type --></label>
+        <name>Lead_Type__c</name>
+        <picklistValues>
+            <masterLabel>Direct</masterLabel>
+            <translation><!-- Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indirect</masterLabel>
+            <translation><!-- Indirect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Press/Analyst</masterLabel>
+            <translation><!-- Press/Analyst --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Mainly used to identify Purchased list and partner events --></help>
+        <label><!-- Lead Vendor --></label>
+        <name>Lead_Vendor__c</name>
+    </fields>
+    <fields>
+        <help><!-- Marketing Accepted Lead (MAL)
+Marketing Qualified Lead (MQL)
+Sales Accepted Lead (SAL) --></help>
+        <label><!-- Lifecycle --></label>
+        <name>Lifecycle_Stage__c</name>
+        <picklistValues>
+            <masterLabel>MAL</masterLabel>
+            <translation><!-- MAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MQL</masterLabel>
+            <translation><!-- MQL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAL</masterLabel>
+            <translation><!-- SAL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MDF Approval Number --></label>
+        <name>MDF_Approval_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Sourced Lead --></label>
+        <name>MDF_Sourced_Lead__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- How did you first become aware of this company? --></help>
+        <label><!-- Marketing Awareness --></label>
+        <name>Marketing_Awareness__c</name>
+    </fields>
+    <fields>
+        <help><!-- How did you get them to engage with you?: --></help>
+        <label><!-- Marketing Engagement --></label>
+        <name>Marketing_Engagement__c</name>
+    </fields>
+    <fields>
+        <help><!-- How did you push them through the funnel to this point?: --></help>
+        <label><!-- Marketing_Funnel --></label>
+        <name>Marketing_Funnel__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Lead Status --></label>
+        <name>Marketing_Lead_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accept</masterLabel>
+            <translation><!-- Accept --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Raw</masterLabel>
+            <translation><!-- Raw --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reject</masterLabel>
+            <translation><!-- Reject --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Was MDF tied to any of these activities? --></help>
+        <label><!-- Marketing MDF Activities --></label>
+        <name>Marketing_MDF_Activities__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- What was the primary MDF program category? --></help>
+        <label><!-- Marketing MDF Program --></label>
+        <name>Marketing_MDF_Program__c</name>
+        <picklistValues>
+            <masterLabel>Adaptive Event promotion</masterLabel>
+            <translation><!-- Adaptive Event promotion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advertising</masterLabel>
+            <translation><!-- Advertising --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral/Case Study</masterLabel>
+            <translation><!-- Collateral/Case Study --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Person Event</masterLabel>
+            <translation><!-- In Person Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>List Purchase</masterLabel>
+            <translation><!-- List Purchase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Campaign</masterLabel>
+            <translation><!-- Marketing Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking/Referral</masterLabel>
+            <translation><!-- Networking/Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Program</masterLabel>
+            <translation><!-- Online Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telemarketing</masterLabel>
+            <translation><!-- Telemarketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tradeshow</masterLabel>
+            <translation><!-- Tradeshow --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketing --></label>
+        <name>Marketing__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter specific details to the missing key features of our product. --></help>
+        <label><!-- Missing Feature --></label>
+        <name>Missing_Feature__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter specific details to the missing key features of our product. --></help>
+        <label><!-- Missing Features --></label>
+        <name>Missing_Features__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multiple Sites --></label>
+        <name>Multiple_Site_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- NAICS Code (number), for industry selection --></help>
+        <label><!-- NAICS Code --></label>
+        <name>NAICS_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Full NAICS description of industry. Based on NAICS Code --></help>
+        <label><!-- NAICS Description --></label>
+        <name>NAICS_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- More details on other data sources. --></help>
+        <label><!-- Name Other System --></label>
+        <name>Name_Other_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- NetSuite Partner Id --></label>
+        <name>NetSuite_Partner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Form Submit --></label>
+        <name>New_Form_Submit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Steps --></label>
+        <name>Next_Steps__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Employees Not Accurate --></label>
+        <name>No_of_Employees_Not_Accurate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non Profit Email Contains --></label>
+        <name>Non_Profit_Email_Contains__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non Profit --></label>
+        <name>Non_Profit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Leads Active --></label>
+        <name>Number_Leads_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Active Customers --></label>
+        <name>Number_of_Active_Customers__c</name>
+        <picklistValues>
+            <masterLabel>1-10</masterLabel>
+            <translation><!-- 1-10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1001-3000</masterLabel>
+            <translation><!-- 1001-3000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>101-500</masterLabel>
+            <translation><!-- 101-500 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11-50</masterLabel>
+            <translation><!-- 11-50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3000+</masterLabel>
+            <translation><!-- 3000+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>501-1000</masterLabel>
+            <translation><!-- 501-1000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>51-100</masterLabel>
+            <translation><!-- 51-100 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Offer Code --></label>
+        <name>Offer_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old ID --></label>
+        <name>Old_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operating System --></label>
+        <name>Operating_System__c</name>
+        <picklistValues>
+            <masterLabel>Linux</masterLabel>
+            <translation><!-- Linux --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Windows</masterLabel>
+            <translation><!-- Windows --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Owner First Name --></label>
+        <name>Owner_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Last Name --></label>
+        <name>Owner_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Phone --></label>
+        <name>Owner_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Title --></label>
+        <name>Owner_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner&apos;s Director&apos;s Email --></label>
+        <name>Owner_s_Director_s_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner&apos;s Manager id --></label>
+        <name>Owner_s_Manager_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner&apos;s Manager&apos;s Email --></label>
+        <name>Owner_s_Manager_s_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date and time that the Partner used the PRL link. --></help>
+        <label><!-- PRL Used Date --></label>
+        <name>PRL_Used_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRL Used --></label>
+        <name>PRL_Used__c</name>
+    </fields>
+    <fields>
+        <help><!-- What pain is the customer experiencing that motivates them to explore a solution? --></help>
+        <label><!-- Reason for change/Pain Points --></label>
+        <name>Pain_Points__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner referred this lead to Adaptive and please contact the Channel Team if we need to add or make changes to partner list --></help>
+        <label><!-- Partner --></label>
+        <name>Partner_Account__c</name>
+        <relationshipLabel><!-- Leads (Partner-Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Adaptive Expertise Offered --></label>
+        <name>Partner_Adaptive_Expertise_Offered__c</name>
+        <picklistValues>
+            <masterLabel>Adaptive Consolidation</masterLabel>
+            <translation><!-- Adaptive Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Discovery</masterLabel>
+            <translation><!-- Adaptive Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Integration</masterLabel>
+            <translation><!-- Adaptive Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Planning</masterLabel>
+            <translation><!-- Adaptive Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Reporting</masterLabel>
+            <translation><!-- Adaptive Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adaptive Revenue</masterLabel>
+            <translation><!-- Adaptive Revenue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Annual Revenue --></label>
+        <name>Partner_Annual_Revenue__c</name>
+        <picklistValues>
+            <masterLabel>100M - 199M</masterLabel>
+            <translation><!-- 100M - 199M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10M - 24M</masterLabel>
+            <translation><!-- 10M - 24M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1B+</masterLabel>
+            <translation><!-- 1B+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1M - 9M</masterLabel>
+            <translation><!-- 1M - 9M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>200M - 499M</masterLabel>
+            <translation><!-- 200M - 499M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25M - 49M</masterLabel>
+            <translation><!-- 25M - 49M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>500M - 1B</masterLabel>
+            <translation><!-- 500M - 1B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50M - 99M</masterLabel>
+            <translation><!-- 50M - 99M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt; 1M</masterLabel>
+            <translation><!-- &lt; 1M --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact Email --></label>
+        <name>Partner_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Partner Contact who submitted this Lead. --></help>
+        <label><!-- Partner Contact --></label>
+        <name>Partner_Contact__c</name>
+        <relationshipLabel><!-- Leads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Currently Has Active Leads --></label>
+        <name>Partner_Currently_Has_Active_Leads__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Desired Geographic Territory --></label>
+        <name>Partner_Desired_Geographic_Territory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Last Activity Date --></label>
+        <name>Partner_Last_Activity_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Other Solution Specializations --></label>
+        <name>Partner_Other_Solution_Specializations__c</name>
+        <picklistValues>
+            <masterLabel>Anaplan</masterLabel>
+            <translation><!-- Anaplan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Birst</masterLabel>
+            <translation><!-- Birst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Box</masterLabel>
+            <translation><!-- Box --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Centage</masterLabel>
+            <translation><!-- Centage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deltek Vision</masterLabel>
+            <translation><!-- Deltek Vision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXACT</masterLabel>
+            <translation><!-- EXACT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Epicor</masterLabel>
+            <translation><!-- Epicor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Host Analytics</masterLabel>
+            <translation><!-- Host Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyperion</masterLabel>
+            <translation><!-- Hyperion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cognos</masterLabel>
+            <translation><!-- IBM Cognos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infor</masterLabel>
+            <translation><!-- Infor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intacct</masterLabel>
+            <translation><!-- Intacct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSFT AX</masterLabel>
+            <translation><!-- MSFT AX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSFT CRM</masterLabel>
+            <translation><!-- MSFT CRM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSFT GP</masterLabel>
+            <translation><!-- MSFT GP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetSuite</masterLabel>
+            <translation><!-- NetSuite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle</masterLabel>
+            <translation><!-- Oracle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pentaho</masterLabel>
+            <translation><!-- Pentaho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pervasive</masterLabel>
+            <translation><!-- Pervasive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QlikView</masterLabel>
+            <translation><!-- QlikView --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuickBooks</masterLabel>
+            <translation><!-- QuickBooks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP</masterLabel>
+            <translation><!-- SAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sage</masterLabel>
+            <translation><!-- Sage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SugarCRM</masterLabel>
+            <translation><!-- SugarCRM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tableau</masterLabel>
+            <translation><!-- Tableau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workday</masterLabel>
+            <translation><!-- Workday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>proDacapo</masterLabel>
+            <translation><!-- proDacapo --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Owner --></label>
+        <name>Partner_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Primary Interest --></label>
+        <name>Partner_Program_Primary_Interest__c</name>
+        <picklistValues>
+            <masterLabel>GSI</masterLabel>
+            <translation><!-- GSI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV</masterLabel>
+            <translation><!-- ISV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral Partner</masterLabel>
+            <translation><!-- Referral Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology Partner</masterLabel>
+            <translation><!-- Technology Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Refer Link --></label>
+        <name>Partner_Refer_Link__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates who will follow up with this partner referral --></help>
+        <label><!-- Follow up --></label>
+        <name>Partner_Referal_Follow_Up__c</name>
+        <picklistValues>
+            <masterLabel>Adaptive Insights</masterLabel>
+            <translation><!-- Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Indicates who will follow up on this lead. --></help>
+        <label><!-- Referral Follow Up --></label>
+        <name>Partner_Referral_Follow_Up__c</name>
+        <picklistValues>
+            <masterLabel>Adaptive Insights</masterLabel>
+            <translation><!-- Adaptive Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Services Planned to Offer --></label>
+        <name>Partner_Services_Planned_to_Offer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Target Market Segment --></label>
+        <name>Partner_Target_Market_Segment__c</name>
+        <picklistValues>
+            <masterLabel>$50M - $250M Mid-Market</masterLabel>
+            <translation><!-- $50M - $250M Mid-Market --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;$50m Small Business</masterLabel>
+            <translation><!-- &lt;$50m Small Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&gt;$250M Enterprise</masterLabel>
+            <translation><!-- &gt;$250M Enterprise --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Tell Us Why Interested --></label>
+        <name>Partner_Tell_Us_Why_Interested__c</name>
+    </fields>
+    <fields>
+        <help><!-- Visible only by Channels and International &amp; Partner profiles --></help>
+        <label><!-- Partner Type --></label>
+        <name>Partner_Type__c</name>
+        <picklistValues>
+            <masterLabel>BPO</masterLabel>
+            <translation><!-- BPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SI</masterLabel>
+            <translation><!-- Global SI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV</masterLabel>
+            <translation><!-- ISV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral Partner</masterLabel>
+            <translation><!-- Referral Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology Partner</masterLabel>
+            <translation><!-- Technology Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Personal Email --></label>
+        <name>Personal_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Personnel Planning --></label>
+        <name>Personnel_Planning_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Phone Notes --></label>
+        <name>Phone_Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Notes if the partner is taking ownership of pursuing the lead --></help>
+        <label><!-- Pursuing --></label>
+        <name>Pursuing__c</name>
+        <picklistValues>
+            <masterLabel>Adaptive</masterLabel>
+            <translation><!-- Adaptive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RWLeadConvertApprove --></label>
+        <name>RWLeadConvertApprove__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason Not a Fit --></label>
+        <name>Reason_Not_a_Fit__c</name>
+        <picklistValues>
+            <masterLabel>Missing Feature</masterLabel>
+            <translation><!-- Missing Feature --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too Expensive</masterLabel>
+            <translation><!-- Too Expensive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too Small</masterLabel>
+            <translation><!-- Too Small --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unserved Market</masterLabel>
+            <translation><!-- Unserved Market --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Returns the lead to marketing to fix or wait until prospect re-engages. Must define why you Recycled. --></help>
+        <label><!-- Reason for Recycled --></label>
+        <name>Reason_for_Recycled__c</name>
+        <picklistValues>
+            <masterLabel>Add to Lead Nurture Program</masterLabel>
+            <translation><!-- Add to Lead Nurture Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Email</masterLabel>
+            <translation><!-- Bad Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Phone Number</masterLabel>
+            <translation><!-- Bad Phone Number --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Longer With Company</masterLabel>
+            <translation><!-- No Longer With Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Response</masterLabel>
+            <translation><!-- No Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trash</masterLabel>
+            <translation><!-- Trash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wrong Title/Person</masterLabel>
+            <translation><!-- Wrong Title/Person --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Referral Company --></label>
+        <name>Referral_Company__c</name>
+    </fields>
+    <fields>
+        <label><!-- Referral Email --></label>
+        <name>Referral_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Referral First Name --></label>
+        <name>Referral_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Referral Last Name --></label>
+        <name>Referral_Last_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Torchbearers Referral Notes (map to Additional Notes in Eloqua) --></help>
+        <label><!-- Referral Notes --></label>
+        <name>Referral_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Date --></label>
+        <name>Registration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Status --></label>
+        <name>Registration_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expired</masterLabel>
+            <translation><!-- Expired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reject Reason --></label>
+        <name>Reject_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insufficient Data</masterLabel>
+            <translation><!-- Insufficient Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Junk</masterLabel>
+            <translation><!-- Junk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Longer With Company</masterLabel>
+            <translation><!-- No Longer With Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RelaywareID --></label>
+        <name>RelaywareID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reopen --></label>
+        <name>Reopen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting --></label>
+        <name>Reporting_Dashboard_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Revenue Band --></label>
+        <name>Revenue_Band__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Planning --></label>
+        <name>Revenue_Planning_Needs__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Role__c</name>
+        <picklistValues>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Decision Maker</masterLabel>
+            <translation><!-- Decision Maker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Influencer</masterLabel>
+            <translation><!-- Influencer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Researcher</masterLabel>
+            <translation><!-- Researcher --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SDR Last Update --></label>
+        <name>SDR_Last_Update__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box for SPIFF credit --></help>
+        <label><!-- SKO-2016 --></label>
+        <name>SKO_2016_Lead__c</name>
+    </fields>
+    <fields>
+        <help><!-- New look up field for partners. --></help>
+        <label><!-- Sales Partner --></label>
+        <name>Sales_Partner__c</name>
+        <relationshipLabel><!-- Leads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales --></label>
+        <name>Sales__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score --></label>
+        <name>Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Services Preference --></label>
+        <name>Services__c</name>
+        <picklistValues>
+            <masterLabel>Adaptive</masterLabel>
+            <translation><!-- Adaptive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self</masterLabel>
+            <translation><!-- Self --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Slides --></label>
+        <name>Slides__c</name>
+    </fields>
+    <fields>
+        <help><!-- The lead was disqualified due to the solution not being a fit and you have selected &quot;other&quot; as the option, please elaborate. --></help>
+        <label><!-- Solution Not a Fit Other --></label>
+        <name>Solution_Not_a_Fit_Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Age --></label>
+        <name>Status_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Design / Implementation --></label>
+        <name>System_Design_Implementation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Frame --></label>
+        <name>Time_Frame__c</name>
+        <picklistValues>
+            <masterLabel>1 - 3 Months</masterLabel>
+            <translation><!-- 1 - 3 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13 - 24 Months</masterLabel>
+            <translation><!-- 13 - 24 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 - 6 Months</masterLabel>
+            <translation><!-- 4 - 6 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7 - 12 Months</masterLabel>
+            <translation><!-- 7 - 12 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Time Frame</masterLabel>
+            <translation><!-- No Time Frame --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Timestamp Lifecycle Customer --></label>
+        <name>Timestamp_Lifecycle_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp Lifecycle MAL --></label>
+        <name>Timestamp_Lifecycle_MAL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp Lifecycle MQL --></label>
+        <name>Timestamp_Lifecycle_MQL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp Lifecycle SAL --></label>
+        <name>Timestamp_Lifecycle_SAL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp Lifecycle SQL --></label>
+        <name>Timestamp_Lifecycle_SQL__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the standardized pick list as of 2008, this list should be the same across all our forms to be effective.  For now, this field will be populated only if someone came back and participate in offers on our website (like the test drive) - - alex --></help>
+        <label><!-- Title-STD --></label>
+        <name>Title_STD__c</name>
+        <picklistValues>
+            <masterLabel>Accountant, Director/Manager</masterLabel>
+            <translation><!-- Accountant, Director/Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analyst, Business, Systems</masterLabel>
+            <translation><!-- Analyst, Business, Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAO, VP Accountant</masterLabel>
+            <translation><!-- CAO, VP Accountant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CEO, President</masterLabel>
+            <translation><!-- CEO, President --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CFO</masterLabel>
+            <translation><!-- CFO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIO, CTO, VP IT</masterLabel>
+            <translation><!-- CIO, CTO, VP IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COO, VP Operations</masterLabel>
+            <translation><!-- COO, VP Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Controller</masterLabel>
+            <translation><!-- Controller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Director, Manager FP&amp;A</masterLabel>
+            <translation><!-- Director, Manager FP&amp;A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Director, Manager IT</masterLabel>
+            <translation><!-- Director, Manager IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Director, Manager Operations</masterLabel>
+            <translation><!-- Director, Manager Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Accountant</masterLabel>
+            <translation><!-- Other Accountant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Finance</masterLabel>
+            <translation><!-- Other Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other IT</masterLabel>
+            <translation><!-- Other IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Operations</masterLabel>
+            <translation><!-- Other Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner, Principal, Consultant</masterLabel>
+            <translation><!-- Partner, Principal, Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP of Finance</masterLabel>
+            <translation><!-- VP of Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP/Dir Sales, Sales Ops</masterLabel>
+            <translation><!-- VP/Dir Sales, Sales Ops --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Touches --></label>
+        <name>Total_Touches__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trial Created Date --></label>
+        <name>Trial_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trial Password --></label>
+        <name>Trial_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trial Request Date --></label>
+        <name>Trial_Request_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trial Type --></label>
+        <name>Trial_Type__c</name>
+        <picklistValues>
+            <masterLabel>Blank</masterLabel>
+            <translation><!-- Blank --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Sure</masterLabel>
+            <translation><!-- Not Sure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Populated</masterLabel>
+            <translation><!-- Populated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Trial Username --></label>
+        <name>Trial_Username__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Prospect</masterLabel>
+            <translation><!-- Customer Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Prospect</masterLabel>
+            <translation><!-- Partner Prospect --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unqualified Reason --></label>
+        <name>Unqualified_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Cloud CPM Competitor practice</masterLabel>
+            <translation><!-- Cloud CPM Competitor practice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate</masterLabel>
+            <translation><!-- Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Executive Support</masterLabel>
+            <translation><!-- Lack of Executive Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing Feature</masterLabel>
+            <translation><!-- Missing Feature --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No CPM background</masterLabel>
+            <translation><!-- No CPM background --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No GTM alignment</masterLabel>
+            <translation><!-- No GTM alignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Interest</masterLabel>
+            <translation><!-- No Interest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Longer With Company</masterLabel>
+            <translation><!-- No Longer With Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-responsive</masterLabel>
+            <translation><!-- Non-responsive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Ready</masterLabel>
+            <translation><!-- Not Ready --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not the right size</masterLabel>
+            <translation><!-- Not the right size --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products not complementary</masterLabel>
+            <translation><!-- Products not complementary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Not a Fit</masterLabel>
+            <translation><!-- Solution Not a Fit --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Update Contact from Lead Convert --></label>
+        <name>Update_Contact_from_Lead_Convert__c</name>
+    </fields>
+    <fields>
+        <label><!-- 1st Meeting Attended Date --></label>
+        <name>X1st_Meeting_Completed_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count of 1st Meetings Attended --></help>
+        <label><!-- 1st Meeting Count --></label>
+        <name>X1st_Meeting_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the SFDC User who gets credit for this 1st Meeting --></help>
+        <label><!-- 1st Meeting Credit --></label>
+        <name>X1st_Meeting_Credit__c</name>
+        <relationshipLabel><!-- Leads (1st Meeting Credit) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 1st Meeting Reschedules --></label>
+        <name>X1st_Meeting_Reschedules__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the date the 1st Meeting is scheduled for --></help>
+        <label><!-- 1st Meeting Scheduled Date --></label>
+        <name>X1st_Meeting_Scheduled_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- What was the source of this 1st meeting and who generated it. --></help>
+        <label><!-- 1st Meeting Source --></label>
+        <name>X1st_Meeting_Source__c</name>
+        <picklistValues>
+            <masterLabel>Field-Inbound</masterLabel>
+            <translation><!-- Field-Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field-Partner</masterLabel>
+            <translation><!-- Field-Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field-Self Generated</masterLabel>
+            <translation><!-- Field-Self Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SD-Inbound Lead</masterLabel>
+            <translation><!-- SD-Inbound Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SD-Partner</masterLabel>
+            <translation><!-- SD-Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SD-Self Generated</masterLabel>
+            <translation><!-- SD-Self Generated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- 2 Business Days from MQL --></label>
+        <name>X2_Business_Days_from_MQL__c</name>
+    </fields>
+    <fields>
+        <label><!-- 3 Business Days from MQL --></label>
+        <name>X3_Business_Days_from_MQL__c</name>
+    </fields>
+    <fields>
+        <label><!-- 5 Business Days from MQL --></label>
+        <name>X5_Business_Days_from_MQL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Sync Date --></label>
+        <name>Zendesk__Last_Sync_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Sync Status --></label>
+        <name>Zendesk__Last_Sync_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zendesk Result --></label>
+        <name>Zendesk__Result__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tags --></label>
+        <name>Zendesk__Tags__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zendesk_OutofSync --></label>
+        <name>Zendesk__Zendesk_OutofSync__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zendesk User Id --></label>
+        <name>Zendesk__Zendesk_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zendesk_oldTags --></label>
+        <name>Zendesk__Zendesk_oldTags__c</name>
+    </fields>
+    <fields>
+        <label><!-- isCreatedUpdatedFlag --></label>
+        <name>Zendesk__isCreatedUpdatedFlag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Zendesk__notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Zendesk__organization__c</name>
+        <relationshipLabel><!-- Leads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Zip Digit Count --></label>
+        <name>Zip_Digit_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- businessDays --></label>
+        <name>businessDays__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Ownership --></label>
+        <name>company_ownership__c</name>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Profit</masterLabel>
+            <translation><!-- Non-Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parent</masterLabel>
+            <translation><!-- Parent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private</masterLabel>
+            <translation><!-- Private --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subsidary - Non US Parent</masterLabel>
+            <translation><!-- Subsidary - Non US Parent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subsidary - US Parent</masterLabel>
+            <translation><!-- Subsidary - US Parent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sourced from Data.com --></label>
+        <name>ddc_prospector__Sourced_from_Data_com__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideView Created --></label>
+        <name>iv__InsideView_Created__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideView Date Last Updated --></label>
+        <name>iv__InsideView_Date_Last_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- InsideView User Last Updated --></label>
+        <name>iv__InsideView_User_Last_Updated__c</name>
+        <relationshipLabel><!-- Leads (InsideView User Last Updated) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- NeuralView: Close Score Last Updated --></label>
+        <name>qbdialer__CloseDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- NeuralView: Close Score --></label>
+        <name>qbdialer__CloseScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- NeuralView: Contactability Last Updated --></label>
+        <name>qbdialer__ContactDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- NeuralView: Hourly Contactability ID --></label>
+        <name>qbdialer__ContactScoreId__c</name>
+        <relationshipLabel><!-- Contact Score Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- NeuralView: Contactability Score --></label>
+        <name>qbdialer__ContactScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dials --></label>
+        <name>qbdialer__Dials__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Call Time --></label>
+        <name>qbdialer__LastCallTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Time --></label>
+        <name>qbdialer__ResponseTime__c</name>
+    </fields>
+    <layouts>
+        <layout>Admin Layout</layout>
+        <sections>
+            <label><!-- Campaign Details --></label>
+            <section>Campaign Details</section>
+        </sections>
+        <sections>
+            <label><!-- Eloqua Profiler --></label>
+            <section>Eloqua Profiler</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+        <sections>
+            <label><!-- Traction Validation Fields --></label>
+            <section>Traction Validation Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Trial Information --></label>
+            <section>Trial Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Customer</layout>
+        <sections>
+            <label><!-- Eloqua Profiler --></label>
+            <section>Eloqua Profiler</section>
+        </sections>
+        <sections>
+            <label><!-- Form Notes --></label>
+            <section>Form Notes</section>
+        </sections>
+        <sections>
+            <label><!-- HubSpot Intelligence --></label>
+            <section>HubSpot Intelligence</section>
+        </sections>
+        <sections>
+            <label><!-- Influitive Referral Details --></label>
+            <section>Influitive Referral Details</section>
+        </sections>
+        <sections>
+            <label><!-- Lifecycle Details --></label>
+            <section>Lifecycle Details</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Application --></label>
+            <section>Partner Application</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+        <sections>
+            <label><!-- Trial Section --></label>
+            <section>Trial Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead (Channel) Layout</layout>
+        <sections>
+            <label><!-- Eloqua Profiler --></label>
+            <section>Eloqua Profiler</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partnership Application --></label>
+            <section>Partnership Application</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead (Direct) Layout</layout>
+        <sections>
+            <label><!-- Eloqua Profiler --></label>
+            <section>Eloqua Profiler</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead (Master) Layout</layout>
+        <sections>
+            <label><!-- Eloqua Profiler --></label>
+            <section>Eloqua Profiler</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead - Partner Community</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Registrant&apos;s Company Information --></label>
+            <section>Partner Registrant&apos;s Company Information</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Registrant&apos;s Information --></label>
+            <section>Partner Registrant&apos;s Information</section>
+        </sections>
+        <sections>
+            <label><!-- UAT Validation Fields --></label>
+            <section>UAT Validation Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Eloqua Profiler --></label>
+            <section>Eloqua Profiler</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Application --></label>
+            <section>Partner Application</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MAL</layout>
+        <sections>
+            <label><!-- Form Notes --></label>
+            <section>Form Notes</section>
+        </sections>
+        <sections>
+            <label><!-- HubSpot Intelligence --></label>
+            <section>HubSpot Intelligence</section>
+        </sections>
+        <sections>
+            <label><!-- Influitive Referral Details --></label>
+            <section>Influitive Referral Details</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MAL - Marketing</layout>
+        <sections>
+            <label><!-- Form Notes --></label>
+            <section>Form Notes</section>
+        </sections>
+        <sections>
+            <label><!-- HubSpot Intelligence --></label>
+            <section>HubSpot Intelligence</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Referral Details --></label>
+            <section>Referral Details</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MQL</layout>
+        <sections>
+            <label><!-- Form Notes --></label>
+            <section>Form Notes</section>
+        </sections>
+        <sections>
+            <label><!-- HubSpot Intelligence --></label>
+            <section>HubSpot Intelligence</section>
+        </sections>
+        <sections>
+            <label><!-- Influitive Referral Details --></label>
+            <section>Influitive Referral Details</section>
+        </sections>
+        <sections>
+            <label><!-- Lifecycle Details --></label>
+            <section>Lifecycle Details</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+        <sections>
+            <label><!-- Trial Section --></label>
+            <section>Trial Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MQL - Marketing</layout>
+        <sections>
+            <label><!-- Form Notes --></label>
+            <section>Form Notes</section>
+        </sections>
+        <sections>
+            <label><!-- HubSpot Intelligence --></label>
+            <section>HubSpot Intelligence</section>
+        </sections>
+        <sections>
+            <label><!-- Lifecycle Details --></label>
+            <section>Lifecycle Details</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- Referral Details --></label>
+            <section>Referral Details</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+        <sections>
+            <label><!-- Trial Section --></label>
+            <section>Trial Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>SAL</layout>
+        <sections>
+            <label><!-- Form Notes --></label>
+            <section>Form Notes</section>
+        </sections>
+        <sections>
+            <label><!-- HubSpot Intelligence --></label>
+            <section>HubSpot Intelligence</section>
+        </sections>
+        <sections>
+            <label><!-- Influitive Referral Details --></label>
+            <section>Influitive Referral Details</section>
+        </sections>
+        <sections>
+            <label><!-- Lifecycle Details --></label>
+            <section>Lifecycle Details</section>
+        </sections>
+        <sections>
+            <label><!-- LinkedIn Member Profile --></label>
+            <section>LinkedIn Member Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Qualifying Information --></label>
+            <section>Qualifying Information</section>
+        </sections>
+        <sections>
+            <label><!-- SEM Information --></label>
+            <section>SEM Information</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Requirements --></label>
+            <section>Solution Requirements</section>
+        </sections>
+        <sections>
+            <label><!-- Trial Section --></label>
+            <section>Trial Section</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Convert --></label>
+        <name>Convert</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Customer --></label>
+        <name>Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- MAL --></label>
+        <name>MAL</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- MQL --></label>
+        <name>MQL</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Partner Prospect --></label>
+        <name>Partner_Prospect</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- SAL --></label>
+        <name>SAL</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- CRM Other is required if CRM System is &quot;Other.&quot; --></errorMessage>
+        <name>CRM_System_Other_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the status to raw. --></errorMessage>
+        <name>Cannot_Change_To_Raw</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A General Ledger is required. --></errorMessage>
+        <name>General_Ledger_Other_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Missing Feature field is required --></errorMessage>
+        <name>Missing_Feature_Field_is_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Qualified&apos; stage should not be selected from the drop down.  Please use the convert button. --></errorMessage>
+        <name>Qualified_Stage_is_not_available</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Reject reason field required --></errorMessage>
+        <name>Requires_reject_reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Solution Not a Fit Other field is required --></errorMessage>
+        <name>Solution_Not_a_Fit_Other_field_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Unqualified reason field is required --></errorMessage>
+        <name>Unqualified_reason_field_is_required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AddToEloqua --></label>
+        <name>AddToEloqua</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Area_Code_Lookup --></label>
+        <name>Area_Code_Lookup</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- AssignLead --></label>
+        <name>AssignLead</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Convert --></label>
+        <name>Convert</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Free_Trial --></label>
+        <name>Create_Free_Trial</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- AssignLead --></label>
+        <name>DecsOnD__AssignLead</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- AssignList --></label>
+        <name>DecsOnD__AssignList</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EmailsAndTasks --></label>
+        <name>DecsOnD__EmailsAndTasks</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EmailUnsubscribe --></label>
+        <name>EmailUnsubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Find_Duplicates --></label>
+        <name>Find_Duplicates</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Find_Matches --></label>
+        <name>Find_Matches</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- LVM --></label>
+        <name>LVM</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- LeadActivityOverview --></label>
+        <name>LeadActivityOverview</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Modified_Convert --></label>
+        <name>Modified_Convert</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Prospect_Profiler --></label>
+        <name>Prospect_Profiler</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Pursue --></label>
+        <name>Pursue</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Eloqua_Email --></label>
+        <name>Send_Eloqua_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Task --></label>
+        <name>Send_Task</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Unsubscribe_from_Eloqua --></label>
+        <name>Unsubscribe_from_Eloqua</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_with_DocuSign --></label>
+        <name>dsfs__Send_with_DocuSign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- financialprofile --></label>
+        <name>financialprofile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- FindLeadinInsideView --></label>
+        <name>iv__FindLeadinInsideView</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- map --></label>
+        <name>map</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- news --></label>
+        <name>news</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_List --></label>
+        <name>qbdialer__Create_List</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Launch_Click_to_Call --></label>
+        <name>qbdialer__Launch_Click_to_Call</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Lists --></label>
+        <name>qbdialer__Manage_Lists</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- test --></label>
+        <name>test</name>
+    </webLinks>
+</CustomObjectTranslation>

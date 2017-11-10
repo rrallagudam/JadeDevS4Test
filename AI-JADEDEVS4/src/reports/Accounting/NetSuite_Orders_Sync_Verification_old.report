@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Order$OrderNumber</field>
+    </columns>
+    <columns>
+        <field>Order.Opportunities__r$Name</field>
+    </columns>
+    <columns>
+        <field>Order.Opportunities__r$CloseDate</field>
+    </columns>
+    <columns>
+        <field>Order.Opportunities__r$StageName</field>
+    </columns>
+    <columns>
+        <field>Order.Opportunities__r$Type</field>
+    </columns>
+    <columns>
+        <field>Order.Opportunities__r$Is_Installment_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Order$TotalAmount</field>
+    </columns>
+    <columns>
+        <field>Order$CurrencyIsoCode</field>
+    </columns>
+    <currency>USD</currency>
+    <description>NetSuite Orders Sync Verification</description>
+    <format>Tabular</format>
+    <name>NetSuite Orders Sync Verification_old</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Orders_with_Opportunities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Order.Opportunities__r$CloseDate</dateColumn>
+        <endDate>2016-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-08-01</startDate>
+    </timeFrameFilter>
+</Report>

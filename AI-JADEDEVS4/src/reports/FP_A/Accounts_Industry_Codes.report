@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.NAICS_Code__c</field>
+    </columns>
+    <columns>
+        <field>URL</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Use this report to determine which accounts are in the SaaS or Non-Profit verticals</description>
+    <filter>
+        <booleanFilter>1 or 2</booleanFilter>
+        <criteriaItems>
+            <column>NAICS_CODE</column>
+            <operator>startsWith</operator>
+            <value>5112,541512,518,51913,541511,813,711,712,623,624</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>URL</column>
+            <operator>contains</operator>
+            <value>.org</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Accounts - Industry Codes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account.Account_18_Digit_ID__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

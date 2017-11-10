@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Reference Request Receipt Notification</name>
+    <style>none</style>
+    <subject>Reference Requested: {!Reference_Request__c.Opportunity__c}</subject>
+    <textOnly>A reference has been requested by {!Reference_Request__c.OwnerFullName}  for {!Reference_Request__c.Opportunity__c}
+
+
+The deadline is: {!Reference_Request__c.References_needed_by_what_date__c}
+
+
+Access the request here: {!Reference_Request__c.Link}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

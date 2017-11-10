@@ -1,0 +1,6 @@
+Dear Manager,
+
+The following contact has had a Contact Status of Accepted for 3 days: 
+{!Contact.Link} 
+
+It is owned by {!Contact.OwnerFullName}.

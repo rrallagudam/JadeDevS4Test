@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>PHONE</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>ANNUAL_REVENUE.CONVERT</field>
+    </columns>
+    <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <criteriaItems>
+            <column>COUNTRY</column>
+            <operator>equals</operator>
+            <value>Canada,CA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CITY</column>
+            <operator>equals</operator>
+            <value>Vancouver,Calgary,Winnipeg,Toronto,Ottawa,Montreal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_TYPE</column>
+            <operator>equals</operator>
+            <value>Consolidation Lessons Over Lunch,Consolidation Seminar,Consolidation Workshop,Roadshow,Seminar,Seminar Plus Fun Event,Thought Leadership,Workshop,Workshop - End User,Workshop Plus Fun Event</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ANNUAL_REVENUE</column>
+            <operator>greaterThan</operator>
+            <value>USD 50000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>greaterThan</operator>
+            <value>250</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>COMPANY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>DiManno - Events Leads</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLead</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+</Report>

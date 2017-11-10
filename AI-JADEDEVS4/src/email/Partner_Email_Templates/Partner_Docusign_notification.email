@@ -1,0 +1,18 @@
+<div style="width: 100%; border-top: 4px solid #9fb4ca;font-family: Arial;font-size: 12px;">
+<img src="https://c.na4.content.force.com/servlet/servlet.ImageServer?id=0156000000129Hj&oid=00D300000000HdL&lastMod=1412068099000" width="100%"/>
+<div style="padding-left: 60px; font-weight: bold; margin-top: 10px;">
+Adaptive Insights, Inc.<br/>
+3350 W. Bayshore Rd. Suite 200<br/>
+Palo Alto, CA 94303<br/>
+Office: (650) 528-7500<br/>
+Fax: (650) 528-7501<br/><br/><br/><br/>
+Dear Partner:<br/><br/>
+Welcome Aboard - we’re excited that you are partnering with us and look forward to a collaborative, mutually successful partnership.<br/><br/>
+Attached for your records is a copy of your signed agreement. <br/><br/>
+Please watch for an email from my team shortly, outlining next steps and resources that are available to support you.<br/><br/>
+Regards,<br/><br/>
+{!SignTemplate__c.UserName__c} <br/>
+{!SignTemplate__c.Title__c}<br/><br/>
+Adaptive Insights, Inc.
+</div>
+</div>

@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Data panel for account usage data including number of licenses, logins by month, and a calculated rating.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fieldSets>
+        <fullName>AccountReportColumns</fullName>
+        <description>For Account Report Table</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account_Usage_Scorecard_Name__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account_Rating__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Last_Backed_Up__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account_Name__r.OwnerId</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>AccountReportColumns</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account_CSM__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.Account_CSM__r.FirstName +  Account_Name__r.Account_CSM__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account CSM</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_License_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>( January_Licenses__c + February_Licenses__c + March_Licenses__c + April_Licenses__c + May_Licenses__c + June_Licenses__c + July_Licenses__c + August_Licenses__c + September_Licenses__c + October_Licenses__c + November_Licenses__c + December_Licenses__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account License Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Logins_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>( January_Logins__c + February_Logins__c + March_Logins__c + April_Logins__c + May_Logins__c + June_Logins__c + July_Logins__c + August_Logins__c + September_Logins__c + October_Logins__c + November_Logins__c + December_Logins__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Logins Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Usage Scorecards</relationshipLabel>
+        <relationshipName>Account_Usage_Scorecards</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Account_Rating_12_Month__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( Total_Licenses__c &gt; 0, (Total_Logins__c / Total_Licenses__c  * 100), 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Rating 12 Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND( Account_License_Total__c  &lt;&gt; 0,  Account_Logins_Total__c  &lt;&gt; 0),  Account_Logins_Total__c / Account_License_Total__c  , 0
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Account_Renewal_Date__c</fullName>
+        <description>This field is from the Account record.  This is rolled up from the opportunities level, based on the latest renewal date.</description>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.Renewal_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This field is from the Account record.  This is rolled up from the opportunities level, based on the latest renewal date.</inlineHelpText>
+        <label>Account Renewal Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Account_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Account_Name__r.Account_Status__c)</formula>
+        <label>Account Status</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Usage_Scorecard_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Usage Scorecard Name</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This address is what we have from AP IT</inlineHelpText>
+        <label>Address</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Admin_Seats__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Admin Seats from Adaptive Database</inlineHelpText>
+        <label>Admin Seats</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Analysis_Seats__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Analysis Seats from Adaptive Database</inlineHelpText>
+        <label>Analysis Seats</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>April_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>April Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>April_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>April Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>April_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (April_Logins__c  &lt;&gt; 0, April_Licenses__c&lt;&gt;0),April_Logins__c / April_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>April Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>August_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>August Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>August_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>August Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>August_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( AND (August_Logins__c  &lt;&gt;  0, August_Logins__c &lt;&gt; 0), August_Licenses__c / August_Logins__c  , 0)</formula>
+        <label>August Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Company_Created_From__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Company Created From is from AP IT</inlineHelpText>
+        <label>Company Created From</label>
+        <length>99</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>December_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>December Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>December_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>December Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>December_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (December_Logins__c &lt;&gt; 0, December_Licenses__c &lt;&gt; 0), December_Logins__c / December_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>December Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Discovery_Enabled__c</fullName>
+        <description>Discovery Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Discovery Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Discovery Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discovery_Last_Month_Hits__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Discovery enabled seats monthly hits</inlineHelpText>
+        <label>Discovery Last Month Hits</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discovery_Subscription__c</fullName>
+        <description>Discovery Subscription Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Discovery Subscription Info from Adaptive Database</inlineHelpText>
+        <label>Discovery Subscription</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_Enabled__c</fullName>
+        <description>Email Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Email Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Email Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enabled_Products__c</fullName>
+        <description>Enabled Products Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enabled Products Info from Adaptive Database</inlineHelpText>
+        <label>Enabled Products</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expire_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This date is from AP IT</inlineHelpText>
+        <label>Expire Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>February_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>February Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>February_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>February Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>February_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (February_Logins__c  &lt;&gt; 0 , February_Licenses__c &lt;&gt;0),February_Logins__c / February_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>February Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year_Start__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Fiscal Year Start</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IP_Restriction_Enabled__c</fullName>
+        <description>IP Restriction Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>IP Restriction Enabled Info from Adaptive Database</inlineHelpText>
+        <label>IP Restriction Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Instances_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Instances: Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Archive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Discovery</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Production</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sandbox</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>January_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>January Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>January_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>January Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>January_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (January_Logins__c  &lt;&gt;  0, January_Licenses__c &lt;&gt;0), January_Logins__c  /  January_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>January Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>July_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>July Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>July_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>July Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>July_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (July_Logins__c  &lt;&gt; 0,July_Licenses__c &lt;&gt; 0), July_Logins__c / July_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>July Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>June_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>June Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>June_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>June Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>June_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (June_Logins__c  &lt;&gt; 0,June_Licenses__c &lt;&gt;0), June_Logins__c / June_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>June Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Last_Backed_Up__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This date is from AP IT</inlineHelpText>
+        <label>Last Backed Up</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_Restored__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This date is from AP IT</inlineHelpText>
+        <label>Last Restored</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>March_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>March Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>March_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>March Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>March_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (March_Logins__c  &lt;&gt; 0, March_Licenses__c &lt;&gt;0),March_Logins__c / March_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>March Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>May_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>May Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>May_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>May Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>May_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (May_Logins__c  &lt;&gt; 0, May_Licenses__c&lt;&gt;0), May_Logins__c / May_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>May Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Multi_Currency__c</fullName>
+        <description>Multi-Currency Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Multi-Currency Info from Adaptive Database</inlineHelpText>
+        <label>Multi-Currency</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Multiple_Dashboards_Enabled__c</fullName>
+        <description>Multiple Dashboards Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Multiple Dashboards Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Multiple Dashboards Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_for_External_Id_Import__c</fullName>
+        <externalId>true</externalId>
+        <label>Name for External Id Import</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>November_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>November Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>November_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>November Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>November_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (November_Logins__c &lt;&gt; 0, November_Licenses__c &lt;&gt; 0), November_Logins__c / November_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>November Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Accounts__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Accounts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_DIM_Values__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of DIM Values</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Dimensions__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Dimensions</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Levels__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Levels</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Reports__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Reports</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Snapshot_Reports__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Snapshot Reports</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Static_Reports_Uploads__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Static Reports Uploads</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Versions__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This data is from AP IT</inlineHelpText>
+        <label>Number of Versions</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>October_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>October Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>October_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>October Logins</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>October_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND (October_Logins__c  &lt;&gt; 0, October_Licenses__c  &lt;&gt; 0), October_Logins__c / October_Licenses__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>October Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Old_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Old ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Old_style_Dashboards_Still_Enabled__c</fullName>
+        <description>Old-style Dashboards Still Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Old-Style Dashboards Still Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Old-style Dashboards Still Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>One_Month_Login__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND(MONTH(TODAY()) = 1, December_Logins__c = 0, December_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 2, January_Logins__c = 0, January_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 3, February_Logins__c = 0, February_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 4, March_Logins__c = 0, March_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 5, April_Logins__c = 0, April_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 6, May_Logins__c = 0, May_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 7, June_Logins__c = 0, June_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 8, July_Logins__c = 0, July_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 9, August_Logins__c = 0, August_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 10, September_Logins__c = 0, September_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 11, October_Logins__c = 0, October_Licenses__c &gt; 0),&quot;One Month&quot;,IF(AND(MONTH(TODAY()) = 12, November_Logins__c = 0, November_Licenses__c &gt; 0),&quot;One Month&quot;,&quot;Recent Usage&quot;))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>One Month Login</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Code__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent Code from AP IT</inlineHelpText>
+        <label>Parent Code</label>
+        <length>99</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Report_Only_Seats__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Report Only Seats from Adaptive Database</inlineHelpText>
+        <label>Report Only Seats</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SAAS_GL_Integration_Type__c</fullName>
+        <description>SAAS GL Integration Type Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SAAS GL Integration Type Info from Adaptive Database</inlineHelpText>
+        <label>SAAS GL Integration Type</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seats_Over_The_Limit_Actual__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is based on current Seats count versus current Logins.  Look for negative values (ex. -2 or -141) which represents customers not using all of their purchased licenses.</inlineHelpText>
+        <label>Seats Over The Limit (Actual)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seats_Over_The_Limit__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This info is from original purchased and is from AP IT</inlineHelpText>
+        <label>Seats Over The Limit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seats_Purchased__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is seats info from original purchased and is from AP IT</inlineHelpText>
+        <label>Seats Purchased</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>September_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>September Licenses</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>September_Logins__c</fullName>
+        <externalId>false</externalId>
+        <label>September Logins</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>September_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( AND (September_Logins__c &lt;&gt; 0, September_Logins__c &lt;&gt; 0), September_Licenses__c / September_Logins__c , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>September Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Standard_Seats__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Standard Seats from Adaptive Database</inlineHelpText>
+        <label>Standard Seats</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Static_Reports_Uploads_Enabled__c</fullName>
+        <description>Static Reports (Uploads) Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Static Reports (Uploads) Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Static Reports (Uploads) Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Three_Months_Logins__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND(MONTH(TODAY()) = 3, December_Logins__c = 0,  December_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 4, January_Logins__c = 0,  January_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 5, February_Logins__c = 0,  February_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 6, March_Logins__c = 0,  March_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 7, April_Logins__c = 0,  April_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 8, May_Logins__c = 0,  May_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 9, June_Logins__c = 0,  June_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 10, July_Logins__c = 0,  July_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 11, August_Logins__c = 0,  August_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 12, September_Logins__c = 0,  September_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 1, October_Logins__c = 0,  October_Licenses__c &gt; 0),&quot;Three Months&quot;,IF(AND(MONTH(TODAY()) = 2, November_Logins__c = 0,  November_Licenses__c &gt; 0),&quot;Three Months&quot;,&quot;Recent Usage&quot;))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Three Months Logins</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Configured_Seats__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Data from connector (monthly)</inlineHelpText>
+        <label>Total Configured Seats</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Configured_Seats_old__c</fullName>
+        <externalId>false</externalId>
+        <formula>View_Only_Seats__c + Report_Only_Seats__c + Analysis_Seats__c + Standard_Seats__c + Admin_Seats__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Summary of View Only, Report Only, Analysis, Standard, and Admin Seats from Adaptive Database</inlineHelpText>
+        <label>Total Configured Seats(old)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Licenses</label>
+        <summarizedField>Account_Usage_Scorecard_Item__c.Licenses__c</summarizedField>
+        <summaryFilterItems>
+            <field>Account_Usage_Scorecard_Item__c.Available_for_Rollup__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Account_Usage_Scorecard_Item__c.Account_Usage_Scorecard__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Logins__c</fullName>
+        <description>Excluding Discovery Enabled</description>
+        <externalId>false</externalId>
+        <label>Total Logins</label>
+        <summarizedField>Account_Usage_Scorecard_Item__c.Logins__c</summarizedField>
+        <summaryFilterItems>
+            <field>Account_Usage_Scorecard_Item__c.Available_for_Rollup__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Account_Usage_Scorecard_Item__c.Account_Usage_Scorecard__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Transactions_Enabled__c</fullName>
+        <description>Transactions Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Transactions Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Transactions Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Two_Months_Logins__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND(MONTH(TODAY()) = 2, December_Logins__c = 0, December_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 3, January_Logins__c = 0, January_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 4, February_Logins__c = 0, February_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 5, March_Logins__c = 0, March_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 6, April_Logins__c = 0, April_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 7, May_Logins__c = 0, May_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 8, June_Logins__c = 0, June_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 9, July_Logins__c = 0, July_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 10, August_Logins__c = 0, August_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 11, September_Logins__c = 0, September_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 12, October_Logins__c = 0, October_Licenses__c &gt; 0),&quot;Two Months&quot;,IF(AND(MONTH(TODAY()) = 1, November_Logins__c = 0, November_Licenses__c &gt; 0),&quot;Two Months&quot;,&quot;Recent Usage&quot;))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Two Months Logins</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>View_Only_Seats__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>View Only Seats from Adaptive Database</inlineHelpText>
+        <label>View Only Seats</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>true</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Workflow_Enabled__c</fullName>
+        <description>Workflow Enabled Info from Adaptive Database</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Workflow Enabled Info from Adaptive Database</inlineHelpText>
+        <label>Workflow Enabled</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Account Usage Scorecard</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Instances_Type__c</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Account_Rating__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Instance_Type</fullName>
+        <columns>NAME</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Instances_Type__c</columns>
+        <columns>Account_Rating__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Instances_Type__c</field>
+            <operation>equals</operation>
+            <value>Archive,Production,Sandbox</value>
+        </filters>
+        <label>Instance Type</label>
+    </listViews>
+    <listViews>
+        <fullName>Instance_Type_Blank</fullName>
+        <columns>Account_Name__c</columns>
+        <columns>NAME</columns>
+        <columns>Instances_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Instances_Type__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>Instance Type = Blank</label>
+    </listViews>
+    <nameField>
+        <label>Company Instance</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Account Usage Scorecards</pluralLabel>
+    <recordTypes>
+        <fullName>Ratings</fullName>
+        <active>true</active>
+        <label>Ratings</label>
+        <picklistValues>
+            <picklist>Instances_Type__c</picklist>
+            <values>
+                <fullName>Archive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discovery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Production</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sandbox</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account_Usage_Scorecard_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Seats_Over_The_Limit_Actual__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account_Rating__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Last_Backed_Up__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Last_Restored__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Instances_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Account_Name__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Instances_Type__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Account_Name__c</searchFilterFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Instances_Type__c</searchFilterFields>
+        <searchFilterFields>Account_Rating__c</searchFilterFields>
+        <searchResultsAdditionalFields>Instances_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_Rating__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

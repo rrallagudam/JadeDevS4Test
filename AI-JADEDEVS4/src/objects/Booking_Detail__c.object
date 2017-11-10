@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Created upon Opportunity Closed-Won
+- opp id
+- New logo ARR
+- Add-on ARR
+- total New ARR (New logo ARR + Add- on ARR)
+- Service
+- Scheduled Renewal ARR (Installments)
+- Renewal ARR (Scheduled Renewal ARR+ Contract ARR)
+- ACV (Total New ARR + Renewal ARR + Service)
+- New MYR
+- Renewal MYR
+- Total MYR (New MYR + Renewal MYR)
+- Total Bookings (Total New ARR + Services + Scheduled Renewal ARR + Total MYR)
+- Unbilled
+- TCV Bookings (Total Bookings + Unbilled)
+- Subscription Start
+- Subscription End</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>ACV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_New_ARR__c + Total_T_M_Booking__c + Total_Renewal_ARR__c +  Contracted_Renewal_ARR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ACV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Add_On_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( 
+  AND( 
+    Booking_Year__c = 1,
+    TEXT(Opportunity__r.Type) != &apos;New&apos;
+  ), 
+  Temp_AddOn_ARR__c,
+  IF (TEXT(Opportunity__r.Type) == &apos;Add-On&apos;,
+     Temp_AddOn_ARR__c,
+     0)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Add-On ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Annual_Months_Accrued__c</fullName>
+        <description>This isnt calculating correctly beyond the first year. I dont believe it is being used currently.</description>
+        <externalId>false</externalId>
+        <formula>IF( Is_Last_Year__c,
+   Subscription_Term_Months__c,
+   IF( Subscription_Term_Months__c &lt; 12,
+      Subscription_Term_Months__c,
+      Booking_Year__c * 12
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Annual Months Accrued</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Annualized_Subscription_Revenue__c</fullName>
+        <externalId>false</externalId>
+        <formula>Temp_Annualized_Subscription_Revenue__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The total subscription revenue amortized the term annually.</inlineHelpText>
+        <label>Annualized Subscription Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Base_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(  
+  AND(
+    Is_Renewal_Booking__c,
+    NOT(ISBLANK(Opportunity__r.Base_ARR__c))
+  ),
+  Opportunity__r.Base_ARR__c,
+  0.00
+)</formula>
+        <label>Base ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Booking_End_Date__c</fullName>
+        <description>The end date of the annualized booking detail.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The end date of the annualized booking detail.</inlineHelpText>
+        <label>Booking End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Booking_Start_Date__c</fullName>
+        <description>The start date of the annualized booking detail.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The start date of the annualized booking detail.</inlineHelpText>
+        <label>Booking Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Booking_Touch__c</fullName>
+        <externalId>false</externalId>
+        <label>Booking Touch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Booking_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>Booking Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contracted_Renewal_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+  Is_First_Year__c = True,
+  0.00,
+  (Order__r.Total_Subscription_Revenue__c / Subscription_Term_Months__c) *  
+     If ( Is_Last_Year__c = false,
+          12,
+          Subscription_Term_Months__c - ( (Booking_Year__c - 1) * 12)
+     )  
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contracted Renewal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>First_Installment__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.First_Installment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>First Installment</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Free_Months__c</fullName>
+        <description>Gets the free months from the primary quote on the related opportunity</description>
+        <externalId>false</externalId>
+        <formula>Value(Text(Opportunity__r.SBQQ__PrimaryQuote__r.Free_Months__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Free Months on the related quote</inlineHelpText>
+        <label>Free Months</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Add_On_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( TEXT(Opportunity__r.Type) = &apos;Add-On&apos;, 
+True, 
+False 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Add-On Booking?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_First_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Booking_Year__c == 1, True, False)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is First Year?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Installment__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Is_Installment_Opportunity__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Installment?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Last_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+  AND(
+    Is_First_Year__c = False,
+    Booking_Year__c == Order__r.Total_Booking_Details__c
+  ),
+  True,
+  False
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Last Year?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_New_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( TEXT(Opportunity__r.Type) = &apos;New&apos;,
+  True,
+  False
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is New Booking?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Partner_Fee__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Partner_Fee__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Partner Fee?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Renewal_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( TEXT(Opportunity__r.Type) = &apos;Renewal&apos;, 
+True, 
+False 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Renewal Booking?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MYR_Term__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Is_First_Year__c ,
+  IF( Renewal_Term__c  &gt;12,
+      Renewal_Term__c - 12,
+      0),
+  0
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MYR Term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+  AND(  
+    Is_New_Booking__c,
+    Is_First_Year__c 
+  ),
+  Annualized_Subscription_Revenue__c,
+  0
+)</formula>
+        <label>New Logo ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>New_MYR__c</fullName>
+        <description>This is the New (which comes from Add-on and New logo) MYR</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(Is_First_Year__c,!Is_Installment__c),
+  IF(Is_Renewal_Booking__c,
+    (Add_On_ARR__c/12) * MYR_Term__c,
+    IF(Total_MYR__c != 0,
+      Total_MYR__c,
+      0
+    )
+  ),
+  0
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This is the New (which comes from Add-on and New logo) MYR</inlineHelpText>
+        <label>New MYR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Close_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.CloseDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Close Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Closed Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Booking Details</relationshipLabel>
+        <relationshipName>Booking_Details</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Order_Total_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Order__r.TotalAmount</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Order Total Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <referenceTo>Order</referenceTo>
+        <relationshipLabel>Booking Details</relationshipLabel>
+        <relationshipName>Booking_Details</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>PB_Renewal_ARR__c</fullName>
+        <description>Testing PB to update Renewal ARR</description>
+        <externalId>false</externalId>
+        <label>PB Renewal ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prorated_Annual_Subscription_Revenue__c</fullName>
+        <description>I dont believe this is used and can be removed.</description>
+        <externalId>false</externalId>
+        <formula>(Order__r.Total_Subscription_Revenue__c / Renewal_Term__c ) * 12</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prorated Annual Subscription Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>The primary quote from which this booking detail was generated.</inlineHelpText>
+        <label>Quote</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>Booking Details</relationshipLabel>
+        <relationshipName>Booking_Details</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Temp_Renewal_ARR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Renewal ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_MYR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND(Is_First_Year__c, Is_Renewal_Booking__c, !Is_Installment__c),
+  IF(Total_MYR__c &gt; 0,
+    Total_MYR__c - New_MYR__c ,
+    0
+  ),
+  0
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Renewal MYR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Term__c</fullName>
+        <description>Term the renewal opportunity will get without any free months</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Renewal_Term__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Renewal Term length minus free months</inlineHelpText>
+        <label>Renewal Term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scheduled_Renewal_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+  AND(
+    Is_Renewal_Booking__c,
+    Is_First_Year__c
+  ),
+  Renewal_ARR__c,
+  0.00
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scheduled Renewal ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Service_Bookings__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( Is_First_Year__c,
+   Order__r.Total_Non_T_M_Booking__c,
+   0.00
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Bookings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>End date of the activated Order minus any free months.</inlineHelpText>
+        <label>Subscription End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Monthly_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_Subscription_Booking__c /  (Order__r.Term_Months__c -  Free_Months__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Subscription Monthly Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Start date of the activated Order.</inlineHelpText>
+        <label>Subscription Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Term_Months__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Total subscription term length including free months.</inlineHelpText>
+        <label>Subscription Term Months</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TCV_Bookings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_Bookings__c +  Unbilled__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TCV Bookings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Target_Renewal_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Target_Renewal_ARR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Target Renewal ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Temp_AddOn_ARR__c</fullName>
+        <description>This is only to hold values for formulas</description>
+        <externalId>false</externalId>
+        <label>Temp Add-on ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Temp_Annualized_Subscription_Revenue__c</fullName>
+        <externalId>false</externalId>
+        <label>Temp Annualized Subscription Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Temp_Fields_Updated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>used to track when the temp fields are updated.</description>
+        <externalId>false</externalId>
+        <label>Temp Fields Updated</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Temp_Renewal_ARR__c</fullName>
+        <description>This is updated by a workflow</description>
+        <externalId>false</externalId>
+        <label>Temp Renewal ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Temp_Total_Bookings__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Used to store the calculated Total Bookings driven by a workflow</inlineHelpText>
+        <label>Temp Total Bookings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Bookings__c</fullName>
+        <description>New Logo ARR + Service Bookings + MYR + Add-on ARR + Renewal ARR</description>
+        <externalId>false</externalId>
+        <formula>Temp_Total_Bookings__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>New Logo ARR + Service Bookings + MYR + Add-on ARR + Renewal ARR</inlineHelpText>
+        <label>Total Bookings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_MYR__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Opportunity__r.Total_Subscription_Revenue__c / Renewal_Term__c ) * MYR_Term__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total MYR = Renewal MYR + New MYR</inlineHelpText>
+        <label>Total MYR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_New_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(  
+  Is_First_Year__c, 
+  New_ARR__c + Add_On_ARR__c,
+  0.00
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total New ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_New_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_New_ARR__c + New_MYR__c + Service_Bookings__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total New ARR + New MYR + Service Bookings</inlineHelpText>
+        <label>Total New Booking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Non_T_M_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( Is_First_Year__c, 
+    Order__r.Total_Non_T_M_Booking__c,
+    0.00
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Non-T&amp;M Booking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Renewal_ARR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scheduled_Renewal_ARR__c + Contracted_Renewal_ARR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Renewal ARR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Renewal_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>Renewal_ARR__c +  Renewal_MYR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Renewal Booking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Service_Revenue__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Is_First_Year__c,
+ Order__r.Total_Service_Revenue__c,
+0.00)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Commissionable Service Bookings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Subscription_Booking__c</fullName>
+        <description>Total Subscription Booking amount on the Order</description>
+        <externalId>false</externalId>
+        <formula>Order__r.Total_Subscription_Revenue__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Subscription Booking amount on the Order</inlineHelpText>
+        <label>Total Subscription Booking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_T_M_Booking__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( Is_First_Year__c, 
+    Order__r.Total_T_M_Booking__c,
+    0.00
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total T&amp;M Booking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Opportunity__r.Type)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Order Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unbilled__c</fullName>
+        <description>This is filled in with the installment amount, not including the first installment</description>
+        <externalId>false</externalId>
+        <formula>if(AND(Is_First_Year__c, Is_Installment__c),
+   (Annualized_Subscription_Revenue__c/12) *  MYR_Term__c,
+  0
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This is filled in with the installment amount, not including the first installment</inlineHelpText>
+        <label>Unbilled</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Unique_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <inlineHelpText>Unique external ID to prevent dupes.</inlineHelpText>
+        <label>Unique Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Booking Detail</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Booking_Start_Date__c</columns>
+        <columns>Booking_End_Date__c</columns>
+        <columns>Subscription_Term_Months__c</columns>
+        <columns>Is_Add_On_Booking__c</columns>
+        <columns>Is_New_Booking__c</columns>
+        <columns>Is_Renewal_Booking__c</columns>
+        <columns>Total_Renewal_Booking__c</columns>
+        <columns>Total_New_Booking__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Booking-{000000}</displayFormat>
+        <label>Booking Detail ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Booking Details</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

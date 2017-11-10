@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Your Article has been Published</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>8B. Knowledge Article Approved</name>
+    <style>none</style>
+    <subject>Your Article has been Published</subject>
+    <textOnly>Hi {!Approval_Requesting_User.FirstName},
+
+Your knowledge article has been published!.
+
+Title: {!Knowledge__kav.Title}
+Summary: {!Knowledge__kav.Summary}
+Link to Article: {!Knowledge__kav.Link}
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

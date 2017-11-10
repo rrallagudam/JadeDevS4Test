@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sends an email to Accounting when the status on the Account status is changed to Cancelled</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Account Cancellation Notification</name>
+    <style>none</style>
+    <subject>Customer Cancellation Notification</subject>
+    <textOnly>Account Status: {!Account.Account_Status__c}
+Account Name: {!Account.Name}
+Account Owner: {!Account.OwnerFullName}
+CSM: {!Account.Account_CSM__c}
+Length of Time as a Customer: {!Account.Length_of_time_as_a_Customer__c}  (in Years/Months)
+Link to the account:  {!Account.Link}
+
+Primary Cancellation Reason: {!Account.Primary_Reason_for_Cancel__c}
+Specific Cancellation Reason: {!Account.Specific_Reasons_for_Cancel__c}
+
+Account Implementation Status: {!Account.Cancels_Implementation_Status__c}
+Initial Services Purchased: {!Account.Initial_Purchase_Service_Type__c}
+Steps taken: {!Account.Steps_Taken_to_Save_Account__c}
+Employee Size Range: {!Account.Employee_Size_Range__c}
+Industry: {!Account.Industry}
+City: {!Account.BillingCity}
+State: {!Account.BillingState}
+Country: {!Account.BillingCountry}
+Renewal Date: {!Account.Renewal_Date__c}
+Website: {!Account.Website}
+
+Opportunities Closed Won #: {!Account.Closed_Won_Count__c}
+ARR:{!Account.PriorARR_NewCustomerEmail__c}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

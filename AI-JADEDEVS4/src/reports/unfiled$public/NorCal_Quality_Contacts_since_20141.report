@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>PHONE1</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>415,(415,+1.415,+1 415,1.415,341,(341,+1.341,+1 341,1.341,369,(369,+1.369,+1 369,1.369,510,(510,+1.510,+1 510,1.510,530,(530,+1.530,+1 530,1.530,707,(707,+1.707,+1 707,1.707</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>916,(916,+1.916,+1 916,1.916,925,(925,+1.925,+1 925,1.925,559,(559,+1.559,+1 559,1.559,669,(669,+1.669,+1 669,1.669,831,(831,+1.831,+1 831,1.831,209,(209,+1.209,+1 209,1.209</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SALES</column>
+            <operator>greaterOrEqual</operator>
+            <value>USD 100000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <operator>notContain</operator>
+            <value>.edu</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_SOURCE</column>
+            <operator>equals</operator>
+            <value>Customer Referral,Employee Customer Referral,Former Customer,Inbound Call,Roadshow,Seminar,Webinar - House,Website</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_CREATED_DATE</column>
+            <operator>greaterThan</operator>
+            <value>1/1/2014 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_TYPE</column>
+            <operator>equals</operator>
+            <value>Customer Prospect</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>NorCal Quality Contacts since 2014</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignContact</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+</Report>

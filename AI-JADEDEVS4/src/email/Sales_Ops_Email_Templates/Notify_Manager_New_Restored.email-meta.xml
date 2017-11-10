@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify Manager New/Restored</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Notify Manager New/Restored</name>
+    <style>none</style>
+    <subject>Contact Must Be Updated</subject>
+    <type>text</type>
+</EmailTemplate>

@@ -1,0 +1,11 @@
+<apex:component controller="trac_OpportunityProductController" access="global">
+    <apex:attribute name="oppID" description="The opportunity ID associated with the new customer in the Email template." assignTo="{!opportunityId}" type="Id" required="false"/>
+
+    <apex:repeat var="relatedProduct" value="{! SortedProductNameList}">
+        <p class="standardP" align="left">
+            <strong class="strongStyle">
+                {! relatedProduct.Name}
+            </strong>
+        </p>
+    </apex:repeat>
+</apex:component>

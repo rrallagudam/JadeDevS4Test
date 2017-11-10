@@ -1,0 +1,14 @@
+<p style="font-family:Tahoma;"> Your request for a customer reference for {!Reference_Request__c.Opportunity__c} has been received and is being processed. 
+<p>
+
+<p style="font-family:Tahoma;">If you need to update any of the requirements.
+
+<p style="font-family:Tahoma;">please click {!Reference_Request__c.Link} <p>
+
+<p>
+<p style="font-family:Tahoma;"> We will be in touch with you if there are any questions.
+
+<p>
+
+<p style="font-family:Tahoma;"> Thanks,<p>
+<p style="font-family:Tahoma;">Reference Team <p>

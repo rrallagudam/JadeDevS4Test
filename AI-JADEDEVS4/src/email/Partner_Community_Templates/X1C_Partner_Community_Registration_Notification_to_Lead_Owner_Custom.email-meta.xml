@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Content for the email message that goes to a lead owner, when a new partner registration comes from the community</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>1C. Partner Community Registration Notification to Lead Owner - Custom</name>
+    <style>none</style>
+    <subject>Lead: A New Partner Prospect Lead has been Assigned to you.</subject>
+    <textOnly>Hi {!Lead.OwnerFirstName},
+
+A new Partner prospect has registered through the Partner Community and a lead has been assigned to you. Please qualify the prospect and convert to account, contact and create opportunity if applicable.
+
+Lead: {!Lead.Name} {!Lead.Company}
+
+To view the details of this lead in salesforce.com click on the following link: {!Lead.Link}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

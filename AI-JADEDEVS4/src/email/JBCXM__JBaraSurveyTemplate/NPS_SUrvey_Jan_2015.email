@@ -1,0 +1,17 @@
+Dear {!JBCXM__SurveyParticipant__c.First__c}:
+
+Have a minute? Please help us improve by completing a quick, three-question survey to tell us whether you would recommend Adaptive to your colleagues.
+
+Please click the link to take the survey. (If you have problems loading this survey, you may also copy the entire link into your web browser.) 
+{!JBCXM__SurveyParticipant__c.JBCXM__SurveyURL__c}?surveyId={!JBCXM__SurveyParticipant__c.JBCXM__SurveyId__c}&participantId={!JBCXM__SurveyParticipant__c.JBCXM__Token__c}
+
+Thank you for helping us improve.
+
+Best Regards,
+
+Adaptive Insights Customer Success Team
+
+
+
+The Global Leader in Cloud BI & CPM
+Online Demo | Local Events | Customer Video | Twitter  | LinkedIn  | Facebook | Blog

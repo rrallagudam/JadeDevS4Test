@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>A lead has been converted and updated an account. Notify the owner.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Notify Account Owner of New Lead</name>
+    <style>none</style>
+    <subject>A New Lead Has Been Created</subject>
+    <type>text</type>
+</EmailTemplate>

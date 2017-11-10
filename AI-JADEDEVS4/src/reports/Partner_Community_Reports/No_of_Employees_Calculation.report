@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>LEAD_ID</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>Lead.Consulting__c</field>
+    </columns>
+    <columns>
+        <field>Lead.System_Design_Implementation__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Sales__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Business_Development__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Marketing__c</field>
+    </columns>
+    <columns>
+        <field>Lead.No_of_Employees_Not_Accurate__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Lead.Partner_Prospect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Lead_Source_Most_Recent__c</column>
+            <operator>equals</operator>
+            <value>Partner Community</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_SOURCE</column>
+            <operator>equals</operator>
+            <value>Partner Community</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Status__c</column>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Type__c</column>
+            <operator>equals</operator>
+            <value>Partner Prospect</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>No. of Employees Calculation</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

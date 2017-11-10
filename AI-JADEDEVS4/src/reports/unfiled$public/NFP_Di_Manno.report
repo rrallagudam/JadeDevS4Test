@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>((1 AND (2 OR (3 AND 4)) AND (5 OR 6)) AND 7) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>ON,QC,PE,NB,NL,AB,BC,SK,MB,NT,NU,YT,NS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>greaterThan</operator>
+            <value>250</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPLOYEES</column>
+            <operator>equals</operator>
+            <value>,1,2,3,4,5,6,7,8,9</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SALES</column>
+            <operator>greaterThan</operator>
+            <value>USD 50000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Vertical_Market__c</column>
+            <operator>equals</operator>
+            <value>NFP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>NAICS_CODE</column>
+            <operator>startsWith</operator>
+            <value>813,711,712,623,624</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>equals</operator>
+            <value>Customer Prospect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_COUNTRY</column>
+            <operator>equals</operator>
+            <value>CA,Canada</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>NFP - Di Manno</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

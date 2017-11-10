@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Adaptive NPS Survey Reminder</name>
+    <style>none</style>
+    <subject>Reminder: Please participate in our NPS survey</subject>
+    <textOnly>Dear {!JBCXM__SurveyParticipant__c.JBCXM__FirstName__c}:
+
+A friendly reminder – we would greatly appreciate it if you could spare 3 minutes of your time and help us improve! Our survey will close on Friday, October 7th, so please answer before then if possible.
+
+You are a valued Adaptive Insights customer, and we would greatly appreciate your candid feedback on how we&apos;re doing.  Your input will be instrumental in helping us improve Adaptive Insights and your overall customer experience.
+
+Please click the link to take the survey.  (If you have problems loading this survey, you may also copy the entire link into your web browser.)
+{!JBCXM__SurveyParticipant__c.JBCXM__SurveyURL__c}?surveyId={!JBCXM__SurveyParticipant__c.JBCXM__SurveyId__c}∂icipantId={!JBCXM__SurveyParticipant__c.JBCXM__Token__c}
+
+Thank you for helping us improve.
+
+Best Regards,
+
+Adaptive Insights Customer Success Team
+
+3,000+ Customers in 85 countries worldwide
+www.adaptiveinsights.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

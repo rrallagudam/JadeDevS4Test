@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Registration Approved - lead Registration Approved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Lead Registration Approved - Custom</name>
+    <style>none</style>
+    <subject>Lead Registration Approved</subject>
+    <textOnly>Hi {!Lead.CreatedBy}, 
+
+Good news! Your registration has been accepted. 
+
+Partner Contact Name: {!Lead.Partner_Contact__c} 
+Phone: {!Lead.Phone} 
+Follow up: {!Lead.Partner_Referal_Follow_Up__c}
+
+Prospect lead Information 
+Lead Name: {!Lead.Name}
+Title: {!Lead.Title}
+Phone: {!Lead.Phone} 
+Email: {!Lead.Email} 
+Company: {!Lead.Company} 
+Annual Revenue: {!Lead.AnnualRevenue} 
+Industry: {!Lead.Adaptive_Industry__c}
+Website: {!Lead.Website} 
+State/Province: {!Lead.State} 
+Country: {!Lead.Country} 
+
+Once you’ve met with the prospect and identified an opportunity, please formally register your opportunity. 
+
+If need any assistance, please connect with us at partners@adaptiveinsights.com 
+
+The Adaptive Insights Channel Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

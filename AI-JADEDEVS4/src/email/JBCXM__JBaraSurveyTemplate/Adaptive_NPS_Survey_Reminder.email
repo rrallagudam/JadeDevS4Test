@@ -1,0 +1,91 @@
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px;">Dear {!JBCXM__SurveyParticipant__c.JBCXM__FirstName__c}:</p>
+
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px;">A friendly reminder – we would greatly appreciate it if you could spare 3 minutes of your time and help us improve! Our survey will close on Monday, November 28th, so please answer before then if possible.</p>
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px;">
+You are a valued Adaptive Insights customer, and we would greatly appreciate your candid feedback on how we're doing.  Your input will be instrumental in helping us improve Adaptive Insights and your overall customer experience.</p>
+
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px;">Please click the link to take the survey.  (If you have problems loading this survey, you may also copy the entire link into your web browser.) <br>
+{!JBCXM__SurveyParticipant__c.JBCXM__SurveyURL__c}?surveyId={!JBCXM__SurveyParticipant__c.JBCXM__SurveyId__c}&participantId={!JBCXM__SurveyParticipant__c.JBCXM__Token__c}</p>
+
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px;">Thank you for helping us improve.</p>
+
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px;">Best Regards,</p>
+
+<p style="font-family: Arial, Verdana, san-serif; font-size: 12px; line-height: 18px; font-weight: bold;">Adaptive Insights Customer Success Team</p>
+<table cellpadding="0" cellspacing="0" border="0"  style="font-size:13px; font-family: Arial; line-height: 130%;" width="100%">
+				
+				<tr>
+					<td>
+						<a style="text-decoration:none !important;" href="http://adaptiveinsights?utm_source=signature&utm_medium=email&utm_campaign=email-signature">
+							<img src="http://resources.adaptiveinsights.com/img/email-signature-app-images//adaptive-insights-email-sig-white.png" width="" height="" alt="Adaptive Insights"  border="0"></a>
+					</td>
+				</tr>
+				<!-- Spacing -->
+				<tr>
+			     <td height="10" style="line-height: 10px; font-size: 10px;">&nbsp;</td>
+		        </tr>
+	            <!-- /Spacing -->
+	            <tr>
+		            <td style="font-family: Helvetica,Arial,sans-serif; font-size: 13px; mso-line-height-rule:exactly; line-height: 130%; color: rgb(84, 86, 91);">
+			            <span style="display: inline;">3,000+ Customers in 85 countries worldwide</span>
+					</td>
+				</tr>
+				<!-- Spacing -->
+				<tr>
+			     <td height="10" style="line-height: 10px; font-size: 10px;">&nbsp;</td>
+		        </tr>
+	            <!-- /Spacing -->
+				<tr>
+					<td style="font-family: Helvetica,Arial,sans-serif; font-size: 13px; mso-line-height-rule:exactly; line-height: 130%; color: rgb(84, 86, 91);">
+						<span style="display: inline;"></span>
+						<span style="display: inline;"></span>
+						<span style="display: inline;"><a href="http://www.adaptiveinsights.com?utm_source=signature&utm_medium=email&utm_campaign=email-signature" style="color: rgb(230, 80, 0); text-decoration: none !important; display: inline;">www.adaptiveinsights.com</a></span>
+					</td>
+				</tr>
+				<!-- Spacing -->
+				<tr>
+			     <td height="10" style="line-height: 10px; font-size: 10px;">&nbsp;</td>
+		        </tr>
+	            <!-- /Spacing -->
+	            <tr>
+		            <td>
+			            <table cellpadding="0" cellspacing="0" border="0">
+				            <tbody>
+					            <tr>
+								    <td>
+										<a style="text-decoration: none; display: inline;" href="https://www.linkedin.com/company/29762"><img style="border:none; display:inline;" data-filename="linkedin.png" src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/linkedin.png" alt="Linkedin" height="24" width="24"></a>
+									</td>
+									<td>
+								        <img src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/spacer.gif" height="24" width="4">
+								    </td>
+								    <td>
+									    <a style="text-decoration: none; display: inline;" href="https://twitter.com/AdaptiveInsight"><img style="border:none; display:inline;" data-filename="twitter.png" src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/twitter.png" alt="Twitter" height="24" width="24"></a>
+									</td>
+									<td>
+										<img src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/spacer.gif" height="24" width="4">
+									</td>
+																		<td>
+										<a style="text-decoration: none; display: inline;" href="https://plus.google.com/u/0/+AdaptiveplanningCloudSoftware/posts"><img style="border:none; display:inline;" data-filename="linkedin.png" src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/google-plus.png" alt="Linkedin" height="24" width="24"></a>
+									</td>
+									<td>
+								        <img src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/spacer.gif" height="24" width="4">
+								    </td>
+									<td>
+							            <a style="text-decoration: none; display: inline;" href="https://www.facebook.com/AdaptiveInsights"><img style="border:none; display:inline;" data-filename="facebook.png" src="http://www.adaptiveinsights.com/sites/default/files/email_sig_image/facebook.png" alt="Facebook" height="24" width="24"></a>
+							        </td>
+								</tr>
+							</tbody>
+						</table>
+		            </td>
+	            </tr>
+	            <!-- Spacing -->
+				<tr>
+			     <td height="10" style="line-height: 10px; font-size: 10px;">&nbsp;</td>
+		        </tr>
+	            <!-- /Spacing -->
+	            <tr>
+		            <td style="font-family: Helvetica,Arial,sans-serif; font-size: 13px; mso-line-height-rule:exactly; line-height: 130%; color: rgb(84, 86, 91);">
+			            <span style="display: inline;"></span>
+					</td>
+				</tr>
+		</table>

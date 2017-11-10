@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>NAICS_CODE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>SALES.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 AND (2 OR 3) AND 4 AND (5 OR 6)) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>NAICS_CODE</column>
+            <operator>startsWith</operator>
+            <value>5415,3346,5171,5112</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <operator>equals</operator>
+            <value>Jameel Ziadeh,Keith Barreras,Greg Stevens,Edward Plantaric</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <operator>equals</operator>
+            <value>Edward Plantaric</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SALES</column>
+            <operator>lessThan</operator>
+            <value>USD 100000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>408,(408,+1.408,+1 408,1.408,650,(650,+1.650,+1 650,1.650,415,(415,+1.415,+1 415,1.415,341,(341,+1.341,+1 341,1.341,369,(369,+1.369,+1 369,1.369,510,(510,+1.510,+1 510,1.510,530,(530,+1.530,+1 530,1.530,707,(707,+1.707,+1 707,1.707,916,(916,+1.916,+1 916</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>925,(925,+1.925,+1 925,1.925,559,(559,+1.559,+1 559,1.559,669,(669,+1.669,+1 669,1.669,831,(831,+1.831,+1 831,1.831,209,(209,+1.209,+1 209,1.209</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <operator>notEqual</operator>
+            <value>Customer</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>USERS.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EP Addressable Market</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

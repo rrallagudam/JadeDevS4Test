@@ -1,0 +1,8 @@
+<apex:component controller="CurrencyFormatController" access="global">
+	<apex:attribute name="oppId" description="Put opportunity Id" assignTo="{!opportunityId}" type="String" required="false"/>
+	<apex:attribute name="fName" description="Put currency field name" assignTo="{!fieldName}" type="String" required="false"/>
+	 
+	<apex:outputText value="{0, number, $###,###}">
+		<apex:param value="{! formattedValue }" />
+	</apex:outputText>
+</apex:component>

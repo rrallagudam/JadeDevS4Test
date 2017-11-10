@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>For Taser</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Class_Name__c</fullName>
+        <description>Class Name</description>
+        <externalId>false</externalId>
+        <label>Class Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Class_Status__c</fullName>
+        <description>Class Status</description>
+        <externalId>false</externalId>
+        <label>Class Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Name__c</fullName>
+        <description>Course Name</description>
+        <externalId>false</externalId>
+        <label>Course Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <description>End Date</description>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Instructor_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Instructor Name</inlineHelpText>
+        <label>Instructor Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NE_Course__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NE Course</description>
+        <externalId>false</externalId>
+        <label>NE Course</label>
+        <referenceTo>NE_Course__c</referenceTo>
+        <relationshipLabel>NE Classes</relationshipLabel>
+        <relationshipName>NE_Classes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <description>Start Date</description>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Venue_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Venue Address</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Venue_Name__c</fullName>
+        <description>Venue Name</description>
+        <externalId>false</externalId>
+        <label>Venue Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>NE Class</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Class ID</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>NE Classes</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Class_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>NE_Course__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Class_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Venue_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Instructor_Name__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Class_Name__c</searchFilterFields>
+        <searchFilterFields>NE_Course__c</searchFilterFields>
+        <searchFilterFields>Course_Name__c</searchFilterFields>
+        <searchFilterFields>Class_Status__c</searchFilterFields>
+        <searchFilterFields>Venue_Name__c</searchFilterFields>
+        <searchFilterFields>Instructor_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>Class_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>NE_Course__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Class_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Venue_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Instructor_Name__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

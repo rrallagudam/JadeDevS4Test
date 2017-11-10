@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Type</field>
+    </columns>
+    <columns>
+        <field>Opportunity$StageName</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Total_New_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Total_Service_Revenue__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Total_MYR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$ACV__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>Sent to Orders,Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Type</column>
+            <operator>equals</operator>
+            <value>New,Add-On</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Channel_Classification__c</column>
+            <operator>notEqual</operator>
+            <value>OEM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <operator>equals</operator>
+            <value>Jeremy Church,Lee Nelson,Peter Dixon,Thomas Franklin</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>UKI Closed Won by Rep</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Booking_Details__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

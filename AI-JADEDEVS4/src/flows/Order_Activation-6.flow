@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Sets Opportunity to Close Won, Creates Contract, Provisions Renewal Oppty, Booking Detail, and Installment Records</description>
+    <label>Order Activation</label>
+    <processType>Workflow</processType>
+</Flow>

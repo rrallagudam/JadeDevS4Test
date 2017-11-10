@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>false</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>false</enableSharing>
+    <enableStreamingApi>false</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assign_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Default Assign To</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Queue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>NAICS_Code__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Mapped to Account.NAICS_Code from Data.com</inlineHelpText>
+        <label>NAICS Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Old ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Owner Role</label>
+        <picklist>
+            <picklistValues>
+                <fullName>SDR</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account Manager</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CSM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PDR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Queue_ID__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents the assignment queue (requires cut-n-paste of ID. Lookup reference to Queues not supported).</inlineHelpText>
+        <label>Default Queue ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Revenue_Band__c</fullName>
+        <description>Refactor to multiple band examples 0-50M,50-100M,100-200M</description>
+        <externalId>false</externalId>
+        <label>Revenue Band</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Below $100M</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Above $100M</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Territory_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK( Queue_ID__c ), &quot;User&quot;, &quot;Queue&quot; )</formula>
+        <label>Territory Owner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Lead</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CSM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>The default User who owns assignments to this territory.</inlineHelpText>
+        <label>Default Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Territories</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Territory</label>
+    <listViews>
+        <fullName>AccountManager_View</fullName>
+        <columns>NAME</columns>
+        <columns>Assign_To__c</columns>
+        <columns>User__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Owner_Role__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Owner_Role__c</field>
+            <operation>equals</operation>
+            <value>Account Manager</value>
+        </filters>
+        <filters>
+            <field>User__c</field>
+            <operation>notEqual</operation>
+            <value>Lee Louis-Marie</value>
+        </filters>
+        <label>Account Manager</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>User__c</columns>
+        <columns>NAICS_Code__c</columns>
+        <columns>Owner_Role__c</columns>
+        <columns>Revenue_Band__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Territory Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Territories</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>User_or_Queue_Route_Only</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+  NOT(ISBLANK(Queue_ID__c)),  
+  NOT(ISBLANK(User__c))
+)</errorConditionFormula>
+        <errorMessage>Territory may route to only a User or Queue. Not both. Please delete the User or Queue assignment.</errorMessage>
+    </validationRules>
+</CustomObject>

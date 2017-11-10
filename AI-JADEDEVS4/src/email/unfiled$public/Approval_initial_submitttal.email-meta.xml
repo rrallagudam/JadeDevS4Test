@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Used during the first initial submit for approval</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Adaptive_Insight</letterhead>
+    <name>Approval:  initial submitttal</name>
+    <style>freeForm</style>
+    <subject>Please reivew and approve quote for {!Opportunity.Account}</subject>
+    <textOnly>Please review and approve
+
+Link to Quote:  {!SBQQ__WebQuote__c.Link}
+
+
+
+QUOTE SUMMARY
+
+
+
+OPPORTUNITY NAME: {!SBQQ__WebQuote__c.SBQQ__Opportunity__c}
+
+
+
+QUOTE EXPIRATION DATE: {!SBQQ__WebQuote__c.SBQQ__ExpirationDate__c}
+
+
+
+ARR: {!SBQQ__WebQuote__c.SBQQ__AverageCustomerDiscount__c}
+
+
+
+TCV: {!SBQQ__WebQuote__c.SBQQ__NetAmount__c}
+
+
+
+DISC:{!SBQQ__WebQuote__c.SBQQ__TotalCustomerDiscountAmount__c}</textOnly>
+    <type>html</type>
+</EmailTemplate>

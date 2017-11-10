@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Web Tab for Discovery project - Peter Long</description>
+    <frameHeight>1000</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>Discovery</label>
+    <mobileReady>true</mobileReady>
+    <motif>Custom6: Triangle</motif>
+    <url>https://live1a.adaptiveplanning.com/Tenants/ADAPTIVE_BP_DEV/Dashboards/Discrete/DiscreteDashboards.aspx?Group=NewPerspective_142674_</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

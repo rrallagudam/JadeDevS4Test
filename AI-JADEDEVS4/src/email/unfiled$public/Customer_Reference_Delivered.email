@@ -1,0 +1,17 @@
+<p style="font-family:Tahoma;">A customer reference has been provided for your Opportunity {!Reference_Request__c.Opportunity__c} 
+ <p>
+ <p style="font-family:Tahoma;">Please click on the link below to access the customer contact information. Please do not contact the customer directly until you have been in touch with the account’s Customer Success Manager.
+ <p>
+{!Reference_Request__c.Link}
+ <p>
+ <p style="font-family:Tahoma;">In preparation for your reference conversation, please provide the customer contact with:
+                            <li>
+                                <p style="font-family:Tahoma;">Who he/she will be speaking with (name and title).</p>
+                            </li>
+                            <li>
+                                <p style="font-family:Tahoma;">An overview of the prospect’s challenges and what they want to do</p>
+                            </li>
+                            <li>
+                                <p style="font-family:Tahoma;"> The top 3 things the prospect needs to get out of the call.</p>
+                            </li>
+                        </ul>

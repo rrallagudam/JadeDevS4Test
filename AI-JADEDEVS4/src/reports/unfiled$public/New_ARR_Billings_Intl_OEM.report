@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_46505055</developerName>
+        <masterLabel>Closed Won vs Sent to Orders</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$StageName</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <value>Closed Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sent to Orders</sourceValue>
+            </sourceValues>
+            <value>Sent to Orders</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_38543192</developerName>
+        <masterLabel>New vs Add-On</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity$Order_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Renewal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Existing: Add-On</sourceValue>
+            </sourceValues>
+            <value>Add-On ARR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>New Customer</sourceValue>
+            </sourceValues>
+            <value>New Logo ARR</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Channel_Classification__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Age__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$LastStageChangeDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.UserRole</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Booking_Details__r$Total_New_ARR__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Booking_Details__r$Add_On_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity$LeadSource</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CloseDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Total_Bookings__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Details__r$Order_Total_Amount__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Order_Type__c</column>
+            <operator>equals</operator>
+            <value>New Customer,Renewal,Existing: Add-On</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <operator>equals</operator>
+            <value>Sent to Orders,Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Channel_Classification__c</column>
+            <operator>equals</operator>
+            <value>OEM</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_46505055</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_38543192</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>New ARR Billings Intl (OEM)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Booking_Details__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

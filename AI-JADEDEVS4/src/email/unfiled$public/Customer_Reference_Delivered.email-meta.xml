@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Customer Reference Delivered</name>
+    <style>none</style>
+    <subject>Customer Reference Delivered for {!Reference_Request__c.Opportunity__c}</subject>
+    <textOnly>A customer reference has been provided for your Opportunity {!Reference_Request__c.Opportunity__c}
+
+
+Please click on the link below to access the customer contact information. Please do not contact the customer directly until you have been in touch with the account’s Customer Success Manager.
+
+{!Reference_Request__c.Link}
+
+
+In preparation for your reference conversation, please provide the customer contact with:
+
+Who he/she will be speaking with (name and title).
+
+An overview of the prospect’s challenges and what they want to do
+
+The top 3 things the prospect needs to get out of the call.</textOnly>
+    <type>custom</type>
+</EmailTemplate>

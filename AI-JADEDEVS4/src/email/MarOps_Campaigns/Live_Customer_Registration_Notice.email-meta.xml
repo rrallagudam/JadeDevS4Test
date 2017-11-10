@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email notice to object owner for Live Registration Notice</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Live Customer Registration Notice</name>
+    <style>none</style>
+    <subject>Adaptive Live New Registration!</subject>
+    <textOnly>Adaptive Live Registration Notice
+
+{!CampaignMember.FirstName} {!CampaignMember.LastName} from {!CampaignMember.CompanyOrAccount} has registered for Adaptive Live.
+
+Tier 1 customers will receive a personal welcome email from the CSM. All other customers, including NetSuite will receive an automated welcome email from the CSM. For any customers with an open upsell/cross sell opportunity the account manager will send personal email to the customer to invite them to meet in person at the conference. “Eloqua Engaged will have Adaptive Live templates for AM’s to send (&quot;Adaptive Live 2017 Registration Welcome&quot;).
+
+{!CampaignMember.Link}
+
+Thank You
+Sonia Torres
+storres@adaptiveinsights.com
+650-422-7335</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,25 @@
+<h1>Local Event is in Production</h1>
+
+<p>{!Campaign.Name}<br>
+https://na4.salesforce.com/{!Campaign.Id}</p>
+
+<p>Status: {!Campaign.Status}<br>
+Start Date: {!Campaign.StartDate}<br>
+Venue:<br>
+{!Campaign.Venue_Name__c}<br>
+{!Campaign.Venue_Address_1__c)}<br>
+{!Campaign.Venue_Address_City__c}, {!Campaign.Venue_Address_State__c} {!Campaign.Venue_Address_Postal_Code__c}<br>
+Venue Phone: {!Campaign.Venue_Address_Phone__c}</p>
+
+<p>EM: {!IF(Campaign.OwnerId = "00561000001Y3ee", "Ashley Moskovitz",
+IF(Campaign.OwnerId="00561000001Y3fF", "Rebecca Howarth",
+IF(Campaign.OwnerId="00561000001Y3bL", "Kristine Melanson",
+IF(Campaign.OwnerId="00561000001XyMD","Kim Korupp",
+IF(Campaign.OwnerId="00561000001Y3fg","Natia Seegars",
+IF(Campaign.OwnerId="00561000001Y3cf","Petina Kearney","Unknown")))))}<br>
+RM: {!Campaign.Regional_Manager__c}<br>
+CAM: {!Campaign.CAM_Name__c}<br>
+AVP: {!Campaign.AVP__c}
+Partner: {!Campaign.Sales_Partner__c}</p>
+
+<p>Event Team</p>

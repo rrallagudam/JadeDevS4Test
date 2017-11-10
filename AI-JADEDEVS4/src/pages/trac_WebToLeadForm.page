@@ -1,0 +1,508 @@
+<apex:page showHeader="false" sidebar="true" standardStylesheets="true" applyHtmlTag="false" applyBodyTag="false">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.SLDS214, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+        <!--  these lines if you wish to test in debug mode.                          -->
+        <!--  ----------------------------------------------------------------------  -->
+        
+        <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+        
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTE: Please add the following <FORM> element to your page.             -->
+        <!--  ----------------------------------------------------------------------  -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Adaptive Insights Registration Form</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <link rel="stylesheet" href="/resources/demos/style.css"/>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+          $( function() {
+            $( ".datepicker" ).datepicker({
+              changeMonth: true,
+              changeYear: true,
+              dateFormat: "mm/dd/yy"
+            });
+          } );
+          
+          function okToSubmit(){
+            document.getElementById("submit_button").disabled = false;
+          }
+          
+          function notOkToSubmit(){
+            document.getElementById("submit_button").disabled = true;
+          }
+           
+      </script>
+      <script src="https://www.google.com/recaptcha/api.js" async="defer"></script>
+    </head>
+    <body>
+    <div class="AdaptiveInsights">
+        <div style="width:100%;border-bottom: 1px solid #696A6C;">
+            <div style="max-width:1140px;margin:0 auto;">
+                <apex:image url="{!$Resource.AdaptiveInsightsLogo}" width="175"/><br/><br/>
+            </div>
+        </div>
+        <div style="width:100%;background-color:#FFA500;padding:6px 0;">
+            <div style="max-width:1140px;margin:0 auto;">
+                <div class="slds-text-heading--large" style="color:white !important;">Registration</div>
+            </div>
+        </div>
+        
+        <div style="max-width:1140px;margin:0 auto;">
+        <div class="slds-col slds-col--padded slds-p-top--large slds-container--large slds-clearfix">
+        
+        <form class="slds-form--horizontal" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+        
+        <input type="hidden" name="oid" value="00D61000000eCXi"/>
+        <input type="hidden" name="retURL" value="http://www.adaptiveinsights.com/"/>
+        
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+        <!--  these lines if you wish to test in debug mode.                          -->
+        <!--  ----------------------------------------------------------------------  -->
+        <!--<h1 class=" slds-section__title slds-form-element__label ">No of Employees focused on Adaptive:</h1>-->
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                <b class="slds-form-element__label slds-text-title--caps">Company Information</b>
+            </label>
+            <div class="slds-form-element__control">
+            </div>
+        </div><br/><br/>
+        <div class="slds-form-element">
+            <label for="company" class="slds-form-element__label">
+                Company*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="company" maxlength="40" name="company" size="20" type="text"/>
+            </div>
+        </div><br/>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                <b>Headquarter address:</b>
+            </label>
+            <div class="slds-form-element__control">
+            </div>
+        </div><br/><br/>
+        <div class="slds-form-element">
+            <label for="street" class="slds-form-element__label">
+                Street*
+            </label>
+            <div class="slds-form-element__control">
+                <textarea class="slds-input" required="required" name="street"></textarea>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="city" class="slds-form-element__label">
+                City*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="city" maxlength="40" name="city" size="20" type="text"/>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="state" class="slds-form-element__label">
+                State/Province*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="state" maxlength="20" name="state" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="zip" class="slds-form-element__label">
+                Zip*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="zip" maxlength="20" name="zip" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="country" class="slds-form-element__label">
+                Country*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="country" maxlength="40" name="country" size="20" type="text" />
+            </div>
+        </div><br/><br/>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Company Phone*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000H7fOn" maxlength="40" name="00N6100000H7fOn" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="URL" class="slds-form-element__label">
+                Website*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="URL" maxlength="80" name="URL" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Founded*
+            </label>
+            <div class="slds-form-element__control">
+                <!--<input class="slds-input" required="required"  type="date" placeholder="DD/MM/YYYY" id="00N6100000F1RH2" name="00N6100000F1RH2" size="12"/>-->
+                <input class="slds-input datepicker" required="required"  type="text" id="00N6100000F1RH2" name="00N6100000F1RH2" size="12"/>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                No. of Active Customers*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000F1RH5" name="00N6100000F1RH5" title="Number of Active Customers">
+                    <option value="">--None--</option><option value="1-10">1-10</option>
+                    <option value="11-50">11-50</option>
+                    <option value="51-100">51-100</option>
+                    <option value="101-500">101-500</option>
+                    <option value="501-1000">501-1000</option>
+                    <option value="1001-3000">1001-3000</option>
+                    <option value="3000+">3000+</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Industry Focus*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000H7fOp" multiple="multiple" name="00N6100000H7fOp" title="Industry Focus">
+                    <option value="Aerospace & Defense">Aerospace &amp; Defense</option>
+                    <option value="Agriculture, Forestry, Fishing">Agriculture, Forestry, Fishing</option>
+                    <option value="Agriculture, Forestry, Fishing & Hunting">Agriculture, Forestry, Fishing &amp; Hunting</option>
+                    <option value="Associations, Memberships">Associations, Memberships</option>
+                    <option value="Auto Repair, Services, Dealers, Rental">Auto Repair, Services, Dealers, Rental</option>
+                    <option value="Banking, Accounting, Financial Services">Banking, Accounting, Financial Services</option>
+                    <option value="Beverages, Distillers, Wineries">Beverages, Distillers, Wineries</option>
+                    <option value="Building Maintenance, Plumbing, HVAC">Building Maintenance, Plumbing, HVAC</option>
+                    <option value="Business Service & Consulting">Business Service &amp; Consulting</option>
+                    <option value="Charities, Foundations, Nonprofits">Charities, Foundations, Nonprofits</option>
+                    <option value="Computer Hardware, Networking, Security">Computer Hardware, Networking, Security</option>
+                    <option value="Computer Software & Services">Computer Software &amp; Services</option>
+                    <option value="Construction, Architecture & Engineering">Construction, Architecture &amp; Engineering</option>
+                    <option value="Consumer Packaged Goods">Consumer Packaged Goods</option>
+                    <option value="Data Warehousing, Services">Data Warehousing, Services</option>
+                    <option value="E-commerce, Financial Software">E-commerce, Financial Software</option>
+                    <option value="Educational Services, Colleges">Educational Services, Colleges</option>
+                    <option value="Entertainment, Sports, Movies, TV">Entertainment, Sports, Movies, TV</option>
+                    <option value="Farming, Livestock, Dairy">Farming, Livestock, Dairy</option>
+                    <option value="Game Software">Game Software</option>
+                    <option value="Healthcare, Hospitals, Facilities">Healthcare, Hospitals, Facilities</option>
+                    <option value="Hospitality, Gaming, Hotel, Restaurants">Hospitality, Gaming, Hotel, Restaurants</option>
+                    <option value="Industrial Equipment, Supplies, Services">Industrial Equipment, Supplies, Services</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Internet & Online Services Providers">Internet &amp; Online Services Providers</option>
+                    <option value="IT Services & Consulting">IT Services &amp; Consulting</option>
+                    <option value="Legal Services">Legal Services</option>
+                    <option value="Manufacturing, Parts, Electronics">Manufacturing, Parts, Electronics</option>
+                    <option value="Media, Publishing, Advertising">Media, Publishing, Advertising</option>
+                    <option value="Medical Equipment, Supplies, Services">Medical Equipment, Supplies, Services</option>
+                    <option value="Mining, Quarrying, Oil & Gas Extraction">Mining, Quarrying, Oil &amp; Gas Extraction</option>
+                    <option value="Mining & Metals">Mining &amp; Metals</option>
+                    <option value="Museums, Art Galleries, Zoological">Museums, Art Galleries, Zoological</option>
+                    <option value="Personal Services">Personal Services</option>
+                    <option value="Pharmaceuticals, Biotech, Chemicals">Pharmaceuticals, Biotech, Chemicals</option>
+                    <option value="Public Sector & Government">Public Sector &amp; Government</option>
+                    <option value="Real Estate, Property Management">Real Estate, Property Management</option>
+                    <option value="Recreation, Parks, Travel">Recreation, Parks, Travel</option>
+                    <option value="Religious Organizations">Religious Organizations</option>
+                    <option value="Retail, Wholesale, Apparel">Retail, Wholesale, Apparel</option>
+                    <option value="Scientific Research, Labs">Scientific Research, Labs</option>
+                    <option value="Semiconductor Equipment & Testing">Semiconductor Equipment &amp; Testing</option>
+                    <option value="Telecommunications">Telecommunications</option>
+                    <option value="Transportation, Logistics">Transportation, Logistics</option>
+                    <option value="Utilities, Energy, Oil, Gas">Utilities, Energy, Oil, Gas</option>
+                    <option value="Veterinary Care">Veterinary Care</option>
+                    <option value="Waste Management, Recycling, Environment">Waste Management, Recycling, Environment</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Annual Revenue*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000F1RH7" name="00N6100000F1RH7" title="Partner Annual Revenue">
+                    <option value="">--None--</option><option value="< 1M">&lt; 1M</option>
+                    <option value="1M - 9M">1M - 9M</option>
+                    <option value="10M - 24M">10M - 24M</option>
+                    <option value="25M - 49M">25M - 49M</option>
+                    <option value="50M - 99M">50M - 99M</option>
+                    <option value="100M - 199M">100M - 199M</option>
+                    <option value="200M - 499M">200M - 499M</option>
+                    <option value="500M - 1B">500M - 1B</option>
+                    <option value="1B+">1B+</option>
+                </select>
+            </div>
+        </div>
+        <!--<div class="slds-form-element">
+            <label for="revenue" class="slds-form-element__label">
+                Annual Revenue*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="revenue" name="revenue" size="20" type="text" />
+            </div>
+        </div>-->
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Target Market Segment*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" id="00N6100000F1RHD" multiple="multiple" name="00N6100000F1RHD" title="Partner Target Market Segment">
+                    <option value="<$50m Small Business">&lt;$50m Small Business</option>
+                    <option value="$50M - $250M Mid-Market">$50M - $250M Mid-Market</option>
+                    <option value=">$250M Enterprise">&gt;$250M Enterprise</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Company Description*
+            </label>
+            <div class="slds-form-element__control">
+                <textarea class="slds-input" required="required" id="00N6100000H7fOm" name="00N6100000H7fOm" rows="3" type="text" wrap="soft"></textarea>
+            </div>
+        </div>
+        <br/><br/><br/>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                <b class="slds-form-element__label slds-text-title--caps">Your Information</b>
+            </label>
+            <div class="slds-form-element__control">
+            </div>
+        </div><br/><br/>
+        <div class="slds-form-element">
+            <label for="first_name" class="slds-form-element__label">
+                First Name*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="first_name" maxlength="40" name="first_name" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="last_name" class="slds-form-element__label">
+                Last Name*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="last_name" maxlength="80" name="last_name" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="title" class="slds-form-element__label">
+                Title*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="title" maxlength="40" name="title" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="email" class="slds-form-element__label">
+                Email*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="email" maxlength="80" name="email" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="phone" class="slds-form-element__label">
+                Phone*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="phone" maxlength="40" name="phone" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label for="mobile" class="slds-form-element__label">
+                Mobile*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="mobile" maxlength="40" name="mobile" size="20" type="text" />
+            </div>
+        </div><br/><br/>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                <b class="slds-form-element__label slds-text-title--caps">Partnership Information</b>
+            </label>
+            <div class="slds-form-element__control">
+            </div>
+        </div><br/><br/>
+        <!--<h1 class=" slds-section__title slds-form-element__label ">No of Employees focused on Adaptive:</h1>-->
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                <b>No of Employees focused on Adaptive:</b>
+            </label>
+            <div class="slds-form-element__control">
+            </div>
+        </div><br/><br/>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Consulting*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000H7fOo" name="00N6100000H7fOo" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                System Design / Implementation*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000H7fOs" name="00N6100000H7fOs" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Sales*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000H7fOr" name="00N6100000H7fOr" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Business Development*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000H7fOl" name="00N6100000H7fOl" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Marketing*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000H7fOq" name="00N6100000H7fOq" size="20" type="text" />
+            </div>
+        </div><br/><br/><br/><br/>
+        
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Desired Geographic Coverage*
+            </label>
+            <div class="slds-form-element__control">
+                <input class="slds-input" required="required"  id="00N6100000F1RH9" maxlength="255" name="00N6100000F1RH9" size="20" type="text" />
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                What type of Adaptive Services do you plan to Offer?*
+            </label>
+            <div class="slds-form-element__control">
+                <textarea class="slds-input" required="required" id="00N6100000F1RHC" name="00N6100000F1RHC" rows="3" type="text" wrap="soft"></textarea>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                What type of Adaptive Product expertise do you plan to offer*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000F1RH6" multiple="multiple" name="00N6100000F1RH6" title="Partner Adaptive Expertise Offered">
+                    <option value="Adaptive Planning">Adaptive Planning</option>
+                    <option value="Adaptive Consolidation">Adaptive Consolidation</option>
+                    <option value="Adaptive Discovery">Adaptive Discovery</option>
+                    <option value="Adaptive Reporting">Adaptive Reporting</option>
+                    <option value="Adaptive Integration">Adaptive Integration</option>
+                    <option value="Adaptive Revenue">Adaptive Revenue</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Other areas of solution specialization*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000F1RHA" multiple="multiple" name="00N6100000F1RHA" title="Partner Other Solution Specializations">
+                    <option value="Birst">Birst</option>
+                    <option value="Box">Box</option>
+                    <option value="Centage">Centage</option>
+                    <option value="Deltek Vision">Deltek Vision</option>
+                    <option value="Epicor">Epicor</option>
+                    <option value="EXACT">EXACT</option>
+                    <option value="Host Analytics">Host Analytics</option>
+                    <option value="Hyperion">Hyperion</option>
+                    <option value="IBM Cognos">IBM Cognos</option>
+                    <option value="Infor">Infor</option>
+                    <option value="Intacct">Intacct</option>
+                    <option value="MSFT AX">MSFT AX</option>
+                    <option value="MSFT CRM">MSFT CRM</option>
+                    <option value="MSFT GP">MSFT GP</option>
+                    <option value="NetSuite">NetSuite</option>
+                    <option value="Oracle">Oracle</option>
+                    <option value="Pentaho">Pentaho</option>
+                    <option value="Pervasive">Pervasive</option>
+                    <option value="proDacapo">proDacapo</option>
+                    <option value="QlikView">QlikView</option>
+                    <option value="QuickBooks">QuickBooks</option>
+                    <option value="Sage">Sage</option>
+                    <option value="Salesforce">Salesforce</option>
+                    <option value="SAP">SAP</option>
+                    <option value="SugarCRM">SugarCRM</option>
+                    <option value="Tableau">Tableau</option>
+                    <option value="Workday">Workday</option>
+                    <option value="Anaplan">Anaplan</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Primary Program Interest*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000F1RHB" name="00N6100000F1RHB" title="Partner Program Primary Interest">
+                    <option value="">--None--</option><option value="Solution Provider">Solution Provider</option>
+                    <option value="Referral Partner">Referral Partner</option>
+                    <option value="ISV">ISV</option>
+                    <option value="Technology Partner">Technology Partner</option>
+                    <option value="GSI">GSI</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Do you currently have active leads?*
+            </label>
+            <div class="slds-form-element__control">
+                <select class="slds-input" required="required" id="00N6100000F1RH8" name="00N6100000F1RH8" title="Partner Currently Has Active Leads">
+                    <option value="">--None--</option><option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">
+                Tell us why you're interested in Partnering with Adaptive Insights*
+            </label>
+            <div class="slds-form-element__control">
+                <textarea class="slds-input" required="required" id="00N6100000F1RHE" name="00N6100000F1RHE" rows="3" type="text" wrap="soft"></textarea>
+            </div>
+        </div>
+        
+        <input type="hidden" id="recordType" name="recordType" value="01261000000MIAE"/>
+        <input type="hidden" id="Lead_Type__c" name="Lead_Type__c" value="Partner Prospect"/>
+        <input type="hidden" id="lead_source" name="lead_source" value="Partner Community"/>
+        <input type="hidden" id="00N6100000F1IPV" name="00N6100000F1IPV" value="Partner Prospect"/>
+        <input type="hidden" id="Status__c" name="Status__c" value="Active"/>
+        <input type="hidden" id="Lead_Source_Most_Recent__c" name="Lead_Source_Most_Recent__c" value="Partner Community"/><br/>
+        
+        <div class="g-recaptcha" data-sitekey="6LeYsw8UAAAAABl4F3zf_1Wnkv7Ju6eow0jigj_L" align="right"
+        data-callback="okToSubmit" data-expired-callback="notOkToSubmit"></div><br/><br/>
+        
+        <div class="slds-form-element" align="right">
+            <input class="slds-button slds-button--brand" type="submit" name="submit" id="submit_button" disabled="true"/><br/>
+            <b>*All fields are mandatory</b><br/><br/>
+        </div>
+        
+        </form>
+        </div>
+        </div>
+        </div>
+        </body>
+    </html>
+</apex:page>

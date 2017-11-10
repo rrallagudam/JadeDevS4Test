@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>NE Order Item_old</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>NE Order Items_old</value>
+    </caseValues>
+    <fields>
+        <label><!-- Cancelled Date --></label>
+        <name>Cancelled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancelled --></label>
+        <name>Cancelled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cost --></label>
+        <name>Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Currency --></label>
+        <name>Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item Name --></label>
+        <name>Item_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item Type --></label>
+        <name>Item_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item --></label>
+        <name>Item__c</name>
+    </fields>
+    <fields>
+        <label><!-- NE Orders --></label>
+        <name>Order__c</name>
+        <relationshipLabel><!-- NE Order Items_old --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Promocode Discount --></label>
+        <name>Promocode_Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFDCID --></label>
+        <name>SFDCID__c</name>
+    </fields>
+    <layouts>
+        <layout>NE Order Item Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

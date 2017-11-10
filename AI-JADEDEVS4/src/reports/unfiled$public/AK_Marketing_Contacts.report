@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CampaignMember.Lead_Score__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>PHONE1</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>CONTACT_OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <currency>USD</currency>
+    <description>GA, TN, LA, AR, FL, AL, MS, DC, MD, VA, NC, SC, WV, OH, KY, IN, DE, NJ  w/time span changed to past year</description>
+    <filter>
+        <booleanFilter>(((1 AND 7) AND (2 OR 3) AND 4 AND 5) AND 6) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>MEMBER_CREATED_DATE</column>
+            <operator>lessOrEqual</operator>
+            <value>8/1/2016 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS2_STATE</column>
+            <operator>equals</operator>
+            <value>GA,TN,LA,AR,FL,AL,MS,DC,MD,VA,NC,SC,WV,OH,KY,IN,DE,NJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>GA,TN,LA,AR,FL,AL,MS,DC,MD,VA,NC,SC,WV,OH,KY,IN,DE,NJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SALES</column>
+            <operator>greaterOrEqual</operator>
+            <value>USD 50000000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_TYPE</column>
+            <operator>equals</operator>
+            <value>Customer Prospect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Campaign.Campaign_Type_Reportng__c</column>
+            <operator>notEqual</operator>
+            <value>Customer,Other,Prospect Referral Receipt,Tradeshow</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_CREATED_DATE</column>
+            <operator>greaterOrEqual</operator>
+            <value>8/1/2015 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_LAST_ACTIVITY</column>
+            <operator>lessOrEqual</operator>
+            <value>12/1/2016</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Campaign.Campaign_Type_Reportng__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>AK Marketing Contacts</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignContact</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CampaignMember.Lead_Score__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+</Report>

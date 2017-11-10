@@ -1,0 +1,44 @@
+<apex:page controller="testPageController">
+    Next_Send_Email_Date__c <br/>
+    <apex:outputText value="{0,date,dd/MM/yyyy HH:mm:ss a}">
+        <apex:param value="{!objOpp.Next_Send_Email_Date__c +offset}"/>
+    </apex:outputText>
+    
+    <br/>
+    <br/>
+    Next Plus Twelve <br/>
+    <apex:outputText value="{0,date,dd/MM/yyyy HH:mm:ss a}">
+        <apex:param value="{!nextplustwelve +offset}"/>
+    </apex:outputText>
+    
+    <br/>
+    <br/>
+    
+    Last Modifieddate <br/>
+    <apex:outputText value="{0,date,dd/MM/yyyy HH:mm:ss a}">
+        <apex:param value="{!objOpp.lastmodifieddate +offset}"/>
+    </apex:outputText>
+    
+    <br/>
+    <br/>
+    
+    Last Hour<br/>
+    <apex:outputText value="{0,date,dd/MM/yyyy HH:mm:ss a}">
+        <apex:param value="{!lastHour +offset}"/>
+    </apex:outputText>
+    <br/>
+    <br/>
+    Current Hour<br/>
+    <apex:outputText value="{0,date,dd/MM/yyyy HH:mm:ss a}">
+        <apex:param value="{!currentHour +offset}"/>
+    </apex:outputText>
+    <br/>
+    <br/>
+    
+    
+    
+    <apex:outputLabel value="{!totalTimeElapsed}"></apex:outputLabel>
+    <br/>
+    <br/>
+    {!objOppNew}
+</apex:page>

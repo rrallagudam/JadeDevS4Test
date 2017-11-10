@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>Test Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Test Flow</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Test</name>
+        <label>Test</label>
+        <locationX>50</locationX>
+        <locationY>175</locationY>
+        <inputAssignments>
+            <field>AccountNumber</field>
+            <value>
+                <stringValue>1234</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordCreates>
+</Flow>

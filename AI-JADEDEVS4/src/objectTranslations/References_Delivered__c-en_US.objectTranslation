@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Reference Delivered</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>References Delivered</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call/Email Completed ? --></label>
+        <name>Call_Email_Completed__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Phone --></label>
+        <name>Contact_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Title --></label>
+        <name>Contact_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reference Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- References Delivered --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Date Fulfilled --></label>
+        <name>Date_Fulfilled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reference Request --></label>
+        <name>Reference_Request__c</name>
+        <relationshipLabel><!-- References Delivered --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Reference Delivered Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- New_Reference_Delivered --></label>
+        <name>New_Reference_Delivered</name>
+    </webLinks>
+</CustomObjectTranslation>

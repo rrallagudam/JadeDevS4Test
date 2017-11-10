@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>NetExamUserCourses</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Course_Completed_Date__c</fullName>
+        <description>Course Completed Date</description>
+        <externalId>false</externalId>
+        <label>Course Completed Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Course_Enrolled_Date__c</fullName>
+        <description>Course Enrolled Date</description>
+        <externalId>false</externalId>
+        <label>Course Enrolled Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Course_Expiration_Date__c</fullName>
+        <description>Course Expiration Date</description>
+        <externalId>false</externalId>
+        <formula>Course_Completed_Date__c + Days_Valid__c</formula>
+        <label>Course Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Course_ID__c</fullName>
+        <description>Course ID</description>
+        <externalId>false</externalId>
+        <formula>Course__r.Course_Id__c</formula>
+        <label>Course ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Course__r.Course_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Course Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Score__c</fullName>
+        <description>Course Score</description>
+        <externalId>false</externalId>
+        <label>Course Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Course_Status__c</fullName>
+        <description>Course Status</description>
+        <externalId>false</externalId>
+        <formula>IF( Course_Expiration_Date__c &lt; TODAY() , &quot;Expired&quot;, 
+IF( Course_Expiration_Date__c &gt;= TODAY() ,&quot;Completed&quot;, 
+IF(NetExam_Course_Status__c == &quot;Failed&quot;, &quot;Failed&quot;, 
+BLANKVALUE( NetExam_Course_Status__c , &quot;Enrolled&quot;) ) ) )</formula>
+        <label>Course Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Course</description>
+        <externalId>false</externalId>
+        <label>Course</label>
+        <referenceTo>NE_Course_old__c</referenceTo>
+        <relationshipName>NetExamUserCourses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Days_Valid__c</fullName>
+        <description>Days Valid</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK( Course_Completed_Date__c ) , NULL, 365)</formula>
+        <label>Days Valid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NetExam_Course_Status__c</fullName>
+        <description>NetExam Course Status</description>
+        <externalId>false</externalId>
+        <label>NetExam Course Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Price__c</fullName>
+        <description>Price</description>
+        <externalId>false</externalId>
+        <label>Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NE FairSail Integration by Keth</description>
+        <externalId>false</externalId>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>NetExamUserCourses_old</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>NetExam UserCourses_old</label>
+    <nameField>
+        <displayFormat>NE-{00000000}</displayFormat>
+        <label>NetExamUserCourses Reference</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>NetExamUserCourses_old</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>User__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Score__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Enrolled_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Course_Completed_Date__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>User__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Score__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Enrolled_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Course_Completed_Date__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>User__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course_Status__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course_Score__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course_Enrolled_Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Course_Completed_Date__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Course__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>User__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Score__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Enrolled_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Course_Completed_Date__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

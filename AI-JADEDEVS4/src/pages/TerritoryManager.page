@@ -1,0 +1,136 @@
+<apex:page controller="TerritoryManagerController" showHeader="true" standardStylesheets="false" sidebar="false" applyBodyTag="false" docType="html-5.0">
+   <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <head>
+         <apex:stylesheet value="{!URLFOR($Resource.slds, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+         <style>
+             .selected { font-weight: bold;}
+         </style>
+      </head>
+      <body>
+         <div class="slds">
+            <div class="slds-grid">
+               <div class="slds-col slds-size--3-of-12">
+                  Select a territory:<br/><br/>
+                  <ul id="territory-list" class="slds-text-body--regular">
+                  </ul>
+               </div>
+               <div class="slds-col slds-size--9-of-12">
+                    <div id="alert" class="slds-notify_container">
+                        <div class="slds-notify slds-notify--toast" role="alert">
+                          <span class="slds-assistive-text">Info</span>
+                          <button class="slds-button slds-button--icon-inverse slds-notify__close" onClick="hideAlert()">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--large">
+                              <use xlink:href="{!URLFOR($Resource.slds, '/assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                          </button>
+                          <div class="notify__content">
+                            <h2 id="alert-message" class="slds-text-heading--small"></h2>
+                          </div>
+                        </div>
+                      </div>
+                  <div id="working" class="slds-spinner_container">
+                     <div class="slds-spinner--brand slds-spinner slds-spinner--large" aria-hidden="false" role="alert">
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                     </div>
+                  </div>
+                  <div id="workspace">
+                      <h3 id="territory-name" class="slds-text-heading--medium slds-m-bottom--x-small"></h3>
+                       <div class="slds-tabs--scoped">
+                        <ul id="tabs" class="slds-tabs--scoped__nav" role="tablist">
+                          <li id="tab-active" class="slds-tabs--scoped__item slds-text-heading--label slds-active" title="Active Areas" role="presentation">
+                            <a id="tab-active-link" class="slds-tabs--scoped__link" href="#void" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-scoped-active">Assigned Areas</a>
+                          </li>
+                          <li id="tab-search" class="slds-tabs--scoped__item slds-text-heading--label" title="Search Results" role="presentation">
+                            <a id="tab-search-link" class="slds-tabs--scoped__link" href="#void" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-search">Search</a>
+                          </li>
+                        </ul>
+                        <div id="tab-scoped-active" class="slds-tabs--scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
+                           <c:TerritoryActiveAreas />
+                           </div>
+                        <div id="tab-scoped-search" class="slds-tabs--scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-2__item">
+                            <c:TerritorySearch />
+                           </div>
+                      </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <apex:includeScript value="{!$Resource.jquery}"/>
+         <apex:includeScript value="{!$Resource.TerritoryManagement}"/>
+         <script>
+            var APP = {};
+            var TERRITORY_JSON = '{!TERRITORY_JSON}';
+            $("#working").hide();
+            
+			$( document ).ready(function() {
+                APP.ActiveTab = 'tab-active-link';
+                APP.Territories = jQuery.parseJSON( TERRITORY_JSON );
+				renderTerritoryList(APP.Territories);                
+                $("#workspace").hide();
+                initTerritoryListHandler();
+                initTabHandler();
+                initAlerts();
+            });
+            
+            function getTerritoryAreas(territoryId) {
+                console.log('Get territory areas for ' + territoryId);
+            	Visualforce.remoting.Manager.invokeAction(
+            		'{!$RemoteAction.TerritoryManagerController.getTerritoryAreas}',
+            		territoryId, 
+            		renderTerritoryAreas
+            	);
+            }
+          
+          function searchAreas(territoryId, field, searchTerm) {
+            	Visualforce.remoting.Manager.invokeAction(
+            		'{!$RemoteAction.TerritoryManagerController.searchAreas}',
+                    territoryId,
+                    field,
+                    searchTerm,
+                    renderSearchResults,
+                    {escape: true}
+            	);
+            }
+          function assignAreas(territoryId, areaList) {
+              	$("#working-search").show();
+            	Visualforce.remoting.Manager.invokeAction(
+            		'{!$RemoteAction.TerritoryManagerController.assignAreas}',
+                    territoryId,
+                    areaList,
+            		function(result, event){
+                        if(event && event.type == "exception"){
+                            $("#working-search").hide();
+                        	var msg = 'Assignment failed. Area is already assigned. Please unassign before assigning. \n\n' + event.message;
+                            alert(msg);
+                            return;
+						}
+                        $("#working-search").hide();
+                        initWorkspace();
+                        $("#working").show();
+                        getTerritoryAreas( territoryId );
+                    },
+                    {escape: true}
+            	);
+            }
+          
+          	function deleteTerritoryAreas(territoryId, areaList) {
+              	$("#working").show();
+            	Visualforce.remoting.Manager.invokeAction(
+            		'{!$RemoteAction.TerritoryManagerController.deleteTerritoryAreas}',
+                    territoryId,
+                    areaList,
+            		function(result, event){
+                        $("#working-search").hide();
+                        initWorkspace();
+                        $("#working").show();
+                        getTerritoryAreas( territoryId );
+                    },
+                    {escape: true}
+            	);
+            }
+         </script>
+      </body>
+   </html>
+</apex:page>

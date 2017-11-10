@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p>Please review and approve</p><p><br></p><p>Link to Quote:&nbsp; {!SBQQ__WebQuote__c.Link}</p><p align="center"><strong><br></strong></p><p align="center"><strong>QUOTE SUMMARY</strong></p><p><br></p><p><strong>OPPORTUNITY NAME:&nbsp;&nbsp; </strong><em>{!SBQQ__WebQuote__c.SBQQ__Opportunity__c}</em></p><p><strong><br></strong></p><p><strong>QUOTE EXPIRATION DATE: </strong><em>{!SBQQ__WebQuote__c.SBQQ__ExpirationDate__c}</em></p><p><strong><br></strong></p><p><strong>ARR: </strong>{!SBQQ__WebQuote__c.SBQQ__AverageCustomerDiscount__c}</p><p><strong><br></strong></p><p><strong>TCV: </strong>{!SBQQ__WebQuote__c.SBQQ__NetAmount__c}</p><p><strong><br></strong></p><p><strong>DISC</strong>:{!SBQQ__WebQuote__c.SBQQ__TotalCustomerDiscountAmount__c}</p><p><br></p><p><br></p>]]></td>
+</tr>
+</table>

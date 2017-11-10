@@ -1,0 +1,6 @@
+Dear Frank, 
+
+The following contact has had a Contact Status of Accepted for 5 days: 
+{!Contact.Link} 
+
+It is owned by {!Contact.OwnerFullName}.

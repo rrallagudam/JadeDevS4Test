@@ -1,0 +1,5 @@
+Hi {!Contact.OwnerFullName},
+
+A new lead has been created for {!Contact.FirstName} {!Contact.LastName}
+
+Please review the Contact here: {!Contact.Link}

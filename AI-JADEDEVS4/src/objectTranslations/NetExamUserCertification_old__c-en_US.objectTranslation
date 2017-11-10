@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>NetExam UserCertification_old</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>NetExam UserCertifications_old</value>
+    </caseValues>
+    <fields>
+        <label><!-- Certification ID --></label>
+        <name>Certification_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Name --></label>
+        <name>Certification_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Score --></label>
+        <name>Certification_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Status --></label>
+        <name>Certification_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completion Date --></label>
+        <name>Completion_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enrolled Date --></label>
+        <name>Enrolled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- NE Certification --></label>
+        <name>NECertification__c</name>
+        <relationshipLabel><!-- NetExam UserCertifications_old --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- NetExam UserCertifications_old --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>NetExam UserCertification Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

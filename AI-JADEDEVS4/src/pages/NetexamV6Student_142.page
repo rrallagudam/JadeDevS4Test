@@ -1,0 +1,112 @@
+<apex:page controller="NetExamStudentPortalController" sidebar="false" >
+
+    <style>
+        #main {
+            border-top: 2px solid #CFD0D2;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .ens-widget {
+            padding: 0px 7px 7px 7px !important;
+        }
+
+        #main-ui-home {
+            padding-top:10px;
+        }
+
+        .x-shadow {
+            display: none !important;
+        }
+
+        .bodyDiv {
+            margin-top: 5px !important;
+        }
+        
+        body .x-btn, body .btn, body .btnDisabled, body .btnCancel, body .menuButton .menuButtonButton {
+            border-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        body .x-btn {
+            margin-right: 3px !important
+        }
+        
+        body {
+            background: #F5F5F5;
+            overflow: hidden;
+        }
+        
+        ul li, ol li {
+            margin-left: 0 !important;
+        }
+        
+        #bodyTable {
+            padding: 0;
+        }
+        
+        iframe {
+            overflow: hidden;
+        }
+        
+        .tabNavigation {
+            margin-bottom: -5px;
+        }
+        
+        .x-tab-panel-body, .x-panel-noborder .x-panel-body-noborder {
+            width: auto !important;
+        }
+        
+        .x-viewport {
+            overflow: inherit !important;
+        }
+        
+        .x-viewport body {
+            margin: auto !important;
+            overflow: hidden !important;
+        }      
+    </style>
+
+    <script>
+   
+        var sfdcInfo = {
+            sessionId : '{!$Api.Session_ID}',
+            serverUrl : '{!$Api.Enterprise_Server_URL_90}',
+            proxyUrl  : '{!JSENCODE('{!$CurrentPage.URL}')}'
+           
+        };
+        
+ 
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://v6.netexam.com/ext/resources/css/ext-all.css?v=1" />
+    <link rel="stylesheet" type="text/css" id="theme" href="https://v6.netexam.com/ext/resources/css/xtheme-darkergrey.css" />
+    <link rel="stylesheet" type="text/css" href="https://v6.netexam.com/css/netexam.css?v=130" />
+
+    <script src="https://v6.netexam.com/ext/adapter/ext/ext-base.js"></script>
+    <script src="https://v6.netexam.com/ext/ext-all.js"></script>
+
+    <script>
+        // disable history function
+        // this will not be necessary once the fix is deployed but it will not hurt anything to leave it
+        Ext.History.init = function(){};
+        Ext.History.add = function(){};
+    </script>
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>   
+    <script type="text/javascript" src="https://v6.netexam.com/ext/examples/ux/fileuploadfield/FileUploadField.js"></script>
+    <script src="https://v6.netexam.com/netexam-all-sfdc.js?v=190"></script> 
+    
+    <div class="bodyDiv" id="nev6content" style="border:0;width:100%;height:640px;">
+        <div class="loading-indicator" style="margin-left:50%;margin-top:100px;">Loading</div>
+    </div>
+
+    <!-- Fields required for history management -->
+    <form id="history-form" class="x-hidden">
+        <input type="hidden" id="x-history-field" />
+        <iframe id="x-history-frame"></iframe>
+    </form>
+    <form id="uploadform" class="x-hidden"></form>    
+    
+</apex:page>

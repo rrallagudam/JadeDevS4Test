@@ -1,0 +1,41 @@
+<apex:component controller="showQuoteOppFieldsController" access="global" >
+    <apex:attribute name="SBQUOTEID" type="id" description="QUOTE id" assignTo="{!quoteObjId}"/>  
+    The average subscription discount on this Quote requires your approval.
+    <br/><br/>
+    Click here to review and approve: {!endpointurl}/{!customQuoteObj.id}
+    <br/>
+    Account Name: <apex:outputLink value="/{!customQuoteObj.SBQQ__Opportunity2__r.Accountid}">{!customQuoteObj.Account_Name__c}</apex:outputLink>
+    <br/>
+    Close Date: <apex:outputText value="{0,date,dd/MM/yyyy}"><apex:param value="{!customQuoteObj.SBQQ__Opportunity2__r.CloseDate}"/></apex:outputText>
+    <br/>
+    Opportunity Name: <apex:outputLink value="/{!customQuoteObj.SBQQ__Opportunity2__c} ">{!customQuoteObj.Opportunity_Name__c}</apex:outputLink>
+    <br/>  
+    Sales Stage: {!customQuoteObj.SBQQ__Opportunity2__r.StageName}
+    <br/>
+    Type: {!customQuoteObj.SBQQ__Opportunity2__r.Type}
+    <br/>
+    Partner: {!customQuoteObj.SBQQ__Opportunity2__r.Partner_Account__r.name}
+    <br/>
+    Subscription ARR: {!SubscriptionARR} {!customQuoteObj.CurrencyIsoCode}
+    <br/>
+    Base ARR: {!customQuoteObj.Base_ARR__c} {!customQuoteObj.CurrencyIsoCode}
+    <br/>
+    Services $:{!customQuoteObj.Service_Net_Amount__c}
+    <br/>
+    Discount % Requested – Subscription: {!customQuoteObj.Subscription_Avg_Discount__c}%
+    <br/> 
+    Services: {!customQuoteObj.Service_Avg_Discount__c}%                
+    <br/>
+    MYR / Term: {!customQuoteObj.Quote_Term_Length__c}
+    <br/>
+    Special Terms:{!customQuoteObj.Special_Terms__c}
+    <br/>
+    Competitive Situation: {!customQuoteObj.SBQQ__Opportunity2__r.Competition__c}
+    <br/>
+    Compelling Reason to Act: {!customQuoteObj.SBQQ__Opportunity2__r.Description_pain_of_current_process__c}
+    <br/>
+    Justification for Request: {!customQuoteObj.Approval_Justification__c}
+    <br/><br/>
+    Click here to review: {!endpointurl}/{!customQuoteObj.id}
+                    
+</apex:component>

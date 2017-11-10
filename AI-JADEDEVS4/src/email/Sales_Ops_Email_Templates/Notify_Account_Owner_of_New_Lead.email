@@ -1,0 +1,5 @@
+Hi {!Account.OwnerFullName},
+
+A new lead has been created for {!Account.Name}
+
+Please review the Account here: {!Account.Link}

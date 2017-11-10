@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Territory</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Territories</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Assign To --></label>
+        <name>Assign_To__c</name>
+        <picklistValues>
+            <masterLabel>Queue</masterLabel>
+            <translation><!-- Queue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User</masterLabel>
+            <translation><!-- User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Mapped to Account.NAICS_Code from Data.com --></help>
+        <label><!-- NAICS Code --></label>
+        <name>NAICS_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old ID --></label>
+        <name>Old_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Role --></label>
+        <name>Owner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Account Manager</masterLabel>
+            <translation><!-- Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSM</masterLabel>
+            <translation><!-- CSM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PDR</masterLabel>
+            <translation><!-- PDR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDR</masterLabel>
+            <translation><!-- SDR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Represents the assignment queue (requires cut-n-paste of ID. Lookup reference to Queues not supported). --></help>
+        <label><!-- Default Queue ID --></label>
+        <name>Queue_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Band --></label>
+        <name>Revenue_Band__c</name>
+        <picklistValues>
+            <masterLabel>Above $100M</masterLabel>
+            <translation><!-- Above $100M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Below $100M</masterLabel>
+            <translation><!-- Below $100M --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Territory Owner --></label>
+        <name>Territory_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>CSM</masterLabel>
+            <translation><!-- CSM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead</masterLabel>
+            <translation><!-- Lead --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The default User who owns assignments to this territory. --></help>
+        <label><!-- Default Owner --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Territories --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Territory Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Owner Assignments --></label>
+            <section>Owner Assignments</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Territory may route to only a User or Queue. Not both. Please delete the User or Queue assignment. --></errorMessage>
+        <name>User_or_Queue_Route_Only</name>
+    </validationRules>
+</CustomObjectTranslation>

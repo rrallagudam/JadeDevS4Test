@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Trial Key History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Trial Key History</value>
+    </caseValues>
+    <fields>
+        <label><!-- Button Pressed By --></label>
+        <name>Button_Pressed_By__c</name>
+        <relationshipLabel><!-- Trial Key History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Trail Key Contact --></label>
+        <name>Trail_Key_Contact__c</name>
+        <relationshipLabel><!-- Trial Key History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Trial Key Lead --></label>
+        <name>Trial_Key_Lead__c</name>
+        <relationshipLabel><!-- Trial Key History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Trial Key Status --></label>
+        <name>Trial_Key_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- When Button Pressed --></label>
+        <name>When_Button_Pressed__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

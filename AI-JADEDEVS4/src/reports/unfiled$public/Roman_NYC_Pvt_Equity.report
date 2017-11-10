@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>NAICS_DESC</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Adaptive_Industry__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>((1 or 5) AND 2 AND 3 AND 4)</booleanFilter>
+        <criteriaItems>
+            <column>NAICS_CODE</column>
+            <operator>startsWith</operator>
+            <value>5259</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_STATE</column>
+            <operator>equals</operator>
+            <value>ny,new york</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PHONE1</column>
+            <operator>startsWith</operator>
+            <value>934,(934,+1.934,1.934,+1 934,929,(929,+1.929,+1 929,1.929,917,(917,+1.917,+1 917,1.917,718,(718,+1.718,+1 718,1.718,680,(680,+1.680,+1 680,1.680,646,(646,+1.646,+1 646,1.646,212,(212,+1.212,+1 212,1.212,332,(332,+1.332,+1 332,1.332,347,(347,+1.347,+1 347,1.347,607,(607,+1.607,+1 607,1.607</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Revenue_Band__c</column>
+            <operator>equals</operator>
+            <value>Above $100M</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>NAICS_DESC</column>
+            <operator>contains</operator>
+            <value>private equity</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Roman - NYC Pvt Equity</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

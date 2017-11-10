@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_74968213</developerName>
+        <masterLabel>NA v. Intl</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Scott Parsons</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Don Jennings</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Brian Flaherty</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jason Sturgess</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Charlie Janes</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Obadiah Howe</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Erickson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chris Shea</sourceValue>
+            </sourceValues>
+            <value>NA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Robert S Hull</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Douglas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Balraj Dard</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chikanobu Shinohara</sourceValue>
+            </sourceValues>
+            <value>Intl</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_1728616</developerName>
+        <masterLabel>Non-OEM v. OEM</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Classification__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>OEM</sourceValue>
+            </sourceValues>
+            <value>OEM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Direct</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Indirect</sourceValue>
+            </sourceValues>
+            <value>Non-OEM</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Account_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Oppy_18_Digit_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Classification__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Base_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Target_Renewal_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Renewal_Upsell_Percent__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Total_Subscription_Revenue__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Term__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Total_New_ARR__c.CONVERT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Renewal_ARR__c.CONVERT</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <operator>equals</operator>
+            <value>Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Has_Installments__c</column>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_1728616</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_74968213</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CL opp level arr</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREV1</interval>
+    </timeFrameFilter>
+</Report>

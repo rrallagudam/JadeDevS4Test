@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email alert sent when an Opportunity stage is changed to &quot;Sent For Review&quot;</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Adaptive_Insight</letterhead>
+    <name>Opportunity Sent For Review</name>
+    <style>freeForm</style>
+    <subject>Opportunity Is Ready For Your Review</subject>
+    <textOnly>The following Opportunity has been eSigned and is ready for review:
+
+Name: {!Opportunity.Name}
+Link: {!Opportunity.Link}
+Account: {!Opportunity.Account}
+Amount: {!Opportunity.Amount}
+ARR: {!Opportunity.ARR__c}
+Description: {!Opportunity.Description}</textOnly>
+    <type>html</type>
+</EmailTemplate>

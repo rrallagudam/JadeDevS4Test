@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Opportunity Not Moved to SAO</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Manager 1st Meeting Completed no SAO 5 days</name>
+    <style>none</style>
+    <subject>Opportunity Not Moved to SAO</subject>
+    <type>text</type>
+</EmailTemplate>

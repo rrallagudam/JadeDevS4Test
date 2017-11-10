@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Certification_old</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Certifications</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account_old --></label>
+        <name>Account_old__c</name>
+        <relationshipLabel><!-- Partner Certifications_old --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Certification ID --></label>
+        <name>Certification_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Score --></label>
+        <name>Certification_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Status --></label>
+        <name>Certification_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Version --></label>
+        <name>Certification_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completion Date --></label>
+        <name>Completion_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact_old --></label>
+        <name>Contact_old__c</name>
+        <relationshipLabel><!-- Partner Certifications_old --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Enrolled Date --></label>
+        <name>Enrolled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Adaptive Certification --></label>
+        <name>NECertification__c</name>
+        <relationshipLabel><!-- Partner Certifications --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>NE Partner Certification Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

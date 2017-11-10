@@ -1,0 +1,33 @@
+Account Status: {!Account.Account_Status__c} <br/>
+
+Account Name: {!Account.Name}<br/>
+
+Account Owner: {!Account.OwnerFullName}<br/>
+
+CSM: {!Account.Account_CSM__c}<br/>
+
+Length of Time as a Customer: {!Account.Length_of_time_as_a_Customer__c}  (in Years/Months)<br/>
+
+Link to the account:  {!Account.Link}</p>
+
+<p>Primary Cancellation Reason: {!Account.Primary_Reason_for_Cancel__c}<br/>
+
+Specific Cancellation Reason: 
+{!Account.Specific_Reasons_for_Cancel__c}</p>
+
+<p>Account Implementation Status: {!Account.Cancels_Implementation_Status__c}<br/>
+
+Initial Services Purchased: {!Account.Initial_Purchase_Service_Type__c}<br/>
+
+Steps taken: {!Account.Steps_Taken_to_Save_Account__c}<br/>
+
+Employee Size Range: {!Account.Employee_Size_Range__c}<br/>
+Industry: {!Account.Industry}<br/>
+City: {!Account.BillingCity}<br/>
+State: {!Account.BillingState}<br/>
+Country: {!Account.BillingCountry}<br/>
+Renewal Date: {!Account.Renewal_Date__c}<br/>
+Website: {!Account.Website}</p>
+
+<p>Opportunities Closed Won #: {!Account.Closed_Won_Count__c}<br/>
+ARR:{!Account.PriorARR_NewCustomerEmail__c}<br/></p>

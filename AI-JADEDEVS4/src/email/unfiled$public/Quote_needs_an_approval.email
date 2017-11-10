@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="A Subscription Discount Quote Requires Your Approval {!relatedTo.Quote__r.SBQQ__Account__r.Name}" recipientType="User" relatedToType="sbaa__Approval__c">
+    
+    <messaging:htmlEmailBody >
+        <c:showQuoteOppFields SBQUOTEID="{!relatedTo.Quote__r.Id}"/>      
+                     
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

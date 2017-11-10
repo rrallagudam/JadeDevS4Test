@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>VP Global Sales &amp; Service Ops</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>VP Global Sales &amp; Service Ops</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>SVP_Global_Channels_Customer_Success_PS</parentRole>
+</Role>

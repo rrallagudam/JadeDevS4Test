@@ -1,0 +1,3 @@
+Hi {!Opportunity.OwnerFullName},
+
+Your opportunity https://cs64.salesforce.com/{!Opportunity.Id}  has been signed by the customer and countersigned by Adaptive Insights. Please review the opportunity details in Salesforce and change the stage to “Sent to Orders” so there is no delay in booking/processing the order.

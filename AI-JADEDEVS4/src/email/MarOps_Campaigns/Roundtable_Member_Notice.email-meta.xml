@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email notice to object owner for Roundtable Campaigns</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Roundtable Member Notice</name>
+    <style>none</style>
+    <subject>Roundtable Member Alert</subject>
+    <textOnly>Roundtable Member Registered &amp; Attended Notice
+
+The person below has attended the  {!CampaignMember.Campaign}
+
+{!CampaignMember.FirstName} {!CampaignMember.LastName}{!CampaignMember.Link}
+
+Please follow up
+Tom Peff
+tpeff@adaptiveinsights.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

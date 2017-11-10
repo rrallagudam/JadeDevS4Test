@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Territory Zipcode</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Territory Zipcodes</value>
+    </caseValues>
+    <fields>
+        <help><!-- Determines if a Zipcode is actively associated with a territory. --></help>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Area Code --></label>
+        <name>AreaCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- CarrierRouteRateSortation --></label>
+        <name>CarrierRouteRateSortation__c</name>
+    </fields>
+    <fields>
+        <label><!-- CityAliasCode --></label>
+        <name>CityAliasCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- CityAliasMixedCase --></label>
+        <name>CityAliasMixedCase__c</name>
+    </fields>
+    <fields>
+        <label><!-- City Alias Name --></label>
+        <name>CityAliasName__c</name>
+    </fields>
+    <fields>
+        <label><!-- CityDeliveryIndicator --></label>
+        <name>CityDeliveryIndicator__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CityMixedCase --></label>
+        <name>CityMixedCase__c</name>
+    </fields>
+    <fields>
+        <label><!-- CityStateKey --></label>
+        <name>CityStateKey__c</name>
+    </fields>
+    <fields>
+        <label><!-- City Type --></label>
+        <name>CityType__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label><!-- ClassificationCode --></label>
+        <name>ClassificationCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- CountyANSI --></label>
+        <name>CountyANSI__c</name>
+    </fields>
+    <fields>
+        <label><!-- CountyFIPS --></label>
+        <name>CountyFIPS__c</name>
+    </fields>
+    <fields>
+        <label><!-- County --></label>
+        <name>County__c</name>
+    </fields>
+    <fields>
+        <label><!-- Daylight Saving --></label>
+        <name>DayLightSaving__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Elevation --></label>
+        <name>Elevation__c</name>
+    </fields>
+    <fields>
+        <label><!-- FacilityCode --></label>
+        <name>FacilityCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- FinanceNumber --></label>
+        <name>FinanceNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latitude --></label>
+        <name>Latitude__c</name>
+    </fields>
+    <fields>
+        <label><!-- Longitude --></label>
+        <name>Longitude__c</name>
+    </fields>
+    <fields>
+        <label><!-- MultiCounty --></label>
+        <name>MultiCounty__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PreferredLastLineKey --></label>
+        <name>PreferredLastLineKey__c</name>
+    </fields>
+    <fields>
+        <label><!-- PrimaryRecord --></label>
+        <name>PrimaryRecord__c</name>
+    </fields>
+    <fields>
+        <label><!-- StateANSI --></label>
+        <name>StateANSI__c</name>
+    </fields>
+    <fields>
+        <label><!-- StateFIPS --></label>
+        <name>StateFIPS__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory --></label>
+        <name>Territory__c</name>
+        <relationshipLabel><!-- Territory Zipcodes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Time Zone --></label>
+        <name>TimeZone__c</name>
+    </fields>
+    <fields>
+        <label><!-- UniqueZIPName --></label>
+        <name>UniqueZIPName__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ZipCode --></label>
+        <name>ZipCode__c</name>
+    </fields>
+    <layouts>
+        <layout>Territory Zipcode Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

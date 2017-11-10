@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email sent to approvers upon assignment.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Adaptive_Insight</letterhead>
+    <name>Quote Approval</name>
+    <style>freeForm</style>
+    <subject>A Subscription Discount Quote Requires Your Approval for {!SBQQ__Quote__c.Account_Name__c}</subject>
+    <textOnly>The average subscription discount on this Quote requires your approval.
+
+
+Click here to review and approve.
+{!SBQQ__Quote__c.RecordLink}
+
+
+OPPORTUNITY NAME:
+{!SBQQ__Quote__c.Opportunity_Name__c}
+
+
+CUSTOMER NAME:
+{!SBQQ__Quote__c.Account_Name__c}
+
+
+TOTAL SUBSCRIPTION REVENUE:
+{!SBQQ__Quote__c.Subscription_Net_Amount__c}
+
+
+AVERAGE SUBSCRIPTION DISCOUNT %:
+{!SBQQ__Quote__c.Subscription_Avg_Discount__c}
+
+
+ARR:
+{!SBQQ__Quote__c.00N6100000BqRrR}
+
+
+TCV:
+{!SBQQ__Quote__c.SBQQ__NetAmount__c}
+
+
+This quote expires on {!SBQQ__Quote__c.SBQQ__ExpirationDate__c}.
+
+
+Click here to review and approve.
+{!SBQQ__Quote__c.RecordLink}</textOnly>
+    <type>html</type>
+</EmailTemplate>

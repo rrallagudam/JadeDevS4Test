@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>NECertification__c</baseObject>
+    <category>accounts</category>
+    <deployed>true</deployed>
+    <description>NE Certification Completion Report</description>
+    <label>NE Certification Completion Report</label>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>NECertification__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>NECertification__c</table>
+        </columns>
+        <masterLabel>NECertifications</masterLabel>
+    </sections>
+</ReportType>

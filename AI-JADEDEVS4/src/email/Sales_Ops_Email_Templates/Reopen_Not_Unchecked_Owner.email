@@ -1,0 +1,5 @@
+Dear {!Contact.OwnerFirstName},
+
+Contacts cannot have Reopen checked for more than 1 business day. Please review the contact and uncheck the Reopen box today.
+
+{!Contact.Link}

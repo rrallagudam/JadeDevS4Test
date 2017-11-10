@@ -1,0 +1,5 @@
+Dear {!Opportunity.OwnerFirstName}, 
+
+The SLA for SAO opportunities is 20 business days. The following opportunity has not been moved from SAO in 20 business days. Please review and update the stage field today. 
+
+{!Opportunity.Link}

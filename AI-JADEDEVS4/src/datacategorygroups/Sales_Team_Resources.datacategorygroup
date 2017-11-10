@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCategoryGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Logos</label>
+                <name>Logos</name>
+            </dataCategory>
+            <dataCategory>
+                <label>CFO Indicator</label>
+                <name>CFO_Indicator</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Corporate Overview Slides (Corp Deck)</label>
+                <name>Corporate_Overview_Slides_Corp_Deck</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Document Guidelines - templates</label>
+                <name>Document_Guidelines_templates</name>
+            </dataCategory>
+            <dataCategory>
+                <label>ROI Calculator</label>
+                <name>ROI_Calculator</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Analyst Reports</label>
+                <name>Analyst_Reports</name>
+            </dataCategory>
+            <label>Adaptive Corporate</label>
+            <name>Adaptive_Corporate</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Consolidation Collateral</label>
+                <name>Consolidation_Collateral</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Consolidation Slides</label>
+                <name>Consolidation_Slides</name>
+            </dataCategory>
+            <label>Adaptive Consolidation</label>
+            <name>Adaptive_Consolidation</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Discovery Sales Plays / Positioning</label>
+                <name>Discovery_Sales_Plays_Positioning</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Discovery Slides</label>
+                <name>Discovery_Slides</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Discovery Collateral &amp; Videos</label>
+                <name>Discovery_Collateral_Videos</name>
+            </dataCategory>
+            <label>Adaptive Discovery</label>
+            <name>Adaptive_Discovery</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <dataCategory>
+                    <label>Adaptive SaaS Planning Datasheet</label>
+                    <name>Adaptive_SaaS_Planning_Datasheet</name>
+                </dataCategory>
+                <dataCategory>
+                    <label>SaaS Presentation 9-15-2016 final</label>
+                    <name>SaaS_Presentation_9_15_2016_final</name>
+                </dataCategory>
+                <dataCategory>
+                    <label>OPEXEngine Benchmarking Overview</label>
+                    <name>OPEXEngine_Benchmarking_Overview</name>
+                </dataCategory>
+                <dataCategory>
+                    <label>Adaptive SaaS Success Pack Overview</label>
+                    <name>Adaptive_SaaS_Success_Pack_Overview</name>
+                </dataCategory>
+                <dataCategory>
+                    <label>Adaptive SaaS Planning Analytics</label>
+                    <name>Adaptive_SaaS_Planning_Analytics</name>
+                </dataCategory>
+                <dataCategory>
+                    <label>Adaptive SaaS Demo Script</label>
+                    <name>Adaptive_SaaS_Demo_Script</name>
+                </dataCategory>
+                <dataCategory>
+                    <label>Adaptive Revenue</label>
+                    <name>Adaptive_Revenue</name>
+                </dataCategory>
+                <label>Adaptive SaaS</label>
+                <name>Adaptive_SaaS</name>
+            </dataCategory>
+            <label>Adaptive Industry Solutions</label>
+            <name>Adaptive_Industry_Solutions</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Integration FAQs</label>
+                <name>Integration_FAQs</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Integration Slides</label>
+                <name>Integration_Slides</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Integration Collateral</label>
+                <name>Integration_Collateral</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Integration Videos</label>
+                <name>Integration_Videos</name>
+            </dataCategory>
+            <dataCategory>
+                <label>SAML SSO Guides / Datasheets</label>
+                <name>SAML_SSO_Guides_Datasheets</name>
+            </dataCategory>
+            <label>Adaptive Integration</label>
+            <name>Adaptive_Integration</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Planning Collateral</label>
+                <name>Planning_Collateral</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Excel Interface for Planning</label>
+                <name>Excel_Interface_for_Planning</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Planning Slides</label>
+                <name>Planning_Slides</name>
+            </dataCategory>
+            <label>Adaptive Planning</label>
+            <name>Adaptive_Planning</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Reporting Collateral</label>
+                <name>Reporting_Collateral</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Reporting Slides</label>
+                <name>Reporting_Slides</name>
+            </dataCategory>
+            <dataCategory>
+                <label>OfficeConnect</label>
+                <name>OfficeConnect</name>
+            </dataCategory>
+            <dataCategory>
+                <label>XBRL Materials</label>
+                <name>XBRL_Materials</name>
+            </dataCategory>
+            <label>Adaptive Reporting</label>
+            <name>Adaptive_Reporting</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Enterprise Sales Kit</label>
+                <name>Enterprise_Sales_Kit</name>
+            </dataCategory>
+            <dataCategory>
+                <label>MS Dynamics Sales Kit</label>
+                <name>MS_Dynamics_Sales_Kit</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Playsheets &amp; Playbooks</label>
+                <name>Playsheets_Playbooks</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Suite Data Sheets</label>
+                <name>Suite_Data_Sheets</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Product Suite Slides</label>
+                <name>Product_Suite_Slides</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Suite Roadmap</label>
+                <name>Suite_Roadmap</name>
+            </dataCategory>
+            <dataCategory>
+                <label>New Release Information</label>
+                <name>New_Release_Information</name>
+            </dataCategory>
+            <label>Adaptive Suite</label>
+            <name>Adaptive_Suite</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Host Analytics</label>
+                <name>Host_Analytics</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Anaplan</label>
+                <name>Anaplan</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Tidemark</label>
+                <name>Tidemark</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Cognos (IBM / TM1)</label>
+                <name>Cognos_IBM_TM1</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Workday</label>
+                <name>Workday</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Vena</label>
+                <name>Vena</name>
+            </dataCategory>
+            <dataCategory>
+                <label>BI 360</label>
+                <name>BI_360</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Budget Maestro (Centage)</label>
+                <name>Budget_Maestro_Centage</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Oracle PBCS</label>
+                <name>Oracle_PBCS</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Board International</label>
+                <name>Board_International</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Hyperion (Oracle)</label>
+                <name>Hyperion_Oracle</name>
+            </dataCategory>
+            <dataCategory>
+                <label>SAP (BPC)</label>
+                <name>SAP_BPC</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Tableau</label>
+                <name>Tableau</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Prophix</label>
+                <name>Prophix</name>
+            </dataCategory>
+            <label>Competitive Intelligence</label>
+            <name>Competitive_Intelligence</name>
+        </dataCategory>
+        <label>Sales Resources</label>
+        <name>Sales_Resources</name>
+    </dataCategory>
+    <label>Sales Team Resources</label>
+    <objectUsage>
+        <object>KnowledgeArticleVersion</object>
+    </objectUsage>
+</DataCategoryGroup>
