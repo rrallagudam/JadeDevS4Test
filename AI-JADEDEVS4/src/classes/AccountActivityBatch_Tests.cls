@@ -1,6 +1,6 @@
 @IsTest
 public class AccountActivityBatch_Tests {
-    
+    // This is for Testing
 	@IsTest public static void basicTests(){
         TestData.initTriggerSettings();
         Account testAccount = new Account(Name= 'Test Account', 
